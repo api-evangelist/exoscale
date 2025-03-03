@@ -3,12 +3,12 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/exoscale/refs/heads/main/apis.yml
 apis:
   - aid: exoscale:exoscale
-    name: Exoscale
+    name: Exoscale API
     tags:
-      - API
-    humanURL: ' https://openapi-v2.exoscale.com/'
+      - Cloud
+    humanURL: https://openapi-v2.exoscale.com/
     properties:
-      - url: ' https://openapi-v2.exoscale.com/'
+      - url: https://openapi-v2.exoscale.com/
         type: Documentation
     description: >-
       Infrastructure automation API, allowing programmatic access to all
