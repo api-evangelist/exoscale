@@ -1,42 +1,59 @@
 # Exoscale (exoscale)
-Exoscale is a cloud infrastructure provider that offers secure, reliable, and scalable cloud solutions to businesses of all sizes. They provide a range of services, including virtual machines, storage, networking, and security options, all of which are designed to help companies streamline their operations and improve their overall efficiency. Exoscale's focus on simplicity and ease of use makes it an attractive option for businesses looking to transition to the cloud or expand their existing cloud infrastructure. With data centers located in Switzerland and Austria, Exoscale also offers customers the benefit of data sovereignty and compliance with European data protection regulations. Overall, Exoscale is committed to providing cost-effective and innovative cloud solutions that empower businesses to succeed in today's digital landscape.
+Exoscale is a Swiss cloud infrastructure provider offering secure, reliable, and scalable cloud solutions to businesses of all sizes. Services include virtual machines, object storage, networking, security, Kubernetes (SKS), Database as a Service (DBaaS), and IAM. With data centers in Switzerland, Austria, Germany, and Bulgaria, Exoscale offers customers data sovereignty and compliance with European data protection regulations.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/exoscale/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Index 
-- **Position:** Consumer 
-- **Access:** 3rd-Party 
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
 
 ## Tags:
 
- - Cloud
+ - Cloud, Infrastructure, Compute, Storage, Kubernetes, DBaaS, Europe
 
 ## Timestamps
 
-- **Created:** 2025-01-07 
-- **Modified:** 2025-03-02 
+- **Created:** 2025-01-07
+- **Modified:** 2026-04-28
 
 ## APIs
 
 ### Exoscale API
-The Exoscale API is a powerful tool that allows users to interact with their Exoscale cloud infrastructure programmatically. With the API, users can automate tasks, manage resources, and access data on their virtual machines, storage, and networking components. By utilizing the API, users can easily scale their infrastructure up or down, deploy new services, and monitor the performance of their systems in real-time. The Exoscale API simplifies the management of cloud resources and enables users to customize their infrastructure to meet their specific needs.
+Infrastructure automation API allowing programmatic access to all Exoscale products and services, including Compute, SKS (Kubernetes), DBaaS, IAM, Object Storage, KMS, networking, and load balancing.
 
 **Human URL:** [https://openapi-v2.exoscale.com/](https://openapi-v2.exoscale.com/)
 
+**Base URL:** `https://api-ch-gva-2.exoscale.com/v2`
 
 #### Tags:
 
- - Cloud
+ - Cloud, Compute, Kubernetes, DBaaS, IAM, Storage
 
 #### Properties
 
 - [Documentation](https://openapi-v2.exoscale.com/)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/exoscale/refs/heads/main/openapi/exoscale-openapi.yml)
+- [Sign Up](https://portal.exoscale.com/register)
+- [Pricing](https://www.exoscale.com/pricing/)
+
+## Common Properties
+
+- [Website](https://www.exoscale.com)
+- [Documentation](https://community.exoscale.com/documentation/)
+- [Portal](https://portal.exoscale.com/)
+- [Sign Up](https://portal.exoscale.com/register)
+- [Pricing](https://www.exoscale.com/pricing/)
+- [Terms of Service](https://www.exoscale.com/terms/)
+- [Privacy Policy](https://www.exoscale.com/privacy/)
+- [Status Page](https://www.exoscalestatus.com/)
+- [Blog](https://www.exoscale.com/syslog/)
+- [GitHub Organization](https://github.com/exoscale)
+- [Support](https://portal.exoscale.com/tickets)
 
 ## Maintainers
 
 **FN:** Kin Lane
 
-**Email:** info@apievangelist.com
-
+**Email:** kin@apievangelist.com
