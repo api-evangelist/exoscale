@@ -1,0 +1,13 @@
+{
+  "repo": "exoscale",
+  "feeds": [
+    {
+      "source": "https://www.exoscale.com/syslog/",
+      "feed_url": "https://www.exoscale.com/blog/rss.xml",
+      "saved": 10,
+      "title": "Exoscale Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:28:02Z"
+}
