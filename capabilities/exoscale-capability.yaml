@@ -1,0 +1,2508 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API
+  description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
+  tags:
+  - Exoscale
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale
+    baseUri: https://api-ch-gva-2.exoscale.com/v2
+    description: Exoscale API HTTP API.
+    resources:
+    - name: load-balancer-id-service-service-id
+      path: /load-balancer/{id}/service/{service-id}
+      operations:
+      - name: delete-load-balancer-service
+        method: DELETE
+        description: Delete a Load Balancer Service
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: service-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-load-balancer-service
+        method: PUT
+        description: Update a Load Balancer Service
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: service-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-load-balancer-service
+        method: GET
+        description: Retrieve Load Balancer Service details
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: service-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-external-endpoint-opensearch-endpoint-id
+      path: /dbaas-external-endpoint-opensearch/{endpoint-id}
+      operations:
+      - name: delete-dbaas-external-endpoint-opensearch
+        method: DELETE
+        description: '[BETA] Delete OpenSearch logs external integration endpoint'
+        inputParameters:
+        - name: endpoint-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-dbaas-external-endpoint-opensearch
+        method: GET
+        description: '[BETA] Get OpenSearch Logs external integration endpoint settings'
+        inputParameters:
+        - name: endpoint-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-dbaas-external-endpoint-opensearch
+        method: PUT
+        description: '[BETA] Update OpenSearch Logs external integration endpoint'
+        inputParameters:
+        - name: endpoint-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-opensearch-name-acl-config
+      path: /dbaas-opensearch/{name}/acl-config
+      operations:
+      - name: get-dbaas-opensearch-acl-config
+        method: GET
+        description: Get DBaaS OpenSearch ACL configuration
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-dbaas-opensearch-acl-config
+        method: PUT
+        description: Create a DBaaS OpenSearch ACL configuration
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: instance-pool-id-scale
+      path: /instance-pool/{id}:scale
+      operations:
+      - name: scale-instance-pool
+        method: PUT
+        description: Scale an Instance Pool
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: instance-id-create-snapshot
+      path: /instance/{id}:create-snapshot
+      operations:
+      - name: create-snapshot
+        method: POST
+        description: Create a Snapshot of a Compute instance
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-valkey-name-migration-stop
+      path: /dbaas-valkey/{name}/migration/stop
+      operations:
+      - name: stop-dbaas-valkey-migration
+        method: POST
+        description: Stop a DBaaS Valkey migration
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reverse-dns-elastic-ip-id
+      path: /reverse-dns/elastic-ip/{id}
+      operations:
+      - name: get-reverse-dns-elastic-ip
+        method: GET
+        description: Query the PTR DNS records for an elastic IP
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-reverse-dns-elastic-ip
+        method: POST
+        description: Update/Create the PTR DNS record for an elastic IP
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-reverse-dns-elastic-ip
+        method: DELETE
+        description: Delete the PTR DNS record for an elastic IP
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: anti-affinity-group
+      path: /anti-affinity-group
+      operations:
+      - name: list-anti-affinity-groups
+        method: GET
+        description: List Anti-affinity Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-anti-affinity-group
+        method: POST
+        description: Create an Anti-affinity Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ai-ai-api-key
+      path: /ai/ai-api-key
+      operations:
+      - name: list-ai-api-keys
+        method: GET
+        description: List AI API Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-ai-api-key
+        method: POST
+        description: Create AI API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: usage-report
+      path: /usage-report
+      operations:
+      - name: get-usage-report
+        method: GET
+        description: Retrieve organization usage reports
+        inputParameters:
+        - name: period
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: event
+      path: /event
+      operations:
+      - name: list-events
+        method: GET
+        description: List Events
+        inputParameters:
+        - name: from
+          in: query
+          type: string
+        - name: to
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: security-group-id-rules-rule-id
+      path: /security-group/{id}/rules/{rule-id}
+      operations:
+      - name: delete-rule-from-security-group
+        method: DELETE
+        description: Delete a Security Group rule
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: rule-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-grafana-name-maintenance-start
+      path: /dbaas-grafana/{name}/maintenance/start
+      operations:
+      - name: start-dbaas-grafana-maintenance
+        method: PUT
+        description: Initiate Grafana maintenance update
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: kms-key-id-disable-key-rotation
+      path: /kms-key/{id}/disable-key-rotation
+      operations:
+      - name: disable-kms-key-rotation
+        method: POST
+        description: '[BETA] Disable Key Rotation'
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-postgres-service-upgrade-check
+      path: /dbaas-postgres/{service}/upgrade-check
+      operations:
+      - name: create-dbaas-pg-upgrade-check
+        method: POST
+        description: Check whether you can upgrade Postgres service to a newer version
+        inputParameters:
+        - name: service
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-mysql-service-name-user-username-password-
+      path: /dbaas-mysql/{service-name}/user/{username}/password/reset
+      operations:
+      - name: reset-dbaas-mysql-user-password
+        method: PUT
+        description: Reset the credentials of a DBaaS mysql user
+        inputParameters:
+        - name: service-name
+          in: path
+          type: string
+          required: true
+        - name: username
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ai-help-inference-engine-parameters
+      path: /ai/help/inference-engine-parameters
+      operations:
+      - name: get-inference-engine-help
+        method: GET
+        description: Get inference-engine Help
+        inputParameters:
+        - name: version
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: load-balancer
+      path: /load-balancer
+      operations:
+      - name: create-load-balancer
+        method: POST
+        description: Create a Load Balancer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: list-load-balancers
+        method: GET
+        description: List Load Balancers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: security-group
+      path: /security-group
+      operations:
+      - name: create-security-group
+        method: POST
+        description: Create a Security Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: list-security-groups
+        method: GET
+        description: List Security Groups.
+        inputParameters:
+        - name: visibility
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-postgres-service-name-connection-pool
+      path: /dbaas-postgres/{service-name}/connection-pool
+      operations:
+      - name: create-dbaas-pg-connection-pool
+        method: POST
+        description: Create a DBaaS PostgreSQL connection pool
+        inputParameters:
+        - name: service-name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-mysql-name
+      path: /dbaas-mysql/{name}
+      operations:
+      - name: update-dbaas-service-mysql
+        method: PUT
+        description: Update a DBaaS MySQL service
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-dbaas-service-mysql
+        method: GET
+        description: Get a DBaaS MySQL service
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-dbaas-service-mysql
+        method: POST
+        description: Create a DBaaS MySQL service
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-dbaas-service-mysql
+        method: DELETE
+        description: Delete a MySQL service
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: iam-role-target-role-id-assume
+      path: /iam-role/{target-role-id}/assume
+      operations:
+      - name: assume-iam-role
+        method: POST
+        description: '[BETA] Request generation of key/secret that allow caller to assume target role'
+        inputParameters:
+        - name: target-role-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: private-network-id-attach
+      path: /private-network/{id}:attach
+      operations:
+      - name: attach-instance-to-private-network
+        method: PUT
+        description: Attach a Compute instance to a Private Network
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: kms-key-id
+      path: /kms-key/{id}
+      operations:
+      - name: get-kms-key
+        method: GET
+        description: '[BETA] Get KMS Key'
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-thanos-name-maintenance-start
+      path: /dbaas-thanos/{name}/maintenance/start
+      operations:
+      - name: start-dbaas-thanos-maintenance
+        method: PUT
+        description: Initiate Thanos maintenance update
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-external-endpoint-elasticsearch-endpoint-i
+      path: /dbaas-external-endpoint-elasticsearch/{endpoint-id}
+      operations:
+      - name: delete-dbaas-external-endpoint-elasticsearch
+        method: DELETE
+        description: '[BETA] Delete ElasticSearch logs external integration endpoint'
+        inputParameters:
+        - name: endpoint-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-dbaas-external-endpoint-elasticsearch
+        method: GET
+        description: '[BETA] Get ElasticSearch Logs external integration endpoint settings'
+        inputParameters:
+        - name: endpoint-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-dbaas-external-endpoint-elasticsearch
+        method: PUT
+        description: '[BETA] Update ElasticSearch Logs external integration endpoint'
+        inputParameters:
+        - name: endpoint-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ai-model
+      path: /ai/model
+      operations:
+      - name: create-model
+        method: POST
+        description: Create Model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: list-models
+        method: GET
+        description: List Models
+        inputParameters:
+        - name: visibility
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-mysql-service-name-user
+      path: /dbaas-mysql/{service-name}/user
+      operations:
+      - name: create-dbaas-mysql-user
+        method: POST
+        description: Create a DBaaS MySQL user
+        inputParameters:
+        - name: service-name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-service-type
+      path: /dbaas-service-type
+      operations:
+      - name: list-dbaas-service-types
+        method: GET
+        description: DBaaS Service Types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ai-deployment-id-scale
+      path: /ai/deployment/{id}/scale
+      operations:
+      - name: scale-deployment
+        method: POST
+        description: Scale Deployment
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: instance-type-id
+      path: /instance-type/{id}
+      operations:
+      - name: get-instance-type
+        method: GET
+        description: Retrieve Instance Type details
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: instance-id-password
+      path: /instance/{id}:password
+      operations:
+      - name: reveal-instance-password
+        method: GET
+        description: Reveal the password used during instance creation or the latest password reset.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: sks-template-kube-version-variant
+      path: /sks-template/{kube-version}/{variant}
+      operations:
+      - name: get-active-nodepool-template
+        method: GET
+        description: Get the active template for a given kube version and variant (standard | nvidia)
+        inputParameters:
+        - name: kube-version
+          in: path
+          type: string
+          required: true
+        - name: variant
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: instance-id-resize-disk
+      path: /instance/{id}:resize-disk
+      operations:
+      - name: resize-instance-disk
+        method: PUT
+        description: Resize a Compute instance disk
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-service
+      path: /dbaas-service
+      operations:
+      - name: list-dbaas-services
+        method: GET
+        description: List DBaaS services
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: elastic-ip
+      path: /elastic-ip
+      operations:
+      - name: create-elastic-ip
+        method: POST
+        description: Create an Elastic IP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: list-elastic-ips
+        method: GET
+        description: List Elastic IPs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: zone
+      path: /zone
+      operations:
+      - name: list-zones
+        method: GET
+        description: List Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: instance-pool
+      path: /instance-pool
+      operations:
+      - name: list-instance-pools
+        method: GET
+        description: List Instance Pools
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-instance-pool
+        method: POST
+        description: Create an Instance Pool
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dbaas-external-endpoint-rsyslog-name
+      path: /dbaas-external-endpoint-rsyslog/{name}
+      operations:
+      - name: create-dbaas-external-endpoint-rsyslog
+        method: POST
+        description: '[BETA] Create RSyslog external integration endpoint'
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: sks-cluster-kubeconfig-id
+      path: /sks-cluster-kubeconfig/{id}
+      operations:
+      - name: generate-sks-cluster-kubeconfig
+        method: POST
+        description: Generate a new Kubeconfig file for a SKS cluster
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dns-domain-domain-id-record
+      path: /dns-domain/{domain-id}/record
+      operations:
+      - name: list-dns-domain-records
+        method: GET
+        description: List DNS domain records
+        inputParameters:
+        - name: domain-id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: exoscale-rest
+    description: REST adapter for Exoscale API.
+    resources:
+    - path: /load-balancer/{id}/service/{service-id}
+      name: delete-load-balancer-service
+      operations:
+      - method: DELETE
+        name: delete-load-balancer-service
+        description: Delete a Load Balancer Service
+        call: exoscale.delete-load-balancer-service
+        with:
+          id: rest.id
+          service-id: rest.service-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /load-balancer/{id}/service/{service-id}
+      name: update-load-balancer-service
+      operations:
+      - method: PUT
+        name: update-load-balancer-service
+        description: Update a Load Balancer Service
+        call: exoscale.update-load-balancer-service
+        with:
+          id: rest.id
+          service-id: rest.service-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /load-balancer/{id}/service/{service-id}
+      name: get-load-balancer-service
+      operations:
+      - method: GET
+        name: get-load-balancer-service
+        description: Retrieve Load Balancer Service details
+        call: exoscale.get-load-balancer-service
+        with:
+          id: rest.id
+          service-id: rest.service-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-external-endpoint-opensearch/{endpoint-id}
+      name: delete-dbaas-external-endpoint-opensearch
+      operations:
+      - method: DELETE
+        name: delete-dbaas-external-endpoint-opensearch
+        description: '[BETA] Delete OpenSearch logs external integration endpoint'
+        call: exoscale.delete-dbaas-external-endpoint-opensearch
+        with:
+          endpoint-id: rest.endpoint-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-external-endpoint-opensearch/{endpoint-id}
+      name: get-dbaas-external-endpoint-opensearch
+      operations:
+      - method: GET
+        name: get-dbaas-external-endpoint-opensearch
+        description: '[BETA] Get OpenSearch Logs external integration endpoint settings'
+        call: exoscale.get-dbaas-external-endpoint-opensearch
+        with:
+          endpoint-id: rest.endpoint-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-external-endpoint-opensearch/{endpoint-id}
+      name: update-dbaas-external-endpoint-opensearch
+      operations:
+      - method: PUT
+        name: update-dbaas-external-endpoint-opensearch
+        description: '[BETA] Update OpenSearch Logs external integration endpoint'
+        call: exoscale.update-dbaas-external-endpoint-opensearch
+        with:
+          endpoint-id: rest.endpoint-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-opensearch/{name}/acl-config
+      name: get-dbaas-opensearch-acl-config
+      operations:
+      - method: GET
+        name: get-dbaas-opensearch-acl-config
+        description: Get DBaaS OpenSearch ACL configuration
+        call: exoscale.get-dbaas-opensearch-acl-config
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-opensearch/{name}/acl-config
+      name: update-dbaas-opensearch-acl-config
+      operations:
+      - method: PUT
+        name: update-dbaas-opensearch-acl-config
+        description: Create a DBaaS OpenSearch ACL configuration
+        call: exoscale.update-dbaas-opensearch-acl-config
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /instance-pool/{id}:scale
+      name: scale-instance-pool
+      operations:
+      - method: PUT
+        name: scale-instance-pool
+        description: Scale an Instance Pool
+        call: exoscale.scale-instance-pool
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /instance/{id}:create-snapshot
+      name: create-snapshot
+      operations:
+      - method: POST
+        name: create-snapshot
+        description: Create a Snapshot of a Compute instance
+        call: exoscale.create-snapshot
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-valkey/{name}/migration/stop
+      name: stop-dbaas-valkey-migration
+      operations:
+      - method: POST
+        name: stop-dbaas-valkey-migration
+        description: Stop a DBaaS Valkey migration
+        call: exoscale.stop-dbaas-valkey-migration
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reverse-dns/elastic-ip/{id}
+      name: get-reverse-dns-elastic-ip
+      operations:
+      - method: GET
+        name: get-reverse-dns-elastic-ip
+        description: Query the PTR DNS records for an elastic IP
+        call: exoscale.get-reverse-dns-elastic-ip
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reverse-dns/elastic-ip/{id}
+      name: update-reverse-dns-elastic-ip
+      operations:
+      - method: POST
+        name: update-reverse-dns-elastic-ip
+        description: Update/Create the PTR DNS record for an elastic IP
+        call: exoscale.update-reverse-dns-elastic-ip
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reverse-dns/elastic-ip/{id}
+      name: delete-reverse-dns-elastic-ip
+      operations:
+      - method: DELETE
+        name: delete-reverse-dns-elastic-ip
+        description: Delete the PTR DNS record for an elastic IP
+        call: exoscale.delete-reverse-dns-elastic-ip
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /anti-affinity-group
+      name: list-anti-affinity-groups
+      operations:
+      - method: GET
+        name: list-anti-affinity-groups
+        description: List Anti-affinity Groups
+        call: exoscale.list-anti-affinity-groups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /anti-affinity-group
+      name: create-anti-affinity-group
+      operations:
+      - method: POST
+        name: create-anti-affinity-group
+        description: Create an Anti-affinity Group
+        call: exoscale.create-anti-affinity-group
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ai/ai-api-key
+      name: list-ai-api-keys
+      operations:
+      - method: GET
+        name: list-ai-api-keys
+        description: List AI API Keys
+        call: exoscale.list-ai-api-keys
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ai/ai-api-key
+      name: create-ai-api-key
+      operations:
+      - method: POST
+        name: create-ai-api-key
+        description: Create AI API Key
+        call: exoscale.create-ai-api-key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /usage-report
+      name: get-usage-report
+      operations:
+      - method: GET
+        name: get-usage-report
+        description: Retrieve organization usage reports
+        call: exoscale.get-usage-report
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event
+      name: list-events
+      operations:
+      - method: GET
+        name: list-events
+        description: List Events
+        call: exoscale.list-events
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /security-group/{id}/rules/{rule-id}
+      name: delete-rule-from-security-group
+      operations:
+      - method: DELETE
+        name: delete-rule-from-security-group
+        description: Delete a Security Group rule
+        call: exoscale.delete-rule-from-security-group
+        with:
+          id: rest.id
+          rule-id: rest.rule-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-grafana/{name}/maintenance/start
+      name: start-dbaas-grafana-maintenance
+      operations:
+      - method: PUT
+        name: start-dbaas-grafana-maintenance
+        description: Initiate Grafana maintenance update
+        call: exoscale.start-dbaas-grafana-maintenance
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /kms-key/{id}/disable-key-rotation
+      name: disable-kms-key-rotation
+      operations:
+      - method: POST
+        name: disable-kms-key-rotation
+        description: '[BETA] Disable Key Rotation'
+        call: exoscale.disable-kms-key-rotation
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-postgres/{service}/upgrade-check
+      name: create-dbaas-pg-upgrade-check
+      operations:
+      - method: POST
+        name: create-dbaas-pg-upgrade-check
+        description: Check whether you can upgrade Postgres service to a newer version
+        call: exoscale.create-dbaas-pg-upgrade-check
+        with:
+          service: rest.service
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-mysql/{service-name}/user/{username}/password/reset
+      name: reset-dbaas-mysql-user-password
+      operations:
+      - method: PUT
+        name: reset-dbaas-mysql-user-password
+        description: Reset the credentials of a DBaaS mysql user
+        call: exoscale.reset-dbaas-mysql-user-password
+        with:
+          service-name: rest.service-name
+          username: rest.username
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ai/help/inference-engine-parameters
+      name: get-inference-engine-help
+      operations:
+      - method: GET
+        name: get-inference-engine-help
+        description: Get inference-engine Help
+        call: exoscale.get-inference-engine-help
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /load-balancer
+      name: create-load-balancer
+      operations:
+      - method: POST
+        name: create-load-balancer
+        description: Create a Load Balancer
+        call: exoscale.create-load-balancer
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /load-balancer
+      name: list-load-balancers
+      operations:
+      - method: GET
+        name: list-load-balancers
+        description: List Load Balancers
+        call: exoscale.list-load-balancers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /security-group
+      name: create-security-group
+      operations:
+      - method: POST
+        name: create-security-group
+        description: Create a Security Group
+        call: exoscale.create-security-group
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /security-group
+      name: list-security-groups
+      operations:
+      - method: GET
+        name: list-security-groups
+        description: List Security Groups.
+        call: exoscale.list-security-groups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-postgres/{service-name}/connection-pool
+      name: create-dbaas-pg-connection-pool
+      operations:
+      - method: POST
+        name: create-dbaas-pg-connection-pool
+        description: Create a DBaaS PostgreSQL connection pool
+        call: exoscale.create-dbaas-pg-connection-pool
+        with:
+          service-name: rest.service-name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-mysql/{name}
+      name: update-dbaas-service-mysql
+      operations:
+      - method: PUT
+        name: update-dbaas-service-mysql
+        description: Update a DBaaS MySQL service
+        call: exoscale.update-dbaas-service-mysql
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-mysql/{name}
+      name: get-dbaas-service-mysql
+      operations:
+      - method: GET
+        name: get-dbaas-service-mysql
+        description: Get a DBaaS MySQL service
+        call: exoscale.get-dbaas-service-mysql
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-mysql/{name}
+      name: create-dbaas-service-mysql
+      operations:
+      - method: POST
+        name: create-dbaas-service-mysql
+        description: Create a DBaaS MySQL service
+        call: exoscale.create-dbaas-service-mysql
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-mysql/{name}
+      name: delete-dbaas-service-mysql
+      operations:
+      - method: DELETE
+        name: delete-dbaas-service-mysql
+        description: Delete a MySQL service
+        call: exoscale.delete-dbaas-service-mysql
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /iam-role/{target-role-id}/assume
+      name: assume-iam-role
+      operations:
+      - method: POST
+        name: assume-iam-role
+        description: '[BETA] Request generation of key/secret that allow caller to assume target role'
+        call: exoscale.assume-iam-role
+        with:
+          target-role-id: rest.target-role-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /private-network/{id}:attach
+      name: attach-instance-to-private-network
+      operations:
+      - method: PUT
+        name: attach-instance-to-private-network
+        description: Attach a Compute instance to a Private Network
+        call: exoscale.attach-instance-to-private-network
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /kms-key/{id}
+      name: get-kms-key
+      operations:
+      - method: GET
+        name: get-kms-key
+        description: '[BETA] Get KMS Key'
+        call: exoscale.get-kms-key
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-thanos/{name}/maintenance/start
+      name: start-dbaas-thanos-maintenance
+      operations:
+      - method: PUT
+        name: start-dbaas-thanos-maintenance
+        description: Initiate Thanos maintenance update
+        call: exoscale.start-dbaas-thanos-maintenance
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-external-endpoint-elasticsearch/{endpoint-id}
+      name: delete-dbaas-external-endpoint-elasticsearch
+      operations:
+      - method: DELETE
+        name: delete-dbaas-external-endpoint-elasticsearch
+        description: '[BETA] Delete ElasticSearch logs external integration endpoint'
+        call: exoscale.delete-dbaas-external-endpoint-elasticsearch
+        with:
+          endpoint-id: rest.endpoint-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-external-endpoint-elasticsearch/{endpoint-id}
+      name: get-dbaas-external-endpoint-elasticsearch
+      operations:
+      - method: GET
+        name: get-dbaas-external-endpoint-elasticsearch
+        description: '[BETA] Get ElasticSearch Logs external integration endpoint settings'
+        call: exoscale.get-dbaas-external-endpoint-elasticsearch
+        with:
+          endpoint-id: rest.endpoint-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-external-endpoint-elasticsearch/{endpoint-id}
+      name: update-dbaas-external-endpoint-elasticsearch
+      operations:
+      - method: PUT
+        name: update-dbaas-external-endpoint-elasticsearch
+        description: '[BETA] Update ElasticSearch Logs external integration endpoint'
+        call: exoscale.update-dbaas-external-endpoint-elasticsearch
+        with:
+          endpoint-id: rest.endpoint-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ai/model
+      name: create-model
+      operations:
+      - method: POST
+        name: create-model
+        description: Create Model
+        call: exoscale.create-model
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ai/model
+      name: list-models
+      operations:
+      - method: GET
+        name: list-models
+        description: List Models
+        call: exoscale.list-models
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-mysql/{service-name}/user
+      name: create-dbaas-mysql-user
+      operations:
+      - method: POST
+        name: create-dbaas-mysql-user
+        description: Create a DBaaS MySQL user
+        call: exoscale.create-dbaas-mysql-user
+        with:
+          service-name: rest.service-name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-service-type
+      name: list-dbaas-service-types
+      operations:
+      - method: GET
+        name: list-dbaas-service-types
+        description: DBaaS Service Types
+        call: exoscale.list-dbaas-service-types
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ai/deployment/{id}/scale
+      name: scale-deployment
+      operations:
+      - method: POST
+        name: scale-deployment
+        description: Scale Deployment
+        call: exoscale.scale-deployment
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /instance-type/{id}
+      name: get-instance-type
+      operations:
+      - method: GET
+        name: get-instance-type
+        description: Retrieve Instance Type details
+        call: exoscale.get-instance-type
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /instance/{id}:password
+      name: reveal-instance-password
+      operations:
+      - method: GET
+        name: reveal-instance-password
+        description: Reveal the password used during instance creation or the latest password reset.
+        call: exoscale.reveal-instance-password
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /sks-template/{kube-version}/{variant}
+      name: get-active-nodepool-template
+      operations:
+      - method: GET
+        name: get-active-nodepool-template
+        description: Get the active template for a given kube version and variant (standard | nvidia)
+        call: exoscale.get-active-nodepool-template
+        with:
+          kube-version: rest.kube-version
+          variant: rest.variant
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /instance/{id}:resize-disk
+      name: resize-instance-disk
+      operations:
+      - method: PUT
+        name: resize-instance-disk
+        description: Resize a Compute instance disk
+        call: exoscale.resize-instance-disk
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-service
+      name: list-dbaas-services
+      operations:
+      - method: GET
+        name: list-dbaas-services
+        description: List DBaaS services
+        call: exoscale.list-dbaas-services
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /elastic-ip
+      name: create-elastic-ip
+      operations:
+      - method: POST
+        name: create-elastic-ip
+        description: Create an Elastic IP
+        call: exoscale.create-elastic-ip
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /elastic-ip
+      name: list-elastic-ips
+      operations:
+      - method: GET
+        name: list-elastic-ips
+        description: List Elastic IPs
+        call: exoscale.list-elastic-ips
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /zone
+      name: list-zones
+      operations:
+      - method: GET
+        name: list-zones
+        description: List Zones
+        call: exoscale.list-zones
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /instance-pool
+      name: list-instance-pools
+      operations:
+      - method: GET
+        name: list-instance-pools
+        description: List Instance Pools
+        call: exoscale.list-instance-pools
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /instance-pool
+      name: create-instance-pool
+      operations:
+      - method: POST
+        name: create-instance-pool
+        description: Create an Instance Pool
+        call: exoscale.create-instance-pool
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dbaas-external-endpoint-rsyslog/{name}
+      name: create-dbaas-external-endpoint-rsyslog
+      operations:
+      - method: POST
+        name: create-dbaas-external-endpoint-rsyslog
+        description: '[BETA] Create RSyslog external integration endpoint'
+        call: exoscale.create-dbaas-external-endpoint-rsyslog
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /sks-cluster-kubeconfig/{id}
+      name: generate-sks-cluster-kubeconfig
+      operations:
+      - method: POST
+        name: generate-sks-cluster-kubeconfig
+        description: Generate a new Kubeconfig file for a SKS cluster
+        call: exoscale.generate-sks-cluster-kubeconfig
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dns-domain/{domain-id}/record
+      name: list-dns-domain-records
+      operations:
+      - method: GET
+        name: list-dns-domain-records
+        description: List DNS domain records
+        call: exoscale.list-dns-domain-records
+        with:
+          domain-id: rest.domain-id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: exoscale-mcp
+    transport: http
+    description: MCP adapter for Exoscale API for AI agent use.
+    tools:
+    - name: delete-load-balancer-service
+      description: Delete a Load Balancer Service
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale.delete-load-balancer-service
+      with:
+        id: tools.id
+        service-id: tools.service-id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: service-id
+        type: string
+        description: service-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-load-balancer-service
+      description: Update a Load Balancer Service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.update-load-balancer-service
+      with:
+        id: tools.id
+        service-id: tools.service-id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: service-id
+        type: string
+        description: service-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-load-balancer-service
+      description: Retrieve Load Balancer Service details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-load-balancer-service
+      with:
+        id: tools.id
+        service-id: tools.service-id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: service-id
+        type: string
+        description: service-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-dbaas-external-endpoint-opensearch
+      description: '[BETA] Delete OpenSearch logs external integration endpoint'
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale.delete-dbaas-external-endpoint-opensearch
+      with:
+        endpoint-id: tools.endpoint-id
+      inputParameters:
+      - name: endpoint-id
+        type: string
+        description: endpoint-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dbaas-external-endpoint-opensearch
+      description: '[BETA] Get OpenSearch Logs external integration endpoint settings'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-dbaas-external-endpoint-opensearch
+      with:
+        endpoint-id: tools.endpoint-id
+      inputParameters:
+      - name: endpoint-id
+        type: string
+        description: endpoint-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-dbaas-external-endpoint-opensearch
+      description: '[BETA] Update OpenSearch Logs external integration endpoint'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.update-dbaas-external-endpoint-opensearch
+      with:
+        endpoint-id: tools.endpoint-id
+      inputParameters:
+      - name: endpoint-id
+        type: string
+        description: endpoint-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dbaas-opensearch-acl-config
+      description: Get DBaaS OpenSearch ACL configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-dbaas-opensearch-acl-config
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-dbaas-opensearch-acl-config
+      description: Create a DBaaS OpenSearch ACL configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.update-dbaas-opensearch-acl-config
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: scale-instance-pool
+      description: Scale an Instance Pool
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.scale-instance-pool
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-snapshot
+      description: Create a Snapshot of a Compute instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-snapshot
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-dbaas-valkey-migration
+      description: Stop a DBaaS Valkey migration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.stop-dbaas-valkey-migration
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-reverse-dns-elastic-ip
+      description: Query the PTR DNS records for an elastic IP
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-reverse-dns-elastic-ip
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-reverse-dns-elastic-ip
+      description: Update/Create the PTR DNS record for an elastic IP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.update-reverse-dns-elastic-ip
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-reverse-dns-elastic-ip
+      description: Delete the PTR DNS record for an elastic IP
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale.delete-reverse-dns-elastic-ip
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-anti-affinity-groups
+      description: List Anti-affinity Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-anti-affinity-groups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-anti-affinity-group
+      description: Create an Anti-affinity Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-anti-affinity-group
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-ai-api-keys
+      description: List AI API Keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-ai-api-keys
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-ai-api-key
+      description: Create AI API Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-ai-api-key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-usage-report
+      description: Retrieve organization usage reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-usage-report
+      with:
+        period: tools.period
+      inputParameters:
+      - name: period
+        type: string
+        description: period
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-events
+      description: List Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-events
+      with:
+        from: tools.from
+        to: tools.to
+      inputParameters:
+      - name: from
+        type: string
+        description: from
+      - name: to
+        type: string
+        description: to
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-rule-from-security-group
+      description: Delete a Security Group rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale.delete-rule-from-security-group
+      with:
+        id: tools.id
+        rule-id: tools.rule-id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: rule-id
+        type: string
+        description: rule-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-dbaas-grafana-maintenance
+      description: Initiate Grafana maintenance update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.start-dbaas-grafana-maintenance
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: disable-kms-key-rotation
+      description: '[BETA] Disable Key Rotation'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.disable-kms-key-rotation
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-dbaas-pg-upgrade-check
+      description: Check whether you can upgrade Postgres service to a newer version
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-dbaas-pg-upgrade-check
+      with:
+        service: tools.service
+      inputParameters:
+      - name: service
+        type: string
+        description: service
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reset-dbaas-mysql-user-password
+      description: Reset the credentials of a DBaaS mysql user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.reset-dbaas-mysql-user-password
+      with:
+        service-name: tools.service-name
+        username: tools.username
+      inputParameters:
+      - name: service-name
+        type: string
+        description: service-name
+        required: true
+      - name: username
+        type: string
+        description: username
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-inference-engine-help
+      description: Get inference-engine Help
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-inference-engine-help
+      with:
+        version: tools.version
+      inputParameters:
+      - name: version
+        type: string
+        description: version
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-load-balancer
+      description: Create a Load Balancer
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-load-balancer
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-load-balancers
+      description: List Load Balancers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-load-balancers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-security-group
+      description: Create a Security Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-security-group
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-security-groups
+      description: List Security Groups.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-security-groups
+      with:
+        visibility: tools.visibility
+      inputParameters:
+      - name: visibility
+        type: string
+        description: visibility
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-dbaas-pg-connection-pool
+      description: Create a DBaaS PostgreSQL connection pool
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-dbaas-pg-connection-pool
+      with:
+        service-name: tools.service-name
+      inputParameters:
+      - name: service-name
+        type: string
+        description: service-name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-dbaas-service-mysql
+      description: Update a DBaaS MySQL service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.update-dbaas-service-mysql
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dbaas-service-mysql
+      description: Get a DBaaS MySQL service
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-dbaas-service-mysql
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-dbaas-service-mysql
+      description: Create a DBaaS MySQL service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-dbaas-service-mysql
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-dbaas-service-mysql
+      description: Delete a MySQL service
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale.delete-dbaas-service-mysql
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: assume-iam-role
+      description: '[BETA] Request generation of key/secret that allow caller to assume target role'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.assume-iam-role
+      with:
+        target-role-id: tools.target-role-id
+      inputParameters:
+      - name: target-role-id
+        type: string
+        description: target-role-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: attach-instance-to-private-network
+      description: Attach a Compute instance to a Private Network
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.attach-instance-to-private-network
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-kms-key
+      description: '[BETA] Get KMS Key'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-kms-key
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-dbaas-thanos-maintenance
+      description: Initiate Thanos maintenance update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.start-dbaas-thanos-maintenance
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-dbaas-external-endpoint-elasticsearch
+      description: '[BETA] Delete ElasticSearch logs external integration endpoint'
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale.delete-dbaas-external-endpoint-elasticsearch
+      with:
+        endpoint-id: tools.endpoint-id
+      inputParameters:
+      - name: endpoint-id
+        type: string
+        description: endpoint-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dbaas-external-endpoint-elasticsearch
+      description: '[BETA] Get ElasticSearch Logs external integration endpoint settings'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-dbaas-external-endpoint-elasticsearch
+      with:
+        endpoint-id: tools.endpoint-id
+      inputParameters:
+      - name: endpoint-id
+        type: string
+        description: endpoint-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-dbaas-external-endpoint-elasticsearch
+      description: '[BETA] Update ElasticSearch Logs external integration endpoint'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.update-dbaas-external-endpoint-elasticsearch
+      with:
+        endpoint-id: tools.endpoint-id
+      inputParameters:
+      - name: endpoint-id
+        type: string
+        description: endpoint-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-model
+      description: Create Model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-model
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-models
+      description: List Models
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-models
+      with:
+        visibility: tools.visibility
+      inputParameters:
+      - name: visibility
+        type: string
+        description: visibility
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-dbaas-mysql-user
+      description: Create a DBaaS MySQL user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-dbaas-mysql-user
+      with:
+        service-name: tools.service-name
+      inputParameters:
+      - name: service-name
+        type: string
+        description: service-name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-dbaas-service-types
+      description: DBaaS Service Types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-dbaas-service-types
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: scale-deployment
+      description: Scale Deployment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.scale-deployment
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-instance-type
+      description: Retrieve Instance Type details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-instance-type
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reveal-instance-password
+      description: Reveal the password used during instance creation or the latest password reset.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.reveal-instance-password
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-active-nodepool-template
+      description: Get the active template for a given kube version and variant (standard | nvidia)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.get-active-nodepool-template
+      with:
+        kube-version: tools.kube-version
+        variant: tools.variant
+      inputParameters:
+      - name: kube-version
+        type: string
+        description: kube-version
+        required: true
+      - name: variant
+        type: string
+        description: variant
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resize-instance-disk
+      description: Resize a Compute instance disk
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale.resize-instance-disk
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-dbaas-services
+      description: List DBaaS services
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-dbaas-services
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-elastic-ip
+      description: Create an Elastic IP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-elastic-ip
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-elastic-ips
+      description: List Elastic IPs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-elastic-ips
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-zones
+      description: List Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-zones
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-instance-pools
+      description: List Instance Pools
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-instance-pools
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-instance-pool
+      description: Create an Instance Pool
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-instance-pool
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-dbaas-external-endpoint-rsyslog
+      description: '[BETA] Create RSyslog external integration endpoint'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.create-dbaas-external-endpoint-rsyslog
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: generate-sks-cluster-kubeconfig
+      description: Generate a new Kubeconfig file for a SKS cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale.generate-sks-cluster-kubeconfig
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-dns-domain-records
+      description: List DNS domain records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale.list-dns-domain-records
+      with:
+        domain-id: tools.domain-id
+      inputParameters:
+      - name: domain-id
+        type: string
+        description: domain-id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
