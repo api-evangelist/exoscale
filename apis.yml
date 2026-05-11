@@ -73,6 +73,43 @@ common:
     url: https://github.com/exoscale
   - type: Support
     url: https://portal.exoscale.com/tickets
+  - type: Integrations
+    url: https://www.exoscale.com/marketplace/
+integrations:
+  - name: Check Point CloudGuard IaaS - BYOL
+  - name: F5 BIG-IP™ Virtual Appliances - BYOL
+  - name: F5 Distributed Cloud Services
+  - name: FortiGate™ Virtual Appliances - BYOL
+  - name: Icinga2 Master (Debian 12) - PAYG
+  - name: Icinga2 Master (Rocky 9) - BYOL
+  - name: IPFire Open Source Firewall - PAYG
+  - name: Microsoft SQL Server - PAYG
+  - name: Open Pryv.io - personal data management
+  - name: QuTScloud - Cloud NAS
+  - name: VyOS Universal Router
+  - name: Acronis Cyber Protect
+  - name: ANANTIS TrapEye - Preemptive Cyber Deception
+  - name: 8gears Container Registry
+  - name: Gitea managed by Glasskube
+  - name: Gitlab managed by Glasskube
+  - name: Keycloak managed by Glasskube
+  - name: Matomo managed by Glasskube
+  - name: Metabase managed by Glasskube
+  - name: Nextcloud managed by Glasskube
+  - name: HashiCorp Vault managed by Glasskube
+  - name: Offensity by A1 Digital
+  - name: Panop - Unified Security Posture Management
+  - name: RegData Protection Suite SaaS
+  - name: APPUiO Managed OpenShift - by VSHN
+  - name: oneclick™ VDI & DaaS
+  - name: Forgejo by Servala
+  - name: GitLab Enterprise by Servala
+  - name: Keycloak by Servala
+  - name: Nextcloud by Servala
+  - name: PostgreSQL Enterprise by Servala
+  - name: Redis by Servala
+  - name: bluesky
+  - name: linkedin
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
