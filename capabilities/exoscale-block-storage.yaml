@@ -1,0 +1,559 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — block-storage
+  description: 'Exoscale API — block-storage. 13 operations. Lead operation: List block storage volumes. Self-contained Naftiko
+    capability covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - block-storage
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-block-storage
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — block-storage business capability. Self-contained, no shared references.
+    resources:
+    - name: block-storage
+      path: /block-storage
+      operations:
+      - name: listblockstoragevolumes
+        method: GET
+        description: List block storage volumes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: instance-id
+          in: query
+          type: string
+      - name: createblockstoragevolume
+        method: POST
+        description: Create a block storage volume
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: block-storage-snapshot
+      path: /block-storage-snapshot
+      operations:
+      - name: listblockstoragesnapshots
+        method: GET
+        description: List block storage snapshots
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: block-storage-snapshot-id
+      path: /block-storage-snapshot/{id}
+      operations:
+      - name: deleteblockstoragesnapshot
+        method: DELETE
+        description: Delete a block storage snapshot, data will be unrecoverable
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updateblockstoragesnapshot
+        method: PUT
+        description: Update block storage volume snapshot
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getblockstoragesnapshot
+        method: GET
+        description: Retrieve block storage snapshot details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: block-storage-id
+      path: /block-storage/{id}
+      operations:
+      - name: getblockstoragevolume
+        method: GET
+        description: Retrieve block storage volume details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updateblockstoragevolume
+        method: PUT
+        description: Update block storage volume
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteblockstoragevolume
+        method: DELETE
+        description: Delete a block storage volume, data will be unrecoverable
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: block-storage-id}:attach
+      path: /block-storage/{id}:attach
+      operations:
+      - name: attachblockstoragevolumetoinstance
+        method: PUT
+        description: Attach block storage volume to an instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: block-storage-id}:create-snapshot
+      path: /block-storage/{id}:create-snapshot
+      operations:
+      - name: createblockstoragesnapshot
+        method: POST
+        description: Create a block storage snapshot
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: block-storage-id}:detach
+      path: /block-storage/{id}:detach
+      operations:
+      - name: detachblockstoragevolume
+        method: PUT
+        description: Detach block storage volume
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: block-storage-id}:resize-volume
+      path: /block-storage/{id}:resize-volume
+      operations:
+      - name: resizeblockstoragevolume
+        method: PUT
+        description: Resize a block storage volume
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-block-storage-rest
+    port: 8080
+    description: REST adapter for Exoscale API — block-storage. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/block-storage
+      name: block-storage
+      description: REST surface for block-storage.
+      operations:
+      - method: GET
+        name: listblockstoragevolumes
+        description: List block storage volumes
+        call: exoscale-block-storage.listblockstoragevolumes
+        with:
+          instance-id: rest.instance-id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createblockstoragevolume
+        description: Create a block storage volume
+        call: exoscale-block-storage.createblockstoragevolume
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/block-storage-snapshot
+      name: block-storage-snapshot
+      description: REST surface for block-storage-snapshot.
+      operations:
+      - method: GET
+        name: listblockstoragesnapshots
+        description: List block storage snapshots
+        call: exoscale-block-storage.listblockstoragesnapshots
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/block-storage-snapshot/{id}
+      name: block-storage-snapshot-id
+      description: REST surface for block-storage-snapshot-id.
+      operations:
+      - method: DELETE
+        name: deleteblockstoragesnapshot
+        description: Delete a block storage snapshot, data will be unrecoverable
+        call: exoscale-block-storage.deleteblockstoragesnapshot
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateblockstoragesnapshot
+        description: Update block storage volume snapshot
+        call: exoscale-block-storage.updateblockstoragesnapshot
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getblockstoragesnapshot
+        description: Retrieve block storage snapshot details
+        call: exoscale-block-storage.getblockstoragesnapshot
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/block-storage/{id}
+      name: block-storage-id
+      description: REST surface for block-storage-id.
+      operations:
+      - method: GET
+        name: getblockstoragevolume
+        description: Retrieve block storage volume details
+        call: exoscale-block-storage.getblockstoragevolume
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateblockstoragevolume
+        description: Update block storage volume
+        call: exoscale-block-storage.updateblockstoragevolume
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteblockstoragevolume
+        description: Delete a block storage volume, data will be unrecoverable
+        call: exoscale-block-storage.deleteblockstoragevolume
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/block-storage/id-attach
+      name: block-storage-id-attach
+      description: REST surface for block-storage-id}:attach.
+      operations:
+      - method: PUT
+        name: attachblockstoragevolumetoinstance
+        description: Attach block storage volume to an instance
+        call: exoscale-block-storage.attachblockstoragevolumetoinstance
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/block-storage/id-create-snapshot
+      name: block-storage-id-create-snapshot
+      description: REST surface for block-storage-id}:create-snapshot.
+      operations:
+      - method: POST
+        name: createblockstoragesnapshot
+        description: Create a block storage snapshot
+        call: exoscale-block-storage.createblockstoragesnapshot
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/block-storage/id-detach
+      name: block-storage-id-detach
+      description: REST surface for block-storage-id}:detach.
+      operations:
+      - method: PUT
+        name: detachblockstoragevolume
+        description: Detach block storage volume
+        call: exoscale-block-storage.detachblockstoragevolume
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/block-storage/id-resize-volume
+      name: block-storage-id-resize-volume
+      description: REST surface for block-storage-id}:resize-volume.
+      operations:
+      - method: PUT
+        name: resizeblockstoragevolume
+        description: Resize a block storage volume
+        call: exoscale-block-storage.resizeblockstoragevolume
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-block-storage-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — block-storage. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-block-storage-volumes
+      description: List block storage volumes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-block-storage.listblockstoragevolumes
+      with:
+        instance-id: tools.instance-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-block-storage-volume
+      description: Create a block storage volume
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-block-storage.createblockstoragevolume
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-block-storage-snapshots
+      description: List block storage snapshots
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-block-storage.listblockstoragesnapshots
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-block-storage-snapshot-data
+      description: Delete a block storage snapshot, data will be unrecoverable
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-block-storage.deleteblockstoragesnapshot
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-block-storage-volume-snapshot
+      description: Update block storage volume snapshot
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-block-storage.updateblockstoragesnapshot
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-block-storage-snapshot-details
+      description: Retrieve block storage snapshot details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-block-storage.getblockstoragesnapshot
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-block-storage-volume-details
+      description: Retrieve block storage volume details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-block-storage.getblockstoragevolume
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-block-storage-volume
+      description: Update block storage volume
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-block-storage.updateblockstoragevolume
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-block-storage-volume-data
+      description: Delete a block storage volume, data will be unrecoverable
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-block-storage.deleteblockstoragevolume
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: attach-block-storage-volume-instance
+      description: Attach block storage volume to an instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-block-storage.attachblockstoragevolumetoinstance
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-block-storage-snapshot
+      description: Create a block storage snapshot
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-block-storage.createblockstoragesnapshot
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: detach-block-storage-volume
+      description: Detach block storage volume
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-block-storage.detachblockstoragevolume
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resize-block-storage-volume
+      description: Resize a block storage volume
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-block-storage.resizeblockstoragevolume
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — zone
+  description: 'Exoscale API — zone. 1 operations. Lead operation: List Zones. Self-contained Naftiko capability covering
+    one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - zone
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-zone
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — zone business capability. Self-contained, no shared references.
+    resources:
+    - name: zone
+      path: /zone
+      operations:
+      - name: listzones
+        method: GET
+        description: List Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: exoscale-zone-rest
+    port: 8080
+    description: REST adapter for Exoscale API — zone. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/zone
+      name: zone
+      description: REST surface for zone.
+      operations:
+      - method: GET
+        name: listzones
+        description: List Zones
+        call: exoscale-zone.listzones
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-zone-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — zone. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-zones
+      description: List Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-zone.listzones
+      outputParameters:
+      - type: object
+        mapping: $.

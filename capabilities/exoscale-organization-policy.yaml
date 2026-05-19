@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — organization-policy
+  description: 'Exoscale API — organization-policy. 3 operations. Lead operation: Retrieve IAM Organization Policy. Self-contained
+    Naftiko capability covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - organization-policy
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-organization-policy
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — organization-policy business capability. Self-contained, no shared references.
+    resources:
+    - name: iam-organization-policy
+      path: /iam-organization-policy
+      operations:
+      - name: getiamorganizationpolicy
+        method: GET
+        description: Retrieve IAM Organization Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateiamorganizationpolicy
+        method: PUT
+        description: Update IAM Organization Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: iam-organization-policy:reset
+      path: /iam-organization-policy:reset
+      operations:
+      - name: resetiamorganizationpolicy
+        method: POST
+        description: Reset IAM Organization Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: exoscale-organization-policy-rest
+    port: 8080
+    description: REST adapter for Exoscale API — organization-policy. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/iam-organization-policy
+      name: iam-organization-policy
+      description: REST surface for iam-organization-policy.
+      operations:
+      - method: GET
+        name: getiamorganizationpolicy
+        description: Retrieve IAM Organization Policy
+        call: exoscale-organization-policy.getiamorganizationpolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateiamorganizationpolicy
+        description: Update IAM Organization Policy
+        call: exoscale-organization-policy.updateiamorganizationpolicy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/iam-organization-policy-reset
+      name: iam-organization-policy-reset
+      description: REST surface for iam-organization-policy:reset.
+      operations:
+      - method: POST
+        name: resetiamorganizationpolicy
+        description: Reset IAM Organization Policy
+        call: exoscale-organization-policy.resetiamorganizationpolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-organization-policy-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — organization-policy. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: retrieve-iam-organization-policy
+      description: Retrieve IAM Organization Policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-organization-policy.getiamorganizationpolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-iam-organization-policy
+      description: Update IAM Organization Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-organization-policy.updateiamorganizationpolicy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reset-iam-organization-policy
+      description: Reset IAM Organization Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-organization-policy.resetiamorganizationpolicy
+      outputParameters:
+      - type: object
+        mapping: $.

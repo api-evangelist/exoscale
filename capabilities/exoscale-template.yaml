@@ -1,0 +1,320 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — template
+  description: 'Exoscale API — template. 7 operations. Lead operation: Promote a Snapshot to a Template. Self-contained Naftiko
+    capability covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - template
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-template
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — template business capability. Self-contained, no shared references.
+    resources:
+    - name: snapshot-id}:promote
+      path: /snapshot/{id}:promote
+      operations:
+      - name: promotesnapshottotemplate
+        method: POST
+        description: Promote a Snapshot to a Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: template
+      path: /template
+      operations:
+      - name: listtemplates
+        method: GET
+        description: List Templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: visibility
+          in: query
+          type: string
+        - name: family
+          in: query
+          type: string
+      - name: registertemplate
+        method: POST
+        description: Register a Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: template-id
+      path: /template/{id}
+      operations:
+      - name: deletetemplate
+        method: DELETE
+        description: Delete a Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: copytemplate
+        method: POST
+        description: Copy a Template from a zone to another
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: updatetemplate
+        method: PUT
+        description: Update template attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: gettemplate
+        method: GET
+        description: Retrieve Template details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-template-rest
+    port: 8080
+    description: REST adapter for Exoscale API — template. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/snapshot/id-promote
+      name: snapshot-id-promote
+      description: REST surface for snapshot-id}:promote.
+      operations:
+      - method: POST
+        name: promotesnapshottotemplate
+        description: Promote a Snapshot to a Template
+        call: exoscale-template.promotesnapshottotemplate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/template
+      name: template
+      description: REST surface for template.
+      operations:
+      - method: GET
+        name: listtemplates
+        description: List Templates
+        call: exoscale-template.listtemplates
+        with:
+          visibility: rest.visibility
+          family: rest.family
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: registertemplate
+        description: Register a Template
+        call: exoscale-template.registertemplate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/template/{id}
+      name: template-id
+      description: REST surface for template-id.
+      operations:
+      - method: DELETE
+        name: deletetemplate
+        description: Delete a Template
+        call: exoscale-template.deletetemplate
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: copytemplate
+        description: Copy a Template from a zone to another
+        call: exoscale-template.copytemplate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatetemplate
+        description: Update template attributes
+        call: exoscale-template.updatetemplate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: gettemplate
+        description: Retrieve Template details
+        call: exoscale-template.gettemplate
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-template-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — template. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: promote-snapshot-template
+      description: Promote a Snapshot to a Template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-template.promotesnapshottotemplate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-templates
+      description: List Templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-template.listtemplates
+      with:
+        visibility: tools.visibility
+        family: tools.family
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: register-template
+      description: Register a Template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-template.registertemplate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-template
+      description: Delete a Template
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-template.deletetemplate
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: copy-template-zone-another
+      description: Copy a Template from a zone to another
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-template.copytemplate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-template-attributes
+      description: Update template attributes
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-template.updatetemplate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-template-details
+      description: Retrieve Template details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-template.gettemplate
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

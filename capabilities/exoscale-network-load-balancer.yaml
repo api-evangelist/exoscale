@@ -1,0 +1,500 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — network-load-balancer
+  description: 'Exoscale API — network-load-balancer. 11 operations. Lead operation: Create a Load Balancer. Self-contained
+    Naftiko capability covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - network-load-balancer
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-network-load-balancer
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — network-load-balancer business capability. Self-contained, no shared references.
+    resources:
+    - name: load-balancer
+      path: /load-balancer
+      operations:
+      - name: createloadbalancer
+        method: POST
+        description: Create a Load Balancer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listloadbalancers
+        method: GET
+        description: List Load Balancers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: load-balancer-id
+      path: /load-balancer/{id}
+      operations:
+      - name: updateloadbalancer
+        method: PUT
+        description: Update a Load Balancer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteloadbalancer
+        method: DELETE
+        description: Delete a Load Balancer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: getloadbalancer
+        method: GET
+        description: Retrieve Load Balancer details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: load-balancer-id-service
+      path: /load-balancer/{id}/service
+      operations:
+      - name: addservicetoloadbalancer
+        method: POST
+        description: Add a Load Balancer Service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: load-balancer-id-service-service-id
+      path: /load-balancer/{id}/service/{service-id}
+      operations:
+      - name: deleteloadbalancerservice
+        method: DELETE
+        description: Delete a Load Balancer Service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: service-id
+          in: path
+          type: string
+          required: true
+      - name: updateloadbalancerservice
+        method: PUT
+        description: Update a Load Balancer Service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: service-id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getloadbalancerservice
+        method: GET
+        description: Retrieve Load Balancer Service details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: service-id
+          in: path
+          type: string
+          required: true
+    - name: load-balancer-id-service-service-id-field
+      path: /load-balancer/{id}/service/{service-id}/{field}
+      operations:
+      - name: resetloadbalancerservicefield
+        method: DELETE
+        description: Reset a Load Balancer Service field to its default value
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: service-id
+          in: path
+          type: string
+          required: true
+        - name: field
+          in: path
+          type: string
+          required: true
+    - name: load-balancer-id-field
+      path: /load-balancer/{id}/{field}
+      operations:
+      - name: resetloadbalancerfield
+        method: DELETE
+        description: Reset a Load Balancer field to its default value
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: field
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-network-load-balancer-rest
+    port: 8080
+    description: REST adapter for Exoscale API — network-load-balancer. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/load-balancer
+      name: load-balancer
+      description: REST surface for load-balancer.
+      operations:
+      - method: POST
+        name: createloadbalancer
+        description: Create a Load Balancer
+        call: exoscale-network-load-balancer.createloadbalancer
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listloadbalancers
+        description: List Load Balancers
+        call: exoscale-network-load-balancer.listloadbalancers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/load-balancer/{id}
+      name: load-balancer-id
+      description: REST surface for load-balancer-id.
+      operations:
+      - method: PUT
+        name: updateloadbalancer
+        description: Update a Load Balancer
+        call: exoscale-network-load-balancer.updateloadbalancer
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteloadbalancer
+        description: Delete a Load Balancer
+        call: exoscale-network-load-balancer.deleteloadbalancer
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getloadbalancer
+        description: Retrieve Load Balancer details
+        call: exoscale-network-load-balancer.getloadbalancer
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/load-balancer/{id}/service
+      name: load-balancer-id-service
+      description: REST surface for load-balancer-id-service.
+      operations:
+      - method: POST
+        name: addservicetoloadbalancer
+        description: Add a Load Balancer Service
+        call: exoscale-network-load-balancer.addservicetoloadbalancer
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/load-balancer/{id}/service/{service-id}
+      name: load-balancer-id-service-service-id
+      description: REST surface for load-balancer-id-service-service-id.
+      operations:
+      - method: DELETE
+        name: deleteloadbalancerservice
+        description: Delete a Load Balancer Service
+        call: exoscale-network-load-balancer.deleteloadbalancerservice
+        with:
+          id: rest.id
+          service-id: rest.service-id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateloadbalancerservice
+        description: Update a Load Balancer Service
+        call: exoscale-network-load-balancer.updateloadbalancerservice
+        with:
+          id: rest.id
+          service-id: rest.service-id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getloadbalancerservice
+        description: Retrieve Load Balancer Service details
+        call: exoscale-network-load-balancer.getloadbalancerservice
+        with:
+          id: rest.id
+          service-id: rest.service-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/load-balancer/{id}/service/{service-id}/{field}
+      name: load-balancer-id-service-service-id-field
+      description: REST surface for load-balancer-id-service-service-id-field.
+      operations:
+      - method: DELETE
+        name: resetloadbalancerservicefield
+        description: Reset a Load Balancer Service field to its default value
+        call: exoscale-network-load-balancer.resetloadbalancerservicefield
+        with:
+          id: rest.id
+          service-id: rest.service-id
+          field: rest.field
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/load-balancer/{id}/{field}
+      name: load-balancer-id-field
+      description: REST surface for load-balancer-id-field.
+      operations:
+      - method: DELETE
+        name: resetloadbalancerfield
+        description: Reset a Load Balancer field to its default value
+        call: exoscale-network-load-balancer.resetloadbalancerfield
+        with:
+          id: rest.id
+          field: rest.field
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-network-load-balancer-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — network-load-balancer. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-load-balancer
+      description: Create a Load Balancer
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-network-load-balancer.createloadbalancer
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-load-balancers
+      description: List Load Balancers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-network-load-balancer.listloadbalancers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-load-balancer
+      description: Update a Load Balancer
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-network-load-balancer.updateloadbalancer
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-load-balancer
+      description: Delete a Load Balancer
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-network-load-balancer.deleteloadbalancer
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-load-balancer-details
+      description: Retrieve Load Balancer details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-network-load-balancer.getloadbalancer
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-load-balancer-service
+      description: Add a Load Balancer Service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-network-load-balancer.addservicetoloadbalancer
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-load-balancer-service
+      description: Delete a Load Balancer Service
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-network-load-balancer.deleteloadbalancerservice
+      with:
+        id: tools.id
+        service-id: tools.service-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-load-balancer-service
+      description: Update a Load Balancer Service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-network-load-balancer.updateloadbalancerservice
+      with:
+        id: tools.id
+        service-id: tools.service-id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-load-balancer-service-details
+      description: Retrieve Load Balancer Service details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-network-load-balancer.getloadbalancerservice
+      with:
+        id: tools.id
+        service-id: tools.service-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reset-load-balancer-service-field
+      description: Reset a Load Balancer Service field to its default value
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-network-load-balancer.resetloadbalancerservicefield
+      with:
+        id: tools.id
+        service-id: tools.service-id
+        field: tools.field
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reset-load-balancer-field-its
+      description: Reset a Load Balancer field to its default value
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-network-load-balancer.resetloadbalancerfield
+      with:
+        id: tools.id
+        field: tools.field
+      outputParameters:
+      - type: object
+        mapping: $.

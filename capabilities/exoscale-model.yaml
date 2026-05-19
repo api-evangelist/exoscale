@@ -1,0 +1,185 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — model
+  description: 'Exoscale API — model. 4 operations. Lead operation: Create Model. Self-contained Naftiko capability covering
+    one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - model
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-model
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — model business capability. Self-contained, no shared references.
+    resources:
+    - name: ai-model
+      path: /ai/model
+      operations:
+      - name: createmodel
+        method: POST
+        description: Create Model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listmodels
+        method: GET
+        description: List Models
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: visibility
+          in: query
+          type: string
+    - name: ai-model-id
+      path: /ai/model/{id}
+      operations:
+      - name: deletemodel
+        method: DELETE
+        description: Delete Model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: getmodel
+        method: GET
+        description: Get Model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-model-rest
+    port: 8080
+    description: REST adapter for Exoscale API — model. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/ai/model
+      name: ai-model
+      description: REST surface for ai-model.
+      operations:
+      - method: POST
+        name: createmodel
+        description: Create Model
+        call: exoscale-model.createmodel
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listmodels
+        description: List Models
+        call: exoscale-model.listmodels
+        with:
+          visibility: rest.visibility
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ai/model/{id}
+      name: ai-model-id
+      description: REST surface for ai-model-id.
+      operations:
+      - method: DELETE
+        name: deletemodel
+        description: Delete Model
+        call: exoscale-model.deletemodel
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getmodel
+        description: Get Model
+        call: exoscale-model.getmodel
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-model-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — model. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-model
+      description: Create Model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-model.createmodel
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-models
+      description: List Models
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-model.listmodels
+      with:
+        visibility: tools.visibility
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-model
+      description: Delete Model
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-model.deletemodel
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-model
+      description: Get Model
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-model.getmodel
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

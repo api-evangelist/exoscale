@@ -1,0 +1,897 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — instance
+  description: 'Exoscale API — instance. 20 operations. Lead operation: Retrieve signed url valid for 60 seconds to connect
+    via console-proxy websocket to VM VNC console.. Self-contained Naftiko capability covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - instance
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-instance
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — instance business capability. Self-contained, no shared references.
+    resources:
+    - name: console-id
+      path: /console/{id}
+      operations:
+      - name: getconsoleproxyurl
+        method: GET
+        description: Retrieve signed url valid for 60 seconds to connect via console-proxy websocket to VM VNC console.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: instance
+      path: /instance
+      operations:
+      - name: createinstance
+        method: POST
+        description: Create a Compute instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listinstances
+        method: GET
+        description: List Compute instances
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: manager-id
+          in: query
+          type: string
+        - name: manager-type
+          in: query
+          type: string
+        - name: ip-address
+          in: query
+          type: string
+        - name: labels
+          in: query
+          type: string
+    - name: instance-id
+      path: /instance/{id}
+      operations:
+      - name: deleteinstance
+        method: DELETE
+        description: Delete a Compute instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updateinstance
+        method: PUT
+        description: Update a Compute instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getinstance
+        method: GET
+        description: Retrieve Compute instance details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: instance-id-field
+      path: /instance/{id}/{field}
+      operations:
+      - name: resetinstancefield
+        method: DELETE
+        description: Reset Instance field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: field
+          in: path
+          type: string
+          required: true
+    - name: instance-id}:add-protection
+      path: /instance/{id}:add-protection
+      operations:
+      - name: addinstanceprotection
+        method: PUT
+        description: Set instance destruction protection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: instance-id}:create-snapshot
+      path: /instance/{id}:create-snapshot
+      operations:
+      - name: createsnapshot
+        method: POST
+        description: Create a Snapshot of a Compute instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: instance-id}:enable-tpm
+      path: /instance/{id}:enable-tpm
+      operations:
+      - name: enabletpm
+        method: POST
+        description: Enable tpm for the instance.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: instance-id}:password
+      path: /instance/{id}:password
+      operations:
+      - name: revealinstancepassword
+        method: GET
+        description: Reveal the password used during instance creation or the latest password reset.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: instance-id}:reboot
+      path: /instance/{id}:reboot
+      operations:
+      - name: rebootinstance
+        method: PUT
+        description: Reboot a Compute instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: instance-id}:remove-protection
+      path: /instance/{id}:remove-protection
+      operations:
+      - name: removeinstanceprotection
+        method: PUT
+        description: Remove instance destruction protection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: instance-id}:reset
+      path: /instance/{id}:reset
+      operations:
+      - name: resetinstance
+        method: PUT
+        description: Reset a Compute instance to a base/target template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: instance-id}:reset-password
+      path: /instance/{id}:reset-password
+      operations:
+      - name: resetinstancepassword
+        method: PUT
+        description: Reset a compute instance password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: instance-id}:resize-disk
+      path: /instance/{id}:resize-disk
+      operations:
+      - name: resizeinstancedisk
+        method: PUT
+        description: Resize a Compute instance disk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: instance-id}:scale
+      path: /instance/{id}:scale
+      operations:
+      - name: scaleinstance
+        method: PUT
+        description: Scale a Compute instance to a new Instance Type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: instance-id}:start
+      path: /instance/{id}:start
+      operations:
+      - name: startinstance
+        method: PUT
+        description: Start a Compute instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: instance-id}:stop
+      path: /instance/{id}:stop
+      operations:
+      - name: stopinstance
+        method: PUT
+        description: Stop a Compute instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: instance-instance-id}:revert-snapshot
+      path: /instance/{instance-id}:revert-snapshot
+      operations:
+      - name: revertinstancetosnapshot
+        method: POST
+        description: Revert a snapshot for an instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: instance-id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-instance-rest
+    port: 8080
+    description: REST adapter for Exoscale API — instance. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/console/{id}
+      name: console-id
+      description: REST surface for console-id.
+      operations:
+      - method: GET
+        name: getconsoleproxyurl
+        description: Retrieve signed url valid for 60 seconds to connect via console-proxy websocket to VM VNC console.
+        call: exoscale-instance.getconsoleproxyurl
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance
+      name: instance
+      description: REST surface for instance.
+      operations:
+      - method: POST
+        name: createinstance
+        description: Create a Compute instance
+        call: exoscale-instance.createinstance
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listinstances
+        description: List Compute instances
+        call: exoscale-instance.listinstances
+        with:
+          manager-id: rest.manager-id
+          manager-type: rest.manager-type
+          ip-address: rest.ip-address
+          labels: rest.labels
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/{id}
+      name: instance-id
+      description: REST surface for instance-id.
+      operations:
+      - method: DELETE
+        name: deleteinstance
+        description: Delete a Compute instance
+        call: exoscale-instance.deleteinstance
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateinstance
+        description: Update a Compute instance
+        call: exoscale-instance.updateinstance
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getinstance
+        description: Retrieve Compute instance details
+        call: exoscale-instance.getinstance
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/{id}/{field}
+      name: instance-id-field
+      description: REST surface for instance-id-field.
+      operations:
+      - method: DELETE
+        name: resetinstancefield
+        description: Reset Instance field
+        call: exoscale-instance.resetinstancefield
+        with:
+          id: rest.id
+          field: rest.field
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-add-protection
+      name: instance-id-add-protection
+      description: REST surface for instance-id}:add-protection.
+      operations:
+      - method: PUT
+        name: addinstanceprotection
+        description: Set instance destruction protection
+        call: exoscale-instance.addinstanceprotection
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-create-snapshot
+      name: instance-id-create-snapshot
+      description: REST surface for instance-id}:create-snapshot.
+      operations:
+      - method: POST
+        name: createsnapshot
+        description: Create a Snapshot of a Compute instance
+        call: exoscale-instance.createsnapshot
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-enable-tpm
+      name: instance-id-enable-tpm
+      description: REST surface for instance-id}:enable-tpm.
+      operations:
+      - method: POST
+        name: enabletpm
+        description: Enable tpm for the instance.
+        call: exoscale-instance.enabletpm
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-password
+      name: instance-id-password
+      description: REST surface for instance-id}:password.
+      operations:
+      - method: GET
+        name: revealinstancepassword
+        description: Reveal the password used during instance creation or the latest password reset.
+        call: exoscale-instance.revealinstancepassword
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-reboot
+      name: instance-id-reboot
+      description: REST surface for instance-id}:reboot.
+      operations:
+      - method: PUT
+        name: rebootinstance
+        description: Reboot a Compute instance
+        call: exoscale-instance.rebootinstance
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-remove-protection
+      name: instance-id-remove-protection
+      description: REST surface for instance-id}:remove-protection.
+      operations:
+      - method: PUT
+        name: removeinstanceprotection
+        description: Remove instance destruction protection
+        call: exoscale-instance.removeinstanceprotection
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-reset
+      name: instance-id-reset
+      description: REST surface for instance-id}:reset.
+      operations:
+      - method: PUT
+        name: resetinstance
+        description: Reset a Compute instance to a base/target template
+        call: exoscale-instance.resetinstance
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-reset-password
+      name: instance-id-reset-password
+      description: REST surface for instance-id}:reset-password.
+      operations:
+      - method: PUT
+        name: resetinstancepassword
+        description: Reset a compute instance password
+        call: exoscale-instance.resetinstancepassword
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-resize-disk
+      name: instance-id-resize-disk
+      description: REST surface for instance-id}:resize-disk.
+      operations:
+      - method: PUT
+        name: resizeinstancedisk
+        description: Resize a Compute instance disk
+        call: exoscale-instance.resizeinstancedisk
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-scale
+      name: instance-id-scale
+      description: REST surface for instance-id}:scale.
+      operations:
+      - method: PUT
+        name: scaleinstance
+        description: Scale a Compute instance to a new Instance Type
+        call: exoscale-instance.scaleinstance
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-start
+      name: instance-id-start
+      description: REST surface for instance-id}:start.
+      operations:
+      - method: PUT
+        name: startinstance
+        description: Start a Compute instance
+        call: exoscale-instance.startinstance
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/id-stop
+      name: instance-id-stop
+      description: REST surface for instance-id}:stop.
+      operations:
+      - method: PUT
+        name: stopinstance
+        description: Stop a Compute instance
+        call: exoscale-instance.stopinstance
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instance/instance-id-revert-snapshot
+      name: instance-instance-id-revert-snapshot
+      description: REST surface for instance-instance-id}:revert-snapshot.
+      operations:
+      - method: POST
+        name: revertinstancetosnapshot
+        description: Revert a snapshot for an instance
+        call: exoscale-instance.revertinstancetosnapshot
+        with:
+          instance-id: rest.instance-id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-instance-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — instance. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: retrieve-signed-url-valid-60
+      description: Retrieve signed url valid for 60 seconds to connect via console-proxy websocket to VM VNC console.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.getconsoleproxyurl
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-compute-instance
+      description: Create a Compute instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-instance.createinstance
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-compute-instances
+      description: List Compute instances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.listinstances
+      with:
+        manager-id: tools.manager-id
+        manager-type: tools.manager-type
+        ip-address: tools.ip-address
+        labels: tools.labels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-compute-instance
+      description: Delete a Compute instance
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-instance.deleteinstance
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-compute-instance
+      description: Update a Compute instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.updateinstance
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-compute-instance-details
+      description: Retrieve Compute instance details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.getinstance
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reset-instance-field
+      description: Reset Instance field
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-instance.resetinstancefield
+      with:
+        id: tools.id
+        field: tools.field
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-instance-destruction-protection
+      description: Set instance destruction protection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.addinstanceprotection
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-snapshot-compute-instance
+      description: Create a Snapshot of a Compute instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-instance.createsnapshot
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: enable-tpm-instance
+      description: Enable tpm for the instance.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-instance.enabletpm
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reveal-password-used-during-instance
+      description: Reveal the password used during instance creation or the latest password reset.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.revealinstancepassword
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reboot-compute-instance
+      description: Reboot a Compute instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.rebootinstance
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-instance-destruction-protection
+      description: Remove instance destruction protection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.removeinstanceprotection
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reset-compute-instance-base-target
+      description: Reset a Compute instance to a base/target template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.resetinstance
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reset-compute-instance-password
+      description: Reset a compute instance password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.resetinstancepassword
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resize-compute-instance-disk
+      description: Resize a Compute instance disk
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.resizeinstancedisk
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: scale-compute-instance-new-instance
+      description: Scale a Compute instance to a new Instance Type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.scaleinstance
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-compute-instance
+      description: Start a Compute instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.startinstance
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-compute-instance
+      description: Stop a Compute instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-instance.stopinstance
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revert-snapshot-instance
+      description: Revert a snapshot for an instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-instance.revertinstancetosnapshot
+      with:
+        instance-id: tools.instance-id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

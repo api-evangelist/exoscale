@@ -1,0 +1,533 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — kms-key
+  description: 'Exoscale API — kms-key. 12 operations. Lead operation: [BETA] Create KMS Key. Self-contained Naftiko capability
+    covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - kms-key
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-kms-key
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — kms-key business capability. Self-contained, no shared references.
+    resources:
+    - name: kms-key
+      path: /kms-key
+      operations:
+      - name: createkmskey
+        method: POST
+        description: '[BETA] Create KMS Key'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listkmskeys
+        method: GET
+        description: '[BETA] List KMS Keys'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: kms-key-id
+      path: /kms-key/{id}
+      operations:
+      - name: getkmskey
+        method: GET
+        description: '[BETA] Get KMS Key'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: kms-key-id-cancel-deletion
+      path: /kms-key/{id}/cancel-deletion
+      operations:
+      - name: cancelkmskeydeletion
+        method: POST
+        description: '[BETA] Cancel KMS Key Deletion'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: kms-key-id-disable
+      path: /kms-key/{id}/disable
+      operations:
+      - name: disablekmskey
+        method: POST
+        description: '[BETA] Disable KMS Key'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: kms-key-id-disable-key-rotation
+      path: /kms-key/{id}/disable-key-rotation
+      operations:
+      - name: disablekmskeyrotation
+        method: POST
+        description: '[BETA] Disable Key Rotation'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: kms-key-id-enable
+      path: /kms-key/{id}/enable
+      operations:
+      - name: enablekmskey
+        method: POST
+        description: '[BETA] Enable KMS Key'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: kms-key-id-enable-key-rotation
+      path: /kms-key/{id}/enable-key-rotation
+      operations:
+      - name: enablekmskeyrotation
+        method: POST
+        description: '[BETA] Enable Key Rotation'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: kms-key-id-list-key-rotations
+      path: /kms-key/{id}/list-key-rotations
+      operations:
+      - name: listkmskeyrotations
+        method: GET
+        description: '[BETA] List KMS Key Rotations'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: kms-key-id-replicate
+      path: /kms-key/{id}/replicate
+      operations:
+      - name: replicatekmskey
+        method: POST
+        description: '[BETA] Replicate KMS Key'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: kms-key-id-rotate
+      path: /kms-key/{id}/rotate
+      operations:
+      - name: rotatekmskey
+        method: POST
+        description: '[BETA] Rotate Key'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: kms-key-id-schedule-deletion
+      path: /kms-key/{id}/schedule-deletion
+      operations:
+      - name: schedulekmskeydeletion
+        method: POST
+        description: '[BETA] Schedule KMS Key Deletion'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-kms-key-rest
+    port: 8080
+    description: REST adapter for Exoscale API — kms-key. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/kms-key
+      name: kms-key
+      description: REST surface for kms-key.
+      operations:
+      - method: POST
+        name: createkmskey
+        description: '[BETA] Create KMS Key'
+        call: exoscale-kms-key.createkmskey
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listkmskeys
+        description: '[BETA] List KMS Keys'
+        call: exoscale-kms-key.listkmskeys
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}
+      name: kms-key-id
+      description: REST surface for kms-key-id.
+      operations:
+      - method: GET
+        name: getkmskey
+        description: '[BETA] Get KMS Key'
+        call: exoscale-kms-key.getkmskey
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/cancel-deletion
+      name: kms-key-id-cancel-deletion
+      description: REST surface for kms-key-id-cancel-deletion.
+      operations:
+      - method: POST
+        name: cancelkmskeydeletion
+        description: '[BETA] Cancel KMS Key Deletion'
+        call: exoscale-kms-key.cancelkmskeydeletion
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/disable
+      name: kms-key-id-disable
+      description: REST surface for kms-key-id-disable.
+      operations:
+      - method: POST
+        name: disablekmskey
+        description: '[BETA] Disable KMS Key'
+        call: exoscale-kms-key.disablekmskey
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/disable-key-rotation
+      name: kms-key-id-disable-key-rotation
+      description: REST surface for kms-key-id-disable-key-rotation.
+      operations:
+      - method: POST
+        name: disablekmskeyrotation
+        description: '[BETA] Disable Key Rotation'
+        call: exoscale-kms-key.disablekmskeyrotation
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/enable
+      name: kms-key-id-enable
+      description: REST surface for kms-key-id-enable.
+      operations:
+      - method: POST
+        name: enablekmskey
+        description: '[BETA] Enable KMS Key'
+        call: exoscale-kms-key.enablekmskey
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/enable-key-rotation
+      name: kms-key-id-enable-key-rotation
+      description: REST surface for kms-key-id-enable-key-rotation.
+      operations:
+      - method: POST
+        name: enablekmskeyrotation
+        description: '[BETA] Enable Key Rotation'
+        call: exoscale-kms-key.enablekmskeyrotation
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/list-key-rotations
+      name: kms-key-id-list-key-rotations
+      description: REST surface for kms-key-id-list-key-rotations.
+      operations:
+      - method: GET
+        name: listkmskeyrotations
+        description: '[BETA] List KMS Key Rotations'
+        call: exoscale-kms-key.listkmskeyrotations
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/replicate
+      name: kms-key-id-replicate
+      description: REST surface for kms-key-id-replicate.
+      operations:
+      - method: POST
+        name: replicatekmskey
+        description: '[BETA] Replicate KMS Key'
+        call: exoscale-kms-key.replicatekmskey
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/rotate
+      name: kms-key-id-rotate
+      description: REST surface for kms-key-id-rotate.
+      operations:
+      - method: POST
+        name: rotatekmskey
+        description: '[BETA] Rotate Key'
+        call: exoscale-kms-key.rotatekmskey
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/schedule-deletion
+      name: kms-key-id-schedule-deletion
+      description: REST surface for kms-key-id-schedule-deletion.
+      operations:
+      - method: POST
+        name: schedulekmskeydeletion
+        description: '[BETA] Schedule KMS Key Deletion'
+        call: exoscale-kms-key.schedulekmskeydeletion
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-kms-key-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — kms-key. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: beta-create-kms-key
+      description: '[BETA] Create KMS Key'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-kms-key.createkmskey
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-list-kms-keys
+      description: '[BETA] List KMS Keys'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-kms-key.listkmskeys
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-get-kms-key
+      description: '[BETA] Get KMS Key'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-kms-key.getkmskey
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-cancel-kms-key-deletion
+      description: '[BETA] Cancel KMS Key Deletion'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-kms-key.cancelkmskeydeletion
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-disable-kms-key
+      description: '[BETA] Disable KMS Key'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-kms-key.disablekmskey
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-disable-key-rotation
+      description: '[BETA] Disable Key Rotation'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-kms-key.disablekmskeyrotation
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-enable-kms-key
+      description: '[BETA] Enable KMS Key'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-kms-key.enablekmskey
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-enable-key-rotation
+      description: '[BETA] Enable Key Rotation'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-kms-key.enablekmskeyrotation
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-list-kms-key-rotations
+      description: '[BETA] List KMS Key Rotations'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-kms-key.listkmskeyrotations
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-replicate-kms-key
+      description: '[BETA] Replicate KMS Key'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-kms-key.replicatekmskey
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-rotate-key
+      description: '[BETA] Rotate Key'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-kms-key.rotatekmskey
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-schedule-kms-key-deletion
+      description: '[BETA] Schedule KMS Key Deletion'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-kms-key.schedulekmskeydeletion
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

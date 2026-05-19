@@ -1,0 +1,259 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — ai-api-key
+  description: 'Exoscale API — ai-api-key. 6 operations. Lead operation: List AI API Keys. Self-contained Naftiko capability
+    covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - ai-api-key
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-ai-api-key
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — ai-api-key business capability. Self-contained, no shared references.
+    resources:
+    - name: ai-ai-api-key
+      path: /ai/ai-api-key
+      operations:
+      - name: listaiapikeys
+        method: GET
+        description: List AI API Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createaiapikey
+        method: POST
+        description: Create AI API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ai-ai-api-key-id
+      path: /ai/ai-api-key/{id}
+      operations:
+      - name: deleteaiapikey
+        method: DELETE
+        description: Delete AI API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: getaiapikey
+        method: GET
+        description: Get AI API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updateaiapikey
+        method: PATCH
+        description: Update AI API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ai-ai-api-key-id-rotate
+      path: /ai/ai-api-key/{id}/rotate
+      operations:
+      - name: rotateaiapikey
+        method: POST
+        description: Rotate AI API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-ai-api-key-rest
+    port: 8080
+    description: REST adapter for Exoscale API — ai-api-key. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/ai/ai-api-key
+      name: ai-ai-api-key
+      description: REST surface for ai-ai-api-key.
+      operations:
+      - method: GET
+        name: listaiapikeys
+        description: List AI API Keys
+        call: exoscale-ai-api-key.listaiapikeys
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createaiapikey
+        description: Create AI API Key
+        call: exoscale-ai-api-key.createaiapikey
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ai/ai-api-key/{id}
+      name: ai-ai-api-key-id
+      description: REST surface for ai-ai-api-key-id.
+      operations:
+      - method: DELETE
+        name: deleteaiapikey
+        description: Delete AI API Key
+        call: exoscale-ai-api-key.deleteaiapikey
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getaiapikey
+        description: Get AI API Key
+        call: exoscale-ai-api-key.getaiapikey
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateaiapikey
+        description: Update AI API Key
+        call: exoscale-ai-api-key.updateaiapikey
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ai/ai-api-key/{id}/rotate
+      name: ai-ai-api-key-id-rotate
+      description: REST surface for ai-ai-api-key-id-rotate.
+      operations:
+      - method: POST
+        name: rotateaiapikey
+        description: Rotate AI API Key
+        call: exoscale-ai-api-key.rotateaiapikey
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-ai-api-key-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — ai-api-key. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-ai-api-keys
+      description: List AI API Keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-ai-api-key.listaiapikeys
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-ai-api-key
+      description: Create AI API Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-ai-api-key.createaiapikey
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-ai-api-key
+      description: Delete AI API Key
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-ai-api-key.deleteaiapikey
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-ai-api-key
+      description: Get AI API Key
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-ai-api-key.getaiapikey
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-ai-api-key
+      description: Update AI API Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-ai-api-key.updateaiapikey
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rotate-ai-api-key
+      description: Rotate AI API Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-ai-api-key.rotateaiapikey
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

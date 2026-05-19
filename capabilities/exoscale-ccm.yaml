@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — ccm
+  description: 'Exoscale API — ccm. 1 operations. Lead operation: List Organization Quotas. Self-contained Naftiko capability
+    covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - ccm
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-ccm
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — ccm business capability. Self-contained, no shared references.
+    resources:
+    - name: quota
+      path: /quota
+      operations:
+      - name: listquotas
+        method: GET
+        description: List Organization Quotas
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: exoscale-ccm-rest
+    port: 8080
+    description: REST adapter for Exoscale API — ccm. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/quota
+      name: quota
+      description: REST surface for quota.
+      operations:
+      - method: GET
+        name: listquotas
+        description: List Organization Quotas
+        call: exoscale-ccm.listquotas
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-ccm-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — ccm. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-organization-quotas
+      description: List Organization Quotas
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-ccm.listquotas
+      outputParameters:
+      - type: object
+        mapping: $.

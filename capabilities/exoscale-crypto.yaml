@@ -1,0 +1,227 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — crypto
+  description: 'Exoscale API — crypto. 4 operations. Lead operation: [BETA] Decrypt. Self-contained Naftiko capability covering
+    one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - crypto
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-crypto
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — crypto business capability. Self-contained, no shared references.
+    resources:
+    - name: kms-key-id-decrypt
+      path: /kms-key/{id}/decrypt
+      operations:
+      - name: decrypt
+        method: POST
+        description: '[BETA] Decrypt'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: kms-key-id-encrypt
+      path: /kms-key/{id}/encrypt
+      operations:
+      - name: encrypt
+        method: POST
+        description: '[BETA] Encrypt'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: kms-key-id-generate-data-key
+      path: /kms-key/{id}/generate-data-key
+      operations:
+      - name: generatedatakey
+        method: POST
+        description: '[BETA] Generate Data Key'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: kms-key-id-re-encrypt
+      path: /kms-key/{id}/re-encrypt
+      operations:
+      - name: reencrypt
+        method: POST
+        description: '[BETA] Re-encrypt'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-crypto-rest
+    port: 8080
+    description: REST adapter for Exoscale API — crypto. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/kms-key/{id}/decrypt
+      name: kms-key-id-decrypt
+      description: REST surface for kms-key-id-decrypt.
+      operations:
+      - method: POST
+        name: decrypt
+        description: '[BETA] Decrypt'
+        call: exoscale-crypto.decrypt
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/encrypt
+      name: kms-key-id-encrypt
+      description: REST surface for kms-key-id-encrypt.
+      operations:
+      - method: POST
+        name: encrypt
+        description: '[BETA] Encrypt'
+        call: exoscale-crypto.encrypt
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/generate-data-key
+      name: kms-key-id-generate-data-key
+      description: REST surface for kms-key-id-generate-data-key.
+      operations:
+      - method: POST
+        name: generatedatakey
+        description: '[BETA] Generate Data Key'
+        call: exoscale-crypto.generatedatakey
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kms-key/{id}/re-encrypt
+      name: kms-key-id-re-encrypt
+      description: REST surface for kms-key-id-re-encrypt.
+      operations:
+      - method: POST
+        name: reencrypt
+        description: '[BETA] Re-encrypt'
+        call: exoscale-crypto.reencrypt
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-crypto-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — crypto. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: beta-decrypt
+      description: '[BETA] Decrypt'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-crypto.decrypt
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-encrypt
+      description: '[BETA] Encrypt'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-crypto.encrypt
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-generate-data-key
+      description: '[BETA] Generate Data Key'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-crypto.generatedatakey
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: beta-re-encrypt
+      description: '[BETA] Re-encrypt'
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-crypto.reencrypt
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

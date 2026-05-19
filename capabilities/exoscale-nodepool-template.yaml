@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — nodepool-template
+  description: 'Exoscale API — nodepool-template. 1 operations. Lead operation: nodepool-template. Self-contained Naftiko
+    capability covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - nodepool-template
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-nodepool-template
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — nodepool-template business capability. Self-contained, no shared references.
+    resources:
+    - name: sks-template-kube-version-variant
+      path: /sks-template/{kube-version}/{variant}
+      operations:
+      - name: getactivenodepooltemplate
+        method: GET
+        description: Get the active template for a given kube version and variant (standard | nvidia)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: kube-version
+          in: path
+          type: string
+          required: true
+        - name: variant
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-nodepool-template-rest
+    port: 8080
+    description: REST adapter for Exoscale API — nodepool-template. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/sks-template/{kube-version}/{variant}
+      name: sks-template-kube-version-variant
+      description: REST surface for sks-template-kube-version-variant.
+      operations:
+      - method: GET
+        name: getactivenodepooltemplate
+        description: Get the active template for a given kube version and variant (standard | nvidia)
+        call: exoscale-nodepool-template.getactivenodepooltemplate
+        with:
+          kube-version: rest.kube-version
+          variant: rest.variant
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-nodepool-template-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — nodepool-template. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-active-template-given-kube
+      description: Get the active template for a given kube version and variant (standard | nvidia)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-nodepool-template.getactivenodepooltemplate
+      with:
+        kube-version: tools.kube-version
+        variant: tools.variant
+      outputParameters:
+      - type: object
+        mapping: $.

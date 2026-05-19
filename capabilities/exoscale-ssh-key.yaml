@@ -1,0 +1,177 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — ssh-key
+  description: 'Exoscale API — ssh-key. 4 operations. Lead operation: List SSH keys. Self-contained Naftiko capability covering
+    one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - ssh-key
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-ssh-key
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — ssh-key business capability. Self-contained, no shared references.
+    resources:
+    - name: ssh-key
+      path: /ssh-key
+      operations:
+      - name: listsshkeys
+        method: GET
+        description: List SSH keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: registersshkey
+        method: POST
+        description: Import SSH key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ssh-key-name
+      path: /ssh-key/{name}
+      operations:
+      - name: deletesshkey
+        method: DELETE
+        description: Delete a SSH key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: getsshkey
+        method: GET
+        description: Retrieve SSH key details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-ssh-key-rest
+    port: 8080
+    description: REST adapter for Exoscale API — ssh-key. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/ssh-key
+      name: ssh-key
+      description: REST surface for ssh-key.
+      operations:
+      - method: GET
+        name: listsshkeys
+        description: List SSH keys
+        call: exoscale-ssh-key.listsshkeys
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: registersshkey
+        description: Import SSH key
+        call: exoscale-ssh-key.registersshkey
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ssh-key/{name}
+      name: ssh-key-name
+      description: REST surface for ssh-key-name.
+      operations:
+      - method: DELETE
+        name: deletesshkey
+        description: Delete a SSH key
+        call: exoscale-ssh-key.deletesshkey
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getsshkey
+        description: Retrieve SSH key details
+        call: exoscale-ssh-key.getsshkey
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-ssh-key-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — ssh-key. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-ssh-keys
+      description: List SSH keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-ssh-key.listsshkeys
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: import-ssh-key
+      description: Import SSH key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-ssh-key.registersshkey
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-ssh-key
+      description: Delete a SSH key
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-ssh-key.deletesshkey
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-ssh-key-details
+      description: Retrieve SSH key details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-ssh-key.getsshkey
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.

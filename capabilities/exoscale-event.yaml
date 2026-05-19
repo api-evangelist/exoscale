@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — event
+  description: 'Exoscale API — event. 1 operations. Lead operation: List Events. Self-contained Naftiko capability covering
+    one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - event
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-event
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — event business capability. Self-contained, no shared references.
+    resources:
+    - name: event
+      path: /event
+      operations:
+      - name: listevents
+        method: GET
+        description: List Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: from
+          in: query
+          type: string
+        - name: to
+          in: query
+          type: string
+  exposes:
+  - type: rest
+    namespace: exoscale-event-rest
+    port: 8080
+    description: REST adapter for Exoscale API — event. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/event
+      name: event
+      description: REST surface for event.
+      operations:
+      - method: GET
+        name: listevents
+        description: List Events
+        call: exoscale-event.listevents
+        with:
+          from: rest.from
+          to: rest.to
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-event-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — event. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-events
+      description: List Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-event.listevents
+      with:
+        from: tools.from
+        to: tools.to
+      outputParameters:
+      - type: object
+        mapping: $.

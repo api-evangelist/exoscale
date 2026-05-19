@@ -1,0 +1,409 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — private-network
+  description: 'Exoscale API — private-network. 9 operations. Lead operation: List Private Networks. Self-contained Naftiko
+    capability covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - private-network
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-private-network
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — private-network business capability. Self-contained, no shared references.
+    resources:
+    - name: private-network
+      path: /private-network
+      operations:
+      - name: listprivatenetworks
+        method: GET
+        description: List Private Networks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createprivatenetwork
+        method: POST
+        description: Create a Private Network
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: private-network-id
+      path: /private-network/{id}
+      operations:
+      - name: updateprivatenetwork
+        method: PUT
+        description: Update a Private Network
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getprivatenetwork
+        method: GET
+        description: Retrieve Private Network details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: deleteprivatenetwork
+        method: DELETE
+        description: Delete a Private Network
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: private-network-id-field
+      path: /private-network/{id}/{field}
+      operations:
+      - name: resetprivatenetworkfield
+        method: DELETE
+        description: Reset Private Network field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: field
+          in: path
+          type: string
+          required: true
+    - name: private-network-id}:attach
+      path: /private-network/{id}:attach
+      operations:
+      - name: attachinstancetoprivatenetwork
+        method: PUT
+        description: Attach a Compute instance to a Private Network
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: private-network-id}:detach
+      path: /private-network/{id}:detach
+      operations:
+      - name: detachinstancefromprivatenetwork
+        method: PUT
+        description: Detach a Compute instance from a Private Network
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: private-network-id}:update-ip
+      path: /private-network/{id}:update-ip
+      operations:
+      - name: updateprivatenetworkinstanceip
+        method: PUT
+        description: Update the IP address of an instance attached to a managed private network
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-private-network-rest
+    port: 8080
+    description: REST adapter for Exoscale API — private-network. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/private-network
+      name: private-network
+      description: REST surface for private-network.
+      operations:
+      - method: GET
+        name: listprivatenetworks
+        description: List Private Networks
+        call: exoscale-private-network.listprivatenetworks
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createprivatenetwork
+        description: Create a Private Network
+        call: exoscale-private-network.createprivatenetwork
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/private-network/{id}
+      name: private-network-id
+      description: REST surface for private-network-id.
+      operations:
+      - method: PUT
+        name: updateprivatenetwork
+        description: Update a Private Network
+        call: exoscale-private-network.updateprivatenetwork
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getprivatenetwork
+        description: Retrieve Private Network details
+        call: exoscale-private-network.getprivatenetwork
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteprivatenetwork
+        description: Delete a Private Network
+        call: exoscale-private-network.deleteprivatenetwork
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/private-network/{id}/{field}
+      name: private-network-id-field
+      description: REST surface for private-network-id-field.
+      operations:
+      - method: DELETE
+        name: resetprivatenetworkfield
+        description: Reset Private Network field
+        call: exoscale-private-network.resetprivatenetworkfield
+        with:
+          id: rest.id
+          field: rest.field
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/private-network/id-attach
+      name: private-network-id-attach
+      description: REST surface for private-network-id}:attach.
+      operations:
+      - method: PUT
+        name: attachinstancetoprivatenetwork
+        description: Attach a Compute instance to a Private Network
+        call: exoscale-private-network.attachinstancetoprivatenetwork
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/private-network/id-detach
+      name: private-network-id-detach
+      description: REST surface for private-network-id}:detach.
+      operations:
+      - method: PUT
+        name: detachinstancefromprivatenetwork
+        description: Detach a Compute instance from a Private Network
+        call: exoscale-private-network.detachinstancefromprivatenetwork
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/private-network/id-update-ip
+      name: private-network-id-update-ip
+      description: REST surface for private-network-id}:update-ip.
+      operations:
+      - method: PUT
+        name: updateprivatenetworkinstanceip
+        description: Update the IP address of an instance attached to a managed private network
+        call: exoscale-private-network.updateprivatenetworkinstanceip
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-private-network-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — private-network. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-private-networks
+      description: List Private Networks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-private-network.listprivatenetworks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-private-network
+      description: Create a Private Network
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-private-network.createprivatenetwork
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-private-network
+      description: Update a Private Network
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-private-network.updateprivatenetwork
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-private-network-details
+      description: Retrieve Private Network details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-private-network.getprivatenetwork
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-private-network
+      description: Delete a Private Network
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-private-network.deleteprivatenetwork
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reset-private-network-field
+      description: Reset Private Network field
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-private-network.resetprivatenetworkfield
+      with:
+        id: tools.id
+        field: tools.field
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: attach-compute-instance-private-network
+      description: Attach a Compute instance to a Private Network
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-private-network.attachinstancetoprivatenetwork
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: detach-compute-instance-private-network
+      description: Detach a Compute instance from a Private Network
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-private-network.detachinstancefromprivatenetwork
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-ip-address-instance-attached
+      description: Update the IP address of an instance attached to a managed private network
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-private-network.updateprivatenetworkinstanceip
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

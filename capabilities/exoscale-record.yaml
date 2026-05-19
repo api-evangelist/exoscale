@@ -1,0 +1,251 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Exoscale API — record
+  description: 'Exoscale API — record. 5 operations. Lead operation: List DNS domain records. Self-contained Naftiko capability
+    covering one Exoscale business surface.'
+  tags:
+  - Exoscale
+  - record
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    EXOSCALE_API_KEY: EXOSCALE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: exoscale-record
+    baseUri: https://api-{zone}.exoscale.com/v2
+    description: Exoscale API — record business capability. Self-contained, no shared references.
+    resources:
+    - name: dns-domain-domain-id-record
+      path: /dns-domain/{domain-id}/record
+      operations:
+      - name: listdnsdomainrecords
+        method: GET
+        description: List DNS domain records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain-id
+          in: path
+          type: string
+          required: true
+      - name: creatednsdomainrecord
+        method: POST
+        description: Create DNS domain record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain-id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: dns-domain-domain-id-record-record-id
+      path: /dns-domain/{domain-id}/record/{record-id}
+      operations:
+      - name: getdnsdomainrecord
+        method: GET
+        description: Retrieve DNS domain record details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain-id
+          in: path
+          type: string
+          required: true
+        - name: record-id
+          in: path
+          type: string
+          required: true
+      - name: updatednsdomainrecord
+        method: PUT
+        description: Update DNS domain record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain-id
+          in: path
+          type: string
+          required: true
+        - name: record-id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletednsdomainrecord
+        method: DELETE
+        description: Delete DNS domain record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain-id
+          in: path
+          type: string
+          required: true
+        - name: record-id
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: exoscale-record-rest
+    port: 8080
+    description: REST adapter for Exoscale API — record. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/dns-domain/{domain-id}/record
+      name: dns-domain-domain-id-record
+      description: REST surface for dns-domain-domain-id-record.
+      operations:
+      - method: GET
+        name: listdnsdomainrecords
+        description: List DNS domain records
+        call: exoscale-record.listdnsdomainrecords
+        with:
+          domain-id: rest.domain-id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: creatednsdomainrecord
+        description: Create DNS domain record
+        call: exoscale-record.creatednsdomainrecord
+        with:
+          domain-id: rest.domain-id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dns-domain/{domain-id}/record/{record-id}
+      name: dns-domain-domain-id-record-record-id
+      description: REST surface for dns-domain-domain-id-record-record-id.
+      operations:
+      - method: GET
+        name: getdnsdomainrecord
+        description: Retrieve DNS domain record details
+        call: exoscale-record.getdnsdomainrecord
+        with:
+          domain-id: rest.domain-id
+          record-id: rest.record-id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatednsdomainrecord
+        description: Update DNS domain record
+        call: exoscale-record.updatednsdomainrecord
+        with:
+          domain-id: rest.domain-id
+          record-id: rest.record-id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletednsdomainrecord
+        description: Delete DNS domain record
+        call: exoscale-record.deletednsdomainrecord
+        with:
+          domain-id: rest.domain-id
+          record-id: rest.record-id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: exoscale-record-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Exoscale API — record. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-dns-domain-records
+      description: List DNS domain records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-record.listdnsdomainrecords
+      with:
+        domain-id: tools.domain-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-dns-domain-record
+      description: Create DNS domain record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: exoscale-record.creatednsdomainrecord
+      with:
+        domain-id: tools.domain-id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-dns-domain-record-details
+      description: Retrieve DNS domain record details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: exoscale-record.getdnsdomainrecord
+      with:
+        domain-id: tools.domain-id
+        record-id: tools.record-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-dns-domain-record
+      description: Update DNS domain record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: exoscale-record.updatednsdomainrecord
+      with:
+        domain-id: tools.domain-id
+        record-id: tools.record-id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-dns-domain-record
+      description: Delete DNS domain record
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: exoscale-record.deletednsdomainrecord
+      with:
+        domain-id: tools.domain-id
+        record-id: tools.record-id
+      outputParameters:
+      - type: object
+        mapping: $.
