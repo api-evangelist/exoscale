@@ -2,12 +2,17 @@
   "repo": "exoscale",
   "feeds": [
     {
-      "source": "https://www.exoscale.com/syslog/",
+      "source": "https://www.exoscale.com/syslog/rss.xml",
       "feed_url": "https://www.exoscale.com/syslog/rss.xml",
-      "title": "Exoscale Blog",
-      "saved": 13
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.exoscalestatus.com/",
+      "error": "URLError"
     }
   ],
-  "post_count": 24,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 25,
+  "fetched": "2026-06-01T23:35:02Z"
 }
