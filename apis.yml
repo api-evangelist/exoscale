@@ -1,19 +1,20 @@
 aid: exoscale
 name: Exoscale
-description: Exoscale is a Swiss cloud infrastructure provider offering secure, reliable, and scalable cloud solutions to
-  businesses of all sizes. Their services include virtual machines, object storage, networking, security, Kubernetes (SKS),
-  Database as a Service (DBaaS), and IAM. Data centers are located in Switzerland, Austria, Germany, and Bulgaria, providing
-  data sovereignty and compliance with European data protection regulations.
+description: >-
+  Exoscale is a Swiss cloud infrastructure provider offering secure, reliable, and scalable cloud solutions to
+  businesses of all sizes. Their services include virtual machines, object storage, networking, security, Kubernetes
+  (SKS), Database as a Service (DBaaS), and IAM. Data centers are located in Switzerland, Austria, Germany, and
+  Bulgaria, providing data sovereignty and compliance with European data protection regulations.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Cloud
-- Infrastructure
-- Compute
-- Storage
-- Kubernetes
-- DBaaS
-- Europe
+  - Cloud
+  - Infrastructure
+  - Compute
+  - Storage
+  - Kubernetes
+  - DBaaS
+  - Europe
 url: https://raw.githubusercontent.com/api-evangelist/exoscale/refs/heads/main/apis.yml
 created: '2025-01-07'
 modified: '2026-05-19'
@@ -21,164 +22,91 @@ position: Consumer
 access: 3rd-Party
 specificationVersion: '0.19'
 apis:
-- aid: exoscale:exoscale
-  name: Exoscale API
-  description: Infrastructure automation API allowing programmatic access to all Exoscale products and services, including
-    Compute, SKS (Kubernetes), DBaaS, IAM, Object Storage, KMS, networking, and load balancing.
-  humanURL: https://openapi-v2.exoscale.com/
-  baseURL: https://api-ch-gva-2.exoscale.com/v2
-  tags:
-  - Cloud
-  - Compute
-  - Kubernetes
-  - DBaaS
-  - IAM
-  - Storage
-  properties:
+  - aid: exoscale:exoscale
+    name: Exoscale API
+    description: >-
+      Infrastructure automation API allowing programmatic access to all Exoscale products and services, including
+      Compute, SKS (Kubernetes), DBaaS, IAM, Object Storage, KMS, networking, and load balancing.
+    humanURL: https://openapi-v2.exoscale.com/
+    baseURL: https://api-ch-gva-2.exoscale.com/v2
+    tags:
+      - Cloud
+      - Compute
+      - Kubernetes
+      - DBaaS
+      - IAM
+      - Storage
+    properties:
+      - type: Documentation
+        url: https://openapi-v2.exoscale.com/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/exoscale/refs/heads/main/openapi/exoscale-openapi.yml
+      - type: SignUp
+        url: https://portal.exoscale.com/register
+      - type: Pricing
+        url: https://www.exoscale.com/pricing/
+common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/exoscale
+  - type: Website
+    url: https://www.exoscale.com
   - type: Documentation
-    url: https://openapi-v2.exoscale.com/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/exoscale/refs/heads/main/openapi/exoscale-openapi.yml
+    url: https://community.exoscale.com/documentation/
+  - type: Portal
+    url: https://portal.exoscale.com/
   - type: SignUp
     url: https://portal.exoscale.com/register
   - type: Pricing
     url: https://www.exoscale.com/pricing/
-  - type: NaftikoCapability
-    url: capabilities/exoscale-ai-api-key.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-anti-affinity-group.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-api-key.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-block-storage.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-ccm.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-cluster.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-compute.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-crypto.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-dbaas.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-deploy-target.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-deployment.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-domain.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-elastic-ip.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-event.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-instance.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-instance-pool.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-instance-type.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-kms-key.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-model.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-network-load-balancer.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-nodepool.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-nodepool-template.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-operation.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-organization.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-organization-policy.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-private-network.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-quotas.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-record.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-reverse-dns.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-role.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-security-group.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-snapshot.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-sos.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-ssh-key.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-template.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-user.yaml
-  - type: NaftikoCapability
-    url: capabilities/exoscale-zone.yaml
-common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/exoscale
-- type: Website
-  url: https://www.exoscale.com
-- type: Documentation
-  url: https://community.exoscale.com/documentation/
-- type: Portal
-  url: https://portal.exoscale.com/
-- type: SignUp
-  url: https://portal.exoscale.com/register
-- type: Pricing
-  url: https://www.exoscale.com/pricing/
-- type: TermsOfService
-  url: https://www.exoscale.com/terms/
-- type: PrivacyPolicy
-  url: https://www.exoscale.com/privacy/
-- type: StatusPage
-  url: https://www.exoscalestatus.com/
-- type: Blog
-  url: https://www.exoscale.com/syslog/
-- type: GitHubOrganization
-  url: https://github.com/exoscale
-- type: Support
-  url: https://portal.exoscale.com/tickets
-- type: Integrations
-  url: https://www.exoscale.com/marketplace/
+  - type: TermsOfService
+    url: https://www.exoscale.com/terms/
+  - type: PrivacyPolicy
+    url: https://www.exoscale.com/privacy/
+  - type: StatusPage
+    url: https://www.exoscalestatus.com/
+  - type: Blog
+    url: https://www.exoscale.com/syslog/
+  - type: GitHubOrganization
+    url: https://github.com/exoscale
+  - type: Support
+    url: https://portal.exoscale.com/tickets
+  - type: Integrations
+    url: https://www.exoscale.com/marketplace/
 integrations:
-- name: Check Point CloudGuard IaaS - BYOL
-- name: F5 BIG-IP™ Virtual Appliances - BYOL
-- name: F5 Distributed Cloud Services
-- name: FortiGate™ Virtual Appliances - BYOL
-- name: Icinga2 Master (Debian 12) - PAYG
-- name: Icinga2 Master (Rocky 9) - BYOL
-- name: IPFire Open Source Firewall - PAYG
-- name: Microsoft SQL Server - PAYG
-- name: Open Pryv.io - personal data management
-- name: QuTScloud - Cloud NAS
-- name: VyOS Universal Router
-- name: Acronis Cyber Protect
-- name: ANANTIS TrapEye - Preemptive Cyber Deception
-- name: 8gears Container Registry
-- name: Gitea managed by Glasskube
-- name: Gitlab managed by Glasskube
-- name: Keycloak managed by Glasskube
-- name: Matomo managed by Glasskube
-- name: Metabase managed by Glasskube
-- name: Nextcloud managed by Glasskube
-- name: HashiCorp Vault managed by Glasskube
-- name: Offensity by A1 Digital
-- name: Panop - Unified Security Posture Management
-- name: RegData Protection Suite SaaS
-- name: APPUiO Managed OpenShift - by VSHN
-- name: oneclick™ VDI & DaaS
-- name: Forgejo by Servala
-- name: GitLab Enterprise by Servala
-- name: Keycloak by Servala
-- name: Nextcloud by Servala
-- name: PostgreSQL Enterprise by Servala
-- name: Redis by Servala
-- name: bluesky
-- name: linkedin
+  - name: Check Point CloudGuard IaaS - BYOL
+  - name: F5 BIG-IP™ Virtual Appliances - BYOL
+  - name: F5 Distributed Cloud Services
+  - name: FortiGate™ Virtual Appliances - BYOL
+  - name: Icinga2 Master (Debian 12) - PAYG
+  - name: Icinga2 Master (Rocky 9) - BYOL
+  - name: IPFire Open Source Firewall - PAYG
+  - name: Microsoft SQL Server - PAYG
+  - name: Open Pryv.io - personal data management
+  - name: QuTScloud - Cloud NAS
+  - name: VyOS Universal Router
+  - name: Acronis Cyber Protect
+  - name: ANANTIS TrapEye - Preemptive Cyber Deception
+  - name: 8gears Container Registry
+  - name: Gitea managed by Glasskube
+  - name: Gitlab managed by Glasskube
+  - name: Keycloak managed by Glasskube
+  - name: Matomo managed by Glasskube
+  - name: Metabase managed by Glasskube
+  - name: Nextcloud managed by Glasskube
+  - name: HashiCorp Vault managed by Glasskube
+  - name: Offensity by A1 Digital
+  - name: Panop - Unified Security Posture Management
+  - name: RegData Protection Suite SaaS
+  - name: APPUiO Managed OpenShift - by VSHN
+  - name: oneclick™ VDI & DaaS
+  - name: Forgejo by Servala
+  - name: GitLab Enterprise by Servala
+  - name: Keycloak by Servala
+  - name: Nextcloud by Servala
+  - name: PostgreSQL Enterprise by Servala
+  - name: Redis by Servala
+  - name: bluesky
+  - name: linkedin
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
