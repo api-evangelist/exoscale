@@ -1,0 +1,6782 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "network-load-balancer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Load Balancer Service details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service/:service-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Load Balancer Service details"
+        },
+        {
+          "info": {
+            "name": "Update a Load Balancer Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service/:service-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Load Balancer Service"
+        },
+        {
+          "info": {
+            "name": "Delete a Load Balancer Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service/:service-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Load Balancer Service"
+        },
+        {
+          "info": {
+            "name": "List Load Balancers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer"
+          },
+          "docs": "List Load Balancers"
+        },
+        {
+          "info": {
+            "name": "Create a Load Balancer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Load Balancer"
+        },
+        {
+          "info": {
+            "name": "Reset a Load Balancer field to its default value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset a Load Balancer field to its default value"
+        },
+        {
+          "info": {
+            "name": "Reset a Load Balancer Service field to its default value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service/:service-id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset a Load Balancer Service field to its default value"
+        },
+        {
+          "info": {
+            "name": "Add a Load Balancer Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a Load Balancer Service"
+        },
+        {
+          "info": {
+            "name": "Retrieve Load Balancer details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Load Balancer details"
+        },
+        {
+          "info": {
+            "name": "Update a Load Balancer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Load Balancer"
+        },
+        {
+          "info": {
+            "name": "Delete a Load Balancer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Load Balancer"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "dbaas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get-dbaas-external-endpoint-opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-opensearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get OpenSearch Logs external integration endpoint settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-endpoint-opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-opensearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update OpenSearch Logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-external-endpoint-opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-opensearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete OpenSearch logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS OpenSearch ACL configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name/acl-config",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get DBaaS OpenSearch ACL configuration"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS OpenSearch ACL configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name/acl-config",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS OpenSearch ACL configuration"
+        },
+        {
+          "info": {
+            "name": "Stop a DBaaS Valkey migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name/migration/stop",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop a DBaaS Valkey migration"
+        },
+        {
+          "info": {
+            "name": "Initiate Grafana maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate Grafana maintenance update"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-pg-upgrade-check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service/upgrade-check",
+            "params": [
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check whether you can upgrade Postgres service to a newer version"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS mysql user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS PostgreSQL connection pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/connection-pool",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS PostgreSQL connection pool"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS MySQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS MySQL service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS MySQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS MySQL service"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS MySQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS MySQL service"
+        },
+        {
+          "info": {
+            "name": "Delete a MySQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a MySQL service"
+        },
+        {
+          "info": {
+            "name": "Initiate Thanos maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate Thanos maintenance update"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-endpoint-elasticsearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-elasticsearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get ElasticSearch Logs external integration endpoint settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-endpoint-elasticsearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-elasticsearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update ElasticSearch Logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-external-endpoint-elasticsearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-elasticsearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete ElasticSearch logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS MySQL user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS MySQL user"
+        },
+        {
+          "info": {
+            "name": "DBaaS Service Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service-type"
+          },
+          "docs": "List available service types for DBaaS"
+        },
+        {
+          "info": {
+            "name": "List DBaaS services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service"
+          },
+          "docs": "List DBaaS services"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-external-endpoint-rsyslog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-rsyslog/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create RSyslog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS CA Certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-ca-certificate"
+          },
+          "docs": "Returns a CA Certificate required to reach a DBaaS service through a TLS-protected connection."
+        },
+        {
+          "info": {
+            "name": "Get DBaaS Grafana settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-grafana"
+          },
+          "docs": "Get DBaaS Grafana settings"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS Postgres database",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/database/:database-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "database-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS Postgres database"
+        },
+        {
+          "info": {
+            "name": "Stop a DBaaS PostgreSQL migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name/migration/stop",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop a DBaaS PostgreSQL migration"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS Kafka service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS Kafka service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Kafka service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Kafka service"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS Kafka service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS Kafka service"
+        },
+        {
+          "info": {
+            "name": "Delete a Kafka service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Kafka service"
+        },
+        {
+          "info": {
+            "name": "Add a Kafka Schema Registry ACL entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/schema-registry/acl-config",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a Kafka Schema Registry ACL entry"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Postgres user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Postgres user"
+        },
+        {
+          "info": {
+            "name": "list-dbaas-external-integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-integrations/:service-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] List all DBaaS connections between services and external endpoints"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-integration/:integration-id",
+            "params": [
+              {
+                "name": "integration-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get a DBaaS external integration"
+        },
+        {
+          "info": {
+            "name": "list-dbaas-external-endpoint-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-types"
+          },
+          "docs": "[BETA] List available external endpoint types and their schemas for DBaaS external integrations"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets for DBaaS Kafka Connect",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:service-name/connect/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets for DBaaS Kafka Connect"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS OpenSearch user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS OpenSearch user"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-endpoint-prometheus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-prometheus/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get Prometheus external integration endpoint settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-endpoint-prometheus",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-prometheus/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update Prometheus external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-external-endpoint-prometheus",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-prometheus/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete Prometheus external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Kafka user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Kafka user"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS Valkey user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-integration-settings-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-integration-settings-datadog/:integration-id",
+            "params": [
+              {
+                "name": "integration-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get Datadog integration settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-integration-settings-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-integration-settings-datadog/:integration-id",
+            "params": [
+              {
+                "name": "integration-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Manage Datadog integration settings"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS MySQL settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-mysql"
+          },
+          "docs": "Get DBaaS MySQL settings"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS Valkey settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-valkey"
+          },
+          "docs": "Returns the default settings for Valkey."
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Postgres database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/database",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Postgres database"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS Thanos settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-thanos"
+          },
+          "docs": "Get DBaaS Thanos settings"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS OpenSearch user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS OpenSearch user"
+        },
+        {
+          "info": {
+            "name": "list-dbaas-integration-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration-types"
+          },
+          "docs": "[BETA] Get DBaaS integration types"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS Postgres user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS Postgres user"
+        },
+        {
+          "info": {
+            "name": "Update access control for one service user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/user/:username/allow-replication",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update access control for one service user"
+        },
+        {
+          "info": {
+            "name": "Add a Kafka topic ACL entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/topic/acl-config",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a Kafka topic ACL entry"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-external-endpoint-opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-opensearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create OpenSearch Logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS MySQL database",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/database/:database-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "database-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS MySQL database"
+        },
+        {
+          "info": {
+            "name": "Get logs of DBaaS service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service-logs/:service-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get logs of DBaaS service"
+        },
+        {
+          "info": {
+            "name": "Initiate PostgreSQL maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate PostgreSQL maintenance update"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS Grafana user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS Grafana user"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS Grafana user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        },
+        {
+          "info": {
+            "name": "Update access control for one DBaaS Valkey service user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update access control for one DBaaS Valkey service user"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS Valkey user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS Valkey user"
+        },
+        {
+          "info": {
+            "name": "Delete a Kafka ACL entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/schema-registry/acl-config/:acl-id",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "acl-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Kafka ACL entry"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS kafka user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS kafka user"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS service type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service-type/:service-type-name",
+            "params": [
+              {
+                "name": "service-type-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS service type"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-external-endpoint-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-datadog/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create DataDog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Initiate MySQL maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate MySQL maintenance update"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS OpenSearch user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS MySQL user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS MySQL user"
+        },
+        {
+          "info": {
+            "name": "Get metrics of DBaaS service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service-metrics/:service-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get metrics of DBaaS service"
+        },
+        {
+          "info": {
+            "name": "Temporarily enable writes for MySQL services in read-only mode due to filled up storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name/enable/writes",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Temporarily enable writes for MySQL services in read-only mode due to filled up storage"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS Kafka user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS Kafka user"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-task-migration-check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-task-migration-check/:service",
+            "params": [
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS task to check migration"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-endpoint-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-datadog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get DataDog external endpoint settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-endpoint-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-datadog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update DataDog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-external-endpoint-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-datadog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete DataDog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-external-endpoint-prometheus",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-prometheus/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create Prometheus external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get a DBaaS Integration"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update a existing DBaaS integration"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete a DBaaS Integration"
+        },
+        {
+          "info": {
+            "name": "list-dbaas-integration-settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration-settings/:integration-type/:source-type/:dest-type",
+            "params": [
+              {
+                "name": "integration-type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "source-type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dest-type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get DBaaS integration settings"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS Thanos user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS Thanos user"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS PostgreSQL settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-pg"
+          },
+          "docs": "Get DBaaS PostgreSQL settings"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-service-valkey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS Valkey service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Valkey service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Valkey service"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-service-valkey",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS Valkey service"
+        },
+        {
+          "info": {
+            "name": "Delete a Valkey service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Valkey service"
+        },
+        {
+          "info": {
+            "name": "Stop a DBaaS MySQL migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name/migration/stop",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop a DBaaS MySQL migration"
+        },
+        {
+          "info": {
+            "name": "list-dbaas-external-endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoints"
+          },
+          "docs": "[BETA] List available external endpoints for integrations"
+        },
+        {
+          "info": {
+            "name": "Initiate Kafka maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate Kafka maintenance update"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS PostgreSQL connection pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/connection-pool/:connection-pool-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connection-pool-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS PostgreSQL connection pool"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS PostgreSQL connection pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/connection-pool/:connection-pool-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connection-pool-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS PostgreSQL connection pool"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-service-thanos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS Thanos service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Thanos service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Thanos service"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-service-thanos",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS Thanos service"
+        },
+        {
+          "info": {
+            "name": "Delete a Thanos service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Thanos service"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS migration status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-migration-status/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS migration status"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS MySQL user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS MySQL user"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS MySQL database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/database",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS MySQL database"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS Kafka settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-kafka"
+          },
+          "docs": "Get DBaaS Kafka settings"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS Postgres user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS Postgres user"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS OpenSearch settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-opensearch"
+          },
+          "docs": "Get DBaaS OpenSearch settings"
+        },
+        {
+          "info": {
+            "name": "attach-dbaas-service-to-endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint/:source-service-name/attach",
+            "params": [
+              {
+                "name": "source-service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create a new DBaaS connection between a DBaaS service and an external service"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS Grafana service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS Grafana service"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-service-grafana",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Grafana service"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS Grafana service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS Grafana service"
+        },
+        {
+          "info": {
+            "name": "Delete a Grafana service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Grafana service"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-endpoint-rsyslog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-rsyslog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get RSyslog external integration endpoint settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-endpoint-rsyslog",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-rsyslog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update RSyslog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-external-endpoint-rsyslog",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-rsyslog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete RSyslog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-external-endpoint-elasticsearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-elasticsearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create ElasticSearch Logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Initiate OpenSearch maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate OpenSearch maintenance update"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS kafka ACL configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/acl-config",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get DBaaS kafka ACL configuration"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS Kafka user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS OpenSearch user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS OpenSearch user"
+        },
+        {
+          "info": {
+            "name": "Initiate Valkey maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate Valkey maintenance update"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS OpenSearch service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS OpenSearch service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS OpenSearch service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS OpenSearch service"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS OpenSearch service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS OpenSearch service"
+        },
+        {
+          "info": {
+            "name": "Delete a OpenSearch service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a OpenSearch service"
+        },
+        {
+          "info": {
+            "name": "detach-dbaas-service-from-endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint/:source-service-name/detach",
+            "params": [
+              {
+                "name": "source-service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Detach a DBaaS external integration from a service"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS Valkey user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS Valkey user"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS PostgreSQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS PostgreSQL service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS PostgreSQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS PostgreSQL service"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS PostgreSQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS PostgreSQL service"
+        },
+        {
+          "info": {
+            "name": "Delete a Postgres service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Postgres service"
+        },
+        {
+          "info": {
+            "name": "List DBaaS Valkey users with ACL configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List DBaaS Valkey users with ACL configuration"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Valkey user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Valkey user"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create a new DBaaS integration between two services"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-task/:service/:id",
+            "params": [
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS task"
+        },
+        {
+          "info": {
+            "name": "Delete a Kafka ACL entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/topic/acl-config/:acl-id",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "acl-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Kafka ACL entry"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS Postgres user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "instance-pool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Scale an Instance Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id:scale",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Scale an Instance Pool"
+        },
+        {
+          "info": {
+            "name": "List Instance Pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool"
+          },
+          "docs": "List Instance Pools"
+        },
+        {
+          "info": {
+            "name": "Create an Instance Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Instance Pool"
+        },
+        {
+          "info": {
+            "name": "Retrieve Instance Pool details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Instance Pool details"
+        },
+        {
+          "info": {
+            "name": "Update an Instance Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an Instance Pool"
+        },
+        {
+          "info": {
+            "name": "Delete an Instance Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an Instance Pool"
+        },
+        {
+          "info": {
+            "name": "Reset an Instance Pool field to its default value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset an Instance Pool field to its default value"
+        },
+        {
+          "info": {
+            "name": "Evict Instance Pool members",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id:evict",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation evicts the specified Compute instances member from the Instance Pool, shrinking it to `&lt;current pool size&gt; - &lt;# evicted members&gt;`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "instance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Snapshot of a Compute instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:create-snapshot",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a Snapshot of a Compute instance"
+        },
+        {
+          "info": {
+            "name": "Reveal the password used during instance creation or the latest password reset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:password",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the password used during instance creation or the latest password reset.\n            This is only available for VMs created against templates having the `password-enabled`\n            property set to `true`.\n\n            Passwords are transiently stored for at most 24 hours and intended to be retrieved shortly after\n            creation or resets."
+        },
+        {
+          "info": {
+            "name": "Resize a Compute instance disk",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:resize-disk",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation resizes a Compute instance's disk volume. Note: the disk can only grow, cannot be shrunk."
+        },
+        {
+          "info": {
+            "name": "Reset a compute instance password",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:reset-password",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset a compute instance password"
+        },
+        {
+          "info": {
+            "name": "Start a Compute instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:start",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation starts a virtual machine, potentially using a rescue profile if specified"
+        },
+        {
+          "info": {
+            "name": "Enable tpm for the instance.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:enable-tpm",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Enable tpm for the instance."
+        },
+        {
+          "info": {
+            "name": "Scale a Compute instance to a new Instance Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:scale",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation changes the Compute instance's type. Note: the new Instance Type must be within the same family (e.g. a standard instance cannot be scaled to gpu2 or storage)."
+        },
+        {
+          "info": {
+            "name": "Stop a Compute instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:stop",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop a Compute instance"
+        },
+        {
+          "info": {
+            "name": "Set instance destruction protection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:add-protection",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set instance destruction protection"
+        },
+        {
+          "info": {
+            "name": "Reset Instance field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset Instance field"
+        },
+        {
+          "info": {
+            "name": "Remove instance destruction protection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:remove-protection",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove instance destruction protection"
+        },
+        {
+          "info": {
+            "name": "Reset a Compute instance to a base/target template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:reset",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation re-installs a Compute instance to a base template. If target template is provided it will be used to recreated instance from. Warning: the operation wipes all data stored on the disk."
+        },
+        {
+          "info": {
+            "name": "Retrieve signed url valid for 60 seconds to connect via console-proxy websocket to VM VNC console.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/console/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve signed url valid for 60 seconds to connect via console-proxy websocket to VM VNC console."
+        },
+        {
+          "info": {
+            "name": "Retrieve Compute instance details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Compute instance details"
+        },
+        {
+          "info": {
+            "name": "Update a Compute instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Compute instance"
+        },
+        {
+          "info": {
+            "name": "Delete a Compute instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Compute instance"
+        },
+        {
+          "info": {
+            "name": "Reboot a Compute instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:id:reboot",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reboot a Compute instance"
+        },
+        {
+          "info": {
+            "name": "List Compute instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance",
+            "params": [
+              {
+                "name": "manager-id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "manager-type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ip-address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labels",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Compute instances"
+        },
+        {
+          "info": {
+            "name": "Create a Compute instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/instance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Compute instance"
+        },
+        {
+          "info": {
+            "name": "Revert a snapshot for an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/instance/:instance-id:revert-snapshot",
+            "params": [
+              {
+                "name": "instance-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation reverts the snapshot to the Compute instance volume, restoring stored data as it was at the time of the snapshot.\nThe Compute instance must be previously stopped."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "reverse-dns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query the PTR DNS records for an elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Query the PTR DNS records for an elastic IP"
+        },
+        {
+          "info": {
+            "name": "Update/Create the PTR DNS record for an elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update/Create the PTR DNS record for an elastic IP"
+        },
+        {
+          "info": {
+            "name": "Delete the PTR DNS record for an elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete the PTR DNS record for an elastic IP"
+        },
+        {
+          "info": {
+            "name": "Query the PTR DNS records for an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/instance/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Query the PTR DNS records for an instance"
+        },
+        {
+          "info": {
+            "name": "Update/Create the PTR DNS record for an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/instance/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update/Create the PTR DNS record for an instance"
+        },
+        {
+          "info": {
+            "name": "Delete the PTR DNS record for an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/instance/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete the PTR DNS record for an instance"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "anti-affinity-group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Anti-affinity Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/anti-affinity-group"
+          },
+          "docs": "List Anti-affinity Groups"
+        },
+        {
+          "info": {
+            "name": "Create an Anti-affinity Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/anti-affinity-group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Anti-affinity Group"
+        },
+        {
+          "info": {
+            "name": "Retrieve Anti-affinity Group details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/anti-affinity-group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Anti-affinity Group details"
+        },
+        {
+          "info": {
+            "name": "Delete an Anti-affinity Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/anti-affinity-group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an Anti-affinity Group"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ai-api-key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List AI API Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/ai-api-key"
+          },
+          "docs": "List AI API keys for an organization"
+        },
+        {
+          "info": {
+            "name": "Create AI API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/ai-api-key",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new AI API key"
+        },
+        {
+          "info": {
+            "name": "Get AI API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/ai-api-key/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get AI API key metadata"
+        },
+        {
+          "info": {
+            "name": "Update AI API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/ai-api-key/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update AI API key name and/or scope"
+        },
+        {
+          "info": {
+            "name": "Delete AI API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/ai-api-key/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete AI API key"
+        },
+        {
+          "info": {
+            "name": "Rotate AI API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/ai-api-key/:id/rotate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rotate AI API key value"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve organization usage reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/usage-report",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns aggregated usage reports for an organization"
+        },
+        {
+          "info": {
+            "name": "Retrieve an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/organization"
+          },
+          "docs": "Retrieve an organization"
+        },
+        {
+          "info": {
+            "name": "[BETA] Retrieve organization environmental impact reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/env-impact/:period",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Returns environmental impact reports for an organization"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "event",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/event",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve Mutation Events for a given date range. Defaults to retrieving Events for the past 24 hours.\n         Both a `from` and `to` arguments can be specified to filter Events over a specific period.\n         Events will be the the most descriptive possible but not all fields are mandatory"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "security-group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete a Security Group rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/security-group/:id/rules/:rule-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "rule-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Security Group rule"
+        },
+        {
+          "info": {
+            "name": "List Security Groups.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/security-group",
+            "params": [
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists security groups. When visibility is set to public, lists public security groups.\nPublic security groups are objects maintained by Exoscale which contain source addresses for\nrelevant services hosted by Exoscale. They can be used a source in ingress rules and as a destination\nin egress rules."
+        },
+        {
+          "info": {
+            "name": "Create a Security Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/security-group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Security Group"
+        },
+        {
+          "info": {
+            "name": "Retrieve Security Group details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/security-group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Security Group details"
+        },
+        {
+          "info": {
+            "name": "Delete a Security Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/security-group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Security Group"
+        },
+        {
+          "info": {
+            "name": "Attach a Compute instance to a Security Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/security-group/:id:attach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attach a Compute instance to a Security Group"
+        },
+        {
+          "info": {
+            "name": "Create a Security Group rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/security-group/:id/rules",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Security Group rule"
+        },
+        {
+          "info": {
+            "name": "Remove an external source from a Security Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/security-group/:id:remove-source",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove an external source from a Security Group"
+        },
+        {
+          "info": {
+            "name": "Detach a Compute instance from a Security Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/security-group/:id:detach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Detach a Compute instance from a Security Group"
+        },
+        {
+          "info": {
+            "name": "Add an external source as a member of a Security Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/security-group/:id:add-source",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an external source as a member of a Security Group"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "kms-key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[BETA] Disable Key Rotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/disable-key-rotation",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable the periodic rotation of a KMS Key."
+        },
+        {
+          "info": {
+            "name": "[BETA] Get KMS Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve KMS Key details."
+        },
+        {
+          "info": {
+            "name": "[BETA] Enable KMS Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/enable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Enable a KMS Key\""
+        },
+        {
+          "info": {
+            "name": "[BETA] List KMS Key Rotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/list-key-rotations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all the key material versions of a KMS Key."
+        },
+        {
+          "info": {
+            "name": "[BETA] Enable Key Rotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/enable-key-rotation",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable the periodic rotation of a KMS Key."
+        },
+        {
+          "info": {
+            "name": "[BETA] Rotate Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/rotate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Perform a manual rotation of the key material for a symmetric key."
+        },
+        {
+          "info": {
+            "name": "[BETA] Disable KMS Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable a KMS Key"
+        },
+        {
+          "info": {
+            "name": "[BETA] List KMS Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key"
+          },
+          "docs": "List KMS Keys details for an organization in a given zone."
+        },
+        {
+          "info": {
+            "name": "[BETA] Create KMS Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a KMS Key in a given zone with a given name."
+        },
+        {
+          "info": {
+            "name": "[BETA] Schedule KMS Key Deletion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/schedule-deletion",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Schedule a KMS key for deletion after a delay."
+        },
+        {
+          "info": {
+            "name": "[BETA] Replicate KMS Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/replicate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replicate a KMS key to a target zone."
+        },
+        {
+          "info": {
+            "name": "[BETA] Cancel KMS Key Deletion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/cancel-deletion",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel the scheduled deletion of a KMS Key."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "deployment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get inference-engine Help",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/help/inference-engine-parameters",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get list of allowed inference engine parameters with their descriptions and allowed values"
+        },
+        {
+          "info": {
+            "name": "Scale Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/deployment/:id/scale",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Scale Deployment"
+        },
+        {
+          "info": {
+            "name": "List Deployments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/deployment",
+            "params": [
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Deployments"
+        },
+        {
+          "info": {
+            "name": "Create Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/deployment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deploy a model on an inference server"
+        },
+        {
+          "info": {
+            "name": "Get Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/deployment/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Deployment details"
+        },
+        {
+          "info": {
+            "name": "update-deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/deployment/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update AI deployment"
+        },
+        {
+          "info": {
+            "name": "Delete Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/deployment/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Deployment"
+        },
+        {
+          "info": {
+            "name": "List Instance Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/instance-type"
+          },
+          "docs": "List available instance types with authorization status based on GPU availability"
+        },
+        {
+          "info": {
+            "name": "Reveal Deployment API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/deployment/:id/api-key",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Deployment API Key"
+        },
+        {
+          "info": {
+            "name": "Get Deployment Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/deployment/:id/logs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "stream",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tail",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Return logs for the vLLM deployment (deploy/<release-name>--deployment-vllm). Optional ?stream=true to request streaming (may not be supported)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "role",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[BETA] Request generation of key/secret that allow caller to assume target role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-role/:target-role-id/assume",
+            "params": [
+              {
+                "name": "target-role-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Request generation of key/secret that allow caller to assume target role"
+        },
+        {
+          "info": {
+            "name": "Retrieve IAM Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-role/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve IAM Role"
+        },
+        {
+          "info": {
+            "name": "Update IAM Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-role/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update IAM Role"
+        },
+        {
+          "info": {
+            "name": "Delete IAM Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-role/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete IAM Role"
+        },
+        {
+          "info": {
+            "name": "Update IAM Assume role Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-role/:id:assume-role-policy",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update IAM Assume role Policy"
+        },
+        {
+          "info": {
+            "name": "Update IAM Role Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-role/:id:policy",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update IAM Role Policy"
+        },
+        {
+          "info": {
+            "name": "List IAM Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-role"
+          },
+          "docs": "List IAM Roles"
+        },
+        {
+          "info": {
+            "name": "Create IAM Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-role",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create IAM Role"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "private-network",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Attach a Compute instance to a Private Network",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/private-network/:id:attach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attach a Compute instance to a Private Network"
+        },
+        {
+          "info": {
+            "name": "Update the IP address of an instance attached to a managed private network",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/private-network/:id:update-ip",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the IP address of an instance attached to a managed private network"
+        },
+        {
+          "info": {
+            "name": "List Private Networks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/private-network"
+          },
+          "docs": "List Private Networks"
+        },
+        {
+          "info": {
+            "name": "Create a Private Network",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/private-network",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Private Network"
+        },
+        {
+          "info": {
+            "name": "Detach a Compute instance from a Private Network",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/private-network/:id:detach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Detach a Compute instance from a Private Network"
+        },
+        {
+          "info": {
+            "name": "Retrieve Private Network details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/private-network/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Private Network details"
+        },
+        {
+          "info": {
+            "name": "Update a Private Network",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/private-network/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Private Network"
+        },
+        {
+          "info": {
+            "name": "Delete a Private Network",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/private-network/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Private Network"
+        },
+        {
+          "info": {
+            "name": "Reset Private Network field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/private-network/:id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset Private Network field"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "model",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/model",
+            "params": [
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Models"
+        },
+        {
+          "info": {
+            "name": "Create Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/model",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Model files will be downloaded from Huggingface.\n\nName must be the exact name of the model on huggingface (ex: openai/gpt-oss-120b or ggml-org/gpt-oss-120b-GGUF).\n\nIf the model is under a license then you must provide a Huggingface access token for an account that signed the license agreement"
+        },
+        {
+          "info": {
+            "name": "Get Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/model/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Model details"
+        },
+        {
+          "info": {
+            "name": "Delete Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/ai/model/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Model"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "instance-type",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Instance Type details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-type/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Instance Type details"
+        },
+        {
+          "info": {
+            "name": "List Compute instance Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-type"
+          },
+          "docs": "List Compute instance Types"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "nodepool-template",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get-active-nodepool-template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-template/:kube-version/:variant",
+            "params": [
+              {
+                "name": "kube-version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variant",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the active template for a given kube version and variant (standard | nvidia)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "elastic-ip",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Elastic IPs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip"
+          },
+          "docs": "List Elastic IPs"
+        },
+        {
+          "info": {
+            "name": "Create an Elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Elastic IP"
+        },
+        {
+          "info": {
+            "name": "Reset an Elastic IP field to its default value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset an Elastic IP field to its default value"
+        },
+        {
+          "info": {
+            "name": "Detach a Compute instance from an Elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id:detach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Detach a Compute instance from an Elastic IP"
+        },
+        {
+          "info": {
+            "name": "Attach a Compute instance to an Elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id:attach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attach a Compute instance to an Elastic IP"
+        },
+        {
+          "info": {
+            "name": "Retrieve Elastic IP details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Elastic IP details"
+        },
+        {
+          "info": {
+            "name": "Update an Elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an Elastic IP"
+        },
+        {
+          "info": {
+            "name": "Delete an Elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an Elastic IP"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "zone",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/zone"
+          },
+          "docs": "List Zones"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a new Kubeconfig file for a SKS cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster-kubeconfig/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation returns a Kubeconfig file encoded in base64."
+        },
+        {
+          "info": {
+            "name": "Get the certificate for a SKS cluster authority",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/authority/:authority/cert",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This operation returns the certificate for the given SKS cluster authority encoded in base64."
+        },
+        {
+          "info": {
+            "name": "Resources that are scheduled to be removed in future kubernetes releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster-deprecated-resources/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This operation returns the deprecated resources for a given cluster"
+        },
+        {
+          "info": {
+            "name": "Upgrade a SKS cluster to pro",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/upgrade-service-level",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Upgrade a SKS cluster to pro"
+        },
+        {
+          "info": {
+            "name": "Rotate Exoscale CSI credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/rotate-csi-credentials",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rotate Exoscale CSI credentials"
+        },
+        {
+          "info": {
+            "name": "List SKS clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster"
+          },
+          "docs": "List SKS clusters"
+        },
+        {
+          "info": {
+            "name": "Create an SKS cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an SKS cluster"
+        },
+        {
+          "info": {
+            "name": "Retrieve SKS cluster details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve SKS cluster details"
+        },
+        {
+          "info": {
+            "name": "Update an SKS cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an SKS cluster"
+        },
+        {
+          "info": {
+            "name": "Delete an SKS cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an SKS cluster"
+        },
+        {
+          "info": {
+            "name": "Get the latest inspection result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/inspection",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Helps troubleshoot common problems when deploying a kubernetes cluster. Inspections run every couple of minutes."
+        },
+        {
+          "info": {
+            "name": "Rotate Exoscale CCM credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/rotate-ccm-credentials",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rotate Exoscale CCM credentials"
+        },
+        {
+          "info": {
+            "name": "Rotate Exoscale Karpenter credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/rotate-karpenter-credentials",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rotate Exoscale Karpenter credentials"
+        },
+        {
+          "info": {
+            "name": "Rotate operators certificate authority",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/rotate-operators-ca",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rotate operators certificate authority"
+        },
+        {
+          "info": {
+            "name": "List available versions for SKS clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster-version",
+            "params": [
+              {
+                "name": "include-deprecated",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List available versions for SKS clusters"
+        },
+        {
+          "info": {
+            "name": "Upgrade an SKS cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/upgrade",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upgrade an SKS cluster"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "record",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List DNS domain records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:domain-id/record",
+            "params": [
+              {
+                "name": "domain-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List DNS domain records"
+        },
+        {
+          "info": {
+            "name": "Create DNS domain record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:domain-id/record",
+            "params": [
+              {
+                "name": "domain-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create DNS domain record"
+        },
+        {
+          "info": {
+            "name": "Retrieve DNS domain record details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:domain-id/record/:record-id",
+            "params": [
+              {
+                "name": "domain-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "record-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve DNS domain record details"
+        },
+        {
+          "info": {
+            "name": "Update DNS domain record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:domain-id/record/:record-id",
+            "params": [
+              {
+                "name": "domain-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "record-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update DNS domain record"
+        },
+        {
+          "info": {
+            "name": "Delete DNS domain record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:domain-id/record/:record-id",
+            "params": [
+              {
+                "name": "domain-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "record-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete DNS domain record"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "deploy-target",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Deploy Targets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/deploy-target"
+          },
+          "docs": "List Deploy Targets"
+        },
+        {
+          "info": {
+            "name": "Retrieve Deploy Target details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/deploy-target/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Deploy Target details"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "block-storage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Attach block storage volume to an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id:attach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attach block storage volume to an instance"
+        },
+        {
+          "info": {
+            "name": "Retrieve block storage snapshot details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage-snapshot/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve block storage snapshot details"
+        },
+        {
+          "info": {
+            "name": "Update block storage volume snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage-snapshot/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update block storage volume snapshot"
+        },
+        {
+          "info": {
+            "name": "Delete a block storage snapshot, data will be unrecoverable",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage-snapshot/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a block storage snapshot, data will be unrecoverable"
+        },
+        {
+          "info": {
+            "name": "Retrieve block storage volume details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve block storage volume details"
+        },
+        {
+          "info": {
+            "name": "Update block storage volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update block storage volume"
+        },
+        {
+          "info": {
+            "name": "Delete a block storage volume, data will be unrecoverable",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a block storage volume, data will be unrecoverable"
+        },
+        {
+          "info": {
+            "name": "Create a block storage snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id:create-snapshot",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a block storage snapshot"
+        },
+        {
+          "info": {
+            "name": "List block storage snapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage-snapshot"
+          },
+          "docs": "List block storage snapshots"
+        },
+        {
+          "info": {
+            "name": "Resize a block storage volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id:resize-volume",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation resizes a Block storage volume. Note: the volume can only grow, cannot be shrunk. Only detached volumes or volumes attached to stopped instances can be resized."
+        },
+        {
+          "info": {
+            "name": "Detach block storage volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id:detach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Detach block storage volume"
+        },
+        {
+          "info": {
+            "name": "List block storage volumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage",
+            "params": [
+              {
+                "name": "instance-id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List block storage volumes"
+        },
+        {
+          "info": {
+            "name": "Create a block storage volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a block storage volume"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "nodepool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve SKS Nodepool details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/nodepool/:sks-nodepool-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sks-nodepool-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve SKS Nodepool details"
+        },
+        {
+          "info": {
+            "name": "Update an SKS Nodepool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/nodepool/:sks-nodepool-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sks-nodepool-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an SKS Nodepool"
+        },
+        {
+          "info": {
+            "name": "Delete an SKS Nodepool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/nodepool/:sks-nodepool-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sks-nodepool-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an SKS Nodepool"
+        },
+        {
+          "info": {
+            "name": "Scale a SKS Nodepool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/nodepool/:sks-nodepool-id:scale",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sks-nodepool-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Scale a SKS Nodepool"
+        },
+        {
+          "info": {
+            "name": "Evict Nodepool members",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/nodepool/:sks-nodepool-id:evict",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sks-nodepool-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation evicts the specified Compute instances member from the Nodepool, shrinking it to `&lt;current nodepool size&gt; - &lt;# evicted members&gt;`."
+        },
+        {
+          "info": {
+            "name": "Create a new SKS Nodepool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/nodepool",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new SKS Nodepool"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "snapshot",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export a Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/snapshot/:id:export",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Export a Snapshot"
+        },
+        {
+          "info": {
+            "name": "Retrieve Snapshot details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/snapshot/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Snapshot details"
+        },
+        {
+          "info": {
+            "name": "Delete a Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/snapshot/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Snapshot"
+        },
+        {
+          "info": {
+            "name": "List Snapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/snapshot"
+          },
+          "docs": "List Snapshots"
+        },
+        {
+          "info": {
+            "name": "Promote a Snapshot to a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/snapshot/:id:promote",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Promote a Snapshot to a Template"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "quotas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Resource Quota",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/quota/:entity",
+            "params": [
+              {
+                "name": "entity",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Resource Quota"
+        },
+        {
+          "info": {
+            "name": "List Organization Quotas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/quota"
+          },
+          "docs": "List Organization Quotas"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "api-key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List API keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/api-key"
+          },
+          "docs": "List API keys"
+        },
+        {
+          "info": {
+            "name": "Create a new API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/api-key",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new API key"
+        },
+        {
+          "info": {
+            "name": "Get API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/api-key/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get API key"
+        },
+        {
+          "info": {
+            "name": "Delete an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/api-key/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an API key"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "domain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List DNS domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain"
+          },
+          "docs": "List DNS domains"
+        },
+        {
+          "info": {
+            "name": "Create DNS domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create DNS domain"
+        },
+        {
+          "info": {
+            "name": "Retrieve DNS domain zone file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:id/zone",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve DNS domain zone file"
+        },
+        {
+          "info": {
+            "name": "Retrieve DNS domain details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve DNS domain details"
+        },
+        {
+          "info": {
+            "name": "Delete DNS Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete DNS Domain"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "operation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Operation details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/operation/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Operation details"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "organization-policy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve IAM Organization Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-organization-policy"
+          },
+          "docs": "Retrieve IAM Organization Policy"
+        },
+        {
+          "info": {
+            "name": "Update IAM Organization Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-organization-policy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update IAM Organization Policy"
+        },
+        {
+          "info": {
+            "name": "Reset IAM Organization Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-organization-policy:reset"
+          },
+          "docs": "Reset IAM Organization Policy"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "crypto",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[BETA] Decrypt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/decrypt",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decrypt a ciphertext."
+        },
+        {
+          "info": {
+            "name": "[BETA] Encrypt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/encrypt",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Encrypt a plaintext."
+        },
+        {
+          "info": {
+            "name": "[BETA] Re-encrypt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/re-encrypt",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decrypts an existing ciphertext using its original key material and re-encrypts the underlying plaintext using a specified KMS key or the latest key material of the same KMS Key."
+        },
+        {
+          "info": {
+            "name": "[BETA] Generate Data Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/generate-data-key",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a Data Encryption Key from a given KMS Key."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "template",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Template details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/template/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Template details"
+        },
+        {
+          "info": {
+            "name": "Copy a Template from a zone to another",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/template/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy a Template from a zone to another"
+        },
+        {
+          "info": {
+            "name": "Update template attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/template/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update template attributes"
+        },
+        {
+          "info": {
+            "name": "Delete a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/template/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Template"
+        },
+        {
+          "info": {
+            "name": "List Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/template",
+            "params": [
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "family",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Templates"
+        },
+        {
+          "info": {
+            "name": "Register a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a Template"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "user",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update a User's IAM role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a User's IAM role"
+        },
+        {
+          "info": {
+            "name": "Delete User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete User"
+        },
+        {
+          "info": {
+            "name": "List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/user"
+          },
+          "docs": "List Users"
+        },
+        {
+          "info": {
+            "name": "Create a User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a User"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "sos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List SOS Buckets Usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sos-buckets-usage"
+          },
+          "docs": "List SOS Buckets Usage"
+        },
+        {
+          "info": {
+            "name": "Retrieve Presigned Download URL for SOS object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sos/:bucket/presigned-url",
+            "params": [
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Generates Presigned Download URL for SOS object"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ssh-key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve SSH key details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ssh-key/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve SSH key details"
+        },
+        {
+          "info": {
+            "name": "Delete a SSH key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/ssh-key/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a SSH key"
+        },
+        {
+          "info": {
+            "name": "List SSH keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/ssh-key"
+          },
+          "docs": "List SSH keys"
+        },
+        {
+          "info": {
+            "name": "Import SSH key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/ssh-key",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import SSH key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
