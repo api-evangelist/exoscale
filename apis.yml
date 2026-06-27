@@ -41,7 +41,7 @@ apis:
         url: https://openapi-v2.exoscale.com/
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/exoscale/refs/heads/main/openapi/exoscale-openapi.yml
-      - type: SignUp
+      - type: Signup
         url: https://portal.exoscale.com/register
       - type: Pricing
         url: https://www.exoscale.com/pricing/
@@ -54,7 +54,7 @@ common:
     url: https://community.exoscale.com/documentation/
   - type: Portal
     url: https://portal.exoscale.com/
-  - type: SignUp
+  - type: Signup
     url: https://portal.exoscale.com/register
   - type: Pricing
     url: https://www.exoscale.com/pricing/
