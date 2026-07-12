@@ -46,6 +46,12 @@ apis:
       - type: Pricing
         url: https://www.exoscale.com/pricing/
 common:
+  - type: TrustCenter
+    url: security/exoscale-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/exoscale-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/exoscale-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/exoscale
   - type: Website
