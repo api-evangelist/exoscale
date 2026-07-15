@@ -46,6 +46,8 @@ apis:
       - type: Pricing
         url: https://www.exoscale.com/pricing/
 common:
+  - type: AgenticAccess
+    url: agentic-access/exoscale-agentic-access.yml
   - type: TrustCenter
     url: security/exoscale-trust-center.yml
   - type: VulnerabilityDisclosure
