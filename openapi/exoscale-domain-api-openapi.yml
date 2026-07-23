@@ -1,0 +1,343 @@
+openapi: 3.0.0
+info:
+  version: 2.0.0
+  termsOfService: https://exoscale.com/terms
+  contact:
+    email: support@exoscale.com
+    name: Exoscale Support
+    url: https://portal.exoscale.com/tickets
+  title: Exoscale ai-api-key domain API
+  description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
+servers:
+- url: https://api-{zone}.exoscale.com/v2
+  variables:
+    zone:
+      default: ch-gva-2
+      enum:
+      - ch-gva-2
+      - ch-dk-2
+      - de-fra-1
+      - de-muc-1
+      - at-vie-1
+      - at-vie-2
+      - bg-sof-1
+      - hr-zag-1
+tags:
+- description: DNS zone management.
+  parent: dns
+  externalDocs:
+    description: Read more
+    url: https://community.exoscale.com/product/networking/dns/quick-start/
+  name: domain
+  x-display-name: Domain
+  x-weight: 710
+  x-icon: exo-dns
+paths:
+  /dns-domain:
+    get:
+      tags:
+      - domain
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dns-domains:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dns-domain'
+      description: ''
+      parameters: []
+      summary: List DNS domains
+      operationId: list-dns-domains
+    post:
+      tags:
+      - domain
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters: []
+      summary: Create DNS domain
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                unicode-name:
+                  type: string
+                  description: Domain name
+              description: DNS Domain
+      operationId: create-dns-domain
+  /dns-domain/{id}/zone:
+    get:
+      tags:
+      - domain
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  zone-file:
+                    type: string
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Retrieve DNS domain zone file
+      operationId: get-dns-domain-zone-file
+  /dns-domain/{id}:
+    delete:
+      tags:
+      - domain
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Delete DNS Domain
+      operationId: delete-dns-domain
+    get:
+      tags:
+      - domain
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dns-domain'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Retrieve DNS domain details
+      operationId: get-dns-domain
+components:
+  schemas:
+    dns-domain:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          x-go-findable: '1'
+          description: DNS domain ID
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: DNS domain creation date
+        unicode-name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          x-go-findable: '2'
+          description: DNS domain unicode name
+      description: DNS domain
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
+x-topics:
+- title: API Request Signature
+  content: '
+
+    In order to authenticate legitimate users, the Exoscale API requires incoming requests to be signed using valid Exoscale API account credentials with the following mechanism.
+
+
+    ## Signature Mechanism
+
+
+    The *message* (i.e. content) to sign contains several segments concatenated using a line return character (`\n`).
+
+
+    All segments must be included and in the described order. For cases where a segment doesn''t fit the context of the request (e.g. no request body) **an empty line must be used instead**.
+
+
+    * Request method and request URL (path only), separated by a space character
+
+    * Request body
+
+    * Request URL parameters (Query String) values, concatenated without separator. The matching parameter names have to be specified in the resulting signature header `signed-query-args=` pragma, separated by semicolons (e.g. `p1;p2;pN`).
+
+    * Request header values, concatenated without separator (none at the moment, leave empty)
+
+    * Request expiration date in UNIX timestamp format
+
+
+    Example *message* to sign for `GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2`:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0
+
+
+    v1v2
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of a request body and signed headers.
+
+
+    Example *message* to [create a security group](https://community.exoscale.com/reference/api/compute/security-group/#create-security-group)
+
+
+    ```
+
+    POST /v2/security-group
+
+    {"name": "my-security-group"}
+
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of query parameters and signed headers.
+
+
+    The request signature consists of the base64-encoded [HMAC](https://en.wikipedia.org/wiki/HMAC) hash of the UTF-8 encoded *message* and the Exoscale API secret using the SHA265 function:
+
+
+    ```
+
+    signature = BASE64_ENCODE(HMAC_SHA256(Exoscale API secret, message))
+
+    ```
+
+
+    Finally, the computed signature must be added to the API request in a `Authorization` header such as:
+
+
+    ```
+
+    Authorization: EXO2-HMAC-SHA256 credential=<Exoscale API key>,expires=<expiration date UNIX timestamp>,signature=<signature>
+
+    ```
+
+
+    Example API query:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2 HTTP/1.1
+
+    Host: api-ch-gva-2.exoscale.com
+
+    Authorization: EXO2-HMAC-SHA256 credential=EXO29147e9f89102b7ac1e88514,signed-query-args=p1;p2,expires=1599140767,signature=2AOBQsbElQb4FpKT/FM/9T4NobjlmZkSGvvdUth/xlY=
+
+    ```
+
+
+    ## Reference Implementations
+
+
+    You can look up the following existing reference implementations:
+
+
+    * Go: [github.com/exoscale/egoscale/api/v2 > `SecurityProviderExoscale.signRequest`](https://github.com/exoscale/egoscale/blob/master/v2/api/security.go)
+
+    * Python: [requests-exoscale-auth > `ExoscaleV2Auth`](https://github.com/exoscale/requests-exoscale-auth/blob/master/exoscale_auth.py)
+
+
+    '
+- title: Zone local resources
+  content: '
+
+    The API is deployed across all Exoscale zones. When performing a compute call, you should use the relevant zone for your resource.
+
+    For example: https://api-de-fra-1.exoscale.com/v2/instance would return only the instances from `de-fra-1`, https://api-ch-gva-2.exoscale.com/v2/instance from `ch-gva-2`.
+
+    To obtain a list of all instances across all zones, you would need to do the corresponding request for each zone.
+
+    '

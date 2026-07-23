@@ -1,0 +1,883 @@
+openapi: 3.0.0
+info:
+  version: 2.0.0
+  termsOfService: https://exoscale.com/terms
+  contact:
+    email: support@exoscale.com
+    name: Exoscale Support
+    url: https://portal.exoscale.com/tickets
+  title: Exoscale ai-api-key deployment API
+  description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
+servers:
+- url: https://api-{zone}.exoscale.com/v2
+  variables:
+    zone:
+      default: ch-gva-2
+      enum:
+      - ch-gva-2
+      - ch-dk-2
+      - de-fra-1
+      - de-muc-1
+      - at-vie-1
+      - at-vie-2
+      - bg-sof-1
+      - hr-zag-1
+tags:
+- description: Deployments are loaded model instances ready for inference.
+  parent: ai
+  externalDocs:
+    description: Read more
+    url: https://www.exoscale.com/ai-cloud-infrastructure/dedicated-inference/
+  name: deployment
+  x-display-name: Deployment
+  x-weight: 930
+  x-icon: exo-gpu
+paths:
+  /ai/help/inference-engine-parameters:
+    get:
+      tags:
+      - deployment
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get-inference-engine-help-response'
+      description: Get list of allowed inference engine parameters with their descriptions and allowed values
+      parameters:
+      - in: query
+        required: false
+        name: version
+        schema:
+          type: string
+      summary: Get inference-engine Help
+      operationId: get-inference-engine-help
+  /ai/deployment/{id}/scale:
+    post:
+      tags:
+      - deployment
+      responses:
+        '412':
+          description: '412'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/forbidden-operation-response'
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: Scale Deployment
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Scale Deployment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/scale-deployment-request'
+      operationId: scale-deployment
+  /ai/deployment:
+    post:
+      tags:
+      - deployment
+      responses:
+        '412':
+          description: '412'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/forbidden-operation-response'
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Deploy a model on an inference server
+      parameters: []
+      summary: Create Deployment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create-deployment-request'
+      operationId: create-deployment
+    get:
+      tags:
+      - deployment
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/list-deployments-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: List Deployments
+      parameters:
+      - in: query
+        required: false
+        name: visibility
+        schema:
+          type: string
+      summary: List Deployments
+      operationId: list-deployments
+  /ai/deployment/{id}:
+    get:
+      tags:
+      - deployment
+      responses:
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get-deployment-response'
+      description: Get Deployment details
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Get Deployment
+      operationId: get-deployment
+    patch:
+      tags:
+      - deployment
+      responses:
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/forbidden-operation-response'
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Update AI deployment
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update-deployment-request'
+      operationId: update-deployment
+    delete:
+      tags:
+      - deployment
+      responses:
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/forbidden-operation-response'
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: Delete Deployment
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Delete Deployment
+      operationId: delete-deployment
+  /ai/instance-type:
+    get:
+      tags:
+      - deployment
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/list-ai-instance-types-response'
+      description: List available instance types with authorization status based on GPU availability
+      parameters: []
+      summary: List Instance Types
+      operationId: list-ai-instance-types
+  /ai/deployment/{id}/api-key:
+    get:
+      tags:
+      - deployment
+      responses:
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reveal-deployment-api-key-response'
+      description: Get Deployment API Key
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Reveal Deployment API Key
+      operationId: reveal-deployment-api-key
+  /ai/deployment/{id}/logs:
+    get:
+      tags:
+      - deployment
+      responses:
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get-deployment-logs-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Return logs for the vLLM deployment (deploy/<release-name>--deployment-vllm). Optional ?stream=true to request streaming (may not be supported).
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        required: false
+        name: stream
+        schema:
+          type: boolean
+      - in: query
+        required: false
+        name: tail
+        schema:
+          type: integer
+          format: int64
+      summary: Get Deployment Logs
+      operationId: get-deployment-logs
+components:
+  schemas:
+    instance-type-entry:
+      description: Instance type with authorization status
+      properties:
+        family:
+          description: GPU family name
+          type: string
+        authorized:
+          description: Whether this instance type is authorized based on server availability
+          type: boolean
+      type: object
+    get-deployment-logs-entry:
+      description: A single log entry
+      properties:
+        time:
+          description: Timestamp of the log entry
+          type: string
+        node:
+          description: Node identifier
+          type: string
+        message:
+          description: Log message content
+          type: string
+      type: object
+    error-response:
+      type: object
+      description: RFC 9457 Problem Details error response
+      required:
+      - type
+      - title
+      - status
+      - detail
+      properties:
+        type:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        status:
+          type: integer
+          minimum: 100
+          maximum: 599
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri-reference
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              detail:
+                type: string
+              pointer:
+                type: string
+              location:
+                type: string
+    forbidden-operation-response:
+      description: Forbidden operation response
+      properties:
+        code:
+          description: Machine-readable forbidden error code
+          enum:
+          - forbidden_operation
+          type: string
+          readOnly: true
+        error:
+          description: Forbidden error message
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - error
+      - code
+    inference-engine-version:
+      description: Inference engine version
+      enum:
+      - 0.12.0
+      - 0.15.1
+      - 0.16.0
+      - 0.17.0
+      - 0.18.0
+      - 0.18.1
+      - 0.19.0
+      default: 0.19.0
+      type: string
+    model-ref:
+      properties:
+        name:
+          description: Associated model name
+          type: string
+          minLength: 1
+        id:
+          description: Associated model ID
+          format: uuid
+          type: string
+      type: object
+    get-deployment-logs-response:
+      description: Deployment logs
+      properties:
+        logs:
+          description: List of log entries
+          type: array
+          items:
+            $ref: '#/components/schemas/get-deployment-logs-entry'
+      type: object
+    list-ai-instance-types-response:
+      description: List of available instance types with authorization status
+      properties:
+        instance-types:
+          type: array
+          items:
+            $ref: '#/components/schemas/instance-type-entry'
+      type: object
+    get-deployment-response:
+      description: AI deployment
+      properties:
+        gpu-count:
+          description: Number of GPUs
+          format: int64
+          type: integer
+          minimum: 1
+        updated-at:
+          description: Update time
+          format: date-time
+          type: string
+          readOnly: true
+        deployment-url:
+          description: Deployment URL (nullable)
+          type: string
+        service-level:
+          description: Service level
+          type: string
+          minLength: 1
+        inference-engine-version:
+          $ref: '#/components/schemas/inference-engine-version'
+        name:
+          description: Deployment name
+          type: string
+          minLength: 1
+        state:
+          description: Deployment state
+          enum:
+          - ready
+          - creating
+          - error
+          - deploying
+          type: string
+        gpu-type:
+          description: GPU type family
+          type: string
+          minLength: 1
+        id:
+          description: Deployment ID
+          format: uuid
+          type: string
+          readOnly: true
+        replicas:
+          description: Number of replicas (>=0)
+          format: int64
+          type: integer
+          minimum: 0
+        state-details:
+          description: Deployment state details
+          type: string
+        created-at:
+          description: Creation time
+          format: date-time
+          type: string
+          readOnly: true
+        inference-engine-parameters:
+          description: Optional extra inference engine server CLI args
+          type: array
+          items:
+            type: string
+        model:
+          $ref: '#/components/schemas/model-ref'
+      type: object
+    list-deployments-response:
+      description: AI model list
+      properties:
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/list-deployments-response-entry'
+      type: object
+    create-deployment-request:
+      description: Deployment an AI model onto a set of GPUs
+      properties:
+        gpu-count:
+          description: Number of GPUs (1-8)
+          format: int64
+          type: integer
+          minimum: 1
+        inference-engine-version:
+          $ref: '#/components/schemas/inference-engine-version'
+        name:
+          description: Deployment name
+          type: string
+          minLength: 1
+        gpu-type:
+          description: GPU type family (e.g., gpua5000, gpu3080ti)
+          type: string
+        replicas:
+          description: Number of replicas (>=1)
+          format: int64
+          type: integer
+          minimum: 1
+        inference-engine-parameters:
+          description: Optional extra inference engine server CLI args
+          type: array
+          items:
+            type: string
+        model:
+          $ref: '#/components/schemas/model-ref'
+      type: object
+      required:
+      - model
+      - name
+      - gpu-type
+      - gpu-count
+      - replicas
+    get-inference-engine-help-response:
+      description: List of allowed inference-engine parameters
+      properties:
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/inference-engine-parameter-entry'
+      type: object
+    reveal-deployment-api-key-response:
+      description: AI deployment inference endpoint authentication key
+      properties:
+        api-key:
+          type: string
+      type: object
+    list-deployments-response-entry:
+      description: AI deployment
+      properties:
+        gpu-count:
+          description: Number of GPUs
+          format: int64
+          type: integer
+          minimum: 1
+        updated-at:
+          description: Update time
+          format: date-time
+          type: string
+          readOnly: true
+        deployment-url:
+          description: Deployment URL (nullable)
+          type: string
+        service-level:
+          description: Service level
+          type: string
+          minLength: 1
+        name:
+          description: Deployment name
+          type: string
+          minLength: 1
+        state:
+          description: Deployment state
+          enum:
+          - ready
+          - creating
+          - error
+          - deploying
+          type: string
+        gpu-type:
+          description: GPU type family
+          type: string
+          minLength: 1
+        id:
+          description: Deployment ID
+          format: uuid
+          type: string
+          readOnly: true
+        replicas:
+          description: Number of replicas (>=0)
+          format: int64
+          type: integer
+          minimum: 0
+        created-at:
+          description: Creation time
+          format: date-time
+          type: string
+          readOnly: true
+        model:
+          $ref: '#/components/schemas/model-ref'
+      type: object
+    scale-deployment-request:
+      description: Scale AI deployment
+      properties:
+        replicas:
+          description: Number of replicas (>=0)
+          format: int64
+          type: integer
+          minimum: 0
+      type: object
+      required:
+      - replicas
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
+    update-deployment-request:
+      description: Update AI deployment
+      properties:
+        inference-engine-version:
+          $ref: '#/components/schemas/inference-engine-version'
+        name:
+          description: Deployment name
+          type: string
+          minLength: 1
+        inference-engine-parameters:
+          description: Optional extra inference engine server CLI args
+          type: array
+          items:
+            type: string
+      type: object
+    inference-engine-parameter-entry:
+      description: inference-engine parameter definition
+      properties:
+        description:
+          description: Parameter description
+          type: string
+        allowed-values:
+          description: Allowed values
+          type: array
+          items:
+            type: string
+        default:
+          description: Default value if nothing is specified
+          type: string
+        name:
+          description: Parameter name
+          type: string
+        section:
+          description: Section
+          type: string
+        type:
+          description: Parameter type
+          type: string
+        flags:
+          description: Flag name
+          type: array
+          items:
+            type: string
+      type: object
+x-topics:
+- title: API Request Signature
+  content: '
+
+    In order to authenticate legitimate users, the Exoscale API requires incoming requests to be signed using valid Exoscale API account credentials with the following mechanism.
+
+
+    ## Signature Mechanism
+
+
+    The *message* (i.e. content) to sign contains several segments concatenated using a line return character (`\n`).
+
+
+    All segments must be included and in the described order. For cases where a segment doesn''t fit the context of the request (e.g. no request body) **an empty line must be used instead**.
+
+
+    * Request method and request URL (path only), separated by a space character
+
+    * Request body
+
+    * Request URL parameters (Query String) values, concatenated without separator. The matching parameter names have to be specified in the resulting signature header `signed-query-args=` pragma, separated by semicolons (e.g. `p1;p2;pN`).
+
+    * Request header values, concatenated without separator (none at the moment, leave empty)
+
+    * Request expiration date in UNIX timestamp format
+
+
+    Example *message* to sign for `GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2`:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0
+
+
+    v1v2
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of a request body and signed headers.
+
+
+    Example *message* to [create a security group](https://community.exoscale.com/reference/api/compute/security-group/#create-security-group)
+
+
+    ```
+
+    POST /v2/security-group
+
+    {"name": "my-security-group"}
+
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of query parameters and signed headers.
+
+
+    The request signature consists of the base64-encoded [HMAC](https://en.wikipedia.org/wiki/HMAC) hash of the UTF-8 encoded *message* and the Exoscale API secret using the SHA265 function:
+
+
+    ```
+
+    signature = BASE64_ENCODE(HMAC_SHA256(Exoscale API secret, message))
+
+    ```
+
+
+    Finally, the computed signature must be added to the API request in a `Authorization` header such as:
+
+
+    ```
+
+    Authorization: EXO2-HMAC-SHA256 credential=<Exoscale API key>,expires=<expiration date UNIX timestamp>,signature=<signature>
+
+    ```
+
+
+    Example API query:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2 HTTP/1.1
+
+    Host: api-ch-gva-2.exoscale.com
+
+    Authorization: EXO2-HMAC-SHA256 credential=EXO29147e9f89102b7ac1e88514,signed-query-args=p1;p2,expires=1599140767,signature=2AOBQsbElQb4FpKT/FM/9T4NobjlmZkSGvvdUth/xlY=
+
+    ```
+
+
+    ## Reference Implementations
+
+
+    You can look up the following existing reference implementations:
+
+
+    * Go: [github.com/exoscale/egoscale/api/v2 > `SecurityProviderExoscale.signRequest`](https://github.com/exoscale/egoscale/blob/master/v2/api/security.go)
+
+    * Python: [requests-exoscale-auth > `ExoscaleV2Auth`](https://github.com/exoscale/requests-exoscale-auth/blob/master/exoscale_auth.py)
+
+
+    '
+- title: Zone local resources
+  content: '
+
+    The API is deployed across all Exoscale zones. When performing a compute call, you should use the relevant zone for your resource.
+
+    For example: https://api-de-fra-1.exoscale.com/v2/instance would return only the instances from `de-fra-1`, https://api-ch-gva-2.exoscale.com/v2/instance from `ch-gva-2`.
+
+    To obtain a list of all instances across all zones, you would need to do the corresponding request for each zone.
+
+    '

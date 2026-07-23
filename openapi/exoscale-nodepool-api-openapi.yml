@@ -1,0 +1,786 @@
+openapi: 3.0.0
+info:
+  version: 2.0.0
+  termsOfService: https://exoscale.com/terms
+  contact:
+    email: support@exoscale.com
+    name: Exoscale Support
+    url: https://portal.exoscale.com/tickets
+  title: Exoscale ai-api-key nodepool API
+  description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
+servers:
+- url: https://api-{zone}.exoscale.com/v2
+  variables:
+    zone:
+      default: ch-gva-2
+      enum:
+      - ch-gva-2
+      - ch-dk-2
+      - de-fra-1
+      - de-muc-1
+      - at-vie-1
+      - at-vie-2
+      - bg-sof-1
+      - hr-zag-1
+tags:
+- description: Nodepools are groups of compute instances managed by SKS, serving as worker nodes in your Kubernetes cluster.
+  parent: sks
+  externalDocs:
+    description: Read more
+    url: https://community.exoscale.com/documentation/sks/
+  name: nodepool
+  x-display-name: Nodepool
+  x-weight: 320
+  x-icon: exo-vmpool
+paths:
+  /sks-cluster/{id}/nodepool/{sks-nodepool-id}:
+    put:
+      tags:
+      - nodepool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      - in: path
+        required: true
+        name: sks-nodepool-id
+        schema:
+          type: string
+          format: uuid
+      summary: Update an SKS Nodepool
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                anti-affinity-groups:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/anti-affinity-group-ref'
+                  uniqueItems: true
+                  maxItems: 8
+                  description: Nodepool Anti-affinity Groups
+                description:
+                  type: string
+                  maxLength: 255
+                  description: Nodepool description
+                public-ip-assignment:
+                  type: string
+                  enum:
+                  - inet4
+                  - dual
+                  description: 'Configures public IP assignment of the Instances with:
+
+
+                    * IPv4 (`inet4`) addressing only;
+
+                    * both IPv4 and IPv6 (`dual`) addressing.'
+                labels:
+                  $ref: '#/components/schemas/sks-nodepool-labels'
+                  description: Nodepool labels
+                taints:
+                  $ref: '#/components/schemas/sks-nodepool-taints'
+                  description: Nodepool taints
+                security-groups:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/security-group-ref'
+                  uniqueItems: true
+                  maxItems: 16
+                  description: Nodepool Security Groups
+                name:
+                  type: string
+                  maxLength: 255
+                  minLength: 1
+                  description: Nodepool name, lowercase only
+                instance-type:
+                  $ref: '#/components/schemas/instance-type-ref'
+                  description: Nodepool instances type
+                private-networks:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/private-network-ref'
+                  uniqueItems: true
+                  maxItems: 16
+                  description: Nodepool Private Networks
+                kubelet-image-gc:
+                  $ref: '#/components/schemas/kubelet-image-gc'
+                  description: Kubelet image GC options
+                instance-prefix:
+                  type: string
+                  maxLength: 30
+                  minLength: 1
+                  description: 'Prefix to apply to managed instances names (default: pool), lowercase only'
+                deploy-target:
+                  $ref: '#/components/schemas/deploy-target-ref'
+                  nullable: true
+                  description: Nodepool Deploy Target
+                disk-size:
+                  type: integer
+                  format: int64
+                  minimum: 20
+                  maximum: 51200
+                  exclusiveMinimum: false
+                  exclusiveMaximum: false
+                  description: Nodepool instances disk size in GiB
+      operationId: update-sks-nodepool
+    get:
+      tags:
+      - nodepool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sks-nodepool'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      - in: path
+        required: true
+        name: sks-nodepool-id
+        schema:
+          type: string
+          format: uuid
+      summary: Retrieve SKS Nodepool details
+      operationId: get-sks-nodepool
+    delete:
+      tags:
+      - nodepool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      - in: path
+        required: true
+        name: sks-nodepool-id
+        schema:
+          type: string
+          format: uuid
+      summary: Delete an SKS Nodepool
+      operationId: delete-sks-nodepool
+  /sks-cluster/{id}/nodepool/{sks-nodepool-id}:scale:
+    put:
+      tags:
+      - nodepool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      - in: path
+        required: true
+        name: sks-nodepool-id
+        schema:
+          type: string
+          format: uuid
+      summary: Scale a SKS Nodepool
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                size:
+                  type: integer
+                  format: int64
+                  minimum: 0
+                  exclusiveMinimum: false
+                  description: Number of instances
+              required:
+              - size
+      operationId: scale-sks-nodepool
+  /sks-cluster/{id}/nodepool/{sks-nodepool-id}:evict:
+    put:
+      tags:
+      - nodepool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: This operation evicts the specified Compute instances member from the Nodepool, shrinking it to `&lt;current nodepool size&gt; - &lt;# evicted members&gt;`.
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      - in: path
+        required: true
+        name: sks-nodepool-id
+        schema:
+          type: string
+          format: uuid
+      summary: Evict Nodepool members
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instances:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                  uniqueItems: true
+      operationId: evict-sks-nodepool-members
+  /sks-cluster/{id}/nodepool:
+    post:
+      tags:
+      - nodepool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Create a new SKS Nodepool
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                anti-affinity-groups:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/anti-affinity-group-ref'
+                  uniqueItems: true
+                  maxItems: 8
+                  description: Nodepool Anti-affinity Groups
+                description:
+                  type: string
+                  maxLength: 255
+                  description: Nodepool description
+                public-ip-assignment:
+                  type: string
+                  enum:
+                  - inet4
+                  - dual
+                  description: 'Configures public IP assignment of the Instances with:
+
+
+                    * IPv4 (`inet4`) addressing only (default);
+
+                    * both IPv4 and IPv6 (`dual`) addressing.'
+                labels:
+                  $ref: '#/components/schemas/sks-nodepool-labels'
+                  description: Nodepool labels
+                taints:
+                  $ref: '#/components/schemas/sks-nodepool-taints'
+                  description: Nodepool taints
+                security-groups:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/security-group-ref'
+                  uniqueItems: true
+                  maxItems: 16
+                  description: Nodepool Security Groups
+                name:
+                  type: string
+                  maxLength: 255
+                  minLength: 1
+                  description: Nodepool name, lowercase only
+                instance-type:
+                  $ref: '#/components/schemas/instance-type-ref'
+                  description: Nodepool instances type
+                private-networks:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/private-network-ref'
+                  uniqueItems: true
+                  maxItems: 16
+                  description: Nodepool Private Networks
+                size:
+                  type: integer
+                  format: int64
+                  minimum: 0
+                  exclusiveMinimum: true
+                  description: Number of instances
+                kubelet-image-gc:
+                  $ref: '#/components/schemas/kubelet-image-gc'
+                  description: Kubelet image GC options
+                instance-prefix:
+                  type: string
+                  maxLength: 30
+                  minLength: 1
+                  description: 'Prefix to apply to instances names (default: pool), lowercase only'
+                deploy-target:
+                  $ref: '#/components/schemas/deploy-target-ref'
+                  description: Nodepool Deploy Target
+                addons:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - storage-lvm
+                  uniqueItems: true
+                  description: Nodepool addons
+                disk-size:
+                  type: integer
+                  format: int64
+                  minimum: 20
+                  maximum: 51200
+                  exclusiveMinimum: false
+                  exclusiveMaximum: false
+                  description: Nodepool instances disk size in GiB
+              required:
+              - name
+              - size
+              - disk-size
+              - instance-type
+      operationId: create-sks-nodepool
+components:
+  schemas:
+    instance-type-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance type ID
+      description: Instance type reference
+    private-network-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Private network ID
+      description: Private network reference
+    instance-pool-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance Pool ID
+      description: Target Instance Pool
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
+    security-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Security group ID
+      description: Security group reference
+    kubelet-image-gc:
+      type: object
+      properties:
+        high-threshold:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMinimum: false
+        low-threshold:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMinimum: false
+        min-age:
+          type: string
+      description: Kubelet image GC options
+    template-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Template ID
+      description: Template reference
+    sks-nodepool-taint:
+      type: object
+      properties:
+        value:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Nodepool taint value
+        effect:
+          type: string
+          enum:
+          - NoExecute
+          - NoSchedule
+          - PreferNoSchedule
+          description: Nodepool taint effect
+      required:
+      - value
+      - effect
+      description: Nodepool taint
+    sks-nodepool-taints:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/sks-nodepool-taint'
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
+    sks-nodepool:
+      type: object
+      properties:
+        anti-affinity-groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/anti-affinity-group-ref'
+          uniqueItems: true
+          maxItems: 8
+          description: Nodepool Anti-affinity Groups
+        description:
+          type: string
+          maxLength: 255
+          description: Nodepool description
+        public-ip-assignment:
+          type: string
+          enum:
+          - inet4
+          - dual
+          description: 'Nodepool public IP assignment of the Instances:
+
+
+            * IPv4 (`inet4`) addressing only;
+
+            * IPv4 and IPv6 (`dual`) addressing.'
+        labels:
+          $ref: '#/components/schemas/sks-nodepool-labels'
+          description: Nodepool labels
+        taints:
+          $ref: '#/components/schemas/sks-nodepool-taints'
+          description: Nodepool taints
+        security-groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/security-group-ref'
+          uniqueItems: true
+          maxItems: 16
+          description: Nodepool Security Groups
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Nodepool name
+        instance-type:
+          $ref: '#/components/schemas/instance-type-ref'
+          description: Nodepool Instances type
+        private-networks:
+          type: array
+          items:
+            $ref: '#/components/schemas/private-network-ref'
+          uniqueItems: true
+          maxItems: 16
+          description: Nodepool Private Networks
+        template:
+          $ref: '#/components/schemas/template-ref'
+          readOnly: true
+          description: Nodepool Instance template
+        state:
+          type: string
+          enum:
+          - renewing-token
+          - creating
+          - deleting
+          - running
+          - scaling
+          - updating
+          - error
+          readOnly: true
+          description: Nodepool state
+        size:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMinimum: false
+          description: Number of instances
+        kubelet-image-gc:
+          $ref: '#/components/schemas/kubelet-image-gc'
+          description: Kubelet image GC options
+        instance-pool:
+          $ref: '#/components/schemas/instance-pool-ref'
+          readOnly: true
+          description: Instance Pool managed by the Nodepool
+        instance-prefix:
+          type: string
+          maxLength: 30
+          minLength: 1
+          description: 'The instances created by the Nodepool will be prefixed with this value (default: pool)'
+        deploy-target:
+          $ref: '#/components/schemas/deploy-target-ref'
+          description: Instance Pool Deploy Target
+        addons:
+          type: array
+          items:
+            type: string
+            enum:
+            - storage-lvm
+          uniqueItems: true
+          description: Nodepool addons
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Nodepool ID
+        disk-size:
+          type: integer
+          format: int64
+          minimum: 20
+          maximum: 51200
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+          description: Nodepool instances disk size in GiB
+        version:
+          type: string
+          readOnly: true
+          description: Nodepool version
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Nodepool creation date
+      description: SKS Nodepool
+    anti-affinity-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
+    sks-nodepool-labels:
+      type: object
+      additionalProperties:
+        type: string
+x-topics:
+- title: API Request Signature
+  content: '
+
+    In order to authenticate legitimate users, the Exoscale API requires incoming requests to be signed using valid Exoscale API account credentials with the following mechanism.
+
+
+    ## Signature Mechanism
+
+
+    The *message* (i.e. content) to sign contains several segments concatenated using a line return character (`\n`).
+
+
+    All segments must be included and in the described order. For cases where a segment doesn''t fit the context of the request (e.g. no request body) **an empty line must be used instead**.
+
+
+    * Request method and request URL (path only), separated by a space character
+
+    * Request body
+
+    * Request URL parameters (Query String) values, concatenated without separator. The matching parameter names have to be specified in the resulting signature header `signed-query-args=` pragma, separated by semicolons (e.g. `p1;p2;pN`).
+
+    * Request header values, concatenated without separator (none at the moment, leave empty)
+
+    * Request expiration date in UNIX timestamp format
+
+
+    Example *message* to sign for `GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2`:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0
+
+
+    v1v2
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of a request body and signed headers.
+
+
+    Example *message* to [create a security group](https://community.exoscale.com/reference/api/compute/security-group/#create-security-group)
+
+
+    ```
+
+    POST /v2/security-group
+
+    {"name": "my-security-group"}
+
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of query parameters and signed headers.
+
+
+    The request signature consists of the base64-encoded [HMAC](https://en.wikipedia.org/wiki/HMAC) hash of the UTF-8 encoded *message* and the Exoscale API secret using the SHA265 function:
+
+
+    ```
+
+    signature = BASE64_ENCODE(HMAC_SHA256(Exoscale API secret, message))
+
+    ```
+
+
+    Finally, the computed signature must be added to the API request in a `Authorization` header such as:
+
+
+    ```
+
+    Authorization: EXO2-HMAC-SHA256 credential=<Exoscale API key>,expires=<expiration date UNIX timestamp>,signature=<signature>
+
+    ```
+
+
+    Example API query:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2 HTTP/1.1
+
+    Host: api-ch-gva-2.exoscale.com
+
+    Authorization: EXO2-HMAC-SHA256 credential=EXO29147e9f89102b7ac1e88514,signed-query-args=p1;p2,expires=1599140767,signature=2AOBQsbElQb4FpKT/FM/9T4NobjlmZkSGvvdUth/xlY=
+
+    ```
+
+
+    ## Reference Implementations
+
+
+    You can look up the following existing reference implementations:
+
+
+    * Go: [github.com/exoscale/egoscale/api/v2 > `SecurityProviderExoscale.signRequest`](https://github.com/exoscale/egoscale/blob/master/v2/api/security.go)
+
+    * Python: [requests-exoscale-auth > `ExoscaleV2Auth`](https://github.com/exoscale/requests-exoscale-auth/blob/master/exoscale_auth.py)
+
+
+    '
+- title: Zone local resources
+  content: '
+
+    The API is deployed across all Exoscale zones. When performing a compute call, you should use the relevant zone for your resource.
+
+    For example: https://api-de-fra-1.exoscale.com/v2/instance would return only the instances from `de-fra-1`, https://api-ch-gva-2.exoscale.com/v2/instance from `ch-gva-2`.
+
+    To obtain a list of all instances across all zones, you would need to do the corresponding request for each zone.
+
+    '

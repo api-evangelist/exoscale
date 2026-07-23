@@ -1,0 +1,878 @@
+openapi: 3.0.0
+info:
+  version: 2.0.0
+  termsOfService: https://exoscale.com/terms
+  contact:
+    email: support@exoscale.com
+    name: Exoscale Support
+    url: https://portal.exoscale.com/tickets
+  title: Exoscale ai-api-key kms-key API
+  description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
+servers:
+- url: https://api-{zone}.exoscale.com/v2
+  variables:
+    zone:
+      default: ch-gva-2
+      enum:
+      - ch-gva-2
+      - ch-dk-2
+      - de-fra-1
+      - de-muc-1
+      - at-vie-1
+      - at-vie-2
+      - bg-sof-1
+      - hr-zag-1
+tags:
+- description: Operations for KMS Key lifecycle management.
+  parent: kms
+  externalDocs:
+    description: Read more
+    url: https://community.exoscale.com/documentation/kms/kms-key
+  name: kms-key
+  x-display-name: KMS Key
+  x-weight: 1130
+  x-icon: exo-license
+paths:
+  /kms-key/{id}/disable-key-rotation:
+    post:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/disable-kms-key-rotation-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Disable the periodic rotation of a KMS Key.
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: '[BETA] Disable Key Rotation'
+      operationId: disable-kms-key-rotation
+  /kms-key/{id}:
+    get:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get-kms-key-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Retrieve KMS Key details.
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: '[BETA] Get KMS Key'
+      operationId: get-kms-key
+  /kms-key/{id}/enable:
+    post:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Enable a KMS Key"
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: '[BETA] Enable KMS Key'
+      operationId: enable-kms-key
+  /kms-key/{id}/list-key-rotations:
+    get:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/list-kms-key-rotations-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: List all the key material versions of a KMS Key.
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: '[BETA] List KMS Key Rotations'
+      operationId: list-kms-key-rotations
+  /kms-key/{id}/enable-key-rotation:
+    post:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/enable-kms-key-rotation-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Enable the periodic rotation of a KMS Key.
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: '[BETA] Enable Key Rotation'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/enable-kms-key-rotation-request'
+      operationId: enable-kms-key-rotation
+  /kms-key/{id}/rotate:
+    post:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rotate-kms-key-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Perform a manual rotation of the key material for a symmetric key.
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: '[BETA] Rotate Key'
+      operationId: rotate-kms-key
+  /kms-key/{id}/disable:
+    post:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Disable a KMS Key
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: '[BETA] Disable KMS Key'
+      operationId: disable-kms-key
+  /kms-key:
+    post:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/create-kms-key-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        '409':
+          description: '409'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Create a KMS Key in a given zone with a given name.
+      parameters: []
+      summary: '[BETA] Create KMS Key'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create-kms-key-request'
+      operationId: create-kms-key
+    get:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/list-kms-keys-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: List KMS Keys details for an organization in a given zone.
+      parameters: []
+      summary: '[BETA] List KMS Keys'
+      operationId: list-kms-keys
+  /kms-key/{id}/schedule-deletion:
+    post:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Schedule a KMS key for deletion after a delay.
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: '[BETA] Schedule KMS Key Deletion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schedule-kms-key-deletion-request'
+      operationId: schedule-kms-key-deletion
+  /kms-key/{id}/replicate:
+    post:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Replicate a KMS key to a target zone.
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: '[BETA] Replicate KMS Key'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/replicate-kms-key-request'
+      operationId: replicate-kms-key
+  /kms-key/{id}/cancel-deletion:
+    post:
+      tags:
+      - kms-key
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success-response'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+      description: Cancel the scheduled deletion of a KMS Key.
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: '[BETA] Cancel KMS Key Deletion'
+      operationId: cancel-kms-key-deletion
+components:
+  schemas:
+    key-rotation-config:
+      type: object
+      required:
+      - manual-count
+      - automatic
+      - rotation-period
+      - next-at
+      properties:
+        manual-count:
+          type: integer
+        automatic:
+          type: boolean
+        rotation-period:
+          type: integer
+        next-at:
+          type: string
+          format: date-time
+    enable-kms-key-rotation-request:
+      type: object
+      properties:
+        rotation-period:
+          type: integer
+          minimum: 90
+          maximum: 2560
+          default: 365
+    create-kms-key-request:
+      type: object
+      required:
+      - name
+      - description
+      - usage
+      - multi-zone
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        usage:
+          type: string
+          enum:
+          - encrypt-decrypt
+        multi-zone:
+          type: boolean
+    key-material:
+      type: object
+      required:
+      - version
+      - created-at
+      - automatic
+      properties:
+        version:
+          type: integer
+        created-at:
+          type: string
+          format: date-time
+        automatic:
+          type: boolean
+    rotate-kms-key-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    list-kms-keys-response:
+      type: object
+      required:
+      - kms-keys
+      properties:
+        kms-keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/list-kms-keys-response-entry'
+    disable-kms-key-rotation-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    replica-failure:
+      type: object
+      required:
+      - attempted-watermark
+      - error
+      - failed-at
+      properties:
+        attempted-watermark:
+          type: integer
+        error:
+          type: string
+        failed-at:
+          type: string
+          format: date-time
+    success-response:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - target-registered
+          default: success
+    get-kms-key-response:
+      type: object
+      required:
+      - zone
+      - id
+      - name
+      - description
+      - usage
+      - source
+      - status
+      - status-since
+      - material
+      - rotation
+      - multi-zone
+      - origin-zone
+      - replicas
+      - created-at
+      - revision
+      properties:
+        description:
+          type: string
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+        revision:
+          $ref: '#/components/schemas/revision-stamp'
+        name:
+          type: string
+        multi-zone:
+          type: boolean
+        source:
+          type: string
+          enum:
+          - exoscale-kms
+        usage:
+          type: string
+        replicas-status:
+          type: array
+          items:
+            $ref: '#/components/schemas/replica-state'
+        status:
+          type: string
+          enum:
+          - enabled
+          - disabled
+          - pending-deletion
+        status-since:
+          type: string
+          format: date-time
+        id:
+          type: string
+          format: uuid
+        replicas:
+          type: array
+          items:
+            type: string
+        material:
+          $ref: '#/components/schemas/key-material'
+        origin-zone:
+          type: string
+        created-at:
+          type: string
+          format: date-time
+    error-response:
+      type: object
+      description: RFC 9457 Problem Details error response
+      required:
+      - type
+      - title
+      - status
+      - detail
+      properties:
+        type:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        status:
+          type: integer
+          minimum: 100
+          maximum: 599
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri-reference
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              detail:
+                type: string
+              pointer:
+                type: string
+              location:
+                type: string
+    replica-state:
+      type: object
+      required:
+      - zone
+      - last-applied-watermark
+      properties:
+        zone:
+          type: string
+        last-applied-watermark:
+          type: integer
+        last-failure:
+          $ref: '#/components/schemas/replica-failure'
+    list-kms-keys-response-entry:
+      type: object
+      required:
+      - id
+      - name
+      - description
+      - usage
+      - source
+      - status
+      - status-since
+      - material
+      - rotation
+      - multi-zone
+      - origin-zone
+      - replicas
+      - created-at
+      - revision
+      properties:
+        description:
+          type: string
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+        revision:
+          $ref: '#/components/schemas/revision-stamp'
+        name:
+          type: string
+        multi-zone:
+          type: boolean
+        source:
+          type: string
+          enum:
+          - exoscale-kms
+        usage:
+          type: string
+        status:
+          type: string
+          enum:
+          - enabled
+          - disabled
+          - pending-deletion
+        status-since:
+          type: string
+          format: date-time
+        id:
+          type: string
+          format: uuid
+        replicas:
+          type: array
+          items:
+            type: string
+        material:
+          $ref: '#/components/schemas/key-material'
+        origin-zone:
+          type: string
+        created-at:
+          type: string
+          format: date-time
+    revision-stamp:
+      type: object
+      required:
+      - at
+      - seq
+      properties:
+        at:
+          type: string
+          format: date-time
+        seq:
+          type: integer
+          minimum: 0
+    replicate-kms-key-request:
+      type: object
+      required:
+      - zone
+      properties:
+        zone:
+          type: string
+    schedule-kms-key-deletion-request:
+      type: object
+      properties:
+        delay-days:
+          type: integer
+          description: Number of days to wait until deletion is final.
+          minimum: 7
+          maximum: 30
+          default: 30
+    create-kms-key-response:
+      type: object
+      required:
+      - id
+      - name
+      - description
+      - usage
+      - source
+      - status
+      - status-since
+      - multi-zone
+      - origin-zone
+      - created-at
+      - revision
+      properties:
+        description:
+          type: string
+        revision:
+          $ref: '#/components/schemas/revision-stamp'
+        name:
+          type: string
+        multi-zone:
+          type: boolean
+        source:
+          type: string
+          enum:
+          - exoscale-kms
+        usage:
+          type: string
+        status:
+          type: string
+          enum:
+          - enabled
+          - disabled
+          - pending-deletion
+        id:
+          type: string
+          format: uuid
+        origin-zone:
+          type: string
+        created-at:
+          type: string
+          format: date-time
+    list-kms-key-rotations-response:
+      type: object
+      required:
+      - rotations
+      properties:
+        rotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/list-kms-key-rotations-response-entry'
+    list-kms-key-rotations-response-entry:
+      type: object
+      required:
+      - version
+      - rotated-at
+      - automatic
+      properties:
+        version:
+          type: integer
+        rotated-at:
+          type: string
+          format: date-time
+        automatic:
+          type: boolean
+    enable-kms-key-rotation-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+x-topics:
+- title: API Request Signature
+  content: '
+
+    In order to authenticate legitimate users, the Exoscale API requires incoming requests to be signed using valid Exoscale API account credentials with the following mechanism.
+
+
+    ## Signature Mechanism
+
+
+    The *message* (i.e. content) to sign contains several segments concatenated using a line return character (`\n`).
+
+
+    All segments must be included and in the described order. For cases where a segment doesn''t fit the context of the request (e.g. no request body) **an empty line must be used instead**.
+
+
+    * Request method and request URL (path only), separated by a space character
+
+    * Request body
+
+    * Request URL parameters (Query String) values, concatenated without separator. The matching parameter names have to be specified in the resulting signature header `signed-query-args=` pragma, separated by semicolons (e.g. `p1;p2;pN`).
+
+    * Request header values, concatenated without separator (none at the moment, leave empty)
+
+    * Request expiration date in UNIX timestamp format
+
+
+    Example *message* to sign for `GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2`:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0
+
+
+    v1v2
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of a request body and signed headers.
+
+
+    Example *message* to [create a security group](https://community.exoscale.com/reference/api/compute/security-group/#create-security-group)
+
+
+    ```
+
+    POST /v2/security-group
+
+    {"name": "my-security-group"}
+
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of query parameters and signed headers.
+
+
+    The request signature consists of the base64-encoded [HMAC](https://en.wikipedia.org/wiki/HMAC) hash of the UTF-8 encoded *message* and the Exoscale API secret using the SHA265 function:
+
+
+    ```
+
+    signature = BASE64_ENCODE(HMAC_SHA256(Exoscale API secret, message))
+
+    ```
+
+
+    Finally, the computed signature must be added to the API request in a `Authorization` header such as:
+
+
+    ```
+
+    Authorization: EXO2-HMAC-SHA256 credential=<Exoscale API key>,expires=<expiration date UNIX timestamp>,signature=<signature>
+
+    ```
+
+
+    Example API query:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2 HTTP/1.1
+
+    Host: api-ch-gva-2.exoscale.com
+
+    Authorization: EXO2-HMAC-SHA256 credential=EXO29147e9f89102b7ac1e88514,signed-query-args=p1;p2,expires=1599140767,signature=2AOBQsbElQb4FpKT/FM/9T4NobjlmZkSGvvdUth/xlY=
+
+    ```
+
+
+    ## Reference Implementations
+
+
+    You can look up the following existing reference implementations:
+
+
+    * Go: [github.com/exoscale/egoscale/api/v2 > `SecurityProviderExoscale.signRequest`](https://github.com/exoscale/egoscale/blob/master/v2/api/security.go)
+
+    * Python: [requests-exoscale-auth > `ExoscaleV2Auth`](https://github.com/exoscale/requests-exoscale-auth/blob/master/exoscale_auth.py)
+
+
+    '
+- title: Zone local resources
+  content: '
+
+    The API is deployed across all Exoscale zones. When performing a compute call, you should use the relevant zone for your resource.
+
+    For example: https://api-de-fra-1.exoscale.com/v2/instance would return only the instances from `de-fra-1`, https://api-ch-gva-2.exoscale.com/v2/instance from `ch-gva-2`.
+
+    To obtain a list of all instances across all zones, you would need to do the corresponding request for each zone.
+
+    '

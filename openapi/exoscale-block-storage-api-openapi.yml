@@ -1,0 +1,709 @@
+openapi: 3.0.0
+info:
+  version: 2.0.0
+  termsOfService: https://exoscale.com/terms
+  contact:
+    email: support@exoscale.com
+    name: Exoscale Support
+    url: https://portal.exoscale.com/tickets
+  title: Exoscale ai-api-key block-storage API
+  description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
+servers:
+- url: https://api-{zone}.exoscale.com/v2
+  variables:
+    zone:
+      default: ch-gva-2
+      enum:
+      - ch-gva-2
+      - ch-dk-2
+      - de-fra-1
+      - de-muc-1
+      - at-vie-1
+      - at-vie-2
+      - bg-sof-1
+      - hr-zag-1
+tags:
+- description: "Exoscale's Block Storage offers persistent externally\n                   attached volumes for your Compute instances."
+  externalDocs:
+    description: Read more
+    url: https://community.exoscale.com/documentation/block-storage/
+  name: block-storage
+  x-display-name: Block Storage
+  x-weight: 600
+  x-icon: exo-block-storage
+paths:
+  /block-storage/{id}:attach:
+    put:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Attach block storage volume to an instance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instance:
+                  $ref: '#/components/schemas/instance-ref'
+                  description: Instance to attach to, this can only be done if the volume is not currently attached
+              required:
+              - instance
+      operationId: attach-block-storage-volume-to-instance
+  /block-storage-snapshot/{id}:
+    delete:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Delete a block storage snapshot, data will be unrecoverable
+      operationId: delete-block-storage-snapshot
+    put:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Update block storage volume snapshot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  maxLength: 255
+                  nullable: true
+                  description: Snapshot name
+                labels:
+                  $ref: '#/components/schemas/labels'
+                  nullable: true
+                  description: Resource labels
+      operationId: update-block-storage-snapshot
+    get:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/block-storage-snapshot'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Retrieve block storage snapshot details
+      operationId: get-block-storage-snapshot
+  /block-storage/{id}:
+    get:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/block-storage-volume'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Retrieve block storage volume details
+      operationId: get-block-storage-volume
+    put:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Update block storage volume
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  maxLength: 255
+                  nullable: true
+                  description: Volume name
+                labels:
+                  $ref: '#/components/schemas/labels'
+                  nullable: true
+                  description: Resource labels
+      operationId: update-block-storage-volume
+    delete:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Delete a block storage volume, data will be unrecoverable
+      operationId: delete-block-storage-volume
+  /block-storage/{id}:create-snapshot:
+    post:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Create a block storage snapshot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  maxLength: 255
+                  minLength: 1
+                  description: Snapshot name
+                labels:
+                  $ref: '#/components/schemas/labels'
+                  description: Resource labels
+      operationId: create-block-storage-snapshot
+  /block-storage-snapshot:
+    get:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block-storage-snapshots:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/block-storage-snapshot'
+      description: ''
+      parameters: []
+      summary: List block storage snapshots
+      operationId: list-block-storage-snapshots
+  /block-storage/{id}:resize-volume:
+    put:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/block-storage-volume'
+      description: 'This operation resizes a Block storage volume. Note: the volume can only grow, cannot be shrunk. Only detached volumes or volumes attached to stopped instances can be resized.'
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Resize a block storage volume
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                size:
+                  type: integer
+                  format: int64
+                  minimum: 0
+                  exclusiveMinimum: true
+                  description: Volume size in GiB
+              required:
+              - size
+      operationId: resize-block-storage-volume
+  /block-storage/{id}:detach:
+    put:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Detach block storage volume
+      operationId: detach-block-storage-volume
+  /block-storage:
+    get:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block-storage-volumes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/block-storage-volume'
+      description: ''
+      parameters:
+      - in: query
+        required: false
+        name: instance-id
+        schema:
+          type: string
+          format: uuid
+      summary: List block storage volumes
+      operationId: list-block-storage-volumes
+    post:
+      tags:
+      - block-storage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters: []
+      summary: Create a block storage volume
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  maxLength: 255
+                  description: Volume name
+                size:
+                  type: integer
+                  format: int64
+                  minimum: 1
+                  exclusiveMinimum: false
+                  description: "Volume size in GiB.\n                            When a snapshot ID is supplied, this defaults to the size of the source volume, but can be set to a larger value."
+                labels:
+                  $ref: '#/components/schemas/labels'
+                  description: Resource labels
+                block-storage-snapshot:
+                  $ref: '#/components/schemas/block-storage-snapshot-ref'
+                  description: Block storage snapshot
+      operationId: create-block-storage-volume
+components:
+  schemas:
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    block-storage-snapshot-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Block storage snapshot ID
+      description: Target block storage snapshot
+    block-storage-volume:
+      type: object
+      properties:
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Resource labels
+        instance:
+          $ref: '#/components/schemas/instance-ref'
+          description: Volume attached instance, if any
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Volume name
+        state:
+          type: string
+          enum:
+          - snapshotting
+          - deleted
+          - creating
+          - detached
+          - deleting
+          - attaching
+          - error
+          - attached
+          - detaching
+          readOnly: true
+          description: Volume state
+        size:
+          type: integer
+          format: int64
+          minimum: 1
+          exclusiveMinimum: false
+          description: Volume size
+        blocksize:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMinimum: false
+          readOnly: true
+          description: Volume block size
+        block-storage-snapshots:
+          type: array
+          items:
+            $ref: '#/components/schemas/block-storage-snapshot-ref'
+          description: Volume snapshots, if any
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Volume ID
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Volume creation date
+      description: Block storage volume
+    block-storage-snapshot:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Snapshot ID
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Snapshot name
+        size:
+          type: integer
+          format: int64
+          minimum: 1
+          exclusiveMinimum: false
+          description: Snapshot size
+        volume-size:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMinimum: false
+          description: Original Volume size
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Snapshot creation date
+        state:
+          type: string
+          enum:
+          - partially-destroyed
+          - destroying
+          - creating
+          - created
+          - promoting
+          - error
+          - destroyed
+          - allocated
+          readOnly: true
+          description: Snapshot state
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Resource labels
+        block-storage-volume:
+          $ref: '#/components/schemas/block-storage-volume-ref'
+          description: Referenced volume
+      description: Block storage snapshot
+    block-storage-volume-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Block storage volume ID
+      description: Target block storage volume
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
+    instance-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance ID
+      description: Target Instance
+x-topics:
+- title: API Request Signature
+  content: '
+
+    In order to authenticate legitimate users, the Exoscale API requires incoming requests to be signed using valid Exoscale API account credentials with the following mechanism.
+
+
+    ## Signature Mechanism
+
+
+    The *message* (i.e. content) to sign contains several segments concatenated using a line return character (`\n`).
+
+
+    All segments must be included and in the described order. For cases where a segment doesn''t fit the context of the request (e.g. no request body) **an empty line must be used instead**.
+
+
+    * Request method and request URL (path only), separated by a space character
+
+    * Request body
+
+    * Request URL parameters (Query String) values, concatenated without separator. The matching parameter names have to be specified in the resulting signature header `signed-query-args=` pragma, separated by semicolons (e.g. `p1;p2;pN`).
+
+    * Request header values, concatenated without separator (none at the moment, leave empty)
+
+    * Request expiration date in UNIX timestamp format
+
+
+    Example *message* to sign for `GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2`:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0
+
+
+    v1v2
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of a request body and signed headers.
+
+
+    Example *message* to [create a security group](https://community.exoscale.com/reference/api/compute/security-group/#create-security-group)
+
+
+    ```
+
+    POST /v2/security-group
+
+    {"name": "my-security-group"}
+
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of query parameters and signed headers.
+
+
+    The request signature consists of the base64-encoded [HMAC](https://en.wikipedia.org/wiki/HMAC) hash of the UTF-8 encoded *message* and the Exoscale API secret using the SHA265 function:
+
+
+    ```
+
+    signature = BASE64_ENCODE(HMAC_SHA256(Exoscale API secret, message))
+
+    ```
+
+
+    Finally, the computed signature must be added to the API request in a `Authorization` header such as:
+
+
+    ```
+
+    Authorization: EXO2-HMAC-SHA256 credential=<Exoscale API key>,expires=<expiration date UNIX timestamp>,signature=<signature>
+
+    ```
+
+
+    Example API query:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2 HTTP/1.1
+
+    Host: api-ch-gva-2.exoscale.com
+
+    Authorization: EXO2-HMAC-SHA256 credential=EXO29147e9f89102b7ac1e88514,signed-query-args=p1;p2,expires=1599140767,signature=2AOBQsbElQb4FpKT/FM/9T4NobjlmZkSGvvdUth/xlY=
+
+    ```
+
+
+    ## Reference Implementations
+
+
+    You can look up the following existing reference implementations:
+
+
+    * Go: [github.com/exoscale/egoscale/api/v2 > `SecurityProviderExoscale.signRequest`](https://github.com/exoscale/egoscale/blob/master/v2/api/security.go)
+
+    * Python: [requests-exoscale-auth > `ExoscaleV2Auth`](https://github.com/exoscale/requests-exoscale-auth/blob/master/exoscale_auth.py)
+
+
+    '
+- title: Zone local resources
+  content: '
+
+    The API is deployed across all Exoscale zones. When performing a compute call, you should use the relevant zone for your resource.
+
+    For example: https://api-de-fra-1.exoscale.com/v2/instance would return only the instances from `de-fra-1`, https://api-ch-gva-2.exoscale.com/v2/instance from `ch-gva-2`.
+
+    To obtain a list of all instances across all zones, you would need to do the corresponding request for each zone.
+
+    '

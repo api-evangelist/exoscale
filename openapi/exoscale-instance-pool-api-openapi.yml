@@ -1,0 +1,842 @@
+openapi: 3.0.0
+info:
+  version: 2.0.0
+  termsOfService: https://exoscale.com/terms
+  contact:
+    email: support@exoscale.com
+    name: Exoscale Support
+    url: https://portal.exoscale.com/tickets
+  title: Exoscale ai-api-key instance-pool API
+  description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
+servers:
+- url: https://api-{zone}.exoscale.com/v2
+  variables:
+    zone:
+      default: ch-gva-2
+      enum:
+      - ch-gva-2
+      - ch-dk-2
+      - de-fra-1
+      - de-muc-1
+      - at-vie-1
+      - at-vie-2
+      - bg-sof-1
+      - hr-zag-1
+tags:
+- description: "Instance Pools is an Exoscale service allowing users\n                   to provision managed groups of identical Compute\n                   instances automatically."
+  parent: compute
+  externalDocs:
+    description: Read more
+    url: https://community.exoscale.com/documentation/compute/instance-pools/
+  name: instance-pool
+  x-display-name: Instance Pool
+  x-weight: 120
+  x-icon: exo-vmpool
+paths:
+  /instance-pool/{id}:scale:
+    put:
+      tags:
+      - instance-pool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Scale an Instance Pool
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                size:
+                  type: integer
+                  format: int64
+                  minimum: 0
+                  exclusiveMinimum: false
+                  description: Number of managed Instances
+              required:
+              - size
+      operationId: scale-instance-pool
+  /instance-pool:
+    get:
+      tags:
+      - instance-pool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  instance-pools:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/instance-pool'
+      description: ''
+      parameters: []
+      summary: List Instance Pools
+      operationId: list-instance-pools
+    post:
+      tags:
+      - instance-pool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters: []
+      summary: Create an Instance Pool
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                application-consistent-snapshot-enabled:
+                  type: boolean
+                  description: Enable application consistent snapshots
+                anti-affinity-groups:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/anti-affinity-group-ref'
+                  uniqueItems: true
+                  description: Instance Pool Anti-affinity Groups
+                description:
+                  type: string
+                  maxLength: 255
+                  description: Instance Pool description
+                public-ip-assignment:
+                  type: string
+                  enum:
+                  - inet4
+                  - dual
+                  - none
+                  description: Determines public IP assignment of the Instances. Type `none` is final and can't be changed later on.
+                labels:
+                  $ref: '#/components/schemas/labels'
+                  description: Instance Pool Labels
+                security-groups:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/security-group-ref'
+                  uniqueItems: true
+                  description: Instance Pool Security Groups
+                elastic-ips:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/elastic-ip-ref'
+                  uniqueItems: true
+                  description: Instances Elastic IPs
+                name:
+                  type: string
+                  maxLength: 255
+                  minLength: 1
+                  description: Instance Pool name
+                instance-type:
+                  $ref: '#/components/schemas/instance-type-ref'
+                  description: Instances type
+                min-available:
+                  type: integer
+                  format: int64
+                  minimum: 0
+                  exclusiveMinimum: false
+                  description: Minimum number of running Instances
+                private-networks:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/private-network-ref'
+                  uniqueItems: true
+                  description: Instance Pool Private Networks
+                template:
+                  $ref: '#/components/schemas/template-ref'
+                  description: Instances template
+                size:
+                  type: integer
+                  format: int64
+                  minimum: 0
+                  exclusiveMinimum: true
+                  description: Number of Instances
+                ssh-key:
+                  $ref: '#/components/schemas/ssh-key-ref'
+                  description: Instances SSH key
+                instance-prefix:
+                  type: string
+                  maxLength: 30
+                  minLength: 1
+                  description: 'Prefix to apply to Instances names (default: pool)'
+                user-data:
+                  type: string
+                  maxLength: 32768
+                  minLength: 1
+                  description: Instances Cloud-init user-data
+                deploy-target:
+                  $ref: '#/components/schemas/deploy-target-ref'
+                  description: Deploy Target to deploy Instances on
+                ipv6-enabled:
+                  type: boolean
+                  description: 'Enable IPv6. DEPRECATED: use `public-ip-assignments`.'
+                disk-size:
+                  type: integer
+                  format: int64
+                  minimum: 10
+                  maximum: 51200
+                  exclusiveMinimum: false
+                  exclusiveMaximum: false
+                  description: Instances disk size in GiB
+                ssh-keys:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ssh-key-ref'
+                  uniqueItems: true
+                  description: Instances SSH Keys
+              required:
+              - name
+              - size
+              - instance-type
+              - template
+              - disk-size
+      operationId: create-instance-pool
+  /instance-pool/{id}:
+    delete:
+      tags:
+      - instance-pool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Delete an Instance Pool
+      operationId: delete-instance-pool
+    get:
+      tags:
+      - instance-pool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/instance-pool'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Retrieve Instance Pool details
+      operationId: get-instance-pool
+    put:
+      tags:
+      - instance-pool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Update an Instance Pool
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                application-consistent-snapshot-enabled:
+                  type: boolean
+                  description: Enable application consistent snapshots
+                anti-affinity-groups:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/anti-affinity-group-ref'
+                  uniqueItems: true
+                  nullable: true
+                  description: Instance Pool Anti-affinity Groups
+                description:
+                  type: string
+                  maxLength: 255
+                  description: Instance Pool description
+                public-ip-assignment:
+                  type: string
+                  enum:
+                  - inet4
+                  - dual
+                  description: Determines public IP assignment of the Instances.
+                labels:
+                  $ref: '#/components/schemas/labels'
+                  description: Instance Pool Labels
+                security-groups:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/security-group-ref'
+                  uniqueItems: true
+                  nullable: true
+                  description: Instance Pool Security Groups
+                elastic-ips:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/elastic-ip-ref'
+                  nullable: true
+                  description: Instances Elastic IPs
+                name:
+                  type: string
+                  maxLength: 255
+                  minLength: 1
+                  description: Instance Pool name
+                instance-type:
+                  $ref: '#/components/schemas/instance-type-ref'
+                  description: Instances type
+                min-available:
+                  type: integer
+                  format: int64
+                  minimum: 0
+                  exclusiveMinimum: false
+                  nullable: true
+                  description: Minimum number of running Instances
+                private-networks:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/private-network-ref'
+                  uniqueItems: true
+                  nullable: true
+                  description: Instance Pool Private Networks
+                template:
+                  $ref: '#/components/schemas/template-ref'
+                  description: Instances template
+                ssh-key:
+                  $ref: '#/components/schemas/ssh-key-ref'
+                  nullable: true
+                  description: Instances SSH key
+                instance-prefix:
+                  type: string
+                  nullable: true
+                  description: 'Prefix to apply to Instances names (default: pool)'
+                user-data:
+                  type: string
+                  minLength: 1
+                  nullable: true
+                  description: Instances Cloud-init user-data
+                deploy-target:
+                  $ref: '#/components/schemas/deploy-target-ref'
+                  nullable: true
+                  description: Instance Pool Deploy Target
+                ipv6-enabled:
+                  type: boolean
+                  description: 'Enable IPv6. DEPRECATED: use `public-ip-assignments`.'
+                disk-size:
+                  type: integer
+                  format: int64
+                  minimum: 10
+                  maximum: 51200
+                  exclusiveMinimum: false
+                  exclusiveMaximum: false
+                  description: Instances disk size in GiB
+                ssh-keys:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ssh-key-ref'
+                  uniqueItems: true
+                  nullable: true
+                  description: Instances SSH keys
+      operationId: update-instance-pool
+  /instance-pool/{id}/{field}:
+    delete:
+      tags:
+      - instance-pool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: ''
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      - in: path
+        required: true
+        name: field
+        schema:
+          type: string
+          enum:
+          - anti-affinity-groups
+          - description
+          - labels
+          - security-groups
+          - elastic-ips
+          - private-networks
+          - ssh-key
+          - user-data
+          - deploy-target
+          - ipv6-enabled
+      summary: Reset an Instance Pool field to its default value
+      operationId: reset-instance-pool-field
+  /instance-pool/{id}:evict:
+    put:
+      tags:
+      - instance-pool
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/operation'
+      description: This operation evicts the specified Compute instances member from the Instance Pool, shrinking it to `&lt;current pool size&gt; - &lt;# evicted members&gt;`.
+      parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: string
+          format: uuid
+      summary: Evict Instance Pool members
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instances:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+      operationId: evict-instance-pool-members
+components:
+  schemas:
+    instance-type-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance type ID
+      description: Instance type reference
+    private-network-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Private network ID
+      description: Private network reference
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
+    security-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Security group ID
+      description: Security group reference
+    ssh-key-ref:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: SSH key name
+      description: SSH key reference
+    template-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Template ID
+      description: Template reference
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
+    elastic-ip-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Elastic IP ID
+      description: Elastic IP reference
+    instance-pool:
+      type: object
+      properties:
+        application-consistent-snapshot-enabled:
+          type: boolean
+          description: Enable application consistent snapshots
+        anti-affinity-groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/anti-affinity-group-ref'
+          description: Instance Pool Anti-affinity Groups
+        description:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Instance Pool description
+        public-ip-assignment:
+          $ref: '#/components/schemas/public-ip-assignment'
+          description: Instance Pool public IP assignment
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Instance Pool Labels
+        security-groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/security-group-ref'
+          description: Instance Pool Security Groups
+        elastic-ips:
+          type: array
+          items:
+            $ref: '#/components/schemas/elastic-ip-ref'
+          description: Instances Elastic IPs
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Instance Pool name
+        instance-type:
+          $ref: '#/components/schemas/instance-type-ref'
+          description: Instances type
+        min-available:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMinimum: false
+          description: Minimum number of running instances
+        private-networks:
+          type: array
+          items:
+            $ref: '#/components/schemas/private-network-ref'
+          description: Instance Pool Private Networks
+        template:
+          $ref: '#/components/schemas/template-ref'
+          description: Instances template
+        state:
+          type: string
+          enum:
+          - scaling-up
+          - scaling-down
+          - destroying
+          - creating
+          - suspended
+          - running
+          - updating
+          readOnly: true
+          description: Instance Pool state
+        size:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMinimum: true
+          description: Number of instances
+        ssh-key:
+          $ref: '#/components/schemas/ssh-key-ref'
+          description: Instances SSH key
+        instance-prefix:
+          type: string
+          maxLength: 30
+          minLength: 1
+          description: 'The instances created by the Instance Pool will be prefixed with this value (default: pool)'
+        user-data:
+          type: string
+          minLength: 1
+          description: Instances Cloud-init user-data
+        manager:
+          $ref: '#/components/schemas/manager'
+          readOnly: true
+          description: Instance Pool manager
+        instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/instance-ref'
+          readOnly: true
+          description: Instances
+        deploy-target:
+          $ref: '#/components/schemas/deploy-target-ref'
+          description: Instance Pool Deploy Target
+        ipv6-enabled:
+          type: boolean
+          description: Enable IPv6 for instances
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Instance Pool ID
+        disk-size:
+          type: integer
+          format: int64
+          minimum: 10
+          maximum: 51200
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+          description: Instances disk size in GiB
+        ssh-keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/ssh-key-ref'
+          description: Instances SSH keys
+      description: Instance Pool
+    manager:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Manager ID
+        type:
+          type: string
+          enum:
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    anti-affinity-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
+    instance-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance ID
+      description: Target Instance
+x-topics:
+- title: API Request Signature
+  content: '
+
+    In order to authenticate legitimate users, the Exoscale API requires incoming requests to be signed using valid Exoscale API account credentials with the following mechanism.
+
+
+    ## Signature Mechanism
+
+
+    The *message* (i.e. content) to sign contains several segments concatenated using a line return character (`\n`).
+
+
+    All segments must be included and in the described order. For cases where a segment doesn''t fit the context of the request (e.g. no request body) **an empty line must be used instead**.
+
+
+    * Request method and request URL (path only), separated by a space character
+
+    * Request body
+
+    * Request URL parameters (Query String) values, concatenated without separator. The matching parameter names have to be specified in the resulting signature header `signed-query-args=` pragma, separated by semicolons (e.g. `p1;p2;pN`).
+
+    * Request header values, concatenated without separator (none at the moment, leave empty)
+
+    * Request expiration date in UNIX timestamp format
+
+
+    Example *message* to sign for `GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2`:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0
+
+
+    v1v2
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of a request body and signed headers.
+
+
+    Example *message* to [create a security group](https://community.exoscale.com/reference/api/compute/security-group/#create-security-group)
+
+
+    ```
+
+    POST /v2/security-group
+
+    {"name": "my-security-group"}
+
+
+
+    1599140767
+
+    ```
+
+
+    The two blank lines above are due to the absence of query parameters and signed headers.
+
+
+    The request signature consists of the base64-encoded [HMAC](https://en.wikipedia.org/wiki/HMAC) hash of the UTF-8 encoded *message* and the Exoscale API secret using the SHA265 function:
+
+
+    ```
+
+    signature = BASE64_ENCODE(HMAC_SHA256(Exoscale API secret, message))
+
+    ```
+
+
+    Finally, the computed signature must be added to the API request in a `Authorization` header such as:
+
+
+    ```
+
+    Authorization: EXO2-HMAC-SHA256 credential=<Exoscale API key>,expires=<expiration date UNIX timestamp>,signature=<signature>
+
+    ```
+
+
+    Example API query:
+
+
+    ```
+
+    GET /v2/resource/a02baf5a-a3e4-49a0-857b-8a08d276c1c0?p1=v1&p2=v2 HTTP/1.1
+
+    Host: api-ch-gva-2.exoscale.com
+
+    Authorization: EXO2-HMAC-SHA256 credential=EXO29147e9f89102b7ac1e88514,signed-query-args=p1;p2,expires=1599140767,signature=2AOBQsbElQb4FpKT/FM/9T4NobjlmZkSGvvdUth/xlY=
+
+    ```
+
+
+    ## Reference Implementations
+
+
+    You can look up the following existing reference implementations:
+
+
+    * Go: [github.com/exoscale/egoscale/api/v2 > `SecurityProviderExoscale.signRequest`](https://github.com/exoscale/egoscale/blob/master/v2/api/security.go)
+
+    * Python: [requests-exoscale-auth > `ExoscaleV2Auth`](https://github.com/exoscale/requests-exoscale-auth/blob/master/exoscale_auth.py)
+
+
+    '
+- title: Zone local resources
+  content: '
+
+    The API is deployed across all Exoscale zones. When performing a compute call, you should use the relevant zone for your resource.
+
+    For example: https://api-de-fra-1.exoscale.com/v2/instance would return only the instances from `de-fra-1`, https://api-ch-gva-2.exoscale.com/v2/instance from `ch-gva-2`.
+
+    To obtain a list of all instances across all zones, you would need to do the corresponding request for each zone.
+
+    '
