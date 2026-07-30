@@ -6,7 +6,19 @@ description: >-
   (SKS), Database as a Service (DBaaS), and IAM. Data centers are located in Switzerland, Austria, Germany, and
   Bulgaria, providing data sovereignty and compliance with European data protection regulations.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/exoscale.png
 tags:
   - Cloud
   - Infrastructure
@@ -22,29 +34,634 @@ position: Consumer
 access: 3rd-Party
 specificationVersion: '0.19'
 apis:
-  - aid: exoscale:exoscale
-    name: Exoscale API
-    description: >-
-      Infrastructure automation API allowing programmatic access to all Exoscale products and services, including
-      Compute, SKS (Kubernetes), DBaaS, IAM, Object Storage, KMS, networking, and load balancing.
-    humanURL: https://openapi-v2.exoscale.com/
-    baseURL: https://api-ch-gva-2.exoscale.com/v2
-    tags:
-      - Cloud
-      - Compute
-      - Kubernetes
-      - DBaaS
-      - IAM
-      - Storage
-    properties:
-      - type: Documentation
-        url: https://openapi-v2.exoscale.com/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/exoscale/refs/heads/main/openapi/exoscale-openapi.yml
-      - type: Signup
-        url: https://portal.exoscale.com/register
-      - type: Pricing
-        url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-ai-api-key-api
+  name: Exoscale ai-api-key API
+  description: The ai-api-key API from Exoscale — 3 operation(s) for ai-api-key.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - ai-api-key
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-ai-api-key-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-anti-affinity-group-api
+  name: Exoscale anti-affinity-group API
+  description: Anti-affinity groups let you define placement constraints for your Compute instances.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - anti-affinity-group
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-anti-affinity-group-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-api-key-api
+  name: Exoscale api-key API
+  description: API keys are credentials for programmatic access to Exoscale APIs and services.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - api-key
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-api-key-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-block-storage-api
+  name: Exoscale block-storage API
+  description: >-
+    Exoscale's Block Storage offers persistent externally
+                       attached volumes for your Compute instances.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - block-storage
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-block-storage-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-ccm-api
+  name: Exoscale ccm API
+  description: The ccm API from Exoscale — 1 operation(s) for ccm.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - ccm
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-ccm-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-cluster-api
+  name: Exoscale cluster API
+  description: Clusters are managed Kubernetes control planes.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - cluster
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-cluster-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-compute-api
+  name: Exoscale compute API
+  description: >-
+    Host anything from simple applications to complex architectures. Start a compute instance in seconds
+    and scale as your infrastructure grows.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - compute
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-compute-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-crypto-api
+  name: Exoscale crypto API
+  description: A suite of cryptographic primitives offered by the Exoscale KMS.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - crypto
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-crypto-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-dbaas-api
+  name: Exoscale dbaas API
+  description: >-
+    Databases as a Service (DBaaS) provides scalable and fully-managed database solutions with high availability
+    and performance backed by Exoscale's Compute and Storage services.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - dbaas
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-dbaas-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-deploy-target-api
+  name: Exoscale deploy-target API
+  description: Deploy Target lets you spin up Compute instances on dedicated hypervisors.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - deploy-target
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-deploy-target-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-deployment-api
+  name: Exoscale deployment API
+  description: Deployments are loaded model instances ready for inference.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - deployment
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-deployment-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-domain-api
+  name: Exoscale domain API
+  description: DNS zone management.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - domain
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-domain-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-elastic-ip-api
+  name: Exoscale elastic-ip API
+  description: >-
+    Elastic IPs are additional public IPv4/6 addresses that can be attached to Compute instances, with
+    optional healthcheck support.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - elastic-ip
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-elastic-ip-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-event-api
+  name: Exoscale event API
+  description: >-
+    Events form the basis of the Exoscale audit-trail, a mechanism
+                       to query past events performing mutations on resources
+                       which happened on an organization.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - event
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-event-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-instance-api
+  name: Exoscale instance API
+  description: >-
+    Instances are the virtual machines at the core of the Exoscale
+                       Compute service.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - instance
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-instance-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-instance-pool-api
+  name: Exoscale instance-pool API
+  description: >-
+    Instance Pools is an Exoscale service allowing users
+                       to provision managed groups of identical Compute
+                       instances automatically.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - instance-pool
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-instance-pool-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-instance-type-api
+  name: Exoscale instance-type API
+  description: >-
+    An Instance Type is a resource describing the amount of
+                       CPU, RAM and GPUs allocated to a Compute instance.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - instance-type
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-instance-type-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-kms-key-api
+  name: Exoscale kms-key API
+  description: Operations for KMS Key lifecycle management.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - kms-key
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-kms-key-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-model-api
+  name: Exoscale model API
+  description: Lifecycle of AI Models.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - model
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-model-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-network-load-balancer-api
+  name: Exoscale network-load-balancer API
+  description: >-
+    A Network Load Balancer (NLB) is a Layer 4 (TCP/UDP)
+                       load balancer that distributes incoming traffic to Compute
+                       instances managed by an Instance Pool.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - network-load-balancer
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-network-load-balancer-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-nodepool-api
+  name: Exoscale nodepool API
+  description: >-
+    Nodepools are groups of compute instances managed by SKS, serving as worker nodes in your Kubernetes
+    cluster.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - nodepool
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-nodepool-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-nodepool-template-api
+  name: Exoscale nodepool-template API
+  description: Nodepool templates are Exoscale-managed instance templates for SKS worker nodes.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - nodepool-template
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-nodepool-template-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-operation-api
+  name: Exoscale operation API
+  description: >-
+    Operations describe the current state of an asynchronous
+                       operation.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - operation
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-operation-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-organization-api
+  name: Exoscale organization API
+  description: The organization API from Exoscale — 3 operation(s) for organization.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - organization
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-organization-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-organization-policy-api
+  name: Exoscale organization-policy API
+  description: >-
+    The Organization Policy is an IAM policy that applies as a first layer across your entire Exoscale
+    organization.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - organization-policy
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-organization-policy-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-private-network-api
+  name: Exoscale private-network API
+  description: Private Network provides private L2 networking functionality between Compute instances.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - private-network
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-private-network-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-quotas-api
+  name: Exoscale quotas API
+  description: The quotas API from Exoscale — 2 operation(s) for quotas.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - quotas
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-quotas-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-record-api
+  name: Exoscale record API
+  description: DNS zone records management.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - record
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-record-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-reverse-dns-api
+  name: Exoscale reverse-dns API
+  description: >-
+    Reverse DNS lets you record PTR records for Compute instance public IP addresses or Elastic IPs.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - reverse-dns
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-reverse-dns-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-role-api
+  name: Exoscale role API
+  description: IAM roles lets you define logical sets of policies to grant to users and API keys.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - role
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-role-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-security-group-api
+  name: Exoscale security-group API
+  description: >-
+    Security Groups are groups of firewall rules that regulate
+                       network traffic to and from your Compute instances.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - security-group
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-security-group-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-snapshot-api
+  name: Exoscale snapshot API
+  description: >-
+    Snapshots provide a way to get point-in-time recovery
+                       for your Compute instance.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - snapshot
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-snapshot-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-sos-api
+  name: Exoscale sos API
+  description: Exoscale Simple Object Storage (SOS) is an S3-compatible object storage service.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - sos
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-sos-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-ssh-key-api
+  name: Exoscale ssh-key API
+  description: SSH Keypairs
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - ssh-key
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-ssh-key-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-template-api
+  name: Exoscale template API
+  description: >-
+    Templates contain the OS and the initial setup of a
+                       Compute instance.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - template
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-template-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-user-api
+  name: Exoscale user API
+  description: IAM users map to humans empowered with access to Exoscale resources.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - user
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-user-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-zone-api
+  name: Exoscale zone API
+  description: >-
+    A Zone represents an independent datacenter in which Exoscale
+                       infrastructure is deployed into.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - zone
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-zone-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
 common:
   - type: AgenticAccess
     url: agentic-access/exoscale-agentic-access.yml
