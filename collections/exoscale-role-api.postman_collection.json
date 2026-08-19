@@ -1,0 +1,898 @@
+{
+  "item": [
+    {
+      "id": "adeacc03-f864-49f8-8e34-2f4de76c1fd6",
+      "name": "role",
+      "description": {
+        "content": "IAM roles lets you define logical sets of policies to grant to users and API keys.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d9c84a97-faa4-4633-9f08-a808fda9c74f",
+          "name": "[BETA] Request generation of key/secret that allow caller to assume target role",
+          "request": {
+            "name": "[BETA] Request generation of key/secret that allow caller to assume target role",
+            "description": {
+              "content": "[BETA] Request generation of key/secret that allow caller to assume target role",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-role",
+                ":target-role-id",
+                "assume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "target-role-id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ttl\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "918de2c2-e828-48c7-9632-ef5128b223ca",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-role",
+                    ":target-role-id",
+                    "assume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "target-role-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ttl\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": \"string\",\n  \"name\": \"string\",\n  \"org-id\": \"string\",\n  \"role-id\": \"string\",\n  \"secret\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "547d9aff-db4b-4336-a4cf-2b36335c5f53",
+          "name": "Update IAM Role",
+          "request": {
+            "name": "Update IAM Role",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-role",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"permissions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"max-session-ttl\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6a16a873-7840-4a1e-8650-eeb39d868f20",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-role",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"permissions\": [\n    \"<string>\"\n  ],\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"max-session-ttl\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3644db5d-a82d-1384-5d9e-5748ce8ee630\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"e1b799bb-61a4-33c6-65c0-c4cc592fad9d\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c8b52e6-bfa4-4ac8-a93e-35df00edfa56",
+          "name": "Retrieve IAM Role",
+          "request": {
+            "name": "Retrieve IAM Role",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-role",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d85a4bd-4826-433d-916b-a8f34845e738",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-role",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"permissions\": [\n    \"bypass-governance-retention\",\n    \"reset-iam-organization-policy\"\n  ],\n  \"assume-role-policy\": {\n    \"default-service-strategy\": \"allow\",\n    \"services\": {\n      \"key_0\": {\n        \"type\": \"deny\",\n        \"rules\": [\n          {\n            \"action\": \"allow\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"deny\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"key_1\": {\n        \"type\": \"deny\",\n        \"rules\": [\n          {\n            \"action\": \"allow\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"allow\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"key_2\": {\n        \"type\": \"rules\",\n        \"rules\": [\n          {\n            \"action\": \"deny\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"deny\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"key_3\": {\n        \"type\": \"deny\",\n        \"rules\": [\n          {\n            \"action\": \"allow\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"allow\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"key_4\": {\n        \"type\": \"deny\",\n        \"rules\": [\n          {\n            \"action\": \"allow\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"allow\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  },\n  \"editable\": true,\n  \"name\": \"string\",\n  \"max-session-ttl\": 4740,\n  \"policy\": {\n    \"default-service-strategy\": \"allow\",\n    \"services\": {\n      \"key_0\": {\n        \"type\": \"deny\",\n        \"rules\": [\n          {\n            \"action\": \"allow\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"allow\",\n            \"expression\": \"string\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  },\n  \"id\": \"88c6c069-31bb-fabe-5124-8a35407c4f5a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ba0b414-1a6d-4b14-bc20-80d71bdf44d2",
+          "name": "Delete IAM Role",
+          "request": {
+            "name": "Delete IAM Role",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-role",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4066eb0-4c6a-446d-99a4-ce72fd82a373",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-role",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3644db5d-a82d-1384-5d9e-5748ce8ee630\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"e1b799bb-61a4-33c6-65c0-c4cc592fad9d\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2d00893-4f53-4c31-9e11-27c8ee199fb5",
+          "name": "Update IAM Assume role Policy",
+          "request": {
+            "name": "Update IAM Assume role Policy",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-role",
+                "{{id}}:assume-role-policy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"default-service-strategy\": \"<string>\",\n  \"services\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d2d7eb8e-8d49-4f50-9adf-841bd9691d76",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-role",
+                    "{{id}}:assume-role-policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"default-service-strategy\": \"<string>\",\n  \"services\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3644db5d-a82d-1384-5d9e-5748ce8ee630\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"e1b799bb-61a4-33c6-65c0-c4cc592fad9d\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f1b3793-a97b-4b74-9c45-64b223bb8cbd",
+          "name": "Update IAM Role Policy",
+          "request": {
+            "name": "Update IAM Role Policy",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-role",
+                "{{id}}:policy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"default-service-strategy\": \"<string>\",\n  \"services\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5832ba3-27aa-4f22-8be8-30c775c343e8",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-role",
+                    "{{id}}:policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"default-service-strategy\": \"<string>\",\n  \"services\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3644db5d-a82d-1384-5d9e-5748ce8ee630\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"e1b799bb-61a4-33c6-65c0-c4cc592fad9d\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ce4c35e-ab8f-4a91-8355-4a285b5210f2",
+          "name": "List IAM Roles",
+          "request": {
+            "name": "List IAM Roles",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-role"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c6bbb2e-6ca4-4e8d-91cd-75fc6a2078f3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"iam-roles\": [\n    {\n      \"description\": \"string\",\n      \"labels\": {\n        \"key_0\": \"<string>\"\n      },\n      \"permissions\": [\n        \"bypass-governance-retention\",\n        \"reset-iam-organization-policy\"\n      ],\n      \"assume-role-policy\": {\n        \"default-service-strategy\": \"<string>\",\n        \"services\": {\n          \"key_0\": {\n            \"type\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"type\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"type\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"editable\": false,\n      \"name\": \"string\",\n      \"max-session-ttl\": 9841,\n      \"policy\": {\n        \"default-service-strategy\": \"<string>\",\n        \"services\": {\n          \"key_0\": {\n            \"type\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"id\": \"de9743ba-dec1-e0aa-3545-1e4ad8c1943a\"\n    },\n    {\n      \"description\": \"string\",\n      \"labels\": {\n        \"key_0\": \"<string>\"\n      },\n      \"permissions\": [\n        \"bypass-governance-retention\",\n        \"reset-iam-organization-policy\"\n      ],\n      \"assume-role-policy\": {\n        \"default-service-strategy\": \"<string>\",\n        \"services\": {\n          \"key_0\": {\n            \"type\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"editable\": true,\n      \"name\": \"string\",\n      \"max-session-ttl\": 7509,\n      \"policy\": {\n        \"default-service-strategy\": \"<string>\",\n        \"services\": {\n          \"key_0\": {\n            \"type\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"type\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"id\": \"cc554e53-f62a-a109-451c-094af73ad505\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18e9c657-af82-4f74-860a-8db0a7c29438",
+          "name": "Create IAM Role",
+          "request": {
+            "name": "Create IAM Role",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-role"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"permissions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"editable\": \"<boolean>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"policy\": {\n    \"default-service-strategy\": \"<string>\",\n    \"services\": {\n      \"key_0\": {\n        \"type\": \"<string>\",\n        \"rules\": [\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"key_1\": {\n        \"type\": \"<string>\",\n        \"rules\": [\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  },\n  \"assume-role-policy\": {\n    \"default-service-strategy\": \"<string>\",\n    \"services\": {\n      \"key_0\": {\n        \"type\": \"<string>\",\n        \"rules\": [\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  },\n  \"max-session-ttl\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97fbb5bc-3dd7-41b1-8afe-06a2d31efdde",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"permissions\": [\n    \"<string>\"\n  ],\n  \"editable\": \"<boolean>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"policy\": {\n    \"default-service-strategy\": \"<string>\",\n    \"services\": {\n      \"key_0\": {\n        \"type\": \"<string>\",\n        \"rules\": [\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"key_1\": {\n        \"type\": \"<string>\",\n        \"rules\": [\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  },\n  \"assume-role-policy\": {\n    \"default-service-strategy\": \"<string>\",\n    \"services\": {\n      \"key_0\": {\n        \"type\": \"<string>\",\n        \"rules\": [\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"action\": \"<string>\",\n            \"expression\": \"<string>\",\n            \"resources\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  },\n  \"max-session-ttl\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3644db5d-a82d-1384-5d9e-5748ce8ee630\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"e1b799bb-61a4-33c6-65c0-c4cc592fad9d\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<uuid>",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "64430d9c-84e5-459a-893d-9235c98d10ca",
+    "name": "Exoscale ai-api-key role API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

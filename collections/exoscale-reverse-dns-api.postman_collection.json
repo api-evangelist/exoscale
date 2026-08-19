@@ -1,0 +1,695 @@
+{
+  "item": [
+    {
+      "id": "1ccd2f9b-b2c5-491f-aeb1-8dda4b42a0cc",
+      "name": "reverse-dns",
+      "description": {
+        "content": "Reverse DNS lets you record PTR records for Compute instance public IP addresses or Elastic IPs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd036e8a-d2e2-4bef-8cd5-57898acc97d5",
+          "name": "Query the PTR DNS records for an elastic IP",
+          "request": {
+            "name": "Query the PTR DNS records for an elastic IP",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reverse-dns",
+                "elastic-ip",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf09ea7f-d367-4109-80f1-48c7f971152e",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse-dns",
+                    "elastic-ip",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"domain-name\": \"st\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b64cae62-7913-4c79-92aa-eff4151d9d0a",
+          "name": "Update/Create the PTR DNS record for an elastic IP",
+          "request": {
+            "name": "Update/Create the PTR DNS record for an elastic IP",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reverse-dns",
+                "elastic-ip",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"domain-name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e192fda-fdfe-4a91-bf30-bcca69925411",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse-dns",
+                    "elastic-ip",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain-name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d23db044-07d4-aeae-a8be-6a1256c9045f\",\n  \"reason\": \"unsupported\",\n  \"reference\": {\n    \"id\": \"af7a9af2-3a8a-15c8-4404-434c827b48c0\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3b36248-2faf-4265-be38-e589eb671b3b",
+          "name": "Delete the PTR DNS record for an elastic IP",
+          "request": {
+            "name": "Delete the PTR DNS record for an elastic IP",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reverse-dns",
+                "elastic-ip",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc401f7e-f287-4d52-a730-9ae9c2edd04d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse-dns",
+                    "elastic-ip",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d23db044-07d4-aeae-a8be-6a1256c9045f\",\n  \"reason\": \"unsupported\",\n  \"reference\": {\n    \"id\": \"af7a9af2-3a8a-15c8-4404-434c827b48c0\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "980fc674-6671-4af5-8652-33470d44414a",
+          "name": "Update/Create the PTR DNS record for an instance",
+          "request": {
+            "name": "Update/Create the PTR DNS record for an instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reverse-dns",
+                "instance",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"domain-name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "94f4c3d6-672a-4368-affd-38ef8ac4a78e",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse-dns",
+                    "instance",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain-name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d23db044-07d4-aeae-a8be-6a1256c9045f\",\n  \"reason\": \"unsupported\",\n  \"reference\": {\n    \"id\": \"af7a9af2-3a8a-15c8-4404-434c827b48c0\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93ba2266-954d-4ae8-9fbd-ff3b5ce28fed",
+          "name": "Query the PTR DNS records for an instance",
+          "request": {
+            "name": "Query the PTR DNS records for an instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reverse-dns",
+                "instance",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e723f1c-38f9-47ec-8649-3d58d0cf80f7",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse-dns",
+                    "instance",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"domain-name\": \"st\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22632258-caae-44fb-8d70-94d67a569bbf",
+          "name": "Delete the PTR DNS record for an instance",
+          "request": {
+            "name": "Delete the PTR DNS record for an instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reverse-dns",
+                "instance",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1daa501a-8f88-45c2-9aca-b7651a145120",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse-dns",
+                    "instance",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d23db044-07d4-aeae-a8be-6a1256c9045f\",\n  \"reason\": \"unsupported\",\n  \"reference\": {\n    \"id\": \"af7a9af2-3a8a-15c8-4404-434c827b48c0\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "354d4cc1-b050-47bf-b9e8-2730e14b6dbc",
+    "name": "Exoscale ai-api-key reverse-dns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

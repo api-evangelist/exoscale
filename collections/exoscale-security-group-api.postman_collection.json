@@ -1,0 +1,1120 @@
+{
+  "item": [
+    {
+      "id": "7f933430-f79f-4cde-99f5-a4d82aa12dbd",
+      "name": "security-group",
+      "description": {
+        "content": "Security Groups are groups of firewall rules that regulate\n                   network traffic to and from your Compute instances.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8c755299-3814-4efa-a93f-5a2a7d4f1f49",
+          "name": "Delete a Security Group rule",
+          "request": {
+            "name": "Delete a Security Group rule",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security-group",
+                ":id",
+                "rules",
+                ":rule-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "rule-id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ad52c10-37ad-4a4f-b11e-fdbf76ef5174",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security-group",
+                    ":id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "rule-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"841b1d54-f471-6537-d081-eb1d72bde5db\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"81e268a9-c589-5e09-c98c-3b5c483d5464\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4dfea176-d433-4194-8482-fa40441a9bed",
+          "name": "Create a Security Group",
+          "request": {
+            "name": "Create a Security Group",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e31eabf-b1e5-4eb1-b3e3-a9d4a8563c4b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"841b1d54-f471-6537-d081-eb1d72bde5db\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"81e268a9-c589-5e09-c98c-3b5c483d5464\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0571934-1659-436b-b184-836d8d67ef87",
+          "name": "List Security Groups.",
+          "request": {
+            "name": "List Security Groups.",
+            "description": {
+              "content": "Lists security groups. When visibility is set to public, lists public security groups.\nPublic security groups are objects maintained by Exoscale which contain source addresses for\nrelevant services hosted by Exoscale. They can be used a source in ingress rules and as a destination\nin egress rules.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "visibility",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bad0b099-4b87-440e-a8f5-8bce4487a965",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "visibility",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"security-groups\": [\n    {\n      \"id\": \"63a0c1b9-a812-f839-b627-6f856d65aa28\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"external-sources\": [\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"70e74ac0-bb5e-af99-c0f1-a272e2e4610c\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"external-sources\": [\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74303d92-93b2-4dd7-aa1c-6fbdfc66c629",
+          "name": "Retrieve Security Group details",
+          "request": {
+            "name": "Retrieve Security Group details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security-group",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "912b85db-df39-4286-9e5b-37b1e89d3419",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security-group",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d49208f4-4c18-e074-9080-2e86ff928a67\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"external-sources\": [\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf1d0e8f-f490-432b-a67e-5882a994d77e",
+          "name": "Delete a Security Group",
+          "request": {
+            "name": "Delete a Security Group",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security-group",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1ab3768-e813-48f2-a3d3-d65cb64520b6",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security-group",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"841b1d54-f471-6537-d081-eb1d72bde5db\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"81e268a9-c589-5e09-c98c-3b5c483d5464\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ef35ee4-5424-49b3-810e-b5cb1a5a98d1",
+          "name": "Attach a Compute instance to a Security Group",
+          "request": {
+            "name": "Attach a Compute instance to a Security Group",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security-group",
+                "{{id}}:attach"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instance\": {\n    \"application-consistent-snapshot-enabled\": \"<boolean>\",\n    \"anti-affinity-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"public-ip-assignment\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"security-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"elastic-ips\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"instance-type\": {},\n    \"private-networks\": [\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      }\n    ],\n    \"template\": {\n      \"application-consistent-snapshot-enabled\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"ssh-key-enabled\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"default-user\": \"<string>\",\n      \"size\": \"<long>\",\n      \"password-enabled\": \"<boolean>\",\n      \"checksum\": \"<string>\",\n      \"boot-mode\": \"<string>\",\n      \"zones\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"url\": \"<string>\"\n    },\n    \"secureboot-enabled\": \"<boolean>\",\n    \"ssh-key\": {\n      \"name\": \"<string>\"\n    },\n    \"user-data\": \"<string>\",\n    \"tpm-enabled\": \"<boolean>\",\n    \"deploy-target\": {\n      \"id\": \"<uuid>\"\n    },\n    \"snapshots\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"disk-size\": \"<long>\",\n    \"ssh-keys\": [\n      {\n        \"name\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0e4ffce-897f-4970-b23d-bd6f523607e7",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security-group",
+                    "{{id}}:attach"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instance\": {\n    \"application-consistent-snapshot-enabled\": \"<boolean>\",\n    \"anti-affinity-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"public-ip-assignment\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"security-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"elastic-ips\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"instance-type\": {},\n    \"private-networks\": [\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      }\n    ],\n    \"template\": {\n      \"application-consistent-snapshot-enabled\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"ssh-key-enabled\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"default-user\": \"<string>\",\n      \"size\": \"<long>\",\n      \"password-enabled\": \"<boolean>\",\n      \"checksum\": \"<string>\",\n      \"boot-mode\": \"<string>\",\n      \"zones\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"url\": \"<string>\"\n    },\n    \"secureboot-enabled\": \"<boolean>\",\n    \"ssh-key\": {\n      \"name\": \"<string>\"\n    },\n    \"user-data\": \"<string>\",\n    \"tpm-enabled\": \"<boolean>\",\n    \"deploy-target\": {\n      \"id\": \"<uuid>\"\n    },\n    \"snapshots\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"disk-size\": \"<long>\",\n    \"ssh-keys\": [\n      {\n        \"name\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"841b1d54-f471-6537-d081-eb1d72bde5db\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"81e268a9-c589-5e09-c98c-3b5c483d5464\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df924734-ac81-4367-b575-36d8570f48cf",
+          "name": "Create a Security Group rule",
+          "request": {
+            "name": "Create a Security Group rule",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security-group",
+                ":id",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flow-direction\": \"<string>\",\n  \"protocol\": \"<string>\",\n  \"description\": \"<string>\",\n  \"network\": \"<string>\",\n  \"security-group\": {\n    \"name\": \"<string>\",\n    \"visibility\": \"<string>\"\n  },\n  \"icmp\": {\n    \"code\": \"<long>\",\n    \"type\": \"<long>\"\n  },\n  \"start-port\": \"<long>\",\n  \"end-port\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f590bce7-9037-423d-8346-b643cb5a5180",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security-group",
+                    ":id",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flow-direction\": \"<string>\",\n  \"protocol\": \"<string>\",\n  \"description\": \"<string>\",\n  \"network\": \"<string>\",\n  \"security-group\": {\n    \"name\": \"<string>\",\n    \"visibility\": \"<string>\"\n  },\n  \"icmp\": {\n    \"code\": \"<long>\",\n    \"type\": \"<long>\"\n  },\n  \"start-port\": \"<long>\",\n  \"end-port\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"841b1d54-f471-6537-d081-eb1d72bde5db\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"81e268a9-c589-5e09-c98c-3b5c483d5464\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "949303ef-d088-4117-a56e-3262452e32ed",
+          "name": "Remove an external source from a Security Group",
+          "request": {
+            "name": "Remove an external source from a Security Group",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security-group",
+                "{{id}}:remove-source"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cidr\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4574adff-07f0-48a2-8dcf-6a73dfa17ed3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security-group",
+                    "{{id}}:remove-source"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cidr\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"841b1d54-f471-6537-d081-eb1d72bde5db\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"81e268a9-c589-5e09-c98c-3b5c483d5464\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5518c957-395b-46e3-8528-de11ee8a6208",
+          "name": "Detach a Compute instance from a Security Group",
+          "request": {
+            "name": "Detach a Compute instance from a Security Group",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security-group",
+                "{{id}}:detach"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instance\": {\n    \"application-consistent-snapshot-enabled\": \"<boolean>\",\n    \"anti-affinity-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"public-ip-assignment\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\",\n      \"key_3\": \"<string>\"\n    },\n    \"security-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"elastic-ips\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"instance-type\": {},\n    \"private-networks\": [\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      }\n    ],\n    \"template\": {\n      \"application-consistent-snapshot-enabled\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"ssh-key-enabled\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"default-user\": \"<string>\",\n      \"size\": \"<long>\",\n      \"password-enabled\": \"<boolean>\",\n      \"checksum\": \"<string>\",\n      \"boot-mode\": \"<string>\",\n      \"zones\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"url\": \"<string>\"\n    },\n    \"secureboot-enabled\": \"<boolean>\",\n    \"ssh-key\": {\n      \"name\": \"<string>\"\n    },\n    \"user-data\": \"<string>\",\n    \"tpm-enabled\": \"<boolean>\",\n    \"deploy-target\": {\n      \"id\": \"<uuid>\"\n    },\n    \"snapshots\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"disk-size\": \"<long>\",\n    \"ssh-keys\": [\n      {\n        \"name\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f67a99fe-6d45-4375-978e-bc2d11246434",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security-group",
+                    "{{id}}:detach"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instance\": {\n    \"application-consistent-snapshot-enabled\": \"<boolean>\",\n    \"anti-affinity-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"public-ip-assignment\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"security-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"elastic-ips\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"instance-type\": {},\n    \"private-networks\": [\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      }\n    ],\n    \"template\": {\n      \"application-consistent-snapshot-enabled\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"ssh-key-enabled\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"default-user\": \"<string>\",\n      \"size\": \"<long>\",\n      \"password-enabled\": \"<boolean>\",\n      \"checksum\": \"<string>\",\n      \"boot-mode\": \"<string>\",\n      \"zones\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"url\": \"<string>\"\n    },\n    \"secureboot-enabled\": \"<boolean>\",\n    \"ssh-key\": {\n      \"name\": \"<string>\"\n    },\n    \"user-data\": \"<string>\",\n    \"tpm-enabled\": \"<boolean>\",\n    \"deploy-target\": {\n      \"id\": \"<uuid>\"\n    },\n    \"snapshots\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"disk-size\": \"<long>\",\n    \"ssh-keys\": [\n      {\n        \"name\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"841b1d54-f471-6537-d081-eb1d72bde5db\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"81e268a9-c589-5e09-c98c-3b5c483d5464\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83b14541-0ab0-43da-92b0-ae4cc5705c26",
+          "name": "Add an external source as a member of a Security Group",
+          "request": {
+            "name": "Add an external source as a member of a Security Group",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "security-group",
+                "{{id}}:add-source"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cidr\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "90502cdd-373c-453c-8057-ee112c3094cd",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "security-group",
+                    "{{id}}:add-source"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cidr\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"841b1d54-f471-6537-d081-eb1d72bde5db\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"81e268a9-c589-5e09-c98c-3b5c483d5464\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<uuid>",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "59961b65-e125-4112-ad9d-6ddd14cc8d9a",
+    "name": "Exoscale ai-api-key security-group API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

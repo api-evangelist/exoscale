@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key instance-pool API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "instance-pool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Scale an Instance Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id:scale",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Scale an Instance Pool"
+        },
+        {
+          "info": {
+            "name": "List Instance Pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool"
+          },
+          "docs": "List Instance Pools"
+        },
+        {
+          "info": {
+            "name": "Create an Instance Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Instance Pool"
+        },
+        {
+          "info": {
+            "name": "Retrieve Instance Pool details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Instance Pool details"
+        },
+        {
+          "info": {
+            "name": "Update an Instance Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an Instance Pool"
+        },
+        {
+          "info": {
+            "name": "Delete an Instance Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an Instance Pool"
+        },
+        {
+          "info": {
+            "name": "Reset an Instance Pool field to its default value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset an Instance Pool field to its default value"
+        },
+        {
+          "info": {
+            "name": "Evict Instance Pool members",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-pool/:id:evict",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation evicts the specified Compute instances member from the Instance Pool, shrinking it to `&lt;current pool size&gt; - &lt;# evicted members&gt;`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

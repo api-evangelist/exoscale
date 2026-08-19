@@ -1,0 +1,225 @@
+{
+  "item": [
+    {
+      "id": "71fd2cfa-3671-4aa3-987f-8cc6a1772a08",
+      "name": "deploy-target",
+      "description": {
+        "content": "Deploy Target lets you spin up Compute instances on dedicated hypervisors.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "899fa549-5b7b-42d8-bbbb-e6776e190bb2",
+          "name": "List Deploy Targets",
+          "request": {
+            "name": "List Deploy Targets",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deploy-target"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4dd446c-2fc0-404e-b2db-eda74df844b4",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deploy-target"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deploy-targets\": [\n    {\n      \"id\": \"53ca6135-9cf5-7616-c679-2b6cd21ff8e8\",\n      \"name\": \"string\",\n      \"type\": \"edge\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"ae2d81af-d9ca-e85e-8084-f559c9e2d4c2\",\n      \"name\": \"string\",\n      \"type\": \"edge\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08ce6646-2506-4901-8d0f-acc30e38b1a5",
+          "name": "Retrieve Deploy Target details",
+          "request": {
+            "name": "Retrieve Deploy Target details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deploy-target",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dea492f6-5bc2-483a-a922-9d9c92df8a0a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deploy-target",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8e24282f-6636-d2cc-e605-5533a5a90c1d\",\n  \"name\": \"stri\",\n  \"type\": \"edge\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dd2e4c52-5f64-46d0-970d-aeadcd032934",
+    "name": "Exoscale ai-api-key deploy-target API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "item": [
+    {
+      "id": "206adbc4-ba82-4463-82c5-63cce6fb31ce",
+      "name": "compute",
+      "description": {
+        "content": "Host anything from simple applications to complex architectures. Start a compute instance in seconds and scale as your infrastructure grows.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1f1f2ac9-93c8-4c12-b0a4-681d47f90f83",
+          "name": "Reset a Load Balancer Service field to its default value",
+          "request": {
+            "name": "Reset a Load Balancer Service field to its default value",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer",
+                ":id",
+                "service",
+                ":service-id",
+                ":field"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "service-id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3175763e-0f6b-4684-aa06-e7fcaeafc6a8",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer",
+                    ":id",
+                    "service",
+                    ":service-id",
+                    ":field"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "service-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"aff027ff-e3ff-2ff2-2f98-a54c9d857e5d\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"3c003e30-0dab-5c9f-04da-2af035821ec2\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2600149e-f362-4d50-87ef-fc4d0caee2d9",
+    "name": "Exoscale ai-api-key compute API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

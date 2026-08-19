@@ -1,0 +1,891 @@
+{
+  "item": [
+    {
+      "id": "344dd599-7a47-459c-b42c-734d891aca94",
+      "name": "instance-pool",
+      "description": {
+        "content": "Instance Pools is an Exoscale service allowing users\n                   to provision managed groups of identical Compute\n                   instances automatically.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb7c93ef-ed85-4eaa-9478-0d976060d0d8",
+          "name": "Scale an Instance Pool",
+          "request": {
+            "name": "Scale an Instance Pool",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance-pool",
+                "{{id}}:scale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"size\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64394c5e-4e88-4539-8b88-8f69d3e8ba72",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance-pool",
+                    "{{id}}:scale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1e1b9a1b-6b85-c152-8418-8aea84ee483b\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"6adfbc97-0c76-1c1d-76b6-85a20127bb14\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8abceb69-e0a2-4830-8572-fea9eb178c1e",
+          "name": "List Instance Pools",
+          "request": {
+            "name": "List Instance Pools",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance-pool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6435c4d9-353a-4f8f-8f14-3aa2b1039d96",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance-pool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instance-pools\": [\n    {\n      \"application-consistent-snapshot-enabled\": true,\n      \"anti-affinity-groups\": [\n        {\n          \"id\": \"33060117-a056-02f9-f9c1-1fcc41c01e61\"\n        },\n        {\n          \"id\": \"7dd2ae46-e78c-0af0-4e0a-0f14f3dfa586\"\n        }\n      ],\n      \"description\": \"string\",\n      \"public-ip-assignment\": \"dual\",\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"security-groups\": [\n        {\n          \"id\": \"44aca87d-1aa0-3354-2d76-73cc5c0a3a53\"\n        },\n        {\n          \"id\": \"157b4d0b-ee99-58f3-fb74-9df0b2a05e95\"\n        }\n      ],\n      \"elastic-ips\": [\n        {\n          \"id\": \"3c0bc1c4-fddc-ec34-f2cb-c1c4dfb28464\"\n        },\n        {\n          \"id\": \"252203cd-8e7c-c3db-0c0b-2270f99cd5bd\"\n        }\n      ],\n      \"name\": \"string\",\n      \"instance-type\": {\n        \"id\": \"5b4bad1e-705d-e4ae-2d41-96d6f63fd66d\"\n      },\n      \"min-available\": 5232,\n      \"private-networks\": [\n        {\n          \"id\": \"21f3d3f5-167e-7151-b250-2d2d3a44ae23\"\n        },\n        {\n          \"id\": \"efcc75e1-d9e1-c2be-d702-70596ee05ceb\"\n        }\n      ],\n      \"template\": {\n        \"id\": \"b7ae6ddb-f75d-aa44-b7b5-354155af684f\"\n      },\n      \"state\": \"scaling-up\",\n      \"size\": 505,\n      \"ssh-key\": {\n        \"name\": \"string\"\n      },\n      \"instance-prefix\": \"string\",\n      \"user-data\": \"string\",\n      \"manager\": {\n        \"id\": \"7998a51f-cbcf-fc9a-bf6d-966b767a1345\",\n        \"type\": \"instance-pool\"\n      },\n      \"instances\": [\n        {\n          \"id\": \"18619b4b-4b88-d2b3-5692-7b27ae6ba298\"\n        },\n        {\n          \"id\": \"d4978ab6-5fb1-b2d0-efad-09fcd9d1df5e\"\n        }\n      ],\n      \"deploy-target\": {\n        \"id\": \"d461a2b7-e506-d7b3-0fd3-08dd6a5c17be\"\n      },\n      \"ipv6-enabled\": true,\n      \"id\": \"75b3afcc-6787-80e8-1b41-47276fccf739\",\n      \"disk-size\": 32292,\n      \"ssh-keys\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"application-consistent-snapshot-enabled\": true,\n      \"anti-affinity-groups\": [\n        {\n          \"id\": \"3b3eba0b-037a-b203-dd8e-6f5439d960ce\"\n        },\n        {\n          \"id\": \"10917ebb-a7fd-5e4c-cebb-8ded441fd562\"\n        }\n      ],\n      \"description\": \"string\",\n      \"public-ip-assignment\": \"inet4\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"security-groups\": [\n        {\n          \"id\": \"495f5af7-0df7-808d-5e54-9259875edba6\"\n        },\n        {\n          \"id\": \"cdf77d62-4a7c-0639-4ac1-612e68af4b6f\"\n        }\n      ],\n      \"elastic-ips\": [\n        {\n          \"id\": \"e6144013-214d-7e2a-07c8-10273a428f91\"\n        },\n        {\n          \"id\": \"02a76eaf-2415-7d55-3dd7-dc0ab1950944\"\n        }\n      ],\n      \"name\": \"string\",\n      \"instance-type\": {\n        \"id\": \"6c683bc6-0618-e9f7-7fc1-5e580b59bf41\"\n      },\n      \"min-available\": 4553,\n      \"private-networks\": [\n        {\n          \"id\": \"a70659af-ad68-a9de-6a13-d325a72c3b73\"\n        },\n        {\n          \"id\": \"52f02e39-aa09-5a7c-bd52-d311eb36a80b\"\n        }\n      ],\n      \"template\": {\n        \"id\": \"7ca1cf26-6231-fd8b-4e69-425736fa52d0\"\n      },\n      \"state\": \"running\",\n      \"size\": 5310,\n      \"ssh-key\": {\n        \"name\": \"string\"\n      },\n      \"instance-prefix\": \"string\",\n      \"user-data\": \"string\",\n      \"manager\": {\n        \"id\": \"0e2003aa-dc5e-9f0f-64ba-9f24a788cc68\",\n        \"type\": \"instance-pool\"\n      },\n      \"instances\": [\n        {\n          \"id\": \"e73b44b5-a2b2-6673-f93b-3ced33a63801\"\n        },\n        {\n          \"id\": \"8e7a5d25-faf1-1dba-74c0-144112fee82b\"\n        }\n      ],\n      \"deploy-target\": {\n        \"id\": \"3dae5802-3472-5bf7-fef1-53d4a86ba2f2\"\n      },\n      \"ipv6-enabled\": false,\n      \"id\": \"05ec2fba-384c-249d-5db1-a2605c244288\",\n      \"disk-size\": 27229,\n      \"ssh-keys\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbdaaa75-7eb0-4125-acd4-a6b7e0fbacec",
+          "name": "Create an Instance Pool",
+          "request": {
+            "name": "Create an Instance Pool",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance-pool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"size\": \"<long>\",\n  \"instance-type\": {\n    \"id\": \"<uuid>\"\n  },\n  \"template\": {\n    \"id\": \"<uuid>\"\n  },\n  \"disk-size\": \"<long>\",\n  \"application-consistent-snapshot-enabled\": \"<boolean>\",\n  \"anti-affinity-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"public-ip-assignment\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"security-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"elastic-ips\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"min-available\": \"<long>\",\n  \"private-networks\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"ssh-key\": {\n    \"name\": \"<string>\"\n  },\n  \"instance-prefix\": \"<string>\",\n  \"user-data\": \"<string>\",\n  \"deploy-target\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ipv6-enabled\": \"<boolean>\",\n  \"ssh-keys\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f81d84d-5c1e-4f28-a9f7-4c16d98a2574",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance-pool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"size\": \"<long>\",\n  \"instance-type\": {\n    \"id\": \"<uuid>\"\n  },\n  \"template\": {\n    \"id\": \"<uuid>\"\n  },\n  \"disk-size\": \"<long>\",\n  \"application-consistent-snapshot-enabled\": \"<boolean>\",\n  \"anti-affinity-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"public-ip-assignment\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"security-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"elastic-ips\": [\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"min-available\": \"<long>\",\n  \"private-networks\": [\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"ssh-key\": {\n    \"name\": \"<string>\"\n  },\n  \"instance-prefix\": \"<string>\",\n  \"user-data\": \"<string>\",\n  \"deploy-target\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ipv6-enabled\": \"<boolean>\",\n  \"ssh-keys\": [\n    {\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1e1b9a1b-6b85-c152-8418-8aea84ee483b\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"6adfbc97-0c76-1c1d-76b6-85a20127bb14\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f5a3cd9-b492-443e-9df0-0158a615b4dd",
+          "name": "Delete an Instance Pool",
+          "request": {
+            "name": "Delete an Instance Pool",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance-pool",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "985fc1a6-4275-470a-b0e7-bb988f14eba4",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance-pool",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1e1b9a1b-6b85-c152-8418-8aea84ee483b\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"6adfbc97-0c76-1c1d-76b6-85a20127bb14\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9095094-793d-4ae8-ac23-ed52386a888d",
+          "name": "Retrieve Instance Pool details",
+          "request": {
+            "name": "Retrieve Instance Pool details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance-pool",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ee96201-c3e9-4e0f-b428-fbdb5cc4aa3d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance-pool",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"application-consistent-snapshot-enabled\": false,\n  \"anti-affinity-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"description\": \"string\",\n  \"public-ip-assignment\": \"none\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"security-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"elastic-ips\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"name\": \"string\",\n  \"instance-type\": {\n    \"id\": \"<uuid>\"\n  },\n  \"min-available\": 9466,\n  \"private-networks\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"template\": {\n    \"id\": \"<uuid>\"\n  },\n  \"state\": \"running\",\n  \"size\": 7859,\n  \"ssh-key\": {\n    \"name\": \"<string>\"\n  },\n  \"instance-prefix\": \"strin\",\n  \"user-data\": \"string\",\n  \"manager\": {\n    \"id\": \"988844f4-e731-099d-042b-a00c09b503c2\",\n    \"type\": \"sks-nodepool\"\n  },\n  \"instances\": [\n    {\n      \"id\": \"255b84ba-9071-3c20-d462-9c1893b66694\"\n    },\n    {\n      \"id\": \"9c44d313-d76c-e36c-bdb9-737228748956\"\n    }\n  ],\n  \"deploy-target\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ipv6-enabled\": false,\n  \"id\": \"a2584d10-cf60-ef0f-f729-940024eb6556\",\n  \"disk-size\": 10307,\n  \"ssh-keys\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb8fbd3e-3a2b-4cf3-8387-8c754aa4a750",
+          "name": "Update an Instance Pool",
+          "request": {
+            "name": "Update an Instance Pool",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance-pool",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"application-consistent-snapshot-enabled\": \"<boolean>\",\n  \"anti-affinity-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"public-ip-assignment\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"security-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"elastic-ips\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"instance-type\": {\n    \"id\": \"<uuid>\"\n  },\n  \"min-available\": \"<long>\",\n  \"private-networks\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"template\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ssh-key\": {\n    \"name\": \"<string>\"\n  },\n  \"instance-prefix\": \"<string>\",\n  \"user-data\": \"<string>\",\n  \"deploy-target\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ipv6-enabled\": \"<boolean>\",\n  \"disk-size\": \"<long>\",\n  \"ssh-keys\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3bfb54a2-0b82-4dec-a008-218d46e8ba3d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance-pool",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"application-consistent-snapshot-enabled\": \"<boolean>\",\n  \"anti-affinity-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"public-ip-assignment\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  },\n  \"security-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"elastic-ips\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"instance-type\": {\n    \"id\": \"<uuid>\"\n  },\n  \"min-available\": \"<long>\",\n  \"private-networks\": [\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"template\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ssh-key\": {\n    \"name\": \"<string>\"\n  },\n  \"instance-prefix\": \"<string>\",\n  \"user-data\": \"<string>\",\n  \"deploy-target\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ipv6-enabled\": \"<boolean>\",\n  \"disk-size\": \"<long>\",\n  \"ssh-keys\": [\n    {\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1e1b9a1b-6b85-c152-8418-8aea84ee483b\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"6adfbc97-0c76-1c1d-76b6-85a20127bb14\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1492ddeb-d35d-4285-b8d0-6af3924db356",
+          "name": "Reset an Instance Pool field to its default value",
+          "request": {
+            "name": "Reset an Instance Pool field to its default value",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance-pool",
+                ":id",
+                ":field"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12184f83-233c-4896-98d2-4bb6e88557db",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance-pool",
+                    ":id",
+                    ":field"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1e1b9a1b-6b85-c152-8418-8aea84ee483b\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"6adfbc97-0c76-1c1d-76b6-85a20127bb14\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39c461ed-7486-4fc6-b2fc-f1ac5ac851b9",
+          "name": "Evict Instance Pool members",
+          "request": {
+            "name": "Evict Instance Pool members",
+            "description": {
+              "content": "This operation evicts the specified Compute instances member from the Instance Pool, shrinking it to `&lt;current pool size&gt; - &lt;# evicted members&gt;`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance-pool",
+                "{{id}}:evict"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instances\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6baee9c9-ae25-48dd-8bd5-9a49a524d277",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance-pool",
+                    "{{id}}:evict"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1e1b9a1b-6b85-c152-8418-8aea84ee483b\",\n  \"reason\": \"fault\",\n  \"reference\": {\n    \"id\": \"6adfbc97-0c76-1c1d-76b6-85a20127bb14\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<uuid>",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "88c59e6e-cb64-4834-a147-62a8b33572dd",
+    "name": "Exoscale ai-api-key instance-pool API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

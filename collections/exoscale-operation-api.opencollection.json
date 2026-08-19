@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key operation API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "operation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Operation details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/operation/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Operation details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key record API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "record",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List DNS domain records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:domain-id/record",
+            "params": [
+              {
+                "name": "domain-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List DNS domain records"
+        },
+        {
+          "info": {
+            "name": "Create DNS domain record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:domain-id/record",
+            "params": [
+              {
+                "name": "domain-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create DNS domain record"
+        },
+        {
+          "info": {
+            "name": "Retrieve DNS domain record details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:domain-id/record/:record-id",
+            "params": [
+              {
+                "name": "domain-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "record-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve DNS domain record details"
+        },
+        {
+          "info": {
+            "name": "Update DNS domain record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:domain-id/record/:record-id",
+            "params": [
+              {
+                "name": "domain-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "record-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update DNS domain record"
+        },
+        {
+          "info": {
+            "name": "Delete DNS domain record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:domain-id/record/:record-id",
+            "params": [
+              {
+                "name": "domain-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "record-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete DNS domain record"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

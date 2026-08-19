@@ -1,0 +1,614 @@
+{
+  "item": [
+    {
+      "id": "36146679-c314-483d-b3d9-efa27e344725",
+      "name": "snapshot",
+      "description": {
+        "content": "Snapshots provide a way to get point-in-time recovery\n                   for your Compute instance.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a5b36d7-e82d-4489-bf9f-e79f00074a57",
+          "name": "Create a Snapshot of a Compute instance",
+          "request": {
+            "name": "Create a Snapshot of a Compute instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:create-snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3d5632f-ace2-4107-80ab-9cc3053e2be8",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:create-snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"bce3e77e-758a-b6d0-da57-41520a2a6ee5\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"eb8e49f7-33ae-de05-a5c1-e4e91add0011\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fec0630-4542-4d3a-986f-5d2ec1d3310c",
+          "name": "Export a Snapshot",
+          "request": {
+            "name": "Export a Snapshot",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "snapshot",
+                "{{id}}:export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0cafeeec-01a4-4135-9ef8-76fdd8ec8e83",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "snapshot",
+                    "{{id}}:export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"bce3e77e-758a-b6d0-da57-41520a2a6ee5\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"eb8e49f7-33ae-de05-a5c1-e4e91add0011\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5b22e6c-a60d-4aa6-8d9a-174265f4be24",
+          "name": "Delete a Snapshot",
+          "request": {
+            "name": "Delete a Snapshot",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "snapshot",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb83e499-696e-43d6-8590-14e7a652e02d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "snapshot",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"bce3e77e-758a-b6d0-da57-41520a2a6ee5\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"eb8e49f7-33ae-de05-a5c1-e4e91add0011\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00a32a9b-4ae6-4f6a-b691-fb56ba352fb0",
+          "name": "Retrieve Snapshot details",
+          "request": {
+            "name": "Retrieve Snapshot details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "snapshot",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e06f96bf-dc8c-4563-8185-5f73657f5fa5",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "snapshot",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"526afd1d-d41c-e873-02f8-276dae2051c6\",\n  \"name\": \"string\",\n  \"created-at\": \"1976-06-05T14:24:15.675Z\",\n  \"state\": \"exporting\",\n  \"size\": 17731,\n  \"export\": {\n    \"presigned-url\": \"string\",\n    \"md5sum\": \"string\"\n  },\n  \"instance\": {\n    \"application-consistent-snapshot-enabled\": true,\n    \"anti-affinity-groups\": [\n      {\n        \"id\": \"55ea6181-ab71-9bab-2994-e9a2c3c7cce2\"\n      },\n      {\n        \"id\": \"65bb65a3-15aa-c371-01d5-1623b4dbe475\"\n      }\n    ],\n    \"public-ip-assignment\": \"dual\",\n    \"labels\": {\n      \"key_0\": \"string\"\n    },\n    \"security-groups\": [\n      {\n        \"id\": \"c57bc79a-59a1-d9de-ec05-9607aa64e0b8\"\n      },\n      {\n        \"id\": \"25d06af8-3d3f-4ce6-67e4-37ac3e230e47\"\n      }\n    ],\n    \"elastic-ips\": [\n      {\n        \"id\": \"9c4c3a2d-20a7-053d-1871-7cd6f63f5d38\"\n      },\n      {\n        \"id\": \"19b3eb0e-b7b0-15b4-eae9-e5971b668a86\"\n      }\n    ],\n    \"name\": \"string\",\n    \"instance-type\": {\n      \"id\": \"64212956-a564-e00b-b4e5-3e29a8121770\",\n      \"size\": \"tiny\",\n      \"family\": \"gpua30\",\n      \"cpus\": 8653,\n      \"gpus\": 7954,\n      \"authorized\": true,\n      \"memory\": 5396,\n      \"zones\": [\n        \"ch-gva-2\",\n        \"ch-dk-2\"\n      ]\n    },\n    \"private-networks\": [\n      {\n        \"id\": \"b6265a10-895a-797a-53ae-f6284b69ee22\",\n        \"mac-address\": \"string\"\n      },\n      {\n        \"id\": \"bb5196e3-34f5-2cda-a332-c12866460d75\",\n        \"mac-address\": \"string\"\n      }\n    ],\n    \"template\": {\n      \"application-consistent-snapshot-enabled\": true,\n      \"maintainer\": \"string\",\n      \"description\": \"string\",\n      \"ssh-key-enabled\": true,\n      \"family\": \"string\",\n      \"name\": \"string\",\n      \"default-user\": \"string\",\n      \"size\": 896,\n      \"password-enabled\": true,\n      \"build\": \"string\",\n      \"checksum\": \"string\",\n      \"boot-mode\": \"legacy\",\n      \"id\": \"92cac590-4e11-132b-46c9-4aef0338a30e\",\n      \"zones\": [\n        \"bg-sof-1\",\n        \"de-muc-1\"\n      ],\n      \"url\": \"string\",\n      \"version\": \"string\",\n      \"created-at\": \"1952-11-14T18:09:04.219Z\",\n      \"visibility\": \"private\"\n    },\n    \"state\": \"stopping\",\n    \"secureboot-enabled\": true,\n    \"ssh-key\": {\n      \"name\": \"string\",\n      \"fingerprint\": \"string\"\n    },\n    \"user-data\": \"string\",\n    \"mac-address\": \"string\",\n    \"manager\": {\n      \"id\": \"83130fc0-d521-52e8-45a1-7ea537bd59e2\",\n      \"type\": \"sks-nodepool\"\n    },\n    \"tpm-enabled\": true,\n    \"deploy-target\": {\n      \"id\": \"e150ce62-a6d8-f869-5ee0-ad22a6280639\"\n    },\n    \"ipv6-address\": \"string\",\n    \"id\": \"9f900fb0-5255-2738-64b2-f4b8bb85f02c\",\n    \"snapshots\": [\n      {\n        \"id\": \"29e1b5c6-4404-2062-de64-18c217c4f497\"\n      },\n      {\n        \"id\": \"21055368-d601-de27-01e9-782da4fee7d6\"\n      }\n    ],\n    \"disk-size\": 41958,\n    \"ssh-keys\": [\n      {\n        \"name\": \"string\",\n        \"fingerprint\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"fingerprint\": \"string\"\n      }\n    ],\n    \"created-at\": \"1951-03-27T13:36:32.579Z\",\n    \"public-ip\": \"215.5.205.26\"\n  },\n  \"application-consistent\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94dc7abb-d02a-4341-b6aa-592a82571ad9",
+          "name": "List Snapshots",
+          "request": {
+            "name": "List Snapshots",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b2cbb92-15b6-47b4-9e8a-7462b9a1b614",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"snapshots\": [\n    {\n      \"id\": \"c9d6c2a1-30f6-6a77-ad7f-705dab64ddc5\",\n      \"name\": \"string\",\n      \"created-at\": \"1962-11-20T14:22:56.991Z\",\n      \"state\": \"exported\",\n      \"size\": 20163,\n      \"export\": {\n        \"presigned-url\": \"string\",\n        \"md5sum\": \"string\"\n      },\n      \"instance\": {\n        \"application-consistent-snapshot-enabled\": true,\n        \"anti-affinity-groups\": [\n          {\n            \"id\": \"0256f411-c3e7-a4cf-108e-532500b8bf02\"\n          },\n          {\n            \"id\": \"75027f29-5b90-05e7-726d-cd4c4e37eee7\"\n          }\n        ],\n        \"public-ip-assignment\": \"inet4\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"security-groups\": [\n          {\n            \"id\": \"9ad31fb4-4c87-86fb-0d8f-7af7b5f0386b\"\n          },\n          {\n            \"id\": \"70478e72-6f5b-ae76-0d52-9d7f0045f2da\"\n          }\n        ],\n        \"elastic-ips\": [\n          {\n            \"id\": \"ac27c32a-cd90-4f5c-c2e4-a93c9aae1483\"\n          },\n          {\n            \"id\": \"32855d70-55e6-ddd4-bb97-2526bff47ec7\"\n          }\n        ],\n        \"name\": \"string\",\n        \"instance-type\": {\n          \"id\": \"44aeb720-dbc3-aaf1-fd8a-331f9b5a7072\",\n          \"size\": \"huge\",\n          \"family\": \"standard\",\n          \"cpus\": 9220,\n          \"gpus\": 5519,\n          \"authorized\": true,\n          \"memory\": 3820,\n          \"zones\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"private-networks\": [\n          {\n            \"id\": \"72877961-5a01-f443-9dca-b99c8ff5097c\",\n            \"mac-address\": \"string\"\n          },\n          {\n            \"id\": \"6e8061a6-7b74-bf78-7427-fab68ad135f6\",\n            \"mac-address\": \"string\"\n          }\n        ],\n        \"template\": {\n          \"application-consistent-snapshot-enabled\": false,\n          \"maintainer\": \"string\",\n          \"description\": \"string\",\n          \"ssh-key-enabled\": true,\n          \"family\": \"string\",\n          \"name\": \"string\",\n          \"default-user\": \"string\",\n          \"size\": 3977,\n          \"password-enabled\": false,\n          \"build\": \"string\",\n          \"checksum\": \"string\",\n          \"boot-mode\": \"uefi\",\n          \"id\": \"5c752b5e-7990-29b9-35e3-ac2e4734af3f\",\n          \"zones\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"url\": \"string\",\n          \"version\": \"string\",\n          \"created-at\": \"2013-02-21T14:49:21.096Z\",\n          \"visibility\": \"public\"\n        },\n        \"state\": \"expunging\",\n        \"secureboot-enabled\": false,\n        \"ssh-key\": {\n          \"name\": \"string\",\n          \"fingerprint\": \"string\"\n        },\n        \"user-data\": \"str\",\n        \"mac-address\": \"string\",\n        \"manager\": {\n          \"id\": \"2096ff0b-c019-dc75-39c3-9ddfcd14317c\",\n          \"type\": \"sks-nodepool\"\n        },\n        \"tpm-enabled\": false,\n        \"deploy-target\": {\n          \"id\": \"3bde12d8-c62a-fc37-420a-a3f9cc94ac41\"\n        },\n        \"ipv6-address\": \"string\",\n        \"id\": \"6e9016a1-8a34-4687-7cdb-319f32162094\",\n        \"snapshots\": [\n          {\n            \"id\": \"137789ec-6493-e31b-7795-78d556eb08bb\"\n          },\n          {\n            \"id\": \"64dc93e3-e955-88fa-385d-2577ee79c4e8\"\n          }\n        ],\n        \"disk-size\": 5089,\n        \"ssh-keys\": [\n          {\n            \"name\": \"string\",\n            \"fingerprint\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"fingerprint\": \"string\"\n          }\n        ],\n        \"created-at\": \"1990-11-24T00:27:40.206Z\",\n        \"public-ip\": \"253.180.143.39\"\n      },\n      \"application-consistent\": true\n    },\n    {\n      \"id\": \"2c0ff77a-f1c0-c0c1-87ae-cc060b5bac5c\",\n      \"name\": \"string\",\n      \"created-at\": \"1961-05-16T23:54:55.252Z\",\n      \"state\": \"error\",\n      \"size\": 48123,\n      \"export\": {\n        \"presigned-url\": \"string\",\n        \"md5sum\": \"string\"\n      },\n      \"instance\": {\n        \"application-consistent-snapshot-enabled\": true,\n        \"anti-affinity-groups\": [\n          {\n            \"id\": \"75e58dfa-ee4c-2225-0020-2fbfc8f3e4f9\"\n          },\n          {\n            \"id\": \"f430545c-af1f-f284-ecde-375037b0c43c\"\n          }\n        ],\n        \"public-ip-assignment\": \"dual\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\",\n          \"key_4\": \"string\"\n        },\n        \"security-groups\": [\n          {\n            \"id\": \"d5d2f169-7a01-d2cf-6077-d890971aa255\"\n          },\n          {\n            \"id\": \"95179a81-12bd-c15d-9074-323537d5f49c\"\n          }\n        ],\n        \"elastic-ips\": [\n          {\n            \"id\": \"38e22a59-312a-5b30-022e-e313756f8c7e\"\n          },\n          {\n            \"id\": \"bda3fc85-1b32-9f16-7e50-bc8c1d8c31e3\"\n          }\n        ],\n        \"name\": \"string\",\n        \"instance-type\": {\n          \"id\": \"50c48f57-a81c-1902-ee65-d3018f55d631\",\n          \"size\": \"jumbo\",\n          \"family\": \"memory\",\n          \"cpus\": 4411,\n          \"gpus\": 7242,\n          \"authorized\": true,\n          \"memory\": 6761,\n          \"zones\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"private-networks\": [\n          {\n            \"id\": \"2490cf33-92e3-f1a1-acb2-700c86cdf28a\",\n            \"mac-address\": \"string\"\n          },\n          {\n            \"id\": \"f3d17d38-5baf-a7e4-48c2-654dad5a34ca\",\n            \"mac-address\": \"string\"\n          }\n        ],\n        \"template\": {\n          \"application-consistent-snapshot-enabled\": false,\n          \"maintainer\": \"string\",\n          \"description\": \"string\",\n          \"ssh-key-enabled\": true,\n          \"family\": \"string\",\n          \"name\": \"string\",\n          \"default-user\": \"string\",\n          \"size\": 4498,\n          \"password-enabled\": false,\n          \"build\": \"string\",\n          \"checksum\": \"string\",\n          \"boot-mode\": \"legacy\",\n          \"id\": \"9ffa7824-0f48-7802-ba9a-459267194d94\",\n          \"zones\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"url\": \"string\",\n          \"version\": \"string\",\n          \"created-at\": \"2019-03-10T19:15:04.105Z\",\n          \"visibility\": \"public\"\n        },\n        \"state\": \"starting\",\n        \"secureboot-enabled\": false,\n        \"ssh-key\": {\n          \"name\": \"string\",\n          \"fingerprint\": \"string\"\n        },\n        \"user-data\": \"string\",\n        \"mac-address\": \"string\",\n        \"manager\": {\n          \"id\": \"6353c491-ac6a-6ac4-9d1b-c894a30a715a\",\n          \"type\": \"sks-nodepool\"\n        },\n        \"tpm-enabled\": true,\n        \"deploy-target\": {\n          \"id\": \"8a508041-d086-e358-be12-26a15158680f\"\n        },\n        \"ipv6-address\": \"string\",\n        \"id\": \"caf3bfd9-9245-245c-ac32-c519289993de\",\n        \"snapshots\": [\n          {\n            \"id\": \"2ea3cdf9-4bb0-998a-5573-d8c3ea6ff558\"\n          },\n          {\n            \"id\": \"8770f82d-5e9a-fb37-e5e5-863f45183141\"\n          }\n        ],\n        \"disk-size\": 47073,\n        \"ssh-keys\": [\n          {\n            \"name\": \"string\",\n            \"fingerprint\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"fingerprint\": \"string\"\n          }\n        ],\n        \"created-at\": \"1966-06-13T19:49:00.578Z\",\n        \"public-ip\": \"157.251.128.113\"\n      },\n      \"application-consistent\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1db02eda-838e-4ef0-95e3-11d5daff18ec",
+          "name": "Promote a Snapshot to a Template",
+          "request": {
+            "name": "Promote a Snapshot to a Template",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "snapshot",
+                "{{id}}:promote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"default-user\": \"<string>\",\n  \"ssh-key-enabled\": \"<boolean>\",\n  \"password-enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c2e293d-ffee-4274-8413-fab214949693",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "snapshot",
+                    "{{id}}:promote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"default-user\": \"<string>\",\n  \"ssh-key-enabled\": \"<boolean>\",\n  \"password-enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"bce3e77e-758a-b6d0-da57-41520a2a6ee5\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"eb8e49f7-33ae-de05-a5c1-e4e91add0011\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<uuid>",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "278b406d-05bd-4f54-ac13-dbdfb5a37be0",
+    "name": "Exoscale ai-api-key snapshot API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

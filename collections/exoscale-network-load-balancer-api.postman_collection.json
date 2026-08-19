@@ -1,0 +1,1299 @@
+{
+  "item": [
+    {
+      "id": "bb4ca6a7-7b64-4c0c-8880-dc5e2dc06adf",
+      "name": "network-load-balancer",
+      "description": {
+        "content": "A Network Load Balancer (NLB) is a Layer 4 (TCP/UDP)\n                   load balancer that distributes incoming traffic to Compute\n                   instances managed by an Instance Pool.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe5f518d-94ed-4f10-bb4d-94e92fa8bb15",
+          "name": "Delete a Load Balancer Service",
+          "request": {
+            "name": "Delete a Load Balancer Service",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer",
+                ":id",
+                "service",
+                ":service-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "service-id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a8b99d9-b52e-45aa-a979-dc320bf8ad3d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer",
+                    ":id",
+                    "service",
+                    ":service-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "service-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"10374df1-a672-cf1d-aee3-13880e6a7fc4\",\n  \"reason\": \"not-found\",\n  \"reference\": {\n    \"id\": \"09a8e54f-2a5a-a4d2-164b-1c5a75519566\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "370151f9-9806-461d-a521-fda4830b3c80",
+          "name": "Update a Load Balancer Service",
+          "request": {
+            "name": "Update a Load Balancer Service",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer",
+                ":id",
+                "service",
+                ":service-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "service-id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"protocol\": \"<string>\",\n  \"strategy\": \"<string>\",\n  \"port\": \"<long>\",\n  \"target-port\": \"<long>\",\n  \"healthcheck\": {\n    \"mode\": \"<string>\",\n    \"interval\": \"<long>\",\n    \"uri\": \"<string>\",\n    \"port\": \"<long>\",\n    \"timeout\": \"<long>\",\n    \"retries\": \"<long>\",\n    \"tls-sni\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c9f5d8e-a878-4f9e-bb03-37ffc9d6fdb8",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer",
+                    ":id",
+                    "service",
+                    ":service-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "service-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"protocol\": \"<string>\",\n  \"strategy\": \"<string>\",\n  \"port\": \"<long>\",\n  \"target-port\": \"<long>\",\n  \"healthcheck\": {\n    \"mode\": \"<string>\",\n    \"interval\": \"<long>\",\n    \"uri\": \"<string>\",\n    \"port\": \"<long>\",\n    \"timeout\": \"<long>\",\n    \"retries\": \"<long>\",\n    \"tls-sni\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"10374df1-a672-cf1d-aee3-13880e6a7fc4\",\n  \"reason\": \"not-found\",\n  \"reference\": {\n    \"id\": \"09a8e54f-2a5a-a4d2-164b-1c5a75519566\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b44a90db-d505-4ca2-bbd8-5577be086d8c",
+          "name": "Retrieve Load Balancer Service details",
+          "request": {
+            "name": "Retrieve Load Balancer Service details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer",
+                ":id",
+                "service",
+                ":service-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "service-id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df566830-cbb5-4320-8e5f-ec79896dc8d9",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer",
+                    ":id",
+                    "service",
+                    ":service-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "service-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"protocol\": \"tcp\",\n  \"name\": \"string\",\n  \"state\": \"updating\",\n  \"target-port\": 3904,\n  \"port\": 677,\n  \"instance-pool\": {\n    \"application-consistent-snapshot-enabled\": true,\n    \"anti-affinity-groups\": [\n      {\n        \"id\": \"bdc0c05b-d0cb-b757-a1a5-a30c8dc28649\"\n      },\n      {\n        \"id\": \"3d7ebd6c-519d-13ac-362d-07d7fc65caf8\"\n      }\n    ],\n    \"description\": \"string\",\n    \"public-ip-assignment\": \"inet4\",\n    \"labels\": {\n      \"key_0\": \"string\"\n    },\n    \"security-groups\": [\n      {\n        \"id\": \"9c6ba27d-7cf0-c33e-8121-e6b3a81db3d3\"\n      },\n      {\n        \"id\": \"6fc944fa-512b-7943-d156-299da13715a1\"\n      }\n    ],\n    \"elastic-ips\": [\n      {\n        \"id\": \"dcc6d9d9-3dfa-f030-37a6-5dd2f68edfd6\"\n      },\n      {\n        \"id\": \"942d4dae-8fe0-8322-20c2-1d0a4e692471\"\n      }\n    ],\n    \"name\": \"string\",\n    \"instance-type\": {\n      \"id\": \"4d4b6c21-82c6-c325-4511-588ae61e3d57\"\n    },\n    \"min-available\": 1099,\n    \"private-networks\": [\n      {\n        \"id\": \"6271062d-7d1b-64e4-e050-bbf30eea734c\"\n      },\n      {\n        \"id\": \"9f8907e4-ab84-9d47-ef41-9ad7e6ab9d3d\"\n      }\n    ],\n    \"template\": {\n      \"id\": \"98c58f80-4be6-9a6b-2a6b-6b6560b4ac95\"\n    },\n    \"state\": \"running\",\n    \"size\": 6930,\n    \"ssh-key\": {\n      \"name\": \"string\"\n    },\n    \"instance-prefix\": \"string\",\n    \"user-data\": \"string\",\n    \"manager\": {\n      \"id\": \"13e04629-7da2-d38a-0a7a-8f58cb5c4572\",\n      \"type\": \"instance-pool\"\n    },\n    \"instances\": [\n      {\n        \"id\": \"e94b378e-1b95-c058-2cf4-fd0d286e7b8e\"\n      },\n      {\n        \"id\": \"a9774e29-ac58-20a2-4207-1a450c384038\"\n      }\n    ],\n    \"deploy-target\": {\n      \"id\": \"0cde109d-5f2b-c735-8fa5-f6b827aed1d3\"\n    },\n    \"ipv6-enabled\": true,\n    \"id\": \"bb731b90-c0c0-0098-aa99-46043cc98d53\",\n    \"disk-size\": 48490,\n    \"ssh-keys\": [\n      {\n        \"name\": \"string\"\n      },\n      {\n        \"name\": \"string\"\n      }\n    ]\n  },\n  \"strategy\": \"round-robin\",\n  \"healthcheck\": {\n    \"mode\": \"<string>\",\n    \"interval\": \"<long>\",\n    \"uri\": \"<string>\",\n    \"port\": \"<long>\",\n    \"timeout\": \"<long>\",\n    \"retries\": \"<long>\",\n    \"tls-sni\": \"<string>\"\n  },\n  \"id\": \"99ceb9bf-3585-6d1e-b475-1954046b6bc7\",\n  \"healthcheck-status\": [\n    {\n      \"public-ip\": \"124.96.138.182\",\n      \"status\": \"success\"\n    },\n    {\n      \"public-ip\": \"92.78.76.61\",\n      \"status\": \"failure\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25713588-14cc-40d6-acae-33d41dfd2463",
+          "name": "Create a Load Balancer",
+          "request": {
+            "name": "Create a Load Balancer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9320edfd-eb8b-4190-b9e5-41f6f722aecd",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"10374df1-a672-cf1d-aee3-13880e6a7fc4\",\n  \"reason\": \"not-found\",\n  \"reference\": {\n    \"id\": \"09a8e54f-2a5a-a4d2-164b-1c5a75519566\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a86874d-72f7-4387-af5a-2c64eface1f4",
+          "name": "List Load Balancers",
+          "request": {
+            "name": "List Load Balancers",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50d35b9f-18f4-4f67-bed9-803c2a90ce7e",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"load-balancers\": [\n    {\n      \"id\": \"1eebe13b-8fc0-9d0a-e157-1f46c2ce91a1\",\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"state\": \"creating\",\n      \"created-at\": \"2006-02-03T08:09:32.909Z\",\n      \"ip\": \"254.131.147.230\",\n      \"services\": [\n        {\n          \"description\": \"string\",\n          \"protocol\": \"tcp\",\n          \"name\": \"string\",\n          \"state\": \"creating\",\n          \"target-port\": 8791,\n          \"port\": 9473,\n          \"instance-pool\": {\n            \"application-consistent-snapshot-enabled\": true,\n            \"anti-affinity-groups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"string\",\n            \"public-ip-assignment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"labels\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"security-groups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"elastic-ips\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"name\": \"string\",\n            \"instance-type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min-available\": 5261,\n            \"private-networks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"template\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": \"running\",\n            \"size\": 4091,\n            \"ssh-key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance-prefix\": \"st\",\n            \"user-data\": \"string\",\n            \"manager\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instances\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"deploy-target\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ipv6-enabled\": false,\n            \"id\": \"7cf96a73-c974-9ccd-97b1-9941ddba50f3\",\n            \"disk-size\": 19850,\n            \"ssh-keys\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"strategy\": \"source-hash\",\n          \"healthcheck\": {\n            \"mode\": \"<string>\",\n            \"interval\": \"<long>\",\n            \"uri\": \"<string>\",\n            \"port\": \"<long>\",\n            \"timeout\": \"<long>\",\n            \"retries\": \"<long>\",\n            \"tls-sni\": \"<string>\"\n          },\n          \"id\": \"c3b214b3-20e5-ef64-5c3e-924efb8cea38\",\n          \"healthcheck-status\": [\n            {\n              \"public-ip\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"public-ip\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"description\": \"string\",\n          \"protocol\": \"tcp\",\n          \"name\": \"string\",\n          \"state\": \"running\",\n          \"target-port\": 416,\n          \"port\": 16,\n          \"instance-pool\": {\n            \"application-consistent-snapshot-enabled\": true,\n            \"anti-affinity-groups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"string\",\n            \"public-ip-assignment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"labels\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"security-groups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"elastic-ips\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"name\": \"string\",\n            \"instance-type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min-available\": 495,\n            \"private-networks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"template\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": \"scaling-down\",\n            \"size\": 5878,\n            \"ssh-key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance-prefix\": \"string\",\n            \"user-data\": \"string\",\n            \"manager\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instances\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"deploy-target\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ipv6-enabled\": false,\n            \"id\": \"bcec41db-3e92-69d6-ee4c-ebc14e7d30e0\",\n            \"disk-size\": 47135,\n            \"ssh-keys\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"strategy\": \"round-robin\",\n          \"healthcheck\": {\n            \"mode\": \"<string>\",\n            \"interval\": \"<long>\",\n            \"uri\": \"<string>\",\n            \"port\": \"<long>\",\n            \"timeout\": \"<long>\",\n            \"retries\": \"<long>\",\n            \"tls-sni\": \"<string>\"\n          },\n          \"id\": \"4e1f3aa4-0db4-c062-bd1f-a2c43c4c1f36\",\n          \"healthcheck-status\": [\n            {\n              \"public-ip\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"public-ip\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"labels\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"a068e9f8-2780-f4fa-da31-86d7316454bf\",\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"state\": \"migrating\",\n      \"created-at\": \"1952-04-25T18:22:31.295Z\",\n      \"ip\": \"250.134.92.161\",\n      \"services\": [\n        {\n          \"description\": \"string\",\n          \"protocol\": \"udp\",\n          \"name\": \"string\",\n          \"state\": \"error\",\n          \"target-port\": 6454,\n          \"port\": 7658,\n          \"instance-pool\": {\n            \"application-consistent-snapshot-enabled\": false,\n            \"anti-affinity-groups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"string\",\n            \"public-ip-assignment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"labels\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"security-groups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"elastic-ips\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"name\": \"string\",\n            \"instance-type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min-available\": 5433,\n            \"private-networks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"template\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": \"scaling-up\",\n            \"size\": 8072,\n            \"ssh-key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance-prefix\": \"s\",\n            \"user-data\": \"string\",\n            \"manager\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instances\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"deploy-target\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ipv6-enabled\": false,\n            \"id\": \"43222aaf-651f-eb59-c948-77c0525a25a8\",\n            \"disk-size\": 13025,\n            \"ssh-keys\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"strategy\": \"round-robin\",\n          \"healthcheck\": {\n            \"mode\": \"<string>\",\n            \"interval\": \"<long>\",\n            \"uri\": \"<string>\",\n            \"port\": \"<long>\",\n            \"timeout\": \"<long>\",\n            \"retries\": \"<long>\",\n            \"tls-sni\": \"<string>\"\n          },\n          \"id\": \"de8a6665-6f36-9383-1241-5b902fda00b5\",\n          \"healthcheck-status\": [\n            {\n              \"public-ip\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"public-ip\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"description\": \"string\",\n          \"protocol\": \"tcp\",\n          \"name\": \"string\",\n          \"state\": \"running\",\n          \"target-port\": 3539,\n          \"port\": 5507,\n          \"instance-pool\": {\n            \"application-consistent-snapshot-enabled\": false,\n            \"anti-affinity-groups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"string\",\n            \"public-ip-assignment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"labels\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"security-groups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"elastic-ips\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"name\": \"string\",\n            \"instance-type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min-available\": 4931,\n            \"private-networks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"template\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": \"scaling-down\",\n            \"size\": 779,\n            \"ssh-key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance-prefix\": \"string\",\n            \"user-data\": \"string\",\n            \"manager\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instances\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"deploy-target\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ipv6-enabled\": false,\n            \"id\": \"f44063c3-4a0c-34b5-98ae-9b00d405ed8d\",\n            \"disk-size\": 447,\n            \"ssh-keys\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"strategy\": \"maglev-hash\",\n          \"healthcheck\": {\n            \"mode\": \"<string>\",\n            \"interval\": \"<long>\",\n            \"uri\": \"<string>\",\n            \"port\": \"<long>\",\n            \"timeout\": \"<long>\",\n            \"retries\": \"<long>\",\n            \"tls-sni\": \"<string>\"\n          },\n          \"id\": \"efb6168f-ab6b-deed-920c-e6c0f28a79be\",\n          \"healthcheck-status\": [\n            {\n              \"public-ip\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"public-ip\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"labels\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ada2b50-e7a8-44db-bfcb-c0fe2013fca2",
+          "name": "Reset a Load Balancer field to its default value",
+          "request": {
+            "name": "Reset a Load Balancer field to its default value",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer",
+                ":id",
+                ":field"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3cbe0860-39df-4868-a37a-006b68ae3de5",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer",
+                    ":id",
+                    ":field"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"10374df1-a672-cf1d-aee3-13880e6a7fc4\",\n  \"reason\": \"not-found\",\n  \"reference\": {\n    \"id\": \"09a8e54f-2a5a-a4d2-164b-1c5a75519566\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e545c9d9-2045-4f77-80a7-edaba55a7637",
+          "name": "Reset a Load Balancer Service field to its default value",
+          "request": {
+            "name": "Reset a Load Balancer Service field to its default value",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer",
+                ":id",
+                "service",
+                ":service-id",
+                ":field"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "service-id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18d0d3d9-64d9-42a7-ba3f-d11d69098e4b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer",
+                    ":id",
+                    "service",
+                    ":service-id",
+                    ":field"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "service-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"10374df1-a672-cf1d-aee3-13880e6a7fc4\",\n  \"reason\": \"not-found\",\n  \"reference\": {\n    \"id\": \"09a8e54f-2a5a-a4d2-164b-1c5a75519566\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bb99575-c533-4070-91c3-5cdf92a38317",
+          "name": "Add a Load Balancer Service",
+          "request": {
+            "name": "Add a Load Balancer Service",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer",
+                ":id",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"instance-pool\": {\n    \"application-consistent-snapshot-enabled\": \"<boolean>\",\n    \"anti-affinity-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"description\": \"<string>\",\n    \"public-ip-assignment\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"security-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"elastic-ips\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"instance-type\": {\n      \"id\": \"<uuid>\"\n    },\n    \"min-available\": \"<long>\",\n    \"private-networks\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"template\": {\n      \"id\": \"<uuid>\"\n    },\n    \"size\": \"<long>\",\n    \"ssh-key\": {\n      \"name\": \"<string>\"\n    },\n    \"instance-prefix\": \"<string>\",\n    \"user-data\": \"<string>\",\n    \"deploy-target\": {\n      \"id\": \"<uuid>\"\n    },\n    \"ipv6-enabled\": \"<boolean>\",\n    \"disk-size\": \"<long>\",\n    \"ssh-keys\": [\n      {\n        \"name\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"protocol\": \"<string>\",\n  \"strategy\": \"<string>\",\n  \"port\": \"<long>\",\n  \"target-port\": \"<long>\",\n  \"healthcheck\": {\n    \"mode\": \"<string>\",\n    \"interval\": \"<long>\",\n    \"uri\": \"<string>\",\n    \"port\": \"<long>\",\n    \"timeout\": \"<long>\",\n    \"retries\": \"<long>\",\n    \"tls-sni\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8a1ed58a-b327-4bf1-9fab-d7c2c3784908",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer",
+                    ":id",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"instance-pool\": {\n    \"application-consistent-snapshot-enabled\": \"<boolean>\",\n    \"anti-affinity-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"description\": \"<string>\",\n    \"public-ip-assignment\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"security-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"elastic-ips\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"instance-type\": {\n      \"id\": \"<uuid>\"\n    },\n    \"min-available\": \"<long>\",\n    \"private-networks\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"template\": {\n      \"id\": \"<uuid>\"\n    },\n    \"size\": \"<long>\",\n    \"ssh-key\": {\n      \"name\": \"<string>\"\n    },\n    \"instance-prefix\": \"<string>\",\n    \"user-data\": \"<string>\",\n    \"deploy-target\": {\n      \"id\": \"<uuid>\"\n    },\n    \"ipv6-enabled\": \"<boolean>\",\n    \"disk-size\": \"<long>\",\n    \"ssh-keys\": [\n      {\n        \"name\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"protocol\": \"<string>\",\n  \"strategy\": \"<string>\",\n  \"port\": \"<long>\",\n  \"target-port\": \"<long>\",\n  \"healthcheck\": {\n    \"mode\": \"<string>\",\n    \"interval\": \"<long>\",\n    \"uri\": \"<string>\",\n    \"port\": \"<long>\",\n    \"timeout\": \"<long>\",\n    \"retries\": \"<long>\",\n    \"tls-sni\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"10374df1-a672-cf1d-aee3-13880e6a7fc4\",\n  \"reason\": \"not-found\",\n  \"reference\": {\n    \"id\": \"09a8e54f-2a5a-a4d2-164b-1c5a75519566\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee587ea0-0680-4a20-91c6-92b1cbd2cf0e",
+          "name": "Update a Load Balancer",
+          "request": {
+            "name": "Update a Load Balancer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d5970419-db72-4f37-84f6-1d41099909cf",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"10374df1-a672-cf1d-aee3-13880e6a7fc4\",\n  \"reason\": \"not-found\",\n  \"reference\": {\n    \"id\": \"09a8e54f-2a5a-a4d2-164b-1c5a75519566\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e67d16f4-b00c-42c4-ba8e-36990b4120e2",
+          "name": "Delete a Load Balancer",
+          "request": {
+            "name": "Delete a Load Balancer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9747c17-8c70-4e11-8705-aa18ac2d760f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"10374df1-a672-cf1d-aee3-13880e6a7fc4\",\n  \"reason\": \"not-found\",\n  \"reference\": {\n    \"id\": \"09a8e54f-2a5a-a4d2-164b-1c5a75519566\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3987f7c6-06ef-4d89-9b40-92d0fd570d8f",
+          "name": "Retrieve Load Balancer details",
+          "request": {
+            "name": "Retrieve Load Balancer details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "load-balancer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1fe63d46-e313-4ec1-aaaa-f204817adfc5",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "load-balancer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6fa052d5-412a-dc9f-eaf0-ff8134890a8c\",\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"state\": \"creating\",\n  \"created-at\": \"1990-05-03T02:54:46.616Z\",\n  \"ip\": \"132.161.36.37\",\n  \"services\": [\n    {\n      \"description\": \"string\",\n      \"protocol\": \"udp\",\n      \"name\": \"string\",\n      \"state\": \"deleting\",\n      \"target-port\": 8890,\n      \"port\": 618,\n      \"instance-pool\": {\n        \"application-consistent-snapshot-enabled\": \"<boolean>\",\n        \"anti-affinity-groups\": [\n          {\n            \"id\": \"<uuid>\"\n          },\n          {\n            \"id\": \"<uuid>\"\n          }\n        ],\n        \"description\": \"<string>\",\n        \"public-ip-assignment\": \"<string>\",\n        \"labels\": {\n          \"key_0\": \"<string>\"\n        },\n        \"security-groups\": [\n          {\n            \"id\": \"<uuid>\"\n          },\n          {\n            \"id\": \"<uuid>\"\n          }\n        ],\n        \"elastic-ips\": [\n          {\n            \"id\": \"<uuid>\"\n          },\n          {\n            \"id\": \"<uuid>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"instance-type\": {\n          \"id\": \"<uuid>\"\n        },\n        \"min-available\": \"<long>\",\n        \"private-networks\": [\n          {\n            \"id\": \"<uuid>\"\n          },\n          {\n            \"id\": \"<uuid>\"\n          }\n        ],\n        \"template\": {\n          \"id\": \"<uuid>\"\n        },\n        \"state\": \"destroying\",\n        \"size\": \"<long>\",\n        \"ssh-key\": {\n          \"name\": \"<string>\"\n        },\n        \"instance-prefix\": \"<string>\",\n        \"user-data\": \"<string>\",\n        \"manager\": {\n          \"id\": \"2a569ebf-61be-f96b-dbf2-cd45ccfb7a58\",\n          \"type\": \"instance-pool\"\n        },\n        \"instances\": [\n          {\n            \"id\": \"3908d392-94e5-57cd-ab46-5a968d039d47\"\n          },\n          {\n            \"id\": \"5abae33d-6bfe-9c6a-7028-b235835f764d\"\n          }\n        ],\n        \"deploy-target\": {\n          \"id\": \"<uuid>\"\n        },\n        \"ipv6-enabled\": \"<boolean>\",\n        \"id\": \"3f1b6140-f081-a07d-50dd-4ab308413dac\",\n        \"disk-size\": \"<long>\",\n        \"ssh-keys\": [\n          {\n            \"name\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\"\n          }\n        ]\n      },\n      \"strategy\": \"round-robin\",\n      \"healthcheck\": {\n        \"mode\": \"<string>\",\n        \"interval\": \"<long>\",\n        \"uri\": \"<string>\",\n        \"port\": \"<long>\",\n        \"timeout\": \"<long>\",\n        \"retries\": \"<long>\",\n        \"tls-sni\": \"<string>\"\n      },\n      \"id\": \"7dd1412d-0a40-5cf5-1b7a-6c9927f16310\",\n      \"healthcheck-status\": [\n        {\n          \"public-ip\": \"176.4.64.202\",\n          \"status\": \"success\"\n        },\n        {\n          \"public-ip\": \"221.100.62.161\",\n          \"status\": \"failure\"\n        }\n      ]\n    },\n    {\n      \"description\": \"string\",\n      \"protocol\": \"tcp\",\n      \"name\": \"string\",\n      \"state\": \"running\",\n      \"target-port\": 5752,\n      \"port\": 2355,\n      \"instance-pool\": {\n        \"application-consistent-snapshot-enabled\": \"<boolean>\",\n        \"anti-affinity-groups\": [\n          {\n            \"id\": \"<uuid>\"\n          },\n          {\n            \"id\": \"<uuid>\"\n          }\n        ],\n        \"description\": \"<string>\",\n        \"public-ip-assignment\": \"<string>\",\n        \"labels\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"security-groups\": [\n          {\n            \"id\": \"<uuid>\"\n          },\n          {\n            \"id\": \"<uuid>\"\n          }\n        ],\n        \"elastic-ips\": [\n          {\n            \"id\": \"<uuid>\"\n          },\n          {\n            \"id\": \"<uuid>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"instance-type\": {\n          \"id\": \"<uuid>\"\n        },\n        \"min-available\": \"<long>\",\n        \"private-networks\": [\n          {\n            \"id\": \"<uuid>\"\n          },\n          {\n            \"id\": \"<uuid>\"\n          }\n        ],\n        \"template\": {\n          \"id\": \"<uuid>\"\n        },\n        \"state\": \"creating\",\n        \"size\": \"<long>\",\n        \"ssh-key\": {\n          \"name\": \"<string>\"\n        },\n        \"instance-prefix\": \"<string>\",\n        \"user-data\": \"<string>\",\n        \"manager\": {\n          \"id\": \"62ee05f7-ade8-2d1f-ccf9-34ea6cd89718\",\n          \"type\": \"sks-nodepool\"\n        },\n        \"instances\": [\n          {\n            \"id\": \"1ef59deb-4651-7a2c-ed14-cf914f667d8e\"\n          },\n          {\n            \"id\": \"ec6a14e4-9925-58e6-89fc-59c21144fe43\"\n          }\n        ],\n        \"deploy-target\": {\n          \"id\": \"<uuid>\"\n        },\n        \"ipv6-enabled\": \"<boolean>\",\n        \"id\": \"3f90fa21-f19e-b120-361a-3a55433ebd28\",\n        \"disk-size\": \"<long>\",\n        \"ssh-keys\": [\n          {\n            \"name\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\"\n          }\n        ]\n      },\n      \"strategy\": \"source-hash\",\n      \"healthcheck\": {\n        \"mode\": \"<string>\",\n        \"interval\": \"<long>\",\n        \"uri\": \"<string>\",\n        \"port\": \"<long>\",\n        \"timeout\": \"<long>\",\n        \"retries\": \"<long>\",\n        \"tls-sni\": \"<string>\"\n      },\n      \"id\": \"675735f7-284b-3eb8-3694-79ba2fc4440d\",\n      \"healthcheck-status\": [\n        {\n          \"public-ip\": \"56.194.128.59\",\n          \"status\": \"failure\"\n        },\n        {\n          \"public-ip\": \"65.30.176.245\",\n          \"status\": \"failure\"\n        }\n      ]\n    }\n  ],\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c201cf1f-c618-4c73-9d17-73170b980e6e",
+    "name": "Exoscale ai-api-key network-load-balancer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

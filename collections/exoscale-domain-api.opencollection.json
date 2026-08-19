@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key domain API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "domain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List DNS domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain"
+          },
+          "docs": "List DNS domains"
+        },
+        {
+          "info": {
+            "name": "Create DNS domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create DNS domain"
+        },
+        {
+          "info": {
+            "name": "Retrieve DNS domain zone file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:id/zone",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve DNS domain zone file"
+        },
+        {
+          "info": {
+            "name": "Retrieve DNS domain details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve DNS domain details"
+        },
+        {
+          "info": {
+            "name": "Delete DNS Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dns-domain/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete DNS Domain"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

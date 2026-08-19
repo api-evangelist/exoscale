@@ -1,0 +1,313 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key cluster API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a new Kubeconfig file for a SKS cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster-kubeconfig/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation returns a Kubeconfig file encoded in base64."
+        },
+        {
+          "info": {
+            "name": "Get the certificate for a SKS cluster authority",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/authority/:authority/cert",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This operation returns the certificate for the given SKS cluster authority encoded in base64."
+        },
+        {
+          "info": {
+            "name": "Resources that are scheduled to be removed in future kubernetes releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster-deprecated-resources/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This operation returns the deprecated resources for a given cluster"
+        },
+        {
+          "info": {
+            "name": "Upgrade a SKS cluster to pro",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/upgrade-service-level",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Upgrade a SKS cluster to pro"
+        },
+        {
+          "info": {
+            "name": "Rotate Exoscale CSI credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/rotate-csi-credentials",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rotate Exoscale CSI credentials"
+        },
+        {
+          "info": {
+            "name": "List SKS clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster"
+          },
+          "docs": "List SKS clusters"
+        },
+        {
+          "info": {
+            "name": "Create an SKS cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an SKS cluster"
+        },
+        {
+          "info": {
+            "name": "Retrieve SKS cluster details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve SKS cluster details"
+        },
+        {
+          "info": {
+            "name": "Update an SKS cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an SKS cluster"
+        },
+        {
+          "info": {
+            "name": "Delete an SKS cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an SKS cluster"
+        },
+        {
+          "info": {
+            "name": "Get the latest inspection result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/inspection",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Helps troubleshoot common problems when deploying a kubernetes cluster. Inspections run every couple of minutes."
+        },
+        {
+          "info": {
+            "name": "Rotate Exoscale CCM credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/rotate-ccm-credentials",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rotate Exoscale CCM credentials"
+        },
+        {
+          "info": {
+            "name": "Rotate Exoscale Karpenter credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/rotate-karpenter-credentials",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rotate Exoscale Karpenter credentials"
+        },
+        {
+          "info": {
+            "name": "Rotate operators certificate authority",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/rotate-operators-ca",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rotate operators certificate authority"
+        },
+        {
+          "info": {
+            "name": "List available versions for SKS clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster-version",
+            "params": [
+              {
+                "name": "include-deprecated",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List available versions for SKS clusters"
+        },
+        {
+          "info": {
+            "name": "Upgrade an SKS cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-cluster/:id/upgrade",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upgrade an SKS cluster"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

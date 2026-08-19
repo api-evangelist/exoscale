@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key crypto API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "crypto",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[BETA] Decrypt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/decrypt",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decrypt a ciphertext."
+        },
+        {
+          "info": {
+            "name": "[BETA] Encrypt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/encrypt",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Encrypt a plaintext."
+        },
+        {
+          "info": {
+            "name": "[BETA] Re-encrypt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/re-encrypt",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decrypts an existing ciphertext using its original key material and re-encrypts the underlying plaintext using a specified KMS key or the latest key material of the same KMS Key."
+        },
+        {
+          "info": {
+            "name": "[BETA] Generate Data Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/generate-data-key",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a Data Encryption Key from a given KMS Key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

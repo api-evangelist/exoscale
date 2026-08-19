@@ -1,0 +1,430 @@
+{
+  "item": [
+    {
+      "id": "f7717c4e-1bcf-417c-a624-cb910249f7bf",
+      "name": "anti-affinity-group",
+      "description": {
+        "content": "Anti-affinity groups let you define placement constraints for your Compute instances.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e629328-6183-4144-a16a-c65df8490b57",
+          "name": "List Anti-affinity Groups",
+          "request": {
+            "name": "List Anti-affinity Groups",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "anti-affinity-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24a3e7f9-2b91-486a-8c9b-434e5faadaee",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "anti-affinity-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"anti-affinity-groups\": [\n    {\n      \"id\": \"f098e9d9-54d3-d184-9112-6e2515f5133e\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"instances\": [\n        {\n          \"application-consistent-snapshot-enabled\": false,\n          \"anti-affinity-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"public-ip-assignment\": \"none\",\n          \"labels\": {\n            \"key_0\": \"string\"\n          },\n          \"security-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"elastic-ips\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"name\": \"string\",\n          \"instance-type\": {\n            \"id\": \"267d3f48-e399-8738-d0e6-84672cbc8933\",\n            \"size\": \"extra-large\",\n            \"family\": \"gpu\",\n            \"cpus\": 6016,\n            \"gpus\": 8562,\n            \"authorized\": true,\n            \"memory\": 5528,\n            \"zones\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"private-networks\": [\n            {\n              \"id\": \"5a428647-78a9-4334-833a-562a0165dfde\",\n              \"mac-address\": \"string\"\n            },\n            {\n              \"id\": \"14eaa55a-581a-29cf-0e9b-5472238213bd\",\n              \"mac-address\": \"string\"\n            }\n          ],\n          \"template\": {\n            \"application-consistent-snapshot-enabled\": false,\n            \"maintainer\": \"string\",\n            \"description\": \"string\",\n            \"ssh-key-enabled\": false,\n            \"family\": \"string\",\n            \"name\": \"string\",\n            \"default-user\": \"string\",\n            \"size\": 1852,\n            \"password-enabled\": false,\n            \"build\": \"string\",\n            \"checksum\": \"string\",\n            \"boot-mode\": \"uefi\",\n            \"id\": \"8f46e0e1-ea00-35b9-e22f-87bcddcb3892\",\n            \"zones\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"url\": \"string\",\n            \"version\": \"string\",\n            \"created-at\": \"1990-05-01T10:09:29.386Z\",\n            \"visibility\": \"public\"\n          },\n          \"state\": \"stopped\",\n          \"secureboot-enabled\": false,\n          \"ssh-key\": {\n            \"name\": \"string\",\n            \"fingerprint\": \"string\"\n          },\n          \"user-data\": \"string\",\n          \"mac-address\": \"string\",\n          \"manager\": {\n            \"id\": \"cc412eb5-e905-e60b-03c6-dcfb5360cf24\",\n            \"type\": \"sks-nodepool\"\n          },\n          \"tpm-enabled\": true,\n          \"deploy-target\": {\n            \"id\": \"d7dfa73c-718f-8a1e-c52a-01810bed86b4\"\n          },\n          \"ipv6-address\": \"string\",\n          \"id\": \"fe2d56cc-6ece-5f1a-f066-875ac0dfe011\",\n          \"snapshots\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"disk-size\": 23188,\n          \"ssh-keys\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"created-at\": \"1968-02-22T10:07:14.470Z\",\n          \"public-ip\": \"190.127.140.130\"\n        },\n        {\n          \"application-consistent-snapshot-enabled\": false,\n          \"anti-affinity-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"public-ip-assignment\": \"inet4\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"security-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"elastic-ips\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"name\": \"string\",\n          \"instance-type\": {\n            \"id\": \"2f581676-9e50-698b-bfa8-8b6660cf1e3c\",\n            \"size\": \"titan\",\n            \"family\": \"colossus\",\n            \"cpus\": 2999,\n            \"gpus\": 9876,\n            \"authorized\": false,\n            \"memory\": 1376,\n            \"zones\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"private-networks\": [\n            {\n              \"id\": \"dda807a3-96e4-1a9a-8a88-184c2390efaa\",\n              \"mac-address\": \"string\"\n            },\n            {\n              \"id\": \"a0a66d7b-bc01-ed39-dda8-73309faae787\",\n              \"mac-address\": \"string\"\n            }\n          ],\n          \"template\": {\n            \"application-consistent-snapshot-enabled\": true,\n            \"maintainer\": \"string\",\n            \"description\": \"string\",\n            \"ssh-key-enabled\": false,\n            \"family\": \"string\",\n            \"name\": \"string\",\n            \"default-user\": \"string\",\n            \"size\": 7560,\n            \"password-enabled\": false,\n            \"build\": \"string\",\n            \"checksum\": \"string\",\n            \"boot-mode\": \"uefi\",\n            \"id\": \"cabbbb7f-ff6a-4d33-d365-70aaf2a3e0b9\",\n            \"zones\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"url\": \"string\",\n            \"version\": \"string\",\n            \"created-at\": \"1955-07-30T18:44:34.175Z\",\n            \"visibility\": \"private\"\n          },\n          \"state\": \"expunging\",\n          \"secureboot-enabled\": true,\n          \"ssh-key\": {\n            \"name\": \"string\",\n            \"fingerprint\": \"string\"\n          },\n          \"user-data\": \"string\",\n          \"mac-address\": \"string\",\n          \"manager\": {\n            \"id\": \"6cc1febc-2962-0916-c2c1-c39b1372d337\",\n            \"type\": \"instance-pool\"\n          },\n          \"tpm-enabled\": true,\n          \"deploy-target\": {\n            \"id\": \"f366f6a4-b336-0da3-eed6-6736c6cf59b9\"\n          },\n          \"ipv6-address\": \"string\",\n          \"id\": \"78557148-4d67-bee0-9edd-4036848012d9\",\n          \"snapshots\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"disk-size\": 38062,\n          \"ssh-keys\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"created-at\": \"1978-02-09T19:47:19.971Z\",\n          \"public-ip\": \"192.30.25.185\"\n        }\n      ]\n    },\n    {\n      \"id\": \"5e6886a4-c3f2-9c31-cabe-b8dd32f9f992\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"instances\": [\n        {\n          \"application-consistent-snapshot-enabled\": true,\n          \"anti-affinity-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"public-ip-assignment\": \"none\",\n          \"labels\": {\n            \"key_0\": \"string\"\n          },\n          \"security-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"elastic-ips\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"name\": \"string\",\n          \"instance-type\": {\n            \"id\": \"fc2de279-5785-7339-4e4c-457aa922ce3d\",\n            \"size\": \"titan48c\",\n            \"family\": \"gpu\",\n            \"cpus\": 9013,\n            \"gpus\": 227,\n            \"authorized\": true,\n            \"memory\": 3542,\n            \"zones\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"private-networks\": [\n            {\n              \"id\": \"2470d4c3-0dff-da12-cd1b-c4de210b4ecc\",\n              \"mac-address\": \"string\"\n            },\n            {\n              \"id\": \"2f870767-2539-8c09-eab3-bd7223e99ba5\",\n              \"mac-address\": \"string\"\n            }\n          ],\n          \"template\": {\n            \"application-consistent-snapshot-enabled\": true,\n            \"maintainer\": \"string\",\n            \"description\": \"string\",\n            \"ssh-key-enabled\": true,\n            \"family\": \"string\",\n            \"name\": \"string\",\n            \"default-user\": \"string\",\n            \"size\": 5478,\n            \"password-enabled\": true,\n            \"build\": \"string\",\n            \"checksum\": \"string\",\n            \"boot-mode\": \"uefi\",\n            \"id\": \"14d4dea8-1626-40bc-c3a8-43cc5277b56d\",\n            \"zones\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"url\": \"string\",\n            \"version\": \"string\",\n            \"created-at\": \"1998-07-23T07:47:35.819Z\",\n            \"visibility\": \"private\"\n          },\n          \"state\": \"destroying\",\n          \"secureboot-enabled\": true,\n          \"ssh-key\": {\n            \"name\": \"string\",\n            \"fingerprint\": \"string\"\n          },\n          \"user-data\": \"string\",\n          \"mac-address\": \"string\",\n          \"manager\": {\n            \"id\": \"92268abc-e846-1060-503d-660732edf92e\",\n            \"type\": \"sks-nodepool\"\n          },\n          \"tpm-enabled\": true,\n          \"deploy-target\": {\n            \"id\": \"0d59fc74-2be9-287a-7379-11644e330017\"\n          },\n          \"ipv6-address\": \"string\",\n          \"id\": \"3048a661-6ac7-a591-ea7d-3cc557650d5a\",\n          \"snapshots\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"disk-size\": 39991,\n          \"ssh-keys\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"created-at\": \"1993-05-17T03:58:26.000Z\",\n          \"public-ip\": \"80.155.250.77\"\n        },\n        {\n          \"application-consistent-snapshot-enabled\": true,\n          \"anti-affinity-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"public-ip-assignment\": \"none\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"security-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"elastic-ips\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"name\": \"string\",\n          \"instance-type\": {\n            \"id\": \"9952e972-3514-5316-6ee4-aac166b3bae7\",\n            \"size\": \"large\",\n            \"family\": \"gpu3\",\n            \"cpus\": 7648,\n            \"gpus\": 918,\n            \"authorized\": false,\n            \"memory\": 8313,\n            \"zones\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"private-networks\": [\n            {\n              \"id\": \"41a9d1d3-f0cf-a90d-6961-bf65e0bedd25\",\n              \"mac-address\": \"string\"\n            },\n            {\n              \"id\": \"fe7ae31a-495e-a910-9f83-e76670f0eb4f\",\n              \"mac-address\": \"string\"\n            }\n          ],\n          \"template\": {\n            \"application-consistent-snapshot-enabled\": false,\n            \"maintainer\": \"string\",\n            \"description\": \"string\",\n            \"ssh-key-enabled\": false,\n            \"family\": \"string\",\n            \"name\": \"string\",\n            \"default-user\": \"string\",\n            \"size\": 9901,\n            \"password-enabled\": true,\n            \"build\": \"string\",\n            \"checksum\": \"string\",\n            \"boot-mode\": \"uefi\",\n            \"id\": \"77d0ea23-921b-7a05-1d6b-13b2218c1e72\",\n            \"zones\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"url\": \"string\",\n            \"version\": \"string\",\n            \"created-at\": \"1996-07-10T14:38:58.981Z\",\n            \"visibility\": \"private\"\n          },\n          \"state\": \"stopped\",\n          \"secureboot-enabled\": true,\n          \"ssh-key\": {\n            \"name\": \"string\",\n            \"fingerprint\": \"string\"\n          },\n          \"user-data\": \"string\",\n          \"mac-address\": \"string\",\n          \"manager\": {\n            \"id\": \"b4bd5a0d-a2f2-a3c3-4eee-5b6832269f27\",\n            \"type\": \"sks-nodepool\"\n          },\n          \"tpm-enabled\": false,\n          \"deploy-target\": {\n            \"id\": \"39be6280-1823-6a70-356c-aaedb19700ca\"\n          },\n          \"ipv6-address\": \"string\",\n          \"id\": \"56b475fa-9c52-38e7-31f0-87ebafedcdf1\",\n          \"snapshots\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"disk-size\": 36296,\n          \"ssh-keys\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"created-at\": \"1999-01-05T01:12:07.880Z\",\n          \"public-ip\": \"249.205.163.253\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2201c73d-2cd4-4044-9d8c-a258b1333b64",
+          "name": "Create an Anti-affinity Group",
+          "request": {
+            "name": "Create an Anti-affinity Group",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "anti-affinity-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "58326861-8677-4b37-bd2e-da339f0f29a3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "anti-affinity-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"751f1481-f257-1cdc-e8c3-9eda6ac304c9\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"5ef3ac61-21fc-715f-d818-6f711f0e459e\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52a9f4a1-8c71-4c70-a35c-966be188c8e0",
+          "name": "Retrieve Anti-affinity Group details",
+          "request": {
+            "name": "Retrieve Anti-affinity Group details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "anti-affinity-group",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d43aadb2-811f-459c-9a91-5d978e71f606",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "anti-affinity-group",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"314e227c-d91b-a5c3-4f75-6b48c3418489\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"instances\": [\n    {\n      \"application-consistent-snapshot-enabled\": false,\n      \"anti-affinity-groups\": [\n        {\n          \"id\": \"1e35e5d2-8930-d1ed-edf9-3941927adf22\"\n        },\n        {\n          \"id\": \"9f44ff96-e1aa-a290-0d87-091334cbbad3\"\n        }\n      ],\n      \"public-ip-assignment\": \"dual\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"security-groups\": [\n        {\n          \"id\": \"22978fa6-c7e8-3452-8360-af6b9ee4b179\"\n        },\n        {\n          \"id\": \"03b2278d-9587-5d61-9b96-a63021dd76a2\"\n        }\n      ],\n      \"elastic-ips\": [\n        {\n          \"id\": \"2f3a1514-a55d-b612-8e69-f5841bcc0fb2\"\n        },\n        {\n          \"id\": \"8a3cd197-befc-8ae7-9851-b573d6f8231a\"\n        }\n      ],\n      \"name\": \"string\",\n      \"instance-type\": {\n        \"id\": \"e5d04310-3c62-d4be-6767-cdfdfec4865d\",\n        \"size\": \"titan\",\n        \"family\": \"colossus\",\n        \"cpus\": 6478,\n        \"gpus\": 1735,\n        \"authorized\": true,\n        \"memory\": 3627,\n        \"zones\": [\n          \"at-vie-2\",\n          \"de-fra-1\"\n        ]\n      },\n      \"private-networks\": [\n        {\n          \"id\": \"d5da64c3-dd7b-37f6-dfd1-0fc17f9736df\",\n          \"mac-address\": \"string\"\n        },\n        {\n          \"id\": \"814984d7-e3a6-5c2f-b482-2821854a4750\",\n          \"mac-address\": \"string\"\n        }\n      ],\n      \"template\": {\n        \"application-consistent-snapshot-enabled\": true,\n        \"maintainer\": \"string\",\n        \"description\": \"string\",\n        \"ssh-key-enabled\": false,\n        \"family\": \"string\",\n        \"name\": \"string\",\n        \"default-user\": \"string\",\n        \"size\": 4546,\n        \"password-enabled\": false,\n        \"build\": \"string\",\n        \"checksum\": \"string\",\n        \"boot-mode\": \"legacy\",\n        \"id\": \"46c69366-fab4-ad39-1f4e-90cf5ba26857\",\n        \"zones\": [\n          \"at-vie-2\",\n          \"ch-dk-2\"\n        ],\n        \"url\": \"string\",\n        \"version\": \"string\",\n        \"created-at\": \"1967-10-07T00:08:14.435Z\",\n        \"visibility\": \"private\"\n      },\n      \"state\": \"destroying\",\n      \"secureboot-enabled\": true,\n      \"ssh-key\": {\n        \"name\": \"string\",\n        \"fingerprint\": \"string\"\n      },\n      \"user-data\": \"string\",\n      \"mac-address\": \"string\",\n      \"manager\": {\n        \"id\": \"16efb340-adbf-7b91-f8e7-96279bbcbcac\",\n        \"type\": \"sks-nodepool\"\n      },\n      \"tpm-enabled\": false,\n      \"deploy-target\": {\n        \"id\": \"63998dab-332a-775b-6a7a-3e85daef9f95\"\n      },\n      \"ipv6-address\": \"string\",\n      \"id\": \"dd964fc3-60ca-57c0-b077-c984e5b5c16e\",\n      \"snapshots\": [\n        {\n          \"id\": \"307e1010-c90b-b0e1-6005-7c800f4b8fb7\"\n        },\n        {\n          \"id\": \"3e7df16f-2047-6d33-289e-45e6d62a4ded\"\n        }\n      ],\n      \"disk-size\": 6302,\n      \"ssh-keys\": [\n        {\n          \"name\": \"string\",\n          \"fingerprint\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"fingerprint\": \"string\"\n        }\n      ],\n      \"created-at\": \"1947-12-27T06:10:49.094Z\",\n      \"public-ip\": \"39.223.7.202\"\n    },\n    {\n      \"application-consistent-snapshot-enabled\": true,\n      \"anti-affinity-groups\": [\n        {\n          \"id\": \"e82fdb5c-33ed-595d-2db5-56a5f6707555\"\n        },\n        {\n          \"id\": \"82224bc7-0c84-f67e-37e0-da659d77eb0b\"\n        }\n      ],\n      \"public-ip-assignment\": \"inet4\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"security-groups\": [\n        {\n          \"id\": \"adf0f328-d1bd-2b87-0324-037b6984755d\"\n        },\n        {\n          \"id\": \"6fbd0b0f-6834-7397-9c61-625403b1da4a\"\n        }\n      ],\n      \"elastic-ips\": [\n        {\n          \"id\": \"0c7f9d71-ab4e-d07f-0521-ba8b5d3cedaf\"\n        },\n        {\n          \"id\": \"f8a0daa0-9fdc-97c9-6206-a75b669d9932\"\n        }\n      ],\n      \"name\": \"strin\",\n      \"instance-type\": {\n        \"id\": \"c1f4b9e9-81b2-072d-f8d6-8aaaf931d0fe\",\n        \"size\": \"medium\",\n        \"family\": \"storage\",\n        \"cpus\": 8508,\n        \"gpus\": 2099,\n        \"authorized\": true,\n        \"memory\": 7006,\n        \"zones\": [\n          \"ch-gva-2\",\n          \"bg-sof-1\"\n        ]\n      },\n      \"private-networks\": [\n        {\n          \"id\": \"06838ee1-bf31-74a7-789c-3d8cb5b46f76\",\n          \"mac-address\": \"string\"\n        },\n        {\n          \"id\": \"a8293705-ff4c-29a9-a7d4-6b29613ac3d4\",\n          \"mac-address\": \"string\"\n        }\n      ],\n      \"template\": {\n        \"application-consistent-snapshot-enabled\": false,\n        \"maintainer\": \"string\",\n        \"description\": \"string\",\n        \"ssh-key-enabled\": true,\n        \"family\": \"string\",\n        \"name\": \"string\",\n        \"default-user\": \"string\",\n        \"size\": 2859,\n        \"password-enabled\": true,\n        \"build\": \"string\",\n        \"checksum\": \"string\",\n        \"boot-mode\": \"legacy\",\n        \"id\": \"9d16831b-ce04-47fe-81a6-4b3c473b8dac\",\n        \"zones\": [\n          \"de-muc-1\",\n          \"at-vie-2\"\n        ],\n        \"url\": \"string\",\n        \"version\": \"string\",\n        \"created-at\": \"1950-11-30T05:22:58.573Z\",\n        \"visibility\": \"private\"\n      },\n      \"state\": \"expunging\",\n      \"secureboot-enabled\": true,\n      \"ssh-key\": {\n        \"name\": \"string\",\n        \"fingerprint\": \"string\"\n      },\n      \"user-data\": \"string\",\n      \"mac-address\": \"string\",\n      \"manager\": {\n        \"id\": \"fd6b0cd8-c629-e0f4-5a0e-fbec44be87df\",\n        \"type\": \"instance-pool\"\n      },\n      \"tpm-enabled\": false,\n      \"deploy-target\": {\n        \"id\": \"fb5c8fdf-43ac-9d5d-f6d1-4a72fc326249\"\n      },\n      \"ipv6-address\": \"string\",\n      \"id\": \"2312a4e1-ceca-adfc-f777-ef281c4b91f2\",\n      \"snapshots\": [\n        {\n          \"id\": \"a97a2697-8b1c-d0b9-fea4-63f91c4184b8\"\n        },\n        {\n          \"id\": \"4f3bf185-a874-5951-9d7d-b8f24181c7a3\"\n        }\n      ],\n      \"disk-size\": 37437,\n      \"ssh-keys\": [\n        {\n          \"name\": \"string\",\n          \"fingerprint\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"fingerprint\": \"string\"\n        }\n      ],\n      \"created-at\": \"1976-11-19T23:40:17.049Z\",\n      \"public-ip\": \"19.125.89.11\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a96449d-7d2f-42c4-98d1-c24bbb44c349",
+          "name": "Delete an Anti-affinity Group",
+          "request": {
+            "name": "Delete an Anti-affinity Group",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "anti-affinity-group",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf5c389a-505e-4d9a-b076-bfe118689539",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "anti-affinity-group",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"751f1481-f257-1cdc-e8c3-9eda6ac304c9\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"5ef3ac61-21fc-715f-d818-6f711f0e459e\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6b715b2b-98c4-480f-b2b4-294c50ea8aa5",
+    "name": "Exoscale ai-api-key anti-affinity-group API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

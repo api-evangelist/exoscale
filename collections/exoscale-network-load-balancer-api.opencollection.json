@@ -1,0 +1,248 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key network-load-balancer API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "network-load-balancer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Load Balancer Service details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service/:service-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Load Balancer Service details"
+        },
+        {
+          "info": {
+            "name": "Update a Load Balancer Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service/:service-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Load Balancer Service"
+        },
+        {
+          "info": {
+            "name": "Delete a Load Balancer Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service/:service-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Load Balancer Service"
+        },
+        {
+          "info": {
+            "name": "List Load Balancers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer"
+          },
+          "docs": "List Load Balancers"
+        },
+        {
+          "info": {
+            "name": "Create a Load Balancer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Load Balancer"
+        },
+        {
+          "info": {
+            "name": "Reset a Load Balancer field to its default value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset a Load Balancer field to its default value"
+        },
+        {
+          "info": {
+            "name": "Reset a Load Balancer Service field to its default value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service/:service-id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset a Load Balancer Service field to its default value"
+        },
+        {
+          "info": {
+            "name": "Add a Load Balancer Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a Load Balancer Service"
+        },
+        {
+          "info": {
+            "name": "Retrieve Load Balancer details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Load Balancer details"
+        },
+        {
+          "info": {
+            "name": "Update a Load Balancer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Load Balancer"
+        },
+        {
+          "info": {
+            "name": "Delete a Load Balancer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Load Balancer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

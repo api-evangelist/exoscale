@@ -1,0 +1,2056 @@
+{
+  "item": [
+    {
+      "id": "0100e027-078f-47d0-841b-2ac4017d4180",
+      "name": "deployment",
+      "description": {
+        "content": "Deployments are loaded model instances ready for inference.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31028bd4-ee48-4bfd-8d66-e72e34a4cf9d",
+          "name": "Get inference-engine Help",
+          "request": {
+            "name": "Get inference-engine Help",
+            "description": {
+              "content": "Get list of allowed inference engine parameters with their descriptions and allowed values",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "help",
+                "inference-engine-parameters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2149728-f464-48cd-bc80-04a6b8e3a6f1",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "help",
+                    "inference-engine-parameters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"parameters\": [\n    {\n      \"description\": \"string\",\n      \"allowed-values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"default\": \"string\",\n      \"name\": \"string\",\n      \"section\": \"string\",\n      \"type\": \"string\",\n      \"flags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"description\": \"string\",\n      \"allowed-values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"default\": \"string\",\n      \"name\": \"string\",\n      \"section\": \"string\",\n      \"type\": \"string\",\n      \"flags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc84acf5-098d-4514-a583-4d456ed0ce2e",
+          "name": "Scale Deployment",
+          "request": {
+            "name": "Scale Deployment",
+            "description": {
+              "content": "Scale Deployment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "deployment",
+                ":id",
+                "scale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"replicas\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d2eb7e5e-82f8-456c-a564-6b87302cd1b3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id",
+                    "scale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replicas\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"432c5ca7-6df0-3b2d-03ae-ab2cdbbcf3b0\",\n  \"reason\": \"incorrect\",\n  \"reference\": {\n    \"id\": \"a803176a-96b9-e2f8-0666-c2814a5b4f48\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "981d17e4-0f75-4ae7-81f5-447c47136ab1",
+              "name": "403",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id",
+                    "scale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replicas\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"forbidden_operation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a91e543-a2d6-4d47-8986-c749686f34a2",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id",
+                    "scale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replicas\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://xwaeuZRQfCdmzSMqHfkeOaJDmEpQdE.iwapanOw2VRUOb5qDbKOAjv\",\n  \"title\": \"string\",\n  \"status\": 348,\n  \"detail\": \"string\",\n  \"instance\": \"http://tHccxFXvOf.maK.UaRTw3qNoLX6FhMuQCle9k0gKzihMziga7B7lbJ8mwNqXZieo0NEDaHtYVJxQj+BZG6wFVPO.6+PQ8Uwx?aybc&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fa4ef29-749d-4ad0-9ea1-d72cb5d6391e",
+              "name": "412",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id",
+                    "scale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replicas\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61f14821-16f9-4833-a6da-8ec821809ed7",
+          "name": "Create Deployment",
+          "request": {
+            "name": "Create Deployment",
+            "description": {
+              "content": "Deploy a model on an inference server",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "deployment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": {\n    \"name\": \"<string>\",\n    \"id\": \"<uuid>\"\n  },\n  \"name\": \"<string>\",\n  \"gpu-type\": \"<string>\",\n  \"gpu-count\": \"<long>\",\n  \"replicas\": \"<long>\",\n  \"inference-engine-version\": \"0.19.0\",\n  \"inference-engine-parameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4113e359-2625-4edc-b8e5-09da7d1510fb",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": {\n    \"name\": \"<string>\",\n    \"id\": \"<uuid>\"\n  },\n  \"name\": \"<string>\",\n  \"gpu-type\": \"<string>\",\n  \"gpu-count\": \"<long>\",\n  \"replicas\": \"<long>\",\n  \"inference-engine-version\": \"0.19.0\",\n  \"inference-engine-parameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"432c5ca7-6df0-3b2d-03ae-ab2cdbbcf3b0\",\n  \"reason\": \"incorrect\",\n  \"reference\": {\n    \"id\": \"a803176a-96b9-e2f8-0666-c2814a5b4f48\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f99d4736-b1c9-4472-b2ef-39798f15279b",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": {\n    \"name\": \"<string>\",\n    \"id\": \"<uuid>\"\n  },\n  \"name\": \"<string>\",\n  \"gpu-type\": \"<string>\",\n  \"gpu-count\": \"<long>\",\n  \"replicas\": \"<long>\",\n  \"inference-engine-version\": \"0.19.0\",\n  \"inference-engine-parameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa948bd3-1427-4618-ac95-c6665055799e",
+              "name": "403",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": {\n    \"name\": \"<string>\",\n    \"id\": \"<uuid>\"\n  },\n  \"name\": \"<string>\",\n  \"gpu-type\": \"<string>\",\n  \"gpu-count\": \"<long>\",\n  \"replicas\": \"<long>\",\n  \"inference-engine-version\": \"0.19.0\",\n  \"inference-engine-parameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"forbidden_operation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ddff30f-fbc5-4961-b4c6-7db2e458873e",
+              "name": "412",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": {\n    \"name\": \"<string>\",\n    \"id\": \"<uuid>\"\n  },\n  \"name\": \"<string>\",\n  \"gpu-type\": \"<string>\",\n  \"gpu-count\": \"<long>\",\n  \"replicas\": \"<long>\",\n  \"inference-engine-version\": \"0.19.0\",\n  \"inference-engine-parameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a9bfbdb-c5d3-4655-afa9-b90a746006cf",
+          "name": "List Deployments",
+          "request": {
+            "name": "List Deployments",
+            "description": {
+              "content": "List Deployments",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "deployment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "visibility",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d7307c1-d446-4f24-a726-2db2d8474d0a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "visibility",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deployments\": [\n    {\n      \"gpu-count\": 2954,\n      \"updated-at\": \"1969-02-15T03:31:18.940Z\",\n      \"deployment-url\": \"string\",\n      \"service-level\": \"string\",\n      \"name\": \"string\",\n      \"state\": \"deploying\",\n      \"gpu-type\": \"string\",\n      \"id\": \"b62718ed-0a39-bdb0-6bb8-a9a0fee6696f\",\n      \"replicas\": 3565,\n      \"created-at\": \"1975-06-21T02:58:20.774Z\",\n      \"model\": {\n        \"name\": \"<string>\",\n        \"id\": \"<uuid>\"\n      }\n    },\n    {\n      \"gpu-count\": 526,\n      \"updated-at\": \"1991-10-20T22:38:21.838Z\",\n      \"deployment-url\": \"string\",\n      \"service-level\": \"str\",\n      \"name\": \"string\",\n      \"state\": \"deploying\",\n      \"gpu-type\": \"string\",\n      \"id\": \"bcf1faa0-851c-9ad9-7c1a-59c37324b6ed\",\n      \"replicas\": 2688,\n      \"created-at\": \"1985-07-28T17:32:55.212Z\",\n      \"model\": {\n        \"name\": \"<string>\",\n        \"id\": \"<uuid>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83377e7e-97da-4882-b169-281d1ea25cf2",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "visibility",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e838c1b-2876-4392-913b-a8e5db514a56",
+          "name": "Get Deployment",
+          "request": {
+            "name": "Get Deployment",
+            "description": {
+              "content": "Get Deployment details",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "deployment",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58d42507-3d9b-4812-8aad-1377ee9254c7",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gpu-count\": 2351,\n  \"updated-at\": \"1958-02-04T06:38:00.179Z\",\n  \"deployment-url\": \"string\",\n  \"service-level\": \"string\",\n  \"inference-engine-version\": \"0.19.0\",\n  \"name\": \"string\",\n  \"state\": \"error\",\n  \"gpu-type\": \"string\",\n  \"id\": \"fc624243-8b81-60ba-418a-9e1e2e4c2889\",\n  \"replicas\": 9324,\n  \"state-details\": \"string\",\n  \"created-at\": \"2007-09-25T09:41:20.718Z\",\n  \"inference-engine-parameters\": [\n    \"string\",\n    \"string\"\n  ],\n  \"model\": {\n    \"name\": \"<string>\",\n    \"id\": \"<uuid>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b87c245-26ac-4dc2-b1a0-23ae06a63c7c",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f96ad06b-9b4b-442e-82ed-d94cd76e2b02",
+          "name": "update-deployment",
+          "request": {
+            "name": "update-deployment",
+            "description": {
+              "content": "Update AI deployment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "deployment",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inference-engine-version\": \"0.19.0\",\n  \"name\": \"<string>\",\n  \"inference-engine-parameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "94218663-1cd6-452b-ad54-9d8b0453a0cb",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inference-engine-version\": \"0.19.0\",\n  \"name\": \"<string>\",\n  \"inference-engine-parameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"432c5ca7-6df0-3b2d-03ae-ab2cdbbcf3b0\",\n  \"reason\": \"incorrect\",\n  \"reference\": {\n    \"id\": \"a803176a-96b9-e2f8-0666-c2814a5b4f48\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05b926cb-afed-4341-bb6b-f59ff332727e",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inference-engine-version\": \"0.19.0\",\n  \"name\": \"<string>\",\n  \"inference-engine-parameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd0deea9-8028-48e3-af8f-e88caf861309",
+              "name": "403",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inference-engine-version\": \"0.19.0\",\n  \"name\": \"<string>\",\n  \"inference-engine-parameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"forbidden_operation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c526786-1a51-4339-b553-82cc9102d6c4",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inference-engine-version\": \"0.19.0\",\n  \"name\": \"<string>\",\n  \"inference-engine-parameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6943cbc-913c-4d23-95d3-506fe6a9d1f7",
+          "name": "Delete Deployment",
+          "request": {
+            "name": "Delete Deployment",
+            "description": {
+              "content": "Delete Deployment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "deployment",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6333491-8105-412e-aa27-642d320f11c9",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"432c5ca7-6df0-3b2d-03ae-ab2cdbbcf3b0\",\n  \"reason\": \"incorrect\",\n  \"reference\": {\n    \"id\": \"a803176a-96b9-e2f8-0666-c2814a5b4f48\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5aea430f-68e1-495d-9bf5-6c674df20279",
+              "name": "403",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"forbidden_operation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f26697f6-09b6-4fec-838b-1f702faaebec",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fae4cd8-7ff7-492b-a930-53b946346095",
+          "name": "List Instance Types",
+          "request": {
+            "name": "List Instance Types",
+            "description": {
+              "content": "List available instance types with authorization status based on GPU availability",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "instance-type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99f93b10-dda1-4568-85be-334adef9fdd2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "instance-type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instance-types\": [\n    {\n      \"family\": \"string\",\n      \"authorized\": true\n    },\n    {\n      \"family\": \"string\",\n      \"authorized\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f886f04-8b91-4f95-8217-4a98e0c99b03",
+          "name": "Reveal Deployment API Key",
+          "request": {
+            "name": "Reveal Deployment API Key",
+            "description": {
+              "content": "Get Deployment API Key",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "deployment",
+                ":id",
+                "api-key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "edce8162-1034-4eff-8379-f2273671423c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id",
+                    "api-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-key\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d918403-4b23-4cc5-9794-7f2dce4b8c5e",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id",
+                    "api-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffc80b49-941e-4986-bfea-d4395be359a5",
+          "name": "Get Deployment Logs",
+          "request": {
+            "name": "Get Deployment Logs",
+            "description": {
+              "content": "Return logs for the vLLM deployment (deploy/<release-name>--deployment-vllm). Optional ?stream=true to request streaming (may not be supported).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "deployment",
+                ":id",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stream",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tail",
+                  "value": "<long>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "829fb060-7dca-47ce-a936-d94ced5e3f3d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stream",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tail",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"logs\": [\n    {\n      \"time\": \"string\",\n      \"node\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"time\": \"string\",\n      \"node\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11384ef3-cece-443e-8048-478b62dd96c5",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stream",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tail",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66c9b2b2-e5f0-4a03-87ff-c6dee1211d5f",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stream",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tail",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "876682b5-08ad-406e-bc17-f4f544dba390",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "deployment",
+                    ":id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stream",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tail",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://DhsKTzLFaTgRLHsUBjM.meJXyxkXoISVJPomigBy-Gki81m6+t-TSRQxYpJtAf0Oolz0p16-KtiTf\",\n  \"title\": \"string\",\n  \"status\": 248,\n  \"detail\": \"string\",\n  \"instance\": \"https://DvuOwSSBQAmwZcesXovEf.mhvXv?o=jLI1F&\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "971fc457-c4ff-4ff6-bf69-96eca98417d1",
+    "name": "Exoscale ai-api-key deployment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

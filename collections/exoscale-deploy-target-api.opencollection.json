@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key deploy-target API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "deploy-target",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Deploy Targets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/deploy-target"
+          },
+          "docs": "List Deploy Targets"
+        },
+        {
+          "info": {
+            "name": "Retrieve Deploy Target details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/deploy-target/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Deploy Target details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

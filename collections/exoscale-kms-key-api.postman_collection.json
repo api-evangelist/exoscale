@@ -1,0 +1,2036 @@
+{
+  "item": [
+    {
+      "id": "b7be1416-4826-4777-b901-3da946dbda9a",
+      "name": "kms-key",
+      "description": {
+        "content": "Operations for KMS Key lifecycle management.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "969d22b5-12ce-46ba-94c0-93e75b64c3c0",
+          "name": "[BETA] Disable Key Rotation",
+          "request": {
+            "name": "[BETA] Disable Key Rotation",
+            "description": {
+              "content": "Disable the periodic rotation of a KMS Key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key",
+                ":id",
+                "disable-key-rotation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec3e43b6-f088-4fce-87e6-c567c6d94735",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "disable-key-rotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rotation\": {\n    \"manual-count\": 7945,\n    \"automatic\": false,\n    \"rotation-period\": 6680,\n    \"next-at\": \"1961-02-20T06:24:36.916Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7115d95e-4d22-462c-b761-63adec887616",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "disable-key-rotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://ZgQqMIsEeVlEDGS.oyObm+IqF4NM0FAHh0arYzG2U3H61EvaFwikT\",\n  \"title\": \"string\",\n  \"status\": 290,\n  \"detail\": \"string\",\n  \"instance\": \"http://B.mfXm7ig04ZMxMpahtY\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ccc554f-04b0-4120-bcda-5413feb171a7",
+          "name": "[BETA] Get KMS Key",
+          "request": {
+            "name": "[BETA] Get KMS Key",
+            "description": {
+              "content": "Retrieve KMS Key details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d7a1f8e8-3760-4058-9d64-ba0c66788e62",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f260c0ca-7055-cbd4-f300-e7f484ea64e6\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"usage\": \"string\",\n  \"source\": \"exoscale-kms\",\n  \"status\": \"enabled\",\n  \"status-since\": \"1958-06-14T00:55:31.938Z\",\n  \"material\": {\n    \"version\": 5661,\n    \"created-at\": \"2014-07-01T02:28:59.539Z\",\n    \"automatic\": true\n  },\n  \"rotation\": {\n    \"manual-count\": 4074,\n    \"automatic\": false,\n    \"rotation-period\": 7097,\n    \"next-at\": \"1976-05-08T21:16:47.805Z\"\n  },\n  \"multi-zone\": true,\n  \"origin-zone\": \"string\",\n  \"replicas\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created-at\": \"2022-02-21T19:24:55.888Z\",\n  \"revision\": {\n    \"at\": \"2011-08-23T07:26:04.256Z\",\n    \"seq\": 2005\n  },\n  \"replicas-status\": [\n    {\n      \"zone\": \"string\",\n      \"last-applied-watermark\": 8230,\n      \"last-failure\": {\n        \"attempted-watermark\": 9091,\n        \"error\": \"string\",\n        \"failed-at\": \"1997-06-24T00:17:42.310Z\"\n      }\n    },\n    {\n      \"zone\": \"string\",\n      \"last-applied-watermark\": 3300,\n      \"last-failure\": {\n        \"attempted-watermark\": 8564,\n        \"error\": \"string\",\n        \"failed-at\": \"1955-06-10T23:36:00.650Z\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7a0a6b8-7059-45ea-a07b-7a0c1b81775a",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cff4c961-00b6-43e4-8eff-806e0e8b612e",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "255a9c16-7aac-4e7f-a16f-90a0d98ebaaf",
+          "name": "[BETA] Enable KMS Key",
+          "request": {
+            "name": "[BETA] Enable KMS Key",
+            "description": {
+              "content": "Enable a KMS Key\"",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key",
+                ":id",
+                "enable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5bbfde0b-38b8-4a7d-af7f-2cbf242e52d9",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcfb618e-6b71-4eb3-a8ce-6c3a73ff624c",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7af4508f-32a3-41c2-9197-de1aab700d88",
+          "name": "[BETA] List KMS Key Rotations",
+          "request": {
+            "name": "[BETA] List KMS Key Rotations",
+            "description": {
+              "content": "List all the key material versions of a KMS Key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key",
+                ":id",
+                "list-key-rotations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c339544b-7e81-475b-bdce-a2535c4490c1",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "list-key-rotations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rotations\": [\n    {\n      \"version\": 4650,\n      \"rotated-at\": \"1989-07-07T18:59:31.926Z\",\n      \"automatic\": false\n    },\n    {\n      \"version\": 1843,\n      \"rotated-at\": \"2016-06-05T10:27:57.919Z\",\n      \"automatic\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a941d89c-8175-4fde-94e9-e897592fcca5",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "list-key-rotations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2e2cf5f-4b40-4daf-a4b6-c9896bdee19d",
+          "name": "[BETA] Enable Key Rotation",
+          "request": {
+            "name": "[BETA] Enable Key Rotation",
+            "description": {
+              "content": "Enable the periodic rotation of a KMS Key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key",
+                ":id",
+                "enable-key-rotation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rotation-period\": 365\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "547125fd-3cae-4f58-b138-cdc81ad5befe",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "enable-key-rotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rotation-period\": 365\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rotation\": {\n    \"manual-count\": 7945,\n    \"automatic\": false,\n    \"rotation-period\": 6680,\n    \"next-at\": \"1961-02-20T06:24:36.916Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21d680d4-daec-4da0-9edd-e92a3fe4b028",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "enable-key-rotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rotation-period\": 365\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "896b1de6-37f2-48a5-9a16-5878a3a66200",
+          "name": "[BETA] Rotate Key",
+          "request": {
+            "name": "[BETA] Rotate Key",
+            "description": {
+              "content": "Perform a manual rotation of the key material for a symmetric key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key",
+                ":id",
+                "rotate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2676f13d-5f48-4692-88b5-ce32a9ae26f2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rotation\": {\n    \"manual-count\": 7945,\n    \"automatic\": false,\n    \"rotation-period\": 6680,\n    \"next-at\": \"1961-02-20T06:24:36.916Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6c98586-983f-4c98-9665-e8e3a3ffb806",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "258fc3db-4205-45bd-a7d7-60bdc8722683",
+          "name": "[BETA] Disable KMS Key",
+          "request": {
+            "name": "[BETA] Disable KMS Key",
+            "description": {
+              "content": "Disable a KMS Key",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key",
+                ":id",
+                "disable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4fdbc2c7-81f9-4185-99bf-3681869fe406",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "001c9914-e431-4c51-b736-15a7c6a2443c",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f39411f-d819-431c-8349-3e8095650781",
+          "name": "[BETA] Create KMS Key",
+          "request": {
+            "name": "[BETA] Create KMS Key",
+            "description": {
+              "content": "Create a KMS Key in a given zone with a given name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"multi-zone\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d627da4e-41b3-4170-b971-b81d85c5bb5c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"multi-zone\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"fab997bf-7669-6829-cdfa-806deeb71154\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"usage\": \"string\",\n  \"source\": \"exoscale-kms\",\n  \"status\": \"pending-deletion\",\n  \"multi-zone\": false,\n  \"origin-zone\": \"string\",\n  \"created-at\": \"1960-03-15T09:06:33.084Z\",\n  \"revision\": {\n    \"at\": \"1991-01-24T12:49:22.979Z\",\n    \"seq\": 3768\n  },\n  \"status-since\": 5195.7182666249555\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7051cb1-ada0-4de9-8233-e8457a28980a",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"multi-zone\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a667443f-af7e-428d-8368-9b6e8bfc2ac6",
+              "name": "409",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"multi-zone\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6a7e273-5446-43ce-ac94-04a1d12464a9",
+          "name": "[BETA] List KMS Keys",
+          "request": {
+            "name": "[BETA] List KMS Keys",
+            "description": {
+              "content": "List KMS Keys details for an organization in a given zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa27bbe2-4dab-4b69-bb8d-022515a99ea2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kms-keys\": [\n    {\n      \"id\": \"1e201745-6c01-a69e-5980-188cf3771b2a\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"usage\": \"string\",\n      \"source\": \"exoscale-kms\",\n      \"status\": \"pending-deletion\",\n      \"status-since\": \"2006-04-05T03:43:37.936Z\",\n      \"material\": {\n        \"version\": 6022,\n        \"created-at\": \"1963-05-22T01:47:21.919Z\",\n        \"automatic\": true\n      },\n      \"rotation\": {\n        \"manual-count\": 8365,\n        \"automatic\": false,\n        \"rotation-period\": 2361,\n        \"next-at\": \"2005-10-26T10:31:13.978Z\"\n      },\n      \"multi-zone\": false,\n      \"origin-zone\": \"string\",\n      \"replicas\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created-at\": \"1995-05-21T08:33:54.201Z\",\n      \"revision\": {\n        \"at\": \"1985-07-20T10:36:24.366Z\",\n        \"seq\": 7967\n      }\n    },\n    {\n      \"id\": \"1f51dba5-36a1-56e7-86e1-fd028e144398\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"usage\": \"string\",\n      \"source\": \"exoscale-kms\",\n      \"status\": \"enabled\",\n      \"status-since\": \"2000-01-01T14:06:01.301Z\",\n      \"material\": {\n        \"version\": 2081,\n        \"created-at\": \"1948-06-26T06:07:48.821Z\",\n        \"automatic\": false\n      },\n      \"rotation\": {\n        \"manual-count\": 8172,\n        \"automatic\": true,\n        \"rotation-period\": 7913,\n        \"next-at\": \"2013-05-17T01:56:16.964Z\"\n      },\n      \"multi-zone\": false,\n      \"origin-zone\": \"string\",\n      \"replicas\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created-at\": \"1953-08-18T16:40:11.894Z\",\n      \"revision\": {\n        \"at\": \"2016-03-05T20:58:52.776Z\",\n        \"seq\": 6714\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b699a12-c2c0-489d-9b88-bcb5a2f1a22a",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64fec132-dbcf-46af-9b32-9b75675366df",
+          "name": "[BETA] Schedule KMS Key Deletion",
+          "request": {
+            "name": "[BETA] Schedule KMS Key Deletion",
+            "description": {
+              "content": "Schedule a KMS key for deletion after a delay.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key",
+                ":id",
+                "schedule-deletion"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"delay-days\": 30\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c932556c-87a0-4c6f-a5a7-23422fdcacf2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "schedule-deletion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"delay-days\": 30\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0f7b258-3362-4323-a853-3a780c4e085f",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "schedule-deletion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"delay-days\": 30\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17617673-25a6-4dc0-ba0f-4c9a8f9bc629",
+          "name": "[BETA] Replicate KMS Key",
+          "request": {
+            "name": "[BETA] Replicate KMS Key",
+            "description": {
+              "content": "Replicate a KMS key to a target zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key",
+                ":id",
+                "replicate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"zone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "96e99e44-feef-4092-906e-814e46053f63",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "replicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"zone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "508a0512-ef2d-4842-9225-9e45ba2c2f8a",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "replicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"zone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c678e53e-fa83-4d65-bdf8-1561692d889c",
+          "name": "[BETA] Cancel KMS Key Deletion",
+          "request": {
+            "name": "[BETA] Cancel KMS Key Deletion",
+            "description": {
+              "content": "Cancel the scheduled deletion of a KMS Key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kms-key",
+                ":id",
+                "cancel-deletion"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05565b37-a044-48d0-baaa-4a81317447a6",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "cancel-deletion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bca81c3-6c0e-47e1-9c7f-b8c66d0541b6",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kms-key",
+                    ":id",
+                    "cancel-deletion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bfNWAClxXYkxuAIwXgx.tsqxybi64tPWHxwAyLJHy3DPsOD..ylsUZMXQi4WuA\",\n  \"title\": \"string\",\n  \"status\": 361,\n  \"detail\": \"string\",\n  \"instance\": \"https://VBM.inmgMsYZrArV-iGZggaPsZTAu6ZR0-9iaML0QYVcxec8ZQdlJT-1oavhr2Rzl\",\n  \"errors\": [\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    },\n    {\n      \"path\": \"string\",\n      \"detail\": \"string\",\n      \"pointer\": \"string\",\n      \"location\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a6748693-164f-4b6e-bdd4-2764485d69df",
+    "name": "Exoscale ai-api-key kms-key API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

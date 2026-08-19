@@ -1,0 +1,314 @@
+{
+  "item": [
+    {
+      "id": "c88724a0-6255-4747-9d0b-53d27f94c455",
+      "name": "organization-policy",
+      "description": {
+        "content": "The Organization Policy is an IAM policy that applies as a first layer across your entire Exoscale organization.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d19c2c67-b76d-4d4d-a8d0-297bfeca869d",
+          "name": "Retrieve IAM Organization Policy",
+          "request": {
+            "name": "Retrieve IAM Organization Policy",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-organization-policy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3b64bba-587c-42c1-8aa1-2f541da042a9",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-organization-policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"default-service-strategy\": \"allow\",\n  \"services\": {\n    \"key_0\": {\n      \"type\": \"allow\",\n      \"rules\": [\n        {\n          \"action\": \"deny\",\n          \"expression\": \"string\",\n          \"resources\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"action\": \"deny\",\n          \"expression\": \"string\",\n          \"resources\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    },\n    \"key_1\": {\n      \"type\": \"deny\",\n      \"rules\": [\n        {\n          \"action\": \"deny\",\n          \"expression\": \"string\",\n          \"resources\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"action\": \"allow\",\n          \"expression\": \"string\",\n          \"resources\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    },\n    \"key_2\": {\n      \"type\": \"deny\",\n      \"rules\": [\n        {\n          \"action\": \"allow\",\n          \"expression\": \"string\",\n          \"resources\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"action\": \"deny\",\n          \"expression\": \"string\",\n          \"resources\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ccef4ac-fd9a-4739-9965-a14684199f4b",
+          "name": "Update IAM Organization Policy",
+          "request": {
+            "name": "Update IAM Organization Policy",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-organization-policy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"default-service-strategy\": \"<string>\",\n  \"services\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8c84bb7-8d13-4c0a-a265-f93e43c5d4c8",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-organization-policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"default-service-strategy\": \"<string>\",\n  \"services\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"action\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"resources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a1438294-9801-e5cf-f632-a104cf6a97e7\",\n  \"reason\": \"unsupported\",\n  \"reference\": {\n    \"id\": \"f5f4ef66-25e1-6aef-c0b9-50c28719d45a\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4fe7d6c-01d7-40c6-b253-43a431bc3821",
+          "name": "Reset IAM Organization Policy",
+          "request": {
+            "name": "Reset IAM Organization Policy",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam-organization-policy:reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9c422e0-bdda-4bac-91da-86287647c9a5",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam-organization-policy:reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a1438294-9801-e5cf-f632-a104cf6a97e7\",\n  \"reason\": \"unsupported\",\n  \"reference\": {\n    \"id\": \"f5f4ef66-25e1-6aef-c0b9-50c28719d45a\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"failure\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "68a6daac-5ebf-4493-ab34-a0688a6775ab",
+    "name": "Exoscale ai-api-key organization-policy API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

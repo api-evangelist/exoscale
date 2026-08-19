@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key sos API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "sos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List SOS Buckets Usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sos-buckets-usage"
+          },
+          "docs": "List SOS Buckets Usage"
+        },
+        {
+          "info": {
+            "name": "Retrieve Presigned Download URL for SOS object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sos/:bucket/presigned-url",
+            "params": [
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Generates Presigned Download URL for SOS object"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,262 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key block-storage API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "block-storage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Attach block storage volume to an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id:attach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attach block storage volume to an instance"
+        },
+        {
+          "info": {
+            "name": "Retrieve block storage snapshot details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage-snapshot/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve block storage snapshot details"
+        },
+        {
+          "info": {
+            "name": "Update block storage volume snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage-snapshot/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update block storage volume snapshot"
+        },
+        {
+          "info": {
+            "name": "Delete a block storage snapshot, data will be unrecoverable",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage-snapshot/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a block storage snapshot, data will be unrecoverable"
+        },
+        {
+          "info": {
+            "name": "Retrieve block storage volume details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve block storage volume details"
+        },
+        {
+          "info": {
+            "name": "Update block storage volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update block storage volume"
+        },
+        {
+          "info": {
+            "name": "Delete a block storage volume, data will be unrecoverable",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a block storage volume, data will be unrecoverable"
+        },
+        {
+          "info": {
+            "name": "Create a block storage snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id:create-snapshot",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a block storage snapshot"
+        },
+        {
+          "info": {
+            "name": "List block storage snapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage-snapshot"
+          },
+          "docs": "List block storage snapshots"
+        },
+        {
+          "info": {
+            "name": "Resize a block storage volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id:resize-volume",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation resizes a Block storage volume. Note: the volume can only grow, cannot be shrunk. Only detached volumes or volumes attached to stopped instances can be resized."
+        },
+        {
+          "info": {
+            "name": "Detach block storage volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage/:id:detach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Detach block storage volume"
+        },
+        {
+          "info": {
+            "name": "List block storage volumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage",
+            "params": [
+              {
+                "name": "instance-id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List block storage volumes"
+        },
+        {
+          "info": {
+            "name": "Create a block storage volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/block-storage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a block storage volume"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,225 @@
+{
+  "item": [
+    {
+      "id": "37c12a7f-331a-46e4-ad64-10ab6f49a0f3",
+      "name": "instance-type",
+      "description": {
+        "content": "An Instance Type is a resource describing the amount of\n                   CPU, RAM and GPUs allocated to a Compute instance.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b192b74c-df66-4ca8-afb7-d5f420587182",
+          "name": "Retrieve Instance Type details",
+          "request": {
+            "name": "Retrieve Instance Type details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance-type",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "016013ce-93f6-4ff6-b504-8788fdc5cacf",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance-type",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"60164a8e-f126-a50b-5e8d-9b6f821ffc1a\",\n  \"size\": \"colossus\",\n  \"family\": \"gpua5000\",\n  \"cpus\": 8541,\n  \"gpus\": 8549,\n  \"authorized\": true,\n  \"memory\": 114,\n  \"zones\": [\n    \"at-vie-1\",\n    \"at-vie-1\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07b7372a-91e9-4b6e-875c-76a8279d2248",
+          "name": "List Compute instance Types",
+          "request": {
+            "name": "List Compute instance Types",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance-type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a0636f7-cf44-4dea-80e2-d7364457e9c9",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance-type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instance-types\": [\n    {\n      \"id\": \"2f635338-6e80-2d91-8de9-2a0ea5fdeb0b\",\n      \"size\": \"tiny\",\n      \"family\": \"colossus\",\n      \"cpus\": 3135,\n      \"gpus\": 5081,\n      \"authorized\": true,\n      \"memory\": 798,\n      \"zones\": [\n        \"de-fra-1\",\n        \"at-vie-1\"\n      ]\n    },\n    {\n      \"id\": \"7b0c1380-6b30-a3f8-6fdb-47475e1db8eb\",\n      \"size\": \"tiny\",\n      \"family\": \"gpua5000\",\n      \"cpus\": 6631,\n      \"gpus\": 2360,\n      \"authorized\": true,\n      \"memory\": 5656,\n      \"zones\": [\n        \"at-vie-1\",\n        \"ch-dk-2\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a147e9e-005e-488d-a9f7-d880ad761982",
+    "name": "Exoscale ai-api-key instance-type API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

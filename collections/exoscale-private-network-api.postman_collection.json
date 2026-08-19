@@ -1,0 +1,998 @@
+{
+  "item": [
+    {
+      "id": "60e6cd81-8a47-47ec-852b-7d6d9180156c",
+      "name": "private-network",
+      "description": {
+        "content": "Private Network provides private L2 networking functionality between Compute instances.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e526cd1-36cd-47ed-ac2d-42fed617de1d",
+          "name": "Attach a Compute instance to a Private Network",
+          "request": {
+            "name": "Attach a Compute instance to a Private Network",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "private-network",
+                "{{id}}:attach"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instance\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ip\": \"<ipv4>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4c7a5464-b77c-41da-8d27-dac543ff5406",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "private-network",
+                    "{{id}}:attach"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instance\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ip\": \"<ipv4>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"54d3de52-5574-4c59-cad3-de103ac274d4\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"79d039b8-cc4a-dc88-07be-b18e89743dd3\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0903355-860f-4bb8-9b56-28456fc0582f",
+          "name": "Update the IP address of an instance attached to a managed private network",
+          "request": {
+            "name": "Update the IP address of an instance attached to a managed private network",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "private-network",
+                "{{id}}:update-ip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ip\": \"<ipv4>\",\n  \"instance\": {\n    \"id\": \"<uuid>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa0e38d2-6f4c-406a-88c7-b34c9e0d8d37",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "private-network",
+                    "{{id}}:update-ip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ip\": \"<ipv4>\",\n  \"instance\": {\n    \"id\": \"<uuid>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"54d3de52-5574-4c59-cad3-de103ac274d4\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"79d039b8-cc4a-dc88-07be-b18e89743dd3\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b96c3798-87e7-4561-8346-3fc6c4f815c3",
+          "name": "List Private Networks",
+          "request": {
+            "name": "List Private Networks",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "private-network"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f05ab3bd-0b10-449a-ab56-cebfd3298b36",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "private-network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"private-networks\": [\n    {\n      \"description\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"name\": \"string\",\n      \"start-ip\": \"192.88.38.126\",\n      \"leases\": [\n        {\n          \"ip\": \"127.80.37.204\",\n          \"instance-id\": \"95f12b7d-2ff1-a371-fb51-bf0a98733f1c\"\n        },\n        {\n          \"ip\": \"144.229.223.126\",\n          \"instance-id\": \"40af36cd-becb-4e41-ce1a-0a88c9335226\"\n        }\n      ],\n      \"id\": \"2fee39ed-85c4-2406-25f7-f0ffc07d1fb6\",\n      \"vni\": 5976,\n      \"netmask\": \"26.255.91.98\",\n      \"options\": {\n        \"routers\": [\n          \"237.60.250.249\",\n          \"139.188.250.72\"\n        ],\n        \"dns-servers\": [\n          \"5.183.135.1\",\n          \"40.172.232.46\"\n        ],\n        \"ntp-servers\": [\n          \"162.105.22.88\",\n          \"25.93.36.167\"\n        ],\n        \"domain-search\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"end-ip\": \"85.69.67.72\"\n    },\n    {\n      \"description\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"name\": \"string\",\n      \"start-ip\": \"35.65.215.57\",\n      \"leases\": [\n        {\n          \"ip\": \"6.157.70.210\",\n          \"instance-id\": \"8895a80f-deb9-6224-5b6a-059a6e6dfb7b\"\n        },\n        {\n          \"ip\": \"127.197.250.160\",\n          \"instance-id\": \"4d2a2f8e-0458-f5b1-1b12-40dcd9ad0776\"\n        }\n      ],\n      \"id\": \"6206f793-28de-c3b6-178f-d988ed480470\",\n      \"vni\": 8028,\n      \"netmask\": \"208.252.1.106\",\n      \"options\": {\n        \"routers\": [\n          \"230.61.220.215\",\n          \"195.196.220.186\"\n        ],\n        \"dns-servers\": [\n          \"246.97.195.15\",\n          \"71.236.86.180\"\n        ],\n        \"ntp-servers\": [\n          \"159.254.199.197\",\n          \"242.239.208.143\"\n        ],\n        \"domain-search\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"end-ip\": \"38.138.82.243\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de985f83-1b41-4b07-9281-ba24f703a667",
+          "name": "Create a Private Network",
+          "request": {
+            "name": "Create a Private Network",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "private-network"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"netmask\": \"<ipv4>\",\n  \"start-ip\": \"<ipv4>\",\n  \"end-ip\": \"<ipv4>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"options\": {\n    \"routers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"dns-servers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"ntp-servers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"domain-search\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fabe3bba-4c27-4310-92b9-27d498bb2091",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "private-network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"netmask\": \"<ipv4>\",\n  \"start-ip\": \"<ipv4>\",\n  \"end-ip\": \"<ipv4>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"options\": {\n    \"routers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"dns-servers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"ntp-servers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"domain-search\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"54d3de52-5574-4c59-cad3-de103ac274d4\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"79d039b8-cc4a-dc88-07be-b18e89743dd3\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14d036bd-5fa8-4cf5-a129-d2322327f550",
+          "name": "Detach a Compute instance from a Private Network",
+          "request": {
+            "name": "Detach a Compute instance from a Private Network",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "private-network",
+                "{{id}}:detach"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instance\": {\n    \"application-consistent-snapshot-enabled\": \"<boolean>\",\n    \"anti-affinity-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"public-ip-assignment\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"security-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"elastic-ips\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"instance-type\": {},\n    \"private-networks\": [\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      }\n    ],\n    \"template\": {\n      \"application-consistent-snapshot-enabled\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"ssh-key-enabled\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"default-user\": \"<string>\",\n      \"size\": \"<long>\",\n      \"password-enabled\": \"<boolean>\",\n      \"checksum\": \"<string>\",\n      \"boot-mode\": \"<string>\",\n      \"zones\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"url\": \"<string>\"\n    },\n    \"secureboot-enabled\": \"<boolean>\",\n    \"ssh-key\": {\n      \"name\": \"<string>\"\n    },\n    \"user-data\": \"<string>\",\n    \"tpm-enabled\": \"<boolean>\",\n    \"deploy-target\": {\n      \"id\": \"<uuid>\"\n    },\n    \"snapshots\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"disk-size\": \"<long>\",\n    \"ssh-keys\": [\n      {\n        \"name\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35902735-cde9-4fb9-8beb-51ae482f5e07",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "private-network",
+                    "{{id}}:detach"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instance\": {\n    \"application-consistent-snapshot-enabled\": \"<boolean>\",\n    \"anti-affinity-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"public-ip-assignment\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"security-groups\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"elastic-ips\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"instance-type\": {},\n    \"private-networks\": [\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"mac-address\": \"<string>\"\n      }\n    ],\n    \"template\": {\n      \"application-consistent-snapshot-enabled\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"ssh-key-enabled\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"default-user\": \"<string>\",\n      \"size\": \"<long>\",\n      \"password-enabled\": \"<boolean>\",\n      \"checksum\": \"<string>\",\n      \"boot-mode\": \"<string>\",\n      \"zones\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"url\": \"<string>\"\n    },\n    \"secureboot-enabled\": \"<boolean>\",\n    \"ssh-key\": {\n      \"name\": \"<string>\"\n    },\n    \"user-data\": \"<string>\",\n    \"tpm-enabled\": \"<boolean>\",\n    \"deploy-target\": {\n      \"id\": \"<uuid>\"\n    },\n    \"snapshots\": [\n      {\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"disk-size\": \"<long>\",\n    \"ssh-keys\": [\n      {\n        \"name\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"54d3de52-5574-4c59-cad3-de103ac274d4\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"79d039b8-cc4a-dc88-07be-b18e89743dd3\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f90769b-bfb8-41d7-ad96-46fabb78d5a7",
+          "name": "Update a Private Network",
+          "request": {
+            "name": "Update a Private Network",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "private-network",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"netmask\": \"<ipv4>\",\n  \"start-ip\": \"<ipv4>\",\n  \"end-ip\": \"<ipv4>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"options\": {\n    \"routers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"dns-servers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"ntp-servers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"domain-search\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8661f9e-6286-4775-ac58-93b4c032199b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "private-network",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"netmask\": \"<ipv4>\",\n  \"start-ip\": \"<ipv4>\",\n  \"end-ip\": \"<ipv4>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"options\": {\n    \"routers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"dns-servers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"ntp-servers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"domain-search\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"54d3de52-5574-4c59-cad3-de103ac274d4\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"79d039b8-cc4a-dc88-07be-b18e89743dd3\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c065e66a-9a66-4b70-a0e2-fcfcccd6f932",
+          "name": "Retrieve Private Network details",
+          "request": {
+            "name": "Retrieve Private Network details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "private-network",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "197b576a-58f2-45de-bf6a-0befcb75a912",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "private-network",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"name\": \"string\",\n  \"start-ip\": \"42.65.249.61\",\n  \"leases\": [\n    {\n      \"ip\": \"158.4.44.153\",\n      \"instance-id\": \"9036b945-62da-729d-944e-dd4537a74cdb\"\n    },\n    {\n      \"ip\": \"84.221.145.73\",\n      \"instance-id\": \"48218727-c511-5af6-5c11-cbec26de00c4\"\n    }\n  ],\n  \"id\": \"d6f72a39-5027-e37f-00f8-83f83c21130a\",\n  \"vni\": 3827,\n  \"netmask\": \"148.29.137.234\",\n  \"options\": {\n    \"routers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"dns-servers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"ntp-servers\": [\n      \"<ipv4>\",\n      \"<ipv4>\"\n    ],\n    \"domain-search\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"end-ip\": \"247.175.49.129\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f507d27e-5bdb-40bb-8cca-7424867cff3f",
+          "name": "Delete a Private Network",
+          "request": {
+            "name": "Delete a Private Network",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "private-network",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba91f363-c4a2-4695-9701-1b8f7bd32f14",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "private-network",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"54d3de52-5574-4c59-cad3-de103ac274d4\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"79d039b8-cc4a-dc88-07be-b18e89743dd3\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a180d95a-713a-4fdb-a911-ceb4256d7dc9",
+          "name": "Reset Private Network field",
+          "request": {
+            "name": "Reset Private Network field",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "private-network",
+                ":id",
+                ":field"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad807ca2-f97f-426e-ba99-ff49614b8221",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "private-network",
+                    ":id",
+                    ":field"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"54d3de52-5574-4c59-cad3-de103ac274d4\",\n  \"reason\": \"unavailable\",\n  \"reference\": {\n    \"id\": \"79d039b8-cc4a-dc88-07be-b18e89743dd3\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<uuid>",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "777e82df-b2b6-4588-b23e-08c14c552fb0",
+    "name": "Exoscale ai-api-key private-network API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

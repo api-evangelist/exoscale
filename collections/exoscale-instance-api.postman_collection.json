@@ -1,0 +1,2048 @@
+{
+  "item": [
+    {
+      "id": "3472d10d-b196-4368-be11-8c65a655618a",
+      "name": "instance",
+      "description": {
+        "content": "Instances are the virtual machines at the core of the Exoscale\n                   Compute service.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "80394e7b-f7a5-4e0c-9f46-ff8312b24ddb",
+          "name": "Create a Snapshot of a Compute instance",
+          "request": {
+            "name": "Create a Snapshot of a Compute instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:create-snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb19f479-0850-4a95-8a5c-c2ec620257c9",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:create-snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d760b1d-8dea-465f-b4b5-9a2f956a9e40",
+          "name": "Reveal the password used during instance creation or the latest password reset.",
+          "request": {
+            "name": "Reveal the password used during instance creation or the latest password reset.",
+            "description": {
+              "content": "Reveal the password used during instance creation or the latest password reset.\n            This is only available for VMs created against templates having the `password-enabled`\n            property set to `true`.\n\n            Passwords are transiently stored for at most 24 hours and intended to be retrieved shortly after\n            creation or resets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:password"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f511545c-6f3d-4761-963a-fddecaa66a91",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"password\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d63bb98e-0f75-4005-a12d-1c912035ef8a",
+          "name": "Resize a Compute instance disk",
+          "request": {
+            "name": "Resize a Compute instance disk",
+            "description": {
+              "content": "This operation resizes a Compute instance's disk volume. Note: the disk can only grow, cannot be shrunk.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:resize-disk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"disk-size\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "477b2a19-bcfb-407c-991f-48de1ca9888d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:resize-disk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"disk-size\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e0f3e63-a657-4f3c-a214-7531cc00648a",
+          "name": "Reset a compute instance password",
+          "request": {
+            "name": "Reset a compute instance password",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:reset-password"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5b3bdac-e299-4097-99bf-2a9d1a841dab",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:reset-password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "458b4bdd-b82d-4a80-8238-c994f8c708a7",
+          "name": "Start a Compute instance",
+          "request": {
+            "name": "Start a Compute instance",
+            "description": {
+              "content": "This operation starts a virtual machine, potentially using a rescue profile if specified",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rescue-profile\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d788f450-0285-49d7-897a-dbfe2b897291",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rescue-profile\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2630466c-c0ad-4e5a-86cb-3cbb23afab54",
+          "name": "Enable tpm for the instance.",
+          "request": {
+            "name": "Enable tpm for the instance.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:enable-tpm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c86fbf17-8c87-4f0f-bb36-fa51b8effed2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:enable-tpm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f397a557-1558-4243-af01-651ccc0bcee1",
+          "name": "Scale a Compute instance to a new Instance Type",
+          "request": {
+            "name": "Scale a Compute instance to a new Instance Type",
+            "description": {
+              "content": "This operation changes the Compute instance's type. Note: the new Instance Type must be within the same family (e.g. a standard instance cannot be scaled to gpu2 or storage).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:scale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instance-type\": {\n    \"id\": \"<uuid>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5a93c579-ad28-4e33-9f70-816f3ad2cb8f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:scale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instance-type\": {\n    \"id\": \"<uuid>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d279287-f814-4881-a616-b7d3725e9b79",
+          "name": "Stop a Compute instance",
+          "request": {
+            "name": "Stop a Compute instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00a5b337-2d14-450e-bdd2-542e5f9337cf",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "596594c3-a2f3-4f76-a320-f7d54aadc1e6",
+          "name": "Set instance destruction protection",
+          "request": {
+            "name": "Set instance destruction protection",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:add-protection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f187ab91-4dc4-4b36-8f86-3e78c646cb81",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:add-protection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6143020-dbdb-4344-8705-fda63d83ab9f",
+          "name": "Reset Instance field",
+          "request": {
+            "name": "Reset Instance field",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                ":id",
+                ":field"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acdb2fb3-b63d-404b-9531-ff2d6e23aaa3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    ":id",
+                    ":field"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f24ecf82-3157-43f4-bbc4-223c606071be",
+          "name": "Remove instance destruction protection",
+          "request": {
+            "name": "Remove instance destruction protection",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:remove-protection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb2a5dc5-7b70-4b3d-a830-d2a65ee67a76",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:remove-protection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61edbb5d-68c0-4ebe-b365-ddede1294abd",
+          "name": "Reset a Compute instance to a base/target template",
+          "request": {
+            "name": "Reset a Compute instance to a base/target template",
+            "description": {
+              "content": "This operation re-installs a Compute instance to a base template. If target template is provided it will be used to recreated instance from. Warning: the operation wipes all data stored on the disk.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"template\": {\n    \"id\": \"<uuid>\"\n  },\n  \"disk-size\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d87bc0d3-6f5c-4fc8-aba0-ed9132070bf0",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template\": {\n    \"id\": \"<uuid>\"\n  },\n  \"disk-size\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f35eb497-73ff-42f2-b4fe-dc81d508ff21",
+          "name": "Retrieve signed url valid for 60 seconds to connect via console-proxy websocket to VM VNC console.",
+          "request": {
+            "name": "Retrieve signed url valid for 60 seconds to connect via console-proxy websocket to VM VNC console.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "console",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f33ab5c5-6e34-4f71-ac39-35b9fa3c7bfa",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "console",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\",\n  \"host\": \"string\",\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b271f141-4466-43b4-a97e-a1be8f5385f9",
+          "name": "Delete a Compute instance",
+          "request": {
+            "name": "Delete a Compute instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d6d1641-3c44-43c2-bebf-950901e8b361",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e29f5d59-7155-47dd-b2e5-a0905cbb63f3",
+          "name": "Update a Compute instance",
+          "request": {
+            "name": "Update a Compute instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"user-data\": \"<string>\",\n  \"public-ip-assignment\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"application-consistent-snapshot-enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17c59ecd-d322-41d7-85de-5601be0c0d64",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"user-data\": \"<string>\",\n  \"public-ip-assignment\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"application-consistent-snapshot-enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cdc60ed-d85b-4112-8b0c-72ac25f7f3a2",
+          "name": "Retrieve Compute instance details",
+          "request": {
+            "name": "Retrieve Compute instance details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "131d807b-ec65-4a8b-bb02-dc47c859a864",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"application-consistent-snapshot-enabled\": false,\n  \"anti-affinity-groups\": [\n    {\n      \"id\": \"e262ba9e-bd85-7921-e2d6-0286a520850c\"\n    },\n    {\n      \"id\": \"13184d9c-4093-0f3a-656f-3e93625a3ede\"\n    }\n  ],\n  \"public-ip-assignment\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"security-groups\": [\n    {\n      \"id\": \"12047556-ce49-583e-74b0-35f9457d4316\"\n    },\n    {\n      \"id\": \"9ea9f940-26ba-7ca7-e72e-741432a32c2e\"\n    }\n  ],\n  \"elastic-ips\": [\n    {\n      \"id\": \"ddd50144-0f8d-d9d5-e9a3-3ef872934a0b\"\n    },\n    {\n      \"id\": \"f9c6b1e8-9863-6cf6-4161-2a2705e719da\"\n    }\n  ],\n  \"name\": \"string\",\n  \"instance-type\": {\n    \"id\": \"4235253f-1300-e922-6475-b296b3b8d185\",\n    \"size\": \"small\",\n    \"family\": \"gpu3080ti\",\n    \"cpus\": 4361,\n    \"gpus\": 5806,\n    \"authorized\": false,\n    \"memory\": 7269,\n    \"zones\": [\n      \"at-vie-2\",\n      \"bg-sof-1\"\n    ]\n  },\n  \"private-networks\": [\n    {\n      \"id\": \"aa3ff15c-cb08-4adb-62b0-109a5787d66e\",\n      \"mac-address\": \"string\"\n    },\n    {\n      \"id\": \"7af5a7dd-2449-b99d-8caf-d04fcbfa387a\",\n      \"mac-address\": \"string\"\n    }\n  ],\n  \"template\": {\n    \"application-consistent-snapshot-enabled\": true,\n    \"maintainer\": \"string\",\n    \"description\": \"string\",\n    \"ssh-key-enabled\": true,\n    \"family\": \"string\",\n    \"name\": \"string\",\n    \"default-user\": \"string\",\n    \"size\": 5713,\n    \"password-enabled\": true,\n    \"build\": \"string\",\n    \"checksum\": \"string\",\n    \"boot-mode\": \"uefi\",\n    \"id\": \"bc82cdcb-7818-a95f-457b-fd219c64f075\",\n    \"zones\": [\n      \"ch-dk-2\",\n      \"de-muc-1\"\n    ],\n    \"url\": \"string\",\n    \"version\": \"string\",\n    \"created-at\": \"1989-07-15T16:10:37.863Z\",\n    \"visibility\": \"public\"\n  },\n  \"state\": \"migrating\",\n  \"secureboot-enabled\": false,\n  \"ssh-key\": {\n    \"name\": \"string\",\n    \"fingerprint\": \"string\"\n  },\n  \"user-data\": \"string\",\n  \"mac-address\": \"string\",\n  \"manager\": {\n    \"id\": \"42e2f736-388d-69e3-8cea-519e01ba12ba\",\n    \"type\": \"sks-nodepool\"\n  },\n  \"tpm-enabled\": true,\n  \"deploy-target\": {\n    \"id\": \"b7b56951-60d8-754f-63a1-1cbc444d1095\"\n  },\n  \"ipv6-address\": \"string\",\n  \"id\": \"21f4652d-bcf9-9682-2205-a541e788f34f\",\n  \"snapshots\": [\n    {\n      \"id\": \"8a697bf0-7d4c-ff92-ba2e-c695a975be14\"\n    },\n    {\n      \"id\": \"e620b485-40da-1152-1699-d3ca92d73905\"\n    }\n  ],\n  \"disk-size\": 18482,\n  \"ssh-keys\": [\n    {\n      \"name\": \"string\",\n      \"fingerprint\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"fingerprint\": \"string\"\n    }\n  ],\n  \"created-at\": \"1985-01-11T01:13:01.977Z\",\n  \"public-ip\": \"168.52.69.117\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7673cd6-776d-4ff3-b571-bec0a5fb0b48",
+          "name": "Reboot a Compute instance",
+          "request": {
+            "name": "Reboot a Compute instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{id}}:reboot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4c033e0-9876-4430-ab0a-35869409b41f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{id}}:reboot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee318f09-91b5-4fe6-8488-3c64b762a8f9",
+          "name": "Create a Compute instance",
+          "request": {
+            "name": "Create a Compute instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"disk-size\": \"<long>\",\n  \"instance-type\": {\n    \"id\": \"<uuid>\"\n  },\n  \"template\": {\n    \"id\": \"<uuid>\"\n  },\n  \"application-consistent-snapshot-enabled\": \"<boolean>\",\n  \"anti-affinity-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"public-ip-assignment\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"auto-start\": \"<boolean>\",\n  \"security-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"secureboot-enabled\": \"<boolean>\",\n  \"ssh-key\": {\n    \"name\": \"<string>\"\n  },\n  \"user-data\": \"<string>\",\n  \"tpm-enabled\": \"<boolean>\",\n  \"deploy-target\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ipv6-enabled\": \"<boolean>\",\n  \"ssh-keys\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d1779cd-fe45-4667-8c63-93bcd78083f4",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"disk-size\": \"<long>\",\n  \"instance-type\": {\n    \"id\": \"<uuid>\"\n  },\n  \"template\": {\n    \"id\": \"<uuid>\"\n  },\n  \"application-consistent-snapshot-enabled\": \"<boolean>\",\n  \"anti-affinity-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"public-ip-assignment\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"auto-start\": \"<boolean>\",\n  \"security-groups\": [\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"secureboot-enabled\": \"<boolean>\",\n  \"ssh-key\": {\n    \"name\": \"<string>\"\n  },\n  \"user-data\": \"<string>\",\n  \"tpm-enabled\": \"<boolean>\",\n  \"deploy-target\": {\n    \"id\": \"<uuid>\"\n  },\n  \"ipv6-enabled\": \"<boolean>\",\n  \"ssh-keys\": [\n    {\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf2b2950-dc95-4b9b-9fd9-4ebf945f3310",
+          "name": "List Compute instances",
+          "request": {
+            "name": "List Compute instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "manager-id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "manager-type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ip-address",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "labels",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a09377a-68c2-44ed-a40d-ca2dd1f4d01a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "manager-id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "manager-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip-address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instances\": [\n    {\n      \"public-ip-assignment\": \"<string>\",\n      \"labels\": {\n        \"key_0\": \"<string>\"\n      },\n      \"security-groups\": [\n        {\n          \"id\": \"45d9bc72-f31b-d19b-39da-768eefb31955\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"external-sources\": [\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"995353fb-9275-3965-2156-f722c43fb1b8\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"external-sources\": [\n            \"string\"\n          ]\n        }\n      ],\n      \"name\": \"string\",\n      \"instance-type\": {\n        \"id\": \"4ac0ef3e-155e-8cc8-cc2d-cd85016dd595\",\n        \"size\": \"micro\",\n        \"family\": \"storage\",\n        \"cpus\": 7599,\n        \"gpus\": 1130,\n        \"authorized\": true,\n        \"memory\": 3770,\n        \"zones\": [\n          \"ch-gva-2\",\n          \"ch-gva-2\"\n        ]\n      },\n      \"private-networks\": [\n        {\n          \"id\": \"4da99197-b11e-e148-ae50-47cf212ecef9\",\n          \"mac-address\": \"string\"\n        },\n        {\n          \"id\": \"e7e670fb-f23d-da32-4afa-a53cd99270aa\",\n          \"mac-address\": \"string\"\n        }\n      ],\n      \"template\": {\n        \"application-consistent-snapshot-enabled\": true,\n        \"maintainer\": \"string\",\n        \"description\": \"string\",\n        \"ssh-key-enabled\": true,\n        \"family\": \"string\",\n        \"name\": \"string\",\n        \"default-user\": \"string\",\n        \"size\": 7700,\n        \"password-enabled\": true,\n        \"build\": \"string\",\n        \"checksum\": \"string\",\n        \"boot-mode\": \"uefi\",\n        \"id\": \"74bfc9e5-8bba-0315-db45-b041ba2ab601\",\n        \"zones\": [\n          \"hr-zag-1\",\n          \"hr-zag-1\"\n        ],\n        \"url\": \"string\",\n        \"version\": \"string\",\n        \"created-at\": \"1986-07-11T02:17:10.525Z\",\n        \"visibility\": \"private\"\n      },\n      \"state\": \"migrating\",\n      \"ssh-key\": {\n        \"name\": \"string\",\n        \"fingerprint\": \"string\"\n      },\n      \"mac-address\": \"string\",\n      \"manager\": {\n        \"id\": \"52723c48-fc7e-85c0-12f5-7f6998fca6cb\",\n        \"type\": \"sks-nodepool\"\n      },\n      \"ipv6-address\": \"string\",\n      \"id\": \"418fef36-0b19-150a-787d-771cb22a3932\",\n      \"ssh-keys\": [\n        {\n          \"name\": \"string\",\n          \"fingerprint\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"fingerprint\": \"string\"\n        }\n      ],\n      \"created-at\": \"2021-06-11T18:27:25.475Z\",\n      \"public-ip\": \"56.38.215.148\"\n    },\n    {\n      \"public-ip-assignment\": \"<string>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"security-groups\": [\n        {\n          \"id\": \"635dc018-400c-27cd-81f4-40d2298ad427\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"external-sources\": [\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"f6cf6047-f378-418d-6c63-beb5c44438c6\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"external-sources\": [\n            \"string\"\n          ]\n        }\n      ],\n      \"name\": \"string\",\n      \"instance-type\": {\n        \"id\": \"21390bfc-1a3d-0025-808e-71fedf1e6d7c\",\n        \"size\": \"tiny\",\n        \"family\": \"gpu2\",\n        \"cpus\": 1408,\n        \"gpus\": 5823,\n        \"authorized\": true,\n        \"memory\": 3096,\n        \"zones\": [\n          \"at-vie-2\",\n          \"at-vie-1\"\n        ]\n      },\n      \"private-networks\": [\n        {\n          \"id\": \"322778cf-7113-629e-be04-584a29aa86e8\",\n          \"mac-address\": \"string\"\n        },\n        {\n          \"id\": \"6ca3bfdd-fb99-7b5c-6982-66626e892233\",\n          \"mac-address\": \"string\"\n        }\n      ],\n      \"template\": {\n        \"application-consistent-snapshot-enabled\": true,\n        \"maintainer\": \"string\",\n        \"description\": \"string\",\n        \"ssh-key-enabled\": true,\n        \"family\": \"string\",\n        \"name\": \"string\",\n        \"default-user\": \"string\",\n        \"size\": 2384,\n        \"password-enabled\": true,\n        \"build\": \"string\",\n        \"checksum\": \"string\",\n        \"boot-mode\": \"uefi\",\n        \"id\": \"1a6b177d-6ad9-ce34-092c-23a76b79cb4b\",\n        \"zones\": [\n          \"de-fra-1\",\n          \"bg-sof-1\"\n        ],\n        \"url\": \"string\",\n        \"version\": \"string\",\n        \"created-at\": \"1947-06-30T05:59:37.329Z\",\n        \"visibility\": \"public\"\n      },\n      \"state\": \"error\",\n      \"ssh-key\": {\n        \"name\": \"string\",\n        \"fingerprint\": \"string\"\n      },\n      \"mac-address\": \"string\",\n      \"manager\": {\n        \"id\": \"7fa3f8fd-ad77-016d-7ed5-81d9d80fc54d\",\n        \"type\": \"instance-pool\"\n      },\n      \"ipv6-address\": \"string\",\n      \"id\": \"4e7ea1c4-f4a8-5220-3975-e594283b8358\",\n      \"ssh-keys\": [\n        {\n          \"name\": \"string\",\n          \"fingerprint\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"fingerprint\": \"string\"\n        }\n      ],\n      \"created-at\": \"1986-07-27T08:59:17.558Z\",\n      \"public-ip\": \"137.192.167.58\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "821236e9-a30f-475d-ba9d-87f11f971d90",
+          "name": "Revert a snapshot for an instance",
+          "request": {
+            "name": "Revert a snapshot for an instance",
+            "description": {
+              "content": "This operation reverts the snapshot to the Compute instance volume, restoring stored data as it was at the time of the snapshot.\nThe Compute instance must be previously stopped.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "instance",
+                "{{instance-id}}:revert-snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "401875c8-9779-4e0a-a165-1c10cd72b25b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "instance",
+                    "{{instance-id}}:revert-snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4428ed9d-fa17-e5ad-e756-263803ee48f3\",\n  \"reason\": \"busy\",\n  \"reference\": {\n    \"id\": \"de75a22b-c45c-88eb-f2e8-31960216713f\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<uuid>",
+      "key": "id"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<uuid>",
+      "key": "instance-id"
+    }
+  ],
+  "info": {
+    "_postman_id": "30092a33-6897-4b06-b4c0-4307add88a0d",
+    "name": "Exoscale ai-api-key instance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

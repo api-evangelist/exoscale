@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key elastic-ip API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "elastic-ip",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Elastic IPs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip"
+          },
+          "docs": "List Elastic IPs"
+        },
+        {
+          "info": {
+            "name": "Create an Elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Elastic IP"
+        },
+        {
+          "info": {
+            "name": "Reset an Elastic IP field to its default value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset an Elastic IP field to its default value"
+        },
+        {
+          "info": {
+            "name": "Detach a Compute instance from an Elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id:detach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Detach a Compute instance from an Elastic IP"
+        },
+        {
+          "info": {
+            "name": "Attach a Compute instance to an Elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id:attach",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attach a Compute instance to an Elastic IP"
+        },
+        {
+          "info": {
+            "name": "Retrieve Elastic IP details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Elastic IP details"
+        },
+        {
+          "info": {
+            "name": "Update an Elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an Elastic IP"
+        },
+        {
+          "info": {
+            "name": "Delete an Elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an Elastic IP"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

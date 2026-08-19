@@ -1,0 +1,145 @@
+{
+  "item": [
+    {
+      "id": "4fc2af86-7adc-44f3-a4a4-b726c86cf3e0",
+      "name": "event",
+      "description": {
+        "content": "Events form the basis of the Exoscale audit-trail, a mechanism\n                   to query past events performing mutations on resources\n                   which happened on an organization.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e3b76002-debb-4320-bb53-49cba909d61b",
+          "name": "List Events",
+          "request": {
+            "name": "List Events",
+            "description": {
+              "content": "Retrieve Mutation Events for a given date range. Defaults to retrieving Events for the past 24 hours.\n         Both a `from` and `to` arguments can be specified to filter Events over a specific period.\n         Events will be the the most descriptive possible but not all fields are mandatory",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbd420af-71fb-4e78-b92e-116d233ba183",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"iam-user\": {\n      \"email\": \"string\",\n      \"role\": {\n        \"description\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\"\n        },\n        \"permissions\": [\n          \"bypass-governance-retention\",\n          \"reset-iam-organization-policy\"\n        ],\n        \"assume-role-policy\": {\n          \"default-service-strategy\": \"allow\",\n          \"services\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"editable\": true,\n        \"name\": \"string\",\n        \"max-session-ttl\": 4719,\n        \"policy\": {\n          \"default-service-strategy\": \"allow\",\n          \"services\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"id\": \"c33371b0-747b-e077-31ce-c76e14ac429c\"\n      },\n      \"sso\": true,\n      \"two-factor-authentication\": false,\n      \"id\": \"9e84ee2c-e10e-488f-eb06-53444709ee3a\",\n      \"pending\": true\n    },\n    \"request-id\": \"string\",\n    \"iam-role\": {\n      \"description\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"permissions\": [\n        \"reset-iam-organization-policy\",\n        \"bypass-governance-retention\"\n      ],\n      \"assume-role-policy\": {\n        \"default-service-strategy\": \"allow\",\n        \"services\": {\n          \"key_0\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"editable\": true,\n      \"name\": \"string\",\n      \"max-session-ttl\": 500,\n      \"policy\": {\n        \"default-service-strategy\": \"allow\",\n        \"services\": {\n          \"key_0\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"id\": \"1250e8b7-374e-4ee2-747a-cbfb4f9ea4ce\"\n    },\n    \"zone\": \"string\",\n    \"get-params\": {},\n    \"body-params\": {},\n    \"status\": 5044,\n    \"source-ip\": \"string\",\n    \"iam-api-key\": {\n      \"name\": \"string\",\n      \"key\": \"string\",\n      \"role-id\": \"2069e3a1-6be8-3285-2bea-9e43fe55b327\"\n    },\n    \"uri\": \"string\",\n    \"elapsed-ms\": 5747,\n    \"timestamp\": \"1952-12-23T03:00:51.995Z\",\n    \"path-params\": {},\n    \"handler\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"iam-user\": {\n      \"email\": \"string\",\n      \"role\": {\n        \"description\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\"\n        },\n        \"permissions\": [\n          \"bypass-governance-retention\",\n          \"reset-iam-organization-policy\"\n        ],\n        \"assume-role-policy\": {\n          \"default-service-strategy\": \"deny\",\n          \"services\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"editable\": false,\n        \"name\": \"string\",\n        \"max-session-ttl\": 550,\n        \"policy\": {\n          \"default-service-strategy\": \"allow\",\n          \"services\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"id\": \"9707d6cd-15d9-6d38-0f8e-2bbc0752d0df\"\n      },\n      \"sso\": true,\n      \"two-factor-authentication\": true,\n      \"id\": \"406a8ef5-653d-ea66-852a-729b3a95992f\",\n      \"pending\": true\n    },\n    \"request-id\": \"string\",\n    \"iam-role\": {\n      \"description\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"permissions\": [\n        \"reset-iam-organization-policy\",\n        \"bypass-governance-retention\"\n      ],\n      \"assume-role-policy\": {\n        \"default-service-strategy\": \"allow\",\n        \"services\": {\n          \"key_0\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"editable\": false,\n      \"name\": \"string\",\n      \"max-session-ttl\": 2931,\n      \"policy\": {\n        \"default-service-strategy\": \"allow\",\n        \"services\": {\n          \"key_0\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"id\": \"e369ab1a-92d3-d393-7617-4d0c91739aa8\"\n    },\n    \"zone\": \"string\",\n    \"get-params\": {},\n    \"body-params\": {},\n    \"status\": 5814,\n    \"source-ip\": \"string\",\n    \"iam-api-key\": {\n      \"name\": \"string\",\n      \"key\": \"string\",\n      \"role-id\": \"49a3a218-6161-3a20-b22f-673822225da6\"\n    },\n    \"uri\": \"string\",\n    \"elapsed-ms\": 7510,\n    \"timestamp\": \"2017-10-31T16:19:13.316Z\",\n    \"path-params\": {},\n    \"handler\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e545e0fa-886e-4d87-9601-5acdcdcc0c74",
+    "name": "Exoscale ai-api-key event API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

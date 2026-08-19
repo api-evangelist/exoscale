@@ -1,0 +1,236 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key kms-key API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "kms-key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[BETA] Disable Key Rotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/disable-key-rotation",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable the periodic rotation of a KMS Key."
+        },
+        {
+          "info": {
+            "name": "[BETA] Get KMS Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve KMS Key details."
+        },
+        {
+          "info": {
+            "name": "[BETA] Enable KMS Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/enable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Enable a KMS Key\""
+        },
+        {
+          "info": {
+            "name": "[BETA] List KMS Key Rotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/list-key-rotations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all the key material versions of a KMS Key."
+        },
+        {
+          "info": {
+            "name": "[BETA] Enable Key Rotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/enable-key-rotation",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable the periodic rotation of a KMS Key."
+        },
+        {
+          "info": {
+            "name": "[BETA] Rotate Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/rotate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Perform a manual rotation of the key material for a symmetric key."
+        },
+        {
+          "info": {
+            "name": "[BETA] Disable KMS Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable a KMS Key"
+        },
+        {
+          "info": {
+            "name": "[BETA] List KMS Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key"
+          },
+          "docs": "List KMS Keys details for an organization in a given zone."
+        },
+        {
+          "info": {
+            "name": "[BETA] Create KMS Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a KMS Key in a given zone with a given name."
+        },
+        {
+          "info": {
+            "name": "[BETA] Schedule KMS Key Deletion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/schedule-deletion",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Schedule a KMS key for deletion after a delay."
+        },
+        {
+          "info": {
+            "name": "[BETA] Replicate KMS Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/replicate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replicate a KMS key to a target zone."
+        },
+        {
+          "info": {
+            "name": "[BETA] Cancel KMS Key Deletion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/kms-key/:id/cancel-deletion",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel the scheduled deletion of a KMS Key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

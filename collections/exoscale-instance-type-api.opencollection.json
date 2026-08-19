@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key instance-type API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "instance-type",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Instance Type details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-type/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Instance Type details"
+        },
+        {
+          "info": {
+            "name": "List Compute instance Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/instance-type"
+          },
+          "docs": "List Compute instance Types"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

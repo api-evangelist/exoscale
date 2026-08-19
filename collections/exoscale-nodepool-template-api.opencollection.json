@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key nodepool-template API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "nodepool-template",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get-active-nodepool-template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/sks-template/:kube-version/:variant",
+            "params": [
+              {
+                "name": "kube-version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variant",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the active template for a given kube version and variant (standard | nvidia)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

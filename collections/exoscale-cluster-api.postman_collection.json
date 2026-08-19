@@ -1,0 +1,1722 @@
+{
+  "item": [
+    {
+      "id": "182d3df0-0a4f-4157-81aa-eef9097420bf",
+      "name": "cluster",
+      "description": {
+        "content": "Clusters are managed Kubernetes control planes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a41e58d6-2547-475d-95c0-7d5529df779f",
+          "name": "Generate a new Kubeconfig file for a SKS cluster",
+          "request": {
+            "name": "Generate a new Kubeconfig file for a SKS cluster",
+            "description": {
+              "content": "This operation returns a Kubeconfig file encoded in base64.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster-kubeconfig",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"<string>\",\n  \"groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ttl\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "05c67823-a9c2-427c-9111-80a6d8ebc167",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster-kubeconfig",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": \"<string>\",\n  \"groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ttl\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kubeconfig\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08be203c-6eb3-4b0c-adb7-a2a09a5b2a64",
+          "name": "Get the certificate for a SKS cluster authority",
+          "request": {
+            "name": "Get the certificate for a SKS cluster authority",
+            "description": {
+              "content": "This operation returns the certificate for the given SKS cluster authority encoded in base64.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id",
+                "authority",
+                ":authority",
+                "cert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "authority",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9855b3cd-51cf-426d-9fe4-7d4150739dbe",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id",
+                    "authority",
+                    ":authority",
+                    "cert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authority",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cacert\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "596d1b2b-99ca-46fb-9e25-f6c6e1ac1fb2",
+          "name": "Resources that are scheduled to be removed in future kubernetes releases",
+          "request": {
+            "name": "Resources that are scheduled to be removed in future kubernetes releases",
+            "description": {
+              "content": "This operation returns the deprecated resources for a given cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster-deprecated-resources",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65b48605-31ec-4162-b8f5-3b7ac74ea957",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster-deprecated-resources",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"group\": \"string\",\n    \"version\": \"string\",\n    \"resource\": \"string\",\n    \"subresource\": \"string\",\n    \"removed-release\": \"string\"\n  },\n  {\n    \"group\": \"string\",\n    \"version\": \"string\",\n    \"resource\": \"string\",\n    \"subresource\": \"string\",\n    \"removed-release\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52309b69-a648-4837-b420-d2270acaa82a",
+          "name": "Upgrade a SKS cluster to pro",
+          "request": {
+            "name": "Upgrade a SKS cluster to pro",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id",
+                "upgrade-service-level"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f29a6f6-6a14-432f-b200-d9d922326755",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id",
+                    "upgrade-service-level"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4bb4e455-ec13-0b30-dc6c-307bd366a8f9\",\n  \"reason\": \"conflict\",\n  \"reference\": {\n    \"id\": \"74316b5d-8faf-daa5-39a7-85ea3d22f018\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "711d8c70-6e04-4d13-93e9-72e4076968d0",
+          "name": "Rotate Exoscale CSI credentials",
+          "request": {
+            "name": "Rotate Exoscale CSI credentials",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id",
+                "rotate-csi-credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff604c35-106f-4218-bc8b-68b1b7e5e35f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id",
+                    "rotate-csi-credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4bb4e455-ec13-0b30-dc6c-307bd366a8f9\",\n  \"reason\": \"conflict\",\n  \"reference\": {\n    \"id\": \"74316b5d-8faf-daa5-39a7-85ea3d22f018\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8ca302b-c278-401e-a1c4-80adec5e58eb",
+          "name": "Create an SKS cluster",
+          "request": {
+            "name": "Create an SKS cluster",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"level\": \"<string>\",\n  \"version\": \"<string>\",\n  \"description\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"cni\": \"<string>\",\n  \"auto-upgrade\": \"<boolean>\",\n  \"networking\": {\n    \"cluster-cidr\": \"<string>\",\n    \"service-cluster-ip-range\": \"<string>\",\n    \"node-cidr-mask-size-ipv4\": \"<long>\",\n    \"node-cidr-mask-size-ipv6\": \"<long>\"\n  },\n  \"oidc\": {\n    \"client-id\": \"<string>\",\n    \"issuer-url\": \"<string>\",\n    \"username-claim\": \"<string>\",\n    \"username-prefix\": \"<string>\",\n    \"groups-claim\": \"<string>\",\n    \"groups-prefix\": \"<string>\",\n    \"required-claim\": {\n      \"key_0\": \"<string>\"\n    }\n  },\n  \"create-default-security-group\": \"<boolean>\",\n  \"enable-kube-proxy\": \"<boolean>\",\n  \"feature-gates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addons\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"audit\": {\n    \"endpoint\": \"<string>\",\n    \"bearer-token\": \"<string>\",\n    \"initial-backoff\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "438a35e4-587b-41df-a4d9-913fc4797d0b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"level\": \"<string>\",\n  \"version\": \"<string>\",\n  \"description\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"cni\": \"<string>\",\n  \"auto-upgrade\": \"<boolean>\",\n  \"networking\": {\n    \"cluster-cidr\": \"<string>\",\n    \"service-cluster-ip-range\": \"<string>\",\n    \"node-cidr-mask-size-ipv4\": \"<long>\",\n    \"node-cidr-mask-size-ipv6\": \"<long>\"\n  },\n  \"oidc\": {\n    \"client-id\": \"<string>\",\n    \"issuer-url\": \"<string>\",\n    \"username-claim\": \"<string>\",\n    \"username-prefix\": \"<string>\",\n    \"groups-claim\": \"<string>\",\n    \"groups-prefix\": \"<string>\",\n    \"required-claim\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    }\n  },\n  \"create-default-security-group\": \"<boolean>\",\n  \"enable-kube-proxy\": \"<boolean>\",\n  \"feature-gates\": [\n    \"<string>\"\n  ],\n  \"addons\": [\n    \"<string>\"\n  ],\n  \"audit\": {\n    \"endpoint\": \"<string>\",\n    \"bearer-token\": \"<string>\",\n    \"initial-backoff\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4bb4e455-ec13-0b30-dc6c-307bd366a8f9\",\n  \"reason\": \"conflict\",\n  \"reference\": {\n    \"id\": \"74316b5d-8faf-daa5-39a7-85ea3d22f018\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d2eb908-6473-40a0-8625-c657423bbd9e",
+          "name": "List SKS clusters",
+          "request": {
+            "name": "List SKS clusters",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9666495d-8280-4d89-a84a-9e6b5b849c13",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sks-clusters\": [\n    {\n      \"description\": \"string\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"cni\": \"calico\",\n      \"auto-upgrade\": false,\n      \"name\": \"string\",\n      \"enable-operators-ca\": false,\n      \"default-security-group-id\": \"bacf6fdf-1174-168d-9c96-b8f995e359f3\",\n      \"state\": \"rotating-karpenter-credentials\",\n      \"enable-kube-proxy\": false,\n      \"nodepools\": [\n        {\n          \"anti-affinity-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"description\": \"string\",\n          \"public-ip-assignment\": \"dual\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          },\n          \"taints\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"security-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"name\": \"string\",\n          \"instance-type\": {\n            \"id\": \"64f99945-0511-282c-0c82-8f70a20f7f5f\"\n          },\n          \"private-networks\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"template\": {\n            \"id\": \"31f1f6d0-7578-c4eb-f41c-9c5b11df3246\"\n          },\n          \"state\": \"error\",\n          \"size\": 8334,\n          \"kubelet-image-gc\": {\n            \"high-threshold\": 3149,\n            \"low-threshold\": 2690,\n            \"min-age\": \"string\"\n          },\n          \"instance-pool\": {\n            \"id\": \"6236e081-e764-712a-27a5-45c629516527\"\n          },\n          \"instance-prefix\": \"string\",\n          \"deploy-target\": {\n            \"id\": \"0d037fcf-d372-462a-6404-06841a2da257\"\n          },\n          \"addons\": [\n            \"storage-lvm\"\n          ],\n          \"id\": \"32af66af-fbba-6318-7d95-06320e198899\",\n          \"disk-size\": 37840,\n          \"version\": \"string\",\n          \"created-at\": \"1984-08-27T00:15:30.629Z\"\n        },\n        {\n          \"anti-affinity-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"description\": \"string\",\n          \"public-ip-assignment\": \"dual\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"taints\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"security-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"name\": \"string\",\n          \"instance-type\": {\n            \"id\": \"abe596c5-0ab2-c5f3-5018-e0ba9fe67018\"\n          },\n          \"private-networks\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"template\": {\n            \"id\": \"73ee3902-db46-67fa-4aae-61b9fa095a20\"\n          },\n          \"state\": \"deleting\",\n          \"size\": 5889,\n          \"kubelet-image-gc\": {\n            \"high-threshold\": 5310,\n            \"low-threshold\": 7283,\n            \"min-age\": \"string\"\n          },\n          \"instance-pool\": {\n            \"id\": \"65889c78-d110-83e5-d3fd-f4125a2f827f\"\n          },\n          \"instance-prefix\": \"string\",\n          \"deploy-target\": {\n            \"id\": \"0ae4e13b-9aaf-9da9-a76b-3ffba8c5821f\"\n          },\n          \"addons\": [\n            \"storage-lvm\"\n          ],\n          \"id\": \"b1066984-ba97-0225-58fe-8b7153b54ba7\",\n          \"disk-size\": 8509,\n          \"version\": \"string\",\n          \"created-at\": \"1953-11-15T19:24:08.256Z\"\n        }\n      ],\n      \"level\": \"starter\",\n      \"feature-gates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"addons\": [\n        \"exoscale-cloud-controller\",\n        \"metrics-server\"\n      ],\n      \"id\": \"fa0dfb5d-9687-55e1-ce4c-63f36151e447\",\n      \"audit\": {\n        \"endpoint\": \"<string>\",\n        \"enabled\": false,\n        \"initial-backoff\": \"<string>\"\n      },\n      \"version\": \"string\",\n      \"created-at\": \"1992-01-02T04:05:11.673Z\",\n      \"endpoint\": \"string\"\n    },\n    {\n      \"description\": \"string\",\n      \"labels\": {\n        \"key_0\": \"<string>\"\n      },\n      \"cni\": \"calico\",\n      \"auto-upgrade\": false,\n      \"name\": \"string\",\n      \"enable-operators-ca\": true,\n      \"default-security-group-id\": \"3ec5e078-a099-5184-6e4c-fd2e1d6f6ef9\",\n      \"state\": \"resuming\",\n      \"enable-kube-proxy\": true,\n      \"nodepools\": [\n        {\n          \"anti-affinity-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"description\": \"string\",\n          \"public-ip-assignment\": \"inet4\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          },\n          \"taints\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"security-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"name\": \"string\",\n          \"instance-type\": {\n            \"id\": \"ad4045e7-fd1b-5ba9-1285-ab46c28b71fe\"\n          },\n          \"private-networks\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"template\": {\n            \"id\": \"b32a877b-c302-5f22-922e-70ec3d009f14\"\n          },\n          \"state\": \"error\",\n          \"size\": 1965,\n          \"kubelet-image-gc\": {\n            \"high-threshold\": 2026,\n            \"low-threshold\": 3434,\n            \"min-age\": \"string\"\n          },\n          \"instance-pool\": {\n            \"id\": \"b81467fa-239b-a5dc-f5f6-24cafa972cb6\"\n          },\n          \"instance-prefix\": \"string\",\n          \"deploy-target\": {\n            \"id\": \"c600df9b-c2a1-3e5a-fe4b-439b49334a07\"\n          },\n          \"addons\": [\n            \"storage-lvm\"\n          ],\n          \"id\": \"2cf85c96-82d5-0d3a-c585-8a5433c7e9ec\",\n          \"disk-size\": 30300,\n          \"version\": \"string\",\n          \"created-at\": \"2016-04-02T07:12:11.044Z\"\n        },\n        {\n          \"anti-affinity-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"description\": \"string\",\n          \"public-ip-assignment\": \"dual\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          },\n          \"taints\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"security-groups\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"name\": \"string\",\n          \"instance-type\": {\n            \"id\": \"2d70d1e9-e74d-86b3-30e1-b8b014f54c14\"\n          },\n          \"private-networks\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"template\": {\n            \"id\": \"efc9aec3-c893-81d9-2dc9-1f4eb1f58121\"\n          },\n          \"state\": \"deleting\",\n          \"size\": 1405,\n          \"kubelet-image-gc\": {\n            \"high-threshold\": 1535,\n            \"low-threshold\": 835,\n            \"min-age\": \"string\"\n          },\n          \"instance-pool\": {\n            \"id\": \"365259c3-1a88-96e4-62b1-d17815ed362f\"\n          },\n          \"instance-prefix\": \"string\",\n          \"deploy-target\": {\n            \"id\": \"86158a2b-989d-3652-902f-024af6a963bc\"\n          },\n          \"addons\": [\n            \"storage-lvm\"\n          ],\n          \"id\": \"522b88c3-9e8a-63e0-9f7b-ce6afa81ffaf\",\n          \"disk-size\": 5248,\n          \"version\": \"string\",\n          \"created-at\": \"1952-11-29T15:54:45.086Z\"\n        }\n      ],\n      \"level\": \"pro\",\n      \"feature-gates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"addons\": [\n        \"karpenter\",\n        \"exoscale-container-storage-interface\"\n      ],\n      \"id\": \"8d887205-58ae-d7c5-597c-af98aa1ec207\",\n      \"audit\": {\n        \"endpoint\": \"<string>\",\n        \"enabled\": false,\n        \"initial-backoff\": \"<string>\"\n      },\n      \"version\": \"string\",\n      \"created-at\": \"1988-12-17T03:48:49.381Z\",\n      \"endpoint\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34b7f53b-38fc-4c12-b1f6-9e4fc969759c",
+          "name": "Delete an SKS cluster",
+          "request": {
+            "name": "Delete an SKS cluster",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "203d91d7-d5d6-4c8f-af68-20c52b35d467",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4bb4e455-ec13-0b30-dc6c-307bd366a8f9\",\n  \"reason\": \"conflict\",\n  \"reference\": {\n    \"id\": \"74316b5d-8faf-daa5-39a7-85ea3d22f018\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89e7c628-8d6d-4364-b90d-cb484d2d7746",
+          "name": "Retrieve SKS cluster details",
+          "request": {
+            "name": "Retrieve SKS cluster details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c378a2a7-ff9b-48bf-b8cb-dba5a4adf145",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"cni\": \"calico\",\n  \"auto-upgrade\": false,\n  \"name\": \"string\",\n  \"enable-operators-ca\": false,\n  \"default-security-group-id\": \"22898140-df86-44da-3fb5-4b40b49a0d1f\",\n  \"state\": \"running\",\n  \"enable-kube-proxy\": true,\n  \"nodepools\": [\n    {\n      \"anti-affinity-groups\": [\n        {\n          \"id\": \"ea054e20-a369-3772-1b47-54675f98fd70\"\n        },\n        {\n          \"id\": \"c8a621ad-8c32-c9ce-e985-9356b1fc482a\"\n        }\n      ],\n      \"description\": \"string\",\n      \"public-ip-assignment\": \"inet4\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"taints\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"effect\": \"NoSchedule\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"effect\": \"PreferNoSchedule\"\n        },\n        \"key_2\": {\n          \"value\": \"string\",\n          \"effect\": \"NoSchedule\"\n        },\n        \"key_3\": {\n          \"value\": \"string\",\n          \"effect\": \"NoExecute\"\n        }\n      },\n      \"security-groups\": [\n        {\n          \"id\": \"478ef550-8e0b-1041-b34c-1a2a41e5d0c6\"\n        },\n        {\n          \"id\": \"d08bbf6c-1eb9-61e0-8c51-43a6afae6d06\"\n        }\n      ],\n      \"name\": \"string\",\n      \"instance-type\": {\n        \"id\": \"0991081f-7cc9-a99a-fd1e-6640b4db4112\"\n      },\n      \"private-networks\": [\n        {\n          \"id\": \"92fd6e84-2c57-0b51-cf7b-f7b340a17fef\"\n        },\n        {\n          \"id\": \"a4c80655-65ce-01d7-c60f-c7b752fe8c3a\"\n        }\n      ],\n      \"template\": {\n        \"id\": \"bc92bb57-5aa9-dde3-901a-df62a3883ab0\"\n      },\n      \"state\": \"running\",\n      \"size\": 9525,\n      \"kubelet-image-gc\": {\n        \"high-threshold\": 1991,\n        \"low-threshold\": 2284,\n        \"min-age\": \"string\"\n      },\n      \"instance-pool\": {\n        \"id\": \"9e5e5b5e-6e24-3a75-c5cb-f367fdc5eab3\"\n      },\n      \"instance-prefix\": \"string\",\n      \"deploy-target\": {\n        \"id\": \"26313559-370a-b73d-6500-790065ef4b03\"\n      },\n      \"addons\": [\n        \"storage-lvm\"\n      ],\n      \"id\": \"0ba8dbec-924a-b002-0fe0-0e3c663db290\",\n      \"disk-size\": 44323,\n      \"version\": \"string\",\n      \"created-at\": \"2011-08-20T12:18:06.817Z\"\n    },\n    {\n      \"anti-affinity-groups\": [\n        {\n          \"id\": \"b493b452-6bf6-bbbd-64d3-494ce38c0a10\"\n        },\n        {\n          \"id\": \"f513e296-4225-b294-37c1-e63e3486a2a4\"\n        }\n      ],\n      \"description\": \"string\",\n      \"public-ip-assignment\": \"inet4\",\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"taints\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"effect\": \"NoExecute\"\n        }\n      },\n      \"security-groups\": [\n        {\n          \"id\": \"cee75494-a4f4-96df-04f4-146aae13d0c0\"\n        },\n        {\n          \"id\": \"bf450a20-25b4-5037-5cb5-b52da8fa5f60\"\n        }\n      ],\n      \"name\": \"string\",\n      \"instance-type\": {\n        \"id\": \"a2bc11a4-062d-b2ff-b682-9829cac9f08b\"\n      },\n      \"private-networks\": [\n        {\n          \"id\": \"d4eea97e-ef61-d794-de4d-8cc0d8629b01\"\n        },\n        {\n          \"id\": \"e49fa3d3-38ca-ae56-701a-470ab05434e6\"\n        }\n      ],\n      \"template\": {\n        \"id\": \"edfa3f6e-3d41-6630-3772-3d413b83dec9\"\n      },\n      \"state\": \"scaling\",\n      \"size\": 5845,\n      \"kubelet-image-gc\": {\n        \"high-threshold\": 2147,\n        \"low-threshold\": 4040,\n        \"min-age\": \"string\"\n      },\n      \"instance-pool\": {\n        \"id\": \"01528035-d120-2b41-b87b-e03db937d311\"\n      },\n      \"instance-prefix\": \"string\",\n      \"deploy-target\": {\n        \"id\": \"a8caa9cf-877e-7ebb-1db0-a48aa74ca56e\"\n      },\n      \"addons\": [\n        \"storage-lvm\"\n      ],\n      \"id\": \"1210e39b-b18a-656c-b313-2b4e20e8f743\",\n      \"disk-size\": 36204,\n      \"version\": \"string\",\n      \"created-at\": \"1997-11-11T06:51:55.389Z\"\n    }\n  ],\n  \"level\": \"pro\",\n  \"feature-gates\": [\n    \"string\",\n    \"string\"\n  ],\n  \"addons\": [\n    \"metrics-server\",\n    \"exoscale-container-storage-interface\"\n  ],\n  \"id\": \"61f7365d-dad3-e27a-0238-f79f2747f6be\",\n  \"audit\": {\n    \"endpoint\": \"<string>\",\n    \"enabled\": true,\n    \"initial-backoff\": \"<string>\"\n  },\n  \"version\": \"string\",\n  \"created-at\": \"2008-06-09T02:40:24.328Z\",\n  \"endpoint\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5488a41a-d38a-4dfe-b4d4-ea2d8c02a536",
+          "name": "Update an SKS cluster",
+          "request": {
+            "name": "Update an SKS cluster",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"auto-upgrade\": \"<boolean>\",\n  \"oidc\": {\n    \"client-id\": \"<string>\",\n    \"issuer-url\": \"<string>\",\n    \"username-claim\": \"<string>\",\n    \"username-prefix\": \"<string>\",\n    \"groups-claim\": \"<string>\",\n    \"groups-prefix\": \"<string>\",\n    \"required-claim\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  },\n  \"name\": \"<string>\",\n  \"enable-operators-ca\": \"<boolean>\",\n  \"feature-gates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addons\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"audit\": {\n    \"endpoint\": \"<string>\",\n    \"bearer-token\": \"<string>\",\n    \"initial-backoff\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e03994ab-f8f1-4045-beb3-24375c058f9a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"auto-upgrade\": \"<boolean>\",\n  \"oidc\": {\n    \"client-id\": \"<string>\",\n    \"issuer-url\": \"<string>\",\n    \"username-claim\": \"<string>\",\n    \"username-prefix\": \"<string>\",\n    \"groups-claim\": \"<string>\",\n    \"groups-prefix\": \"<string>\",\n    \"required-claim\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\",\n      \"key_3\": \"<string>\"\n    }\n  },\n  \"name\": \"<string>\",\n  \"enable-operators-ca\": \"<boolean>\",\n  \"feature-gates\": [\n    \"<string>\"\n  ],\n  \"addons\": [\n    \"<string>\"\n  ],\n  \"audit\": {\n    \"endpoint\": \"<string>\",\n    \"bearer-token\": \"<string>\",\n    \"initial-backoff\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4bb4e455-ec13-0b30-dc6c-307bd366a8f9\",\n  \"reason\": \"conflict\",\n  \"reference\": {\n    \"id\": \"74316b5d-8faf-daa5-39a7-85ea3d22f018\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7d3a95e-b2b7-42ea-b6b7-21d8b0ebb1d7",
+          "name": "Get the latest inspection result",
+          "request": {
+            "name": "Get the latest inspection result",
+            "description": {
+              "content": "Helps troubleshoot common problems when deploying a kubernetes cluster. Inspections run every couple of minutes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id",
+                "inspection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c94b9e8e-4fd9-47e3-b502-648a4299b9a3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id",
+                    "inspection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {},\n  \"key_1\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5583d12c-43eb-4b95-95a1-752479083b68",
+          "name": "Rotate Exoscale CCM credentials",
+          "request": {
+            "name": "Rotate Exoscale CCM credentials",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id",
+                "rotate-ccm-credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "221d4dd8-815d-4ad7-91cf-818474c8b23e",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id",
+                    "rotate-ccm-credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4bb4e455-ec13-0b30-dc6c-307bd366a8f9\",\n  \"reason\": \"conflict\",\n  \"reference\": {\n    \"id\": \"74316b5d-8faf-daa5-39a7-85ea3d22f018\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4bd8bb8-cd2e-4426-b68a-10db70251da7",
+          "name": "Rotate Exoscale Karpenter credentials",
+          "request": {
+            "name": "Rotate Exoscale Karpenter credentials",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id",
+                "rotate-karpenter-credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab7f5198-f9ce-4fff-8422-a56a176f92f2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id",
+                    "rotate-karpenter-credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4bb4e455-ec13-0b30-dc6c-307bd366a8f9\",\n  \"reason\": \"conflict\",\n  \"reference\": {\n    \"id\": \"74316b5d-8faf-daa5-39a7-85ea3d22f018\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dc9c403-fabe-4631-8a2a-c99a7700ec56",
+          "name": "Rotate operators certificate authority",
+          "request": {
+            "name": "Rotate operators certificate authority",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id",
+                "rotate-operators-ca"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1dbbe3ba-9c53-4519-8f07-b6c319cb8293",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id",
+                    "rotate-operators-ca"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4bb4e455-ec13-0b30-dc6c-307bd366a8f9\",\n  \"reason\": \"conflict\",\n  \"reference\": {\n    \"id\": \"74316b5d-8faf-daa5-39a7-85ea3d22f018\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9e9a622-6536-403c-b1e8-d70f470f5e2a",
+          "name": "List available versions for SKS clusters",
+          "request": {
+            "name": "List available versions for SKS clusters",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster-version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include-deprecated",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9548addf-d5c8-4a73-bc99-6bbe2e592860",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster-version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include-deprecated",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sks-cluster-versions\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1295c59-9dfa-4a6f-af76-cd5540da87b1",
+          "name": "Upgrade an SKS cluster",
+          "request": {
+            "name": "Upgrade an SKS cluster",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sks-cluster",
+                ":id",
+                "upgrade"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                  "type": "any",
+                  "value": "{{zone}}",
+                  "key": "zone"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3697ca53-47cf-4cb6-b880-8c0b2970994d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sks-cluster",
+                    ":id",
+                    "upgrade"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+                      "type": "any",
+                      "value": "{{zone}}",
+                      "key": "zone"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4bb4e455-ec13-0b30-dc6c-307bd366a8f9\",\n  \"reason\": \"conflict\",\n  \"reference\": {\n    \"id\": \"74316b5d-8faf-daa5-39a7-85ea3d22f018\",\n    \"link\": \"string\",\n    \"command\": \"string\"\n  },\n  \"message\": \"string\",\n  \"state\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of ch-gva-2,ch-dk-2,de-fra-1,de-muc-1,at-vie-1,at-vie-2,bg-sof-1,hr-zag-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "ch-gva-2",
+      "key": "zone"
+    },
+    {
+      "type": "string",
+      "value": "https://api-{{zone}}.exoscale.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8967674d-2319-4c0a-9bdf-a499e5b09045",
+    "name": "Exoscale ai-api-key cluster API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Infrastructure automation API, allowing programmatic access to all Exoscale products and services.\n\nContact Support:\n Name: Exoscale Support\n Email: support@exoscale.com",
+      "type": "text/plain"
+    }
+  }
+}

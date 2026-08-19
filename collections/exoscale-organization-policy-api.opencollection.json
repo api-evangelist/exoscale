@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key organization-policy API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "organization-policy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve IAM Organization Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-organization-policy"
+          },
+          "docs": "Retrieve IAM Organization Policy"
+        },
+        {
+          "info": {
+            "name": "Update IAM Organization Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-organization-policy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update IAM Organization Policy"
+        },
+        {
+          "info": {
+            "name": "Reset IAM Organization Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/iam-organization-policy:reset"
+          },
+          "docs": "Reset IAM Organization Policy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

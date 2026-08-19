@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key reverse-dns API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "reverse-dns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query the PTR DNS records for an elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Query the PTR DNS records for an elastic IP"
+        },
+        {
+          "info": {
+            "name": "Update/Create the PTR DNS record for an elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update/Create the PTR DNS record for an elastic IP"
+        },
+        {
+          "info": {
+            "name": "Delete the PTR DNS record for an elastic IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/elastic-ip/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete the PTR DNS record for an elastic IP"
+        },
+        {
+          "info": {
+            "name": "Query the PTR DNS records for an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/instance/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Query the PTR DNS records for an instance"
+        },
+        {
+          "info": {
+            "name": "Update/Create the PTR DNS record for an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/instance/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update/Create the PTR DNS record for an instance"
+        },
+        {
+          "info": {
+            "name": "Delete the PTR DNS record for an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/reverse-dns/instance/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete the PTR DNS record for an instance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

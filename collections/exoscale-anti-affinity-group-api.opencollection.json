@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key anti-affinity-group API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "anti-affinity-group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Anti-affinity Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/anti-affinity-group"
+          },
+          "docs": "List Anti-affinity Groups"
+        },
+        {
+          "info": {
+            "name": "Create an Anti-affinity Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/anti-affinity-group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Anti-affinity Group"
+        },
+        {
+          "info": {
+            "name": "Retrieve Anti-affinity Group details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/anti-affinity-group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Anti-affinity Group details"
+        },
+        {
+          "info": {
+            "name": "Delete an Anti-affinity Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/anti-affinity-group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an Anti-affinity Group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

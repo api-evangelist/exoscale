@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key compute API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "compute",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reset a Load Balancer Service field to its default value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/load-balancer/:id/service/:service-id/:field",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "service-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset a Load Balancer Service field to its default value"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2653 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key dbaas API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dbaas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get-dbaas-external-endpoint-opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-opensearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get OpenSearch Logs external integration endpoint settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-endpoint-opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-opensearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update OpenSearch Logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-external-endpoint-opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-opensearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete OpenSearch logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS OpenSearch ACL configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name/acl-config",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get DBaaS OpenSearch ACL configuration"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS OpenSearch ACL configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name/acl-config",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS OpenSearch ACL configuration"
+        },
+        {
+          "info": {
+            "name": "Stop a DBaaS Valkey migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name/migration/stop",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop a DBaaS Valkey migration"
+        },
+        {
+          "info": {
+            "name": "Initiate Grafana maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate Grafana maintenance update"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-pg-upgrade-check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service/upgrade-check",
+            "params": [
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check whether you can upgrade Postgres service to a newer version"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS mysql user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS PostgreSQL connection pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/connection-pool",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS PostgreSQL connection pool"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS MySQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS MySQL service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS MySQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS MySQL service"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS MySQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS MySQL service"
+        },
+        {
+          "info": {
+            "name": "Delete a MySQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a MySQL service"
+        },
+        {
+          "info": {
+            "name": "Initiate Thanos maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate Thanos maintenance update"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-endpoint-elasticsearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-elasticsearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get ElasticSearch Logs external integration endpoint settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-endpoint-elasticsearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-elasticsearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update ElasticSearch Logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-external-endpoint-elasticsearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-elasticsearch/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete ElasticSearch logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS MySQL user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS MySQL user"
+        },
+        {
+          "info": {
+            "name": "DBaaS Service Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service-type"
+          },
+          "docs": "List available service types for DBaaS"
+        },
+        {
+          "info": {
+            "name": "List DBaaS services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service"
+          },
+          "docs": "List DBaaS services"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-external-endpoint-rsyslog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-rsyslog/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create RSyslog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS CA Certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-ca-certificate"
+          },
+          "docs": "Returns a CA Certificate required to reach a DBaaS service through a TLS-protected connection."
+        },
+        {
+          "info": {
+            "name": "Get DBaaS Grafana settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-grafana"
+          },
+          "docs": "Get DBaaS Grafana settings"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS Postgres database",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/database/:database-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "database-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS Postgres database"
+        },
+        {
+          "info": {
+            "name": "Stop a DBaaS PostgreSQL migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name/migration/stop",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop a DBaaS PostgreSQL migration"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS Kafka service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS Kafka service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Kafka service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Kafka service"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS Kafka service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS Kafka service"
+        },
+        {
+          "info": {
+            "name": "Delete a Kafka service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Kafka service"
+        },
+        {
+          "info": {
+            "name": "Add a Kafka Schema Registry ACL entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/schema-registry/acl-config",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a Kafka Schema Registry ACL entry"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Postgres user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Postgres user"
+        },
+        {
+          "info": {
+            "name": "list-dbaas-external-integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-integrations/:service-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] List all DBaaS connections between services and external endpoints"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-integration/:integration-id",
+            "params": [
+              {
+                "name": "integration-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get a DBaaS external integration"
+        },
+        {
+          "info": {
+            "name": "list-dbaas-external-endpoint-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-types"
+          },
+          "docs": "[BETA] List available external endpoint types and their schemas for DBaaS external integrations"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets for DBaaS Kafka Connect",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:service-name/connect/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets for DBaaS Kafka Connect"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS OpenSearch user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS OpenSearch user"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-endpoint-prometheus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-prometheus/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get Prometheus external integration endpoint settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-endpoint-prometheus",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-prometheus/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update Prometheus external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-external-endpoint-prometheus",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-prometheus/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete Prometheus external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Kafka user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Kafka user"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS Valkey user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-integration-settings-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-integration-settings-datadog/:integration-id",
+            "params": [
+              {
+                "name": "integration-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get Datadog integration settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-integration-settings-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-integration-settings-datadog/:integration-id",
+            "params": [
+              {
+                "name": "integration-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Manage Datadog integration settings"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS MySQL settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-mysql"
+          },
+          "docs": "Get DBaaS MySQL settings"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS Valkey settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-valkey"
+          },
+          "docs": "Returns the default settings for Valkey."
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Postgres database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/database",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Postgres database"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS Thanos settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-thanos"
+          },
+          "docs": "Get DBaaS Thanos settings"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS OpenSearch user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS OpenSearch user"
+        },
+        {
+          "info": {
+            "name": "list-dbaas-integration-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration-types"
+          },
+          "docs": "[BETA] Get DBaaS integration types"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS Postgres user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS Postgres user"
+        },
+        {
+          "info": {
+            "name": "Update access control for one service user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/user/:username/allow-replication",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update access control for one service user"
+        },
+        {
+          "info": {
+            "name": "Add a Kafka topic ACL entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/topic/acl-config",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a Kafka topic ACL entry"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-external-endpoint-opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-opensearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create OpenSearch Logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS MySQL database",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/database/:database-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "database-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS MySQL database"
+        },
+        {
+          "info": {
+            "name": "Get logs of DBaaS service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service-logs/:service-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get logs of DBaaS service"
+        },
+        {
+          "info": {
+            "name": "Initiate PostgreSQL maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate PostgreSQL maintenance update"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS Grafana user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS Grafana user"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS Grafana user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        },
+        {
+          "info": {
+            "name": "Update access control for one DBaaS Valkey service user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update access control for one DBaaS Valkey service user"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS Valkey user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS Valkey user"
+        },
+        {
+          "info": {
+            "name": "Delete a Kafka ACL entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/schema-registry/acl-config/:acl-id",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "acl-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Kafka ACL entry"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS kafka user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS kafka user"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS service type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service-type/:service-type-name",
+            "params": [
+              {
+                "name": "service-type-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS service type"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-external-endpoint-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-datadog/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create DataDog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Initiate MySQL maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate MySQL maintenance update"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS OpenSearch user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS MySQL user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS MySQL user"
+        },
+        {
+          "info": {
+            "name": "Get metrics of DBaaS service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service-metrics/:service-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get metrics of DBaaS service"
+        },
+        {
+          "info": {
+            "name": "Temporarily enable writes for MySQL services in read-only mode due to filled up storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name/enable/writes",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Temporarily enable writes for MySQL services in read-only mode due to filled up storage"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS Kafka user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS Kafka user"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-task-migration-check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-task-migration-check/:service",
+            "params": [
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS task to check migration"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-endpoint-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-datadog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get DataDog external endpoint settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-endpoint-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-datadog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update DataDog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-external-endpoint-datadog",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-datadog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete DataDog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-external-endpoint-prometheus",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-prometheus/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create Prometheus external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get a DBaaS Integration"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update a existing DBaaS integration"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete a DBaaS Integration"
+        },
+        {
+          "info": {
+            "name": "list-dbaas-integration-settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration-settings/:integration-type/:source-type/:dest-type",
+            "params": [
+              {
+                "name": "integration-type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "source-type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dest-type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get DBaaS integration settings"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS Thanos user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS Thanos user"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS PostgreSQL settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-pg"
+          },
+          "docs": "Get DBaaS PostgreSQL settings"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-service-valkey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS Valkey service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Valkey service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Valkey service"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-service-valkey",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS Valkey service"
+        },
+        {
+          "info": {
+            "name": "Delete a Valkey service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Valkey service"
+        },
+        {
+          "info": {
+            "name": "Stop a DBaaS MySQL migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:name/migration/stop",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop a DBaaS MySQL migration"
+        },
+        {
+          "info": {
+            "name": "list-dbaas-external-endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoints"
+          },
+          "docs": "[BETA] List available external endpoints for integrations"
+        },
+        {
+          "info": {
+            "name": "Initiate Kafka maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate Kafka maintenance update"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS PostgreSQL connection pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/connection-pool/:connection-pool-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connection-pool-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS PostgreSQL connection pool"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS PostgreSQL connection pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/connection-pool/:connection-pool-name",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connection-pool-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS PostgreSQL connection pool"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-service-thanos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS Thanos service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Thanos service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Thanos service"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-service-thanos",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS Thanos service"
+        },
+        {
+          "info": {
+            "name": "Delete a Thanos service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-thanos/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Thanos service"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS migration status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-migration-status/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS migration status"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS MySQL user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/user/:username",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS MySQL user"
+        },
+        {
+          "info": {
+            "name": "Delete a DBaaS service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-service/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DBaaS service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS MySQL database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-mysql/:service-name/database",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS MySQL database"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS Kafka settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-kafka"
+          },
+          "docs": "Get DBaaS Kafka settings"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS Postgres user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS Postgres user"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS OpenSearch settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-settings-opensearch"
+          },
+          "docs": "Get DBaaS OpenSearch settings"
+        },
+        {
+          "info": {
+            "name": "attach-dbaas-service-to-endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint/:source-service-name/attach",
+            "params": [
+              {
+                "name": "source-service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create a new DBaaS connection between a DBaaS service and an external service"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS Grafana service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS Grafana service"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-service-grafana",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Grafana service"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS Grafana service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS Grafana service"
+        },
+        {
+          "info": {
+            "name": "Delete a Grafana service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-grafana/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Grafana service"
+        },
+        {
+          "info": {
+            "name": "get-dbaas-external-endpoint-rsyslog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-rsyslog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Get RSyslog external integration endpoint settings"
+        },
+        {
+          "info": {
+            "name": "update-dbaas-external-endpoint-rsyslog",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-rsyslog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Update RSyslog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "delete-dbaas-external-endpoint-rsyslog",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-rsyslog/:endpoint-id",
+            "params": [
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Delete RSyslog external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-external-endpoint-elasticsearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint-elasticsearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create ElasticSearch Logs external integration endpoint"
+        },
+        {
+          "info": {
+            "name": "Initiate OpenSearch maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate OpenSearch maintenance update"
+        },
+        {
+          "info": {
+            "name": "Get DBaaS kafka ACL configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/acl-config",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get DBaaS kafka ACL configuration"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS Kafka user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS OpenSearch user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS OpenSearch user"
+        },
+        {
+          "info": {
+            "name": "Initiate Valkey maintenance update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:name/maintenance/start",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate Valkey maintenance update"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS OpenSearch service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS OpenSearch service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS OpenSearch service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS OpenSearch service"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS OpenSearch service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS OpenSearch service"
+        },
+        {
+          "info": {
+            "name": "Delete a OpenSearch service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-opensearch/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a OpenSearch service"
+        },
+        {
+          "info": {
+            "name": "detach-dbaas-service-from-endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-external-endpoint/:source-service-name/detach",
+            "params": [
+              {
+                "name": "source-service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Detach a DBaaS external integration from a service"
+        },
+        {
+          "info": {
+            "name": "Reveal the secrets of a DBaaS Valkey user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user/:username/password/reveal",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reveal the secrets of a DBaaS Valkey user"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS PostgreSQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS PostgreSQL service"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS PostgreSQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS PostgreSQL service"
+        },
+        {
+          "info": {
+            "name": "Update a DBaaS PostgreSQL service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a DBaaS PostgreSQL service"
+        },
+        {
+          "info": {
+            "name": "Delete a Postgres service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Postgres service"
+        },
+        {
+          "info": {
+            "name": "List DBaaS Valkey users with ACL configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List DBaaS Valkey users with ACL configuration"
+        },
+        {
+          "info": {
+            "name": "Create a DBaaS Valkey user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-valkey/:service-name/user",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a DBaaS Valkey user"
+        },
+        {
+          "info": {
+            "name": "create-dbaas-integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-integration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[BETA] Create a new DBaaS integration between two services"
+        },
+        {
+          "info": {
+            "name": "Get a DBaaS task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-task/:service/:id",
+            "params": [
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DBaaS task"
+        },
+        {
+          "info": {
+            "name": "Delete a Kafka ACL entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-kafka/:name/topic/acl-config/:acl-id",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "acl-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Kafka ACL entry"
+        },
+        {
+          "info": {
+            "name": "Reset the credentials of a DBaaS Postgres user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-{zone}.exoscale.com/v2/dbaas-postgres/:service-name/user/:username/password/reset",
+            "params": [
+              {
+                "name": "service-name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If no password is provided one will be generated automatically."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

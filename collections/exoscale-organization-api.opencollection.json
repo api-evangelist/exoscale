@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exoscale ai-api-key organization API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve organization usage reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/usage-report",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns aggregated usage reports for an organization"
+        },
+        {
+          "info": {
+            "name": "Retrieve an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/organization"
+          },
+          "docs": "Retrieve an organization"
+        },
+        {
+          "info": {
+            "name": "[BETA] Retrieve organization environmental impact reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-{zone}.exoscale.com/v2/env-impact/:period",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[BETA] Returns environmental impact reports for an organization"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
