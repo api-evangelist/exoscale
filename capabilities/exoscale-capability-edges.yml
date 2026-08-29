@@ -1,0 +1,247 @@
+slug: exoscale
+provider: Exoscale
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 25
+edges:
+- tag: instance
+  spec_file: exoscale-instance-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.9
+  evidence: '"Start a Compute instance", "Scale a Compute instance to a new Instance Type", "Resize a
+    Compute instance disk"'
+  reason: Full lifecycle control of virtual machines (start/stop/scale/snapshot) — the core of cloud compute
+    infrastructure management.
+- tag: private-network
+  spec_file: exoscale-private-network-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.9
+  evidence: '"Create a Private Network", "Attach a Compute instance to a Private Network", schema private-network-lease'
+  reason: Creation and attachment of private networks / IP leases for compute instances is network infrastructure
+    management.
+- tag: network-load-balancer
+  spec_file: exoscale-network-load-balancer-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.88
+  evidence: '"Create a Load Balancer", "Add a Load Balancer Service", schema load-balancer-service-healthcheck'
+  reason: Provisioning and configuration of network load balancers and their services is network/cloud
+    infrastructure management.
+- tag: role
+  spec_file: exoscale-role-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: '"Create IAM Role", "Update IAM Role Policy", schema iam-policy'
+  reason: Operations manage IAM roles and policies including assume-role credential issuance — squarely
+    Identity & Access Management.
+- tag: anti-affinity-group
+  spec_file: exoscale-anti-affinity-group-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: 'POST /anti-affinity-group create-anti-affinity-group Create an Anti-affinity Group; schemas:
+    instance-type, zone-name, instance-state'
+  reason: Compute instance placement grouping in a cloud infrastructure API — IT infrastructure (compute)
+    management.
+- tag: block-storage
+  spec_file: exoscale-block-storage-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: '"List block storage volumes", "Resize a block storage volume", "Attach block storage volume
+    to an instance"'
+  reason: Operations provision and manage block storage volumes and snapshots — cloud storage infrastructure,
+    i.e. IT Infrastructure Management (compute, storage, network, cloud).
+- tag: cluster
+  spec_file: exoscale-cluster-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: '"Create an SKS cluster", "Generate a new Kubeconfig file for a SKS cluster", schema `sks-nodepool`'
+  reason: Lifecycle management of managed Kubernetes clusters and node pools — provisioning of cloud compute
+    infrastructure.
+- tag: elastic-ip
+  spec_file: exoscale-elastic-ip-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: '"Create an Elastic IP", "Attach a Compute instance to an Elastic IP"'
+  reason: Allocation and attachment of public IP addresses to compute instances — cloud network infrastructure
+    management.
+- tag: instance-pool
+  spec_file: exoscale-instance-pool-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: '"Create an Instance Pool", "Scale an Instance Pool", schemas: instance-type-ref, private-network-ref,
+    anti-affinity-group-ref'
+  reason: Operations provision and scale pools of cloud compute instances — cloud/compute infrastructure
+    provisioning, i.e. IT Infrastructure Management. No business-domain reading fits.
+- tag: nodepool
+  spec_file: exoscale-nodepool-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: '"Create a new SKS Nodepool", "Scale a SKS Nodepool", schema sks-nodepool, kubelet-image-gc'
+  reason: Kubernetes (SKS) node pool provisioning and scaling — container compute infrastructure management.
+- tag: organization-policy
+  spec_file: exoscale-organization-policy-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: '"Retrieve IAM Organization Policy", "Update IAM Organization Policy", schemas iam-policy,
+    iam-service-policy-rule'
+  reason: Management of IAM policies and service policy rules governing access rights is Identity & Access
+    Management.
+- tag: user
+  spec_file: exoscale-user-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.82
+  evidence: PUT /user/{id} update-user-role "Update a User's IAM role"
+  reason: Creation, deletion and role assignment of platform users with iam-role/iam-policy schemas —
+    identity and access administration, not HR employee records.
+- tag: dbaas
+  spec_file: exoscale-dbaas-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: '"Update a DBaaS MySQL service", "Create a DBaaS PostgreSQL connection pool", "Initiate Grafana
+    maintenance update"'
+  reason: Provisioning, configuration and maintenance of managed database services — cloud platform/database
+    infrastructure operated for the customer.
+- tag: domain
+  spec_file: exoscale-domain-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: '"List DNS domains", "Retrieve DNS domain zone file"'
+  reason: DNS zone and domain administration is network infrastructure management within the cloud platform.
+- tag: api-key
+  spec_file: exoscale-api-key-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: 'POST /api-key create-api-key Create a new API key; schemas: iam-api-key-created, iam-api-key'
+  reason: IAM-prefixed API key creation/listing/deletion for the cloud platform — access credential management
+    under Identity & Access Management.
+- tag: deployment
+  spec_file: exoscale-deployment-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.72
+  evidence: '"Get inference-engine Help", "Create Deployment", "Scale Deployment", schema `model-ref`,
+    `inference-engine-version`'
+  reason: Deploys and scales AI inference engines serving models — model serving/MLOps rather than generic
+    VM infrastructure. Some ambiguity with pure infrastructure hosting, hence 0.72.
+- tag: instance-type
+  spec_file: exoscale-instance-type-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: '"List Compute instance Types", schemas: instance-type, zone-name'
+  reason: Read-only catalogue of compute instance sizes/zones — supporting metadata for cloud compute
+    infrastructure. Thin surface, so moderate confidence.
+- tag: kms-key
+  spec_file: exoscale-kms-key-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.72
+  evidence: '"Create KMS Key", "Rotate Key", "Enable Key Rotation", schema key-material'
+  reason: Cryptographic key management service (create/rotate/disable/replicate keys) is a security control
+    capability. Kept at Cybersecurity L1 because key management is not cleanly one of the listed L2s (not
+    IAM, not vulnerability).
+- tag: record
+  spec_file: exoscale-record-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: POST /dns-domain/{domain-id}/record create-dns-domain-record "Create DNS domain record"
+  reason: DNS record CRUD on a cloud infrastructure automation API — network infrastructure provisioning,
+    i.e. IT Infrastructure Management. No business-domain capability applies.
+- tag: reverse-dns
+  spec_file: exoscale-reverse-dns-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: '"Update/Create the PTR DNS record for an elastic IP"'
+  reason: PTR/reverse-DNS management for elastic IPs and instances is network infrastructure configuration
+    within cloud IT infrastructure management.
+- tag: ssh-key
+  spec_file: exoscale-ssh-key-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: POST /ssh-key register-ssh-key "Import SSH key"
+  reason: Registration and lifecycle of SSH credentials used to access compute instances — credential/access
+    management.
+- tag: ai-api-key
+  spec_file: exoscale-ai-api-key-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.7
+  evidence: POST /ai/ai-api-key create-ai-api-key Create AI API Key; POST /ai/ai-api-key/{id}/rotate Rotate
+    AI API Key
+  reason: Issuance, rotation and revocation of API keys used to access the provider's AI service — credential
+    lifecycle for platform/API consumers. Could alternatively be read as IAM plumbing, hence moderate
+    confidence.
+- tag: crypto
+  spec_file: exoscale-crypto-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.7
+  evidence: POST /kms-key/{id}/encrypt, "[BETA] Generate Data Key", "[BETA] Re-encrypt"
+  reason: Key-management-service cryptographic operations against KMS keys — a security control capability.
+    Which cybersecurity sub-capability (architecture vs. access) is ambiguous, so L1 only.
+- tag: snapshot
+  spec_file: exoscale-snapshot-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: '"Create a Snapshot of a Compute instance", "Promote a Snapshot to a Template"'
+  reason: Compute instance snapshot/image lifecycle on a cloud IaaS API — infrastructure (compute/storage)
+    management, not a business capability.
+- tag: sos
+  spec_file: exoscale-sos-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: GET /sos-buckets-usage "List SOS Buckets Usage"
+  reason: Object storage bucket usage and presigned download URLs — cloud storage infrastructure management.
