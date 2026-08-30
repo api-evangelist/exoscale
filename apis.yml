@@ -37,7 +37,7 @@ tags:
   - Compute
   - Storage
   - Kubernetes
-  - Database-as-a-Service
+  - DBaaS
   - Europe
 tags_raw:
   - Cloud
@@ -112,7 +112,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Block Storage
+  - block-storage
   tags_raw:
   - block-storage
   properties:
@@ -130,7 +130,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - CCM
+  - ccm
   tags_raw:
   - ccm
   properties:
@@ -206,7 +206,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Database-as-a-Service
+  - dbaas
   tags_raw:
   - dbaas
   properties:
@@ -356,6 +356,8 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
+  - InstanceType
+  tags_raw:
   - instance-type
   properties:
   - type: OpenAPI
@@ -388,7 +390,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Model
+  - model
   tags_raw:
   - model
   properties:
@@ -408,7 +410,8 @@ apis:
                        instances managed by an Instance Pool.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
-  tags: []
+  tags:
+  - network-load-balancer
   tags_raw:
   - network-load-balancer
   properties:
@@ -462,7 +465,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Operation
+  - operation
   tags_raw:
   - operation
   properties:
@@ -516,7 +519,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Private Network
+  - private-network
   tags_raw:
   - private-network
   properties:
@@ -552,7 +555,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Record
+  - record
   tags_raw:
   - record
   properties:
@@ -571,7 +574,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Reverse DNS
+  - reverse-dns
   tags_raw:
   - reverse-dns
   properties:
@@ -609,7 +612,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - SecurityGroup
+  - security-group
   tags_raw:
   - security-group
   properties:
@@ -647,7 +650,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - SOS
+  - sos
   tags_raw:
   - sos
   properties:
@@ -665,7 +668,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - SSH Key
+  - ssh-key
   tags_raw:
   - ssh-key
   properties:
@@ -723,7 +726,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Zone
+  - zone
   tags_raw:
   - zone
   properties:
