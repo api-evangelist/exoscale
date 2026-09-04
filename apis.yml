@@ -50,7 +50,7 @@ tags_raw:
 url: https://raw.githubusercontent.com/api-evangelist/exoscale/refs/heads/main/apis.yml
 created: '2025-01-07'
 modified: '2026-05-19'
-position: Consumer
+position: Consuming
 access: 3rd-Party
 specificationVersion: '0.23'
 apis:
