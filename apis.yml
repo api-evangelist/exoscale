@@ -104,26 +104,6 @@ apis:
     url: https://portal.exoscale.com/register
   - type: Pricing
     url: https://www.exoscale.com/pricing/
-- aid: exoscale:exoscale-block-storage-api
-  name: Exoscale block-storage API
-  description: >-
-    Exoscale's Block Storage offers persistent externally
-                       attached volumes for your Compute instances.
-  humanURL: https://openapi-v2.exoscale.com/
-  baseURL: https://api-ch-gva-2.exoscale.com/v2
-  tags:
-  - Block Storage
-  tags_raw:
-  - block-storage
-  properties:
-  - type: OpenAPI
-    url: openapi/exoscale-block-storage-api-openapi.yml
-  - type: Documentation
-    url: https://openapi-v2.exoscale.com/
-  - type: Signup
-    url: https://portal.exoscale.com/register
-  - type: Pricing
-    url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-ccm-api
   name: Exoscale ccm API
   description: The ccm API from Exoscale — 1 operation(s) for ccm.
@@ -731,6 +711,25 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/exoscale-zone-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-blockstorage-api
+  name: Exoscale Blockstorage API
+  description: >-
+    Exoscale's Block Storage offers persistent externally
+
+    attached volumes for your Compute instances.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - blockstorage
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-blockstorage-api-openapi.yml
   - type: Documentation
     url: https://openapi-v2.exoscale.com/
   - type: Signup
