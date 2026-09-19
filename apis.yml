@@ -482,6 +482,8 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
+  - Organization Policy
+  tags_raw:
   - organization-policy
   properties:
   - type: OpenAPI
@@ -667,7 +669,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Template
+  - Templates
   tags_raw:
   - template
   properties:
@@ -726,6 +728,8 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
+  - Block Storage
+  tags_raw:
   - blockstorage
   properties:
   - type: OpenAPI
