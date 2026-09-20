@@ -61,7 +61,8 @@ edges:
   reason: Compute instance placement grouping in a cloud infrastructure API — IT infrastructure (compute)
     management.
 - tag: block-storage
-  spec_file: exoscale-block-storage-api-openapi.yml
+  spec_file: exoscale-blockstorage-api-openapi.yml
+  reanchored_from: exoscale-block-storage-api-openapi.yml
   capability_id: BC-600.50
   capability_id_l1: BC-600
   capability_name: IT Infrastructure Management
