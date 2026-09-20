@@ -10,6 +10,10 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: developer-api
 pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-09-20'
 published: true
 note: Pay-as-you-go cloud pricing page; most hourly instance/DBaaS prices render from Angular template
   variables ({{ prices... }}) and are not present as numbers in the captured text. Only a handful of literal
