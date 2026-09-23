@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key API
+  title: Exoscale AI API Key API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -233,36 +233,47 @@ paths:
       operationId: rotate-ai-api-key
 components:
   schemas:
-    ai-api-key:
-      description: AI API key metadata (without value)
+    update-ai-api-key-request:
+      description: Request to update an AI API key (at least one property required)
       properties:
-        updated-at:
-          description: Last update timestamp
-          format: date-time
-          type: string
-          readOnly: true
         name:
           description: Human-readable name for the AI API key
           type: string
         scope:
           description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
           type: string
-        id:
-          description: AI API key ID
-          format: uuid
+      type: object
+      minProperties: 1
+    create-ai-api-key-request:
+      description: Request to create a new AI API key
+      properties:
+        name:
+          description: Human-readable name for the AI API key
+          type: string
+        scope:
+          description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
+          type: string
+      type: object
+      required:
+      - name
+      - scope
+    forbidden-operation-response:
+      description: Forbidden operation response
+      properties:
+        code:
+          description: Machine-readable forbidden error code
+          enum:
+          - forbidden_operation
           type: string
           readOnly: true
-        org-uuid:
-          description: Organization UUID that owns this key
-          format: uuid
-          type: string
-          readOnly: true
-        created-at:
-          description: Creation timestamp
-          format: date-time
+        error:
+          description: Forbidden error message
           type: string
           readOnly: true
       type: object
+      required:
+      - error
+      - code
     list-ai-api-keys-response:
       description: List of AI API keys
       properties:
@@ -281,17 +292,6 @@ components:
           created-at: '2026-03-25T10:00:00Z'
       required:
       - ai-api-keys
-    update-ai-api-key-request:
-      description: Request to update an AI API key (at least one property required)
-      properties:
-        name:
-          description: Human-readable name for the AI API key
-          type: string
-        scope:
-          description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
-          type: string
-      type: object
-      minProperties: 1
     error-response:
       type: object
       description: RFC 9457 Problem Details error response
@@ -328,36 +328,36 @@ components:
                 type: string
               location:
                 type: string
-    forbidden-operation-response:
-      description: Forbidden operation response
+    ai-api-key:
+      description: AI API key metadata (without value)
       properties:
-        code:
-          description: Machine-readable forbidden error code
-          enum:
-          - forbidden_operation
+        updated-at:
+          description: Last update timestamp
+          format: date-time
           type: string
           readOnly: true
-        error:
-          description: Forbidden error message
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - error
-      - code
-    create-ai-api-key-request:
-      description: Request to create a new AI API key
-      properties:
         name:
           description: Human-readable name for the AI API key
           type: string
         scope:
           description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
           type: string
+        id:
+          description: AI API key ID
+          format: uuid
+          type: string
+          readOnly: true
+        org-uuid:
+          description: Organization UUID that owns this key
+          format: uuid
+          type: string
+          readOnly: true
+        created-at:
+          description: Creation timestamp
+          format: date-time
+          type: string
+          readOnly: true
       type: object
-      required:
-      - name
-      - scope
     ai-api-key-with-value:
       description: AI API key with plaintext value
       allOf:

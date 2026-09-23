@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key network-load-balancer API
+  title: Exoscale Network Load Balancer API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -23,12 +23,16 @@ servers:
       - bg-sof-1
       - hr-zag-1
 tags:
-- description: "A Network Load Balancer (NLB) is a Layer 4 (TCP/UDP)\n                   load balancer that distributes incoming traffic to Compute\n                   instances managed by an Instance Pool."
+- description: 'A Network Load Balancer (NLB) is a Layer 4 (TCP/UDP)
+
+    load balancer that distributes incoming traffic to Compute
+
+    instances managed by an Instance Pool.'
   parent: compute
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/documentation/compute/network-load-balancer/
-  name: network-load-balancer
+  name: network Load Balancer
   x-display-name: Network Load Balancer
   x-weight: 180
   x-icon: exo-nlb
@@ -36,7 +40,7 @@ paths:
   /load-balancer/{id}/service/{service-id}:
     delete:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -62,7 +66,7 @@ paths:
       operationId: delete-load-balancer-service
     put:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -118,16 +122,12 @@ paths:
                   format: int64
                   minimum: 1
                   maximum: 65535
-                  exclusiveMinimum: false
-                  exclusiveMaximum: false
                   description: Port exposed on the Load Balancer's public IP
                 target-port:
                   type: integer
                   format: int64
                   minimum: 1
                   maximum: 65535
-                  exclusiveMinimum: false
-                  exclusiveMaximum: false
                   description: Port on which the network traffic will be forwarded to on the receiving instance
                 healthcheck:
                   $ref: '#/components/schemas/load-balancer-service-healthcheck'
@@ -135,7 +135,7 @@ paths:
       operationId: update-load-balancer-service
     get:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -162,7 +162,7 @@ paths:
   /load-balancer:
     post:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -197,7 +197,7 @@ paths:
       operationId: create-load-balancer
     get:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -217,7 +217,7 @@ paths:
   /load-balancer/{id}/{field}:
     delete:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -246,7 +246,7 @@ paths:
   /load-balancer/{id}/service/{service-id}/{field}:
     delete:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -280,7 +280,7 @@ paths:
   /load-balancer/{id}/service:
     post:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -334,16 +334,12 @@ paths:
                   format: int64
                   minimum: 1
                   maximum: 65535
-                  exclusiveMinimum: false
-                  exclusiveMaximum: false
                   description: Port exposed on the Load Balancer's public IP
                 target-port:
                   type: integer
                   format: int64
                   minimum: 1
                   maximum: 65535
-                  exclusiveMinimum: false
-                  exclusiveMaximum: false
                   description: Port on which the network traffic will be forwarded to on the receiving instance
                 healthcheck:
                   $ref: '#/components/schemas/load-balancer-service-healthcheck'
@@ -360,7 +356,7 @@ paths:
   /load-balancer/{id}:
     put:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -398,7 +394,7 @@ paths:
       operationId: update-load-balancer
     delete:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -418,7 +414,7 @@ paths:
       operationId: delete-load-balancer
     get:
       tags:
-      - network-load-balancer
+      - network Load Balancer
       responses:
         '200':
           description: '200'
@@ -438,393 +434,6 @@ paths:
       operationId: get-load-balancer
 components:
   schemas:
-    load-balancer-service-healthcheck:
-      type: object
-      properties:
-        mode:
-          type: string
-          enum:
-          - tcp
-          - http
-          - https
-          description: Healthcheck mode
-        interval:
-          type: integer
-          format: int64
-          minimum: 5
-          maximum: 300
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: 'Healthcheck interval (default: 10). Must be greater than or equal to Timeout'
-        uri:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: An endpoint to use for the HTTP healthcheck, e.g. '/status'
-        port:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 65535
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: Healthcheck port
-        timeout:
-          type: integer
-          format: int64
-          minimum: 2
-          maximum: 60
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: 'Healthcheck timeout value (default: 2). Must be lower than or equal to Interval'
-        retries:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 20
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: Number of retries before considering a Service failed
-        tls-sni:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: SNI domain for HTTPS healthchecks
-      description: Load Balancer Service healthcheck
-    instance-type-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance type ID
-      description: Instance type reference
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    deploy-target-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
-    private-network-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Private network ID
-      description: Private network reference
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    anti-affinity-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
-    template-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Template ID
-      description: Template reference
-    ssh-key-ref:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: SSH key name
-      description: SSH key reference
-    load-balancer-service:
-      type: object
-      properties:
-        description:
-          type: string
-          maxLength: 255
-          description: Load Balancer Service description
-        protocol:
-          type: string
-          enum:
-          - tcp
-          - udp
-          description: Network traffic protocol
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Load Balancer Service name
-        state:
-          type: string
-          enum:
-          - creating
-          - deleting
-          - running
-          - updating
-          - error
-          readOnly: true
-          description: Load Balancer Service state
-        target-port:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: true
-          description: Port on which the network traffic will be forwarded to on the receiving instance
-        port:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: true
-          description: Port exposed on the Load Balancer's public IP
-        instance-pool:
-          $ref: '#/components/schemas/instance-pool'
-          description: Instance Pool to forward network traffic to
-        strategy:
-          type: string
-          enum:
-          - round-robin
-          - maglev-hash
-          - source-hash
-          description: Load balancing strategy
-        healthcheck:
-          $ref: '#/components/schemas/load-balancer-service-healthcheck'
-          description: Healthcheck configuration
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Load Balancer Service ID
-        healthcheck-status:
-          type: array
-          items:
-            $ref: '#/components/schemas/load-balancer-server-status'
-          readOnly: true
-          description: Healthcheck status per backend server
-      description: Load Balancer Service
-    elastic-ip-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
-    instance-pool:
-      type: object
-      properties:
-        application-consistent-snapshot-enabled:
-          type: boolean
-          description: Enable application consistent snapshots
-        anti-affinity-groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/anti-affinity-group-ref'
-          description: Instance Pool Anti-affinity Groups
-        description:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Instance Pool description
-        public-ip-assignment:
-          $ref: '#/components/schemas/public-ip-assignment'
-          description: Instance Pool public IP assignment
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Instance Pool Labels
-        security-groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/security-group-ref'
-          description: Instance Pool Security Groups
-        elastic-ips:
-          type: array
-          items:
-            $ref: '#/components/schemas/elastic-ip-ref'
-          description: Instances Elastic IPs
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Instance Pool name
-        instance-type:
-          $ref: '#/components/schemas/instance-type-ref'
-          description: Instances type
-        min-available:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: false
-          description: Minimum number of running instances
-        private-networks:
-          type: array
-          items:
-            $ref: '#/components/schemas/private-network-ref'
-          description: Instance Pool Private Networks
-        template:
-          $ref: '#/components/schemas/template-ref'
-          description: Instances template
-        state:
-          type: string
-          enum:
-          - scaling-up
-          - scaling-down
-          - destroying
-          - creating
-          - suspended
-          - running
-          - updating
-          readOnly: true
-          description: Instance Pool state
-        size:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: true
-          description: Number of instances
-        ssh-key:
-          $ref: '#/components/schemas/ssh-key-ref'
-          description: Instances SSH key
-        instance-prefix:
-          type: string
-          maxLength: 30
-          minLength: 1
-          description: 'The instances created by the Instance Pool will be prefixed with this value (default: pool)'
-        user-data:
-          type: string
-          minLength: 1
-          description: Instances Cloud-init user-data
-        manager:
-          $ref: '#/components/schemas/manager'
-          readOnly: true
-          description: Instance Pool manager
-        instances:
-          type: array
-          items:
-            $ref: '#/components/schemas/instance-ref'
-          readOnly: true
-          description: Instances
-        deploy-target:
-          $ref: '#/components/schemas/deploy-target-ref'
-          description: Instance Pool Deploy Target
-        ipv6-enabled:
-          type: boolean
-          description: Enable IPv6 for instances
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Instance Pool ID
-        disk-size:
-          type: integer
-          format: int64
-          minimum: 10
-          maximum: 51200
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: Instances disk size in GiB
-        ssh-keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/ssh-key-ref'
-          description: Instances SSH keys
-      description: Instance Pool
-    load-balancer:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Load Balancer ID
-        description:
-          type: string
-          maxLength: 255
-          description: Load Balancer description
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Load Balancer name
-        state:
-          type: string
-          enum:
-          - creating
-          - migrated
-          - deleting
-          - running
-          - migrating
-          - error
-          readOnly: true
-          description: Load Balancer state
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Load Balancer creation date
-        ip:
-          type: string
-          format: ipv4
-          readOnly: true
-          description: Load Balancer public IP
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/load-balancer-service'
-          description: Load Balancer Services
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Load Balancer Labels
-      description: Load Balancer
-    manager:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Manager ID
-        type:
-          type: string
-          enum:
-          - sks-nodepool
-          - instance-pool
-          description: Manager type
-      description: Resource manager
-    load-balancer-server-status:
-      type: object
-      properties:
-        public-ip:
-          type: string
-          format: ipv4
-          description: Backend server public IP
-        status:
-          type: string
-          enum:
-          - failure
-          - success
-          description: Status of the instance's healthcheck
-      description: Load Balancer Service status
     operation:
       type: object
       properties:
@@ -879,6 +488,183 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    security-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Security group ID
+      description: Security group reference
+    load-balancer-service-healthcheck:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum:
+          - tcp
+          - http
+          - https
+          description: Healthcheck mode
+        interval:
+          type: integer
+          format: int64
+          minimum: 5
+          maximum: 300
+          description: 'Healthcheck interval (default: 10). Must be greater than or equal to Timeout'
+        uri:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: An endpoint to use for the HTTP healthcheck, e.g. '/status'
+        port:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 65535
+          description: Healthcheck port
+        timeout:
+          type: integer
+          format: int64
+          minimum: 2
+          maximum: 60
+          description: 'Healthcheck timeout value (default: 2). Must be lower than or equal to Interval'
+        retries:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 20
+          description: Number of retries before considering a Service failed
+        tls-sni:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: SNI domain for HTTPS healthchecks
+      description: Load Balancer Service healthcheck
+    ssh-key-ref:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: SSH key name
+      description: SSH key reference
+    instance-pool:
+      type: object
+      properties:
+        application-consistent-snapshot-enabled:
+          type: boolean
+          description: Enable application consistent snapshots
+        anti-affinity-groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/anti-affinity-group-ref'
+          description: Instance Pool Anti-affinity Groups
+        description:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Instance Pool description
+        public-ip-assignment:
+          $ref: '#/components/schemas/public-ip-assignment'
+          description: Instance Pool public IP assignment
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Instance Pool Labels
+        security-groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/security-group-ref'
+          description: Instance Pool Security Groups
+        elastic-ips:
+          type: array
+          items:
+            $ref: '#/components/schemas/elastic-ip-ref'
+          description: Instances Elastic IPs
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Instance Pool name
+        instance-type:
+          $ref: '#/components/schemas/instance-type-ref'
+          description: Instances type
+        min-available:
+          type: integer
+          format: int64
+          minimum: 0
+          description: Minimum number of running instances
+        private-networks:
+          type: array
+          items:
+            $ref: '#/components/schemas/private-network-ref'
+          description: Instance Pool Private Networks
+        template:
+          $ref: '#/components/schemas/template-ref'
+          description: Instances template
+        state:
+          type: string
+          enum:
+          - scaling-up
+          - scaling-down
+          - destroying
+          - creating
+          - suspended
+          - running
+          - updating
+          readOnly: true
+          description: Instance Pool state
+        size:
+          type: integer
+          format: int64
+          description: Number of instances
+          exclusiveMinimum: 0
+        ssh-key:
+          $ref: '#/components/schemas/ssh-key-ref'
+          description: Instances SSH key
+        instance-prefix:
+          type: string
+          maxLength: 30
+          minLength: 1
+          description: 'The instances created by the Instance Pool will be prefixed with this value (default: pool)'
+        user-data:
+          type: string
+          minLength: 1
+          description: Instances Cloud-init user-data
+        manager:
+          $ref: '#/components/schemas/manager'
+          readOnly: true
+          description: Instance Pool manager
+        instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/instance-ref'
+          readOnly: true
+          description: Instances
+        deploy-target:
+          $ref: '#/components/schemas/deploy-target-ref'
+          description: Instance Pool Deploy Target
+        ipv6-enabled:
+          type: boolean
+          description: Enable IPv6 for instances
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Instance Pool ID
+        disk-size:
+          type: integer
+          format: int64
+          minimum: 10
+          maximum: 51200
+          description: Instances disk size in GiB
+        ssh-keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/ssh-key-ref'
+          description: Instances SSH keys
+      description: Instance Pool
     instance-ref:
       type: object
       properties:
@@ -887,6 +673,202 @@ components:
           format: uuid
           description: Instance ID
       description: Target Instance
+    load-balancer-server-status:
+      type: object
+      properties:
+        public-ip:
+          type: string
+          format: ipv4
+          description: Backend server public IP
+        status:
+          type: string
+          enum:
+          - failure
+          - success
+          description: Status of the instance's healthcheck
+      description: Load Balancer Service status
+    elastic-ip-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Elastic IP ID
+      description: Elastic IP reference
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
+    anti-affinity-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
+    template-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Template ID
+      description: Template reference
+    load-balancer:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Load Balancer ID
+        description:
+          type: string
+          maxLength: 255
+          description: Load Balancer description
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Load Balancer name
+        state:
+          type: string
+          enum:
+          - creating
+          - migrated
+          - deleting
+          - running
+          - migrating
+          - error
+          readOnly: true
+          description: Load Balancer state
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Load Balancer creation date
+        ip:
+          type: string
+          format: ipv4
+          readOnly: true
+          description: Load Balancer public IP
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/load-balancer-service'
+          description: Load Balancer Services
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Load Balancer Labels
+      description: Load Balancer
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    private-network-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Private network ID
+      description: Private network reference
+    manager:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Manager ID
+        type:
+          type: string
+          enum:
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
+    instance-type-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance type ID
+      description: Instance type reference
+    load-balancer-service:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 255
+          description: Load Balancer Service description
+        protocol:
+          type: string
+          enum:
+          - tcp
+          - udp
+          description: Network traffic protocol
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Load Balancer Service name
+        state:
+          type: string
+          enum:
+          - creating
+          - deleting
+          - running
+          - updating
+          - error
+          readOnly: true
+          description: Load Balancer Service state
+        target-port:
+          type: integer
+          format: int64
+          description: Port on which the network traffic will be forwarded to on the receiving instance
+          exclusiveMinimum: 0
+        port:
+          type: integer
+          format: int64
+          description: Port exposed on the Load Balancer's public IP
+          exclusiveMinimum: 0
+        instance-pool:
+          $ref: '#/components/schemas/instance-pool'
+          description: Instance Pool to forward network traffic to
+        strategy:
+          type: string
+          enum:
+          - round-robin
+          - maglev-hash
+          - source-hash
+          description: Load balancing strategy
+        healthcheck:
+          $ref: '#/components/schemas/load-balancer-service-healthcheck'
+          description: Healthcheck configuration
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Load Balancer Service ID
+        healthcheck-status:
+          type: array
+          items:
+            $ref: '#/components/schemas/load-balancer-server-status'
+          readOnly: true
+          description: Healthcheck status per backend server
+      description: Load Balancer Service
 x-topics:
 - title: API Request Signature
   content: '

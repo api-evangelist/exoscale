@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key nodepool API
+  title: Exoscale Nodepool API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -126,15 +126,12 @@ paths:
                   description: 'Prefix to apply to managed instances names (default: pool), lowercase only'
                 deploy-target:
                   $ref: '#/components/schemas/deploy-target-ref'
-                  nullable: true
                   description: Nodepool Deploy Target
                 disk-size:
                   type: integer
                   format: int64
                   minimum: 20
                   maximum: 51200
-                  exclusiveMinimum: false
-                  exclusiveMaximum: false
                   description: Nodepool instances disk size in GiB
       operationId: update-sks-nodepool
     get:
@@ -226,7 +223,6 @@ paths:
                   type: integer
                   format: int64
                   minimum: 0
-                  exclusiveMinimum: false
                   description: Number of instances
               required:
               - size
@@ -242,7 +238,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/operation'
-      description: This operation evicts the specified Compute instances member from the Nodepool, shrinking it to `&lt;current nodepool size&gt; - &lt;# evicted members&gt;`.
+      description: This operation evicts the specified Compute instances member from the Nodepool, shrinking it to `<current nodepool size> - <# evicted members>`.
       parameters:
       - in: path
         required: true
@@ -351,9 +347,8 @@ paths:
                 size:
                   type: integer
                   format: int64
-                  minimum: 0
-                  exclusiveMinimum: true
                   description: Number of instances
+                  exclusiveMinimum: 0
                 kubelet-image-gc:
                   $ref: '#/components/schemas/kubelet-image-gc'
                   description: Kubelet image GC options
@@ -378,8 +373,6 @@ paths:
                   format: int64
                   minimum: 20
                   maximum: 51200
-                  exclusiveMinimum: false
-                  exclusiveMaximum: false
                   description: Nodepool instances disk size in GiB
               required:
               - name
@@ -389,93 +382,10 @@ paths:
       operationId: create-sks-nodepool
 components:
   schemas:
-    instance-type-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance type ID
-      description: Instance type reference
-    private-network-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Private network ID
-      description: Private network reference
-    instance-pool-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance Pool ID
-      description: Target Instance Pool
-    deploy-target-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
-    kubelet-image-gc:
-      type: object
-      properties:
-        high-threshold:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: false
-        low-threshold:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: false
-        min-age:
-          type: string
-      description: Kubelet image GC options
-    template-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Template ID
-      description: Template reference
-    sks-nodepool-taint:
-      type: object
-      properties:
-        value:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Nodepool taint value
-        effect:
-          type: string
-          enum:
-          - NoExecute
-          - NoSchedule
-          - PreferNoSchedule
-          description: Nodepool taint effect
-      required:
-      - value
-      - effect
-      description: Nodepool taint
-    sks-nodepool-taints:
+    sks-nodepool-labels:
       type: object
       additionalProperties:
-        $ref: '#/components/schemas/sks-nodepool-taint'
+        type: string
     operation:
       type: object
       properties:
@@ -530,6 +440,55 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    security-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Security group ID
+      description: Security group reference
+    kubelet-image-gc:
+      type: object
+      properties:
+        high-threshold:
+          type: integer
+          format: int64
+          minimum: 0
+        low-threshold:
+          type: integer
+          format: int64
+          minimum: 0
+        min-age:
+          type: string
+      description: Kubelet image GC options
+    sks-nodepool-taint:
+      type: object
+      properties:
+        value:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Nodepool taint value
+        effect:
+          type: string
+          enum:
+          - NoExecute
+          - NoSchedule
+          - PreferNoSchedule
+          description: Nodepool taint effect
+      required:
+      - value
+      - effect
+      description: Nodepool taint
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
     sks-nodepool:
       type: object
       properties:
@@ -603,7 +562,6 @@ components:
           type: integer
           format: int64
           minimum: 0
-          exclusiveMinimum: false
           description: Number of instances
         kubelet-image-gc:
           $ref: '#/components/schemas/kubelet-image-gc'
@@ -638,8 +596,6 @@ components:
           format: int64
           minimum: 20
           maximum: 51200
-          exclusiveMinimum: false
-          exclusiveMaximum: false
           description: Nodepool instances disk size in GiB
         version:
           type: string
@@ -651,6 +607,14 @@ components:
           readOnly: true
           description: Nodepool creation date
       description: SKS Nodepool
+    instance-pool-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance Pool ID
+      description: Target Instance Pool
     anti-affinity-group-ref:
       type: object
       properties:
@@ -659,10 +623,34 @@ components:
           format: uuid
           description: Anti-affinity group ID
       description: Anti-affinity group reference
-    sks-nodepool-labels:
+    template-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Template ID
+      description: Template reference
+    private-network-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Private network ID
+      description: Private network reference
+    instance-type-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance type ID
+      description: Instance type reference
+    sks-nodepool-taints:
       type: object
       additionalProperties:
-        type: string
+        $ref: '#/components/schemas/sks-nodepool-taint'
 x-topics:
 - title: API Request Signature
   content: '

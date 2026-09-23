@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai api-key API
+  title: Exoscale API Key API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -28,7 +28,7 @@ tags:
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/product/iam/how-to/key-mgmt/
-  name: api-key
+  name: API Key
   x-display-name: API Key
   x-weight: 810
   x-icon: exo-iam
@@ -36,7 +36,7 @@ paths:
   /api-key:
     post:
       tags:
-      - api-key
+      - API Key
       responses:
         '200':
           description: '200'
@@ -69,7 +69,7 @@ paths:
       operationId: create-api-key
     get:
       tags:
-      - api-key
+      - API Key
       responses:
         '200':
           description: '200'
@@ -89,7 +89,7 @@ paths:
   /api-key/{id}:
     delete:
       tags:
-      - api-key
+      - API Key
       responses:
         '200':
           description: '200'
@@ -108,7 +108,7 @@ paths:
       operationId: delete-api-key
     get:
       tags:
-      - api-key
+      - API Key
       responses:
         '200':
           description: '200'
@@ -127,22 +127,6 @@ paths:
       operationId: get-api-key
 components:
   schemas:
-    iam-api-key:
-      type: object
-      properties:
-        name:
-          type: string
-          x-go-findable: '1'
-          description: IAM API Key name
-        key:
-          type: string
-          x-go-findable: '2'
-          description: IAM API Key
-        role-id:
-          type: string
-          format: uuid
-          description: IAM API Key Role ID
-      description: IAM API Key
     iam-api-key-created:
       type: object
       properties:
@@ -156,6 +140,22 @@ components:
           type: string
           readOnly: true
           description: IAM API Key Secret
+        role-id:
+          type: string
+          format: uuid
+          description: IAM API Key Role ID
+      description: IAM API Key
+    iam-api-key:
+      type: object
+      properties:
+        name:
+          type: string
+          x-go-findable: '1'
+          description: IAM API Key name
+        key:
+          type: string
+          x-go-findable: '2'
+          description: IAM API Key
         role-id:
           type: string
           format: uuid

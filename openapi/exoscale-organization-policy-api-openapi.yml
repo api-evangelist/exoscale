@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key organization-policy API
+  title: Exoscale Organization Policy API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -28,7 +28,7 @@ tags:
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/product/iam/operation/roles-policies/
-  name: organization-policy
+  name: Organization Policy
   x-display-name: Organization Policy
   x-weight: 840
   x-icon: exo-iam
@@ -36,7 +36,7 @@ paths:
   /iam-organization-policy:
     get:
       tags:
-      - organization-policy
+      - Organization Policy
       responses:
         '200':
           description: '200'
@@ -50,7 +50,7 @@ paths:
       operationId: get-iam-organization-policy
     put:
       tags:
-      - organization-policy
+      - Organization Policy
       responses:
         '200':
           description: '200'
@@ -71,7 +71,7 @@ paths:
   /iam-organization-policy:reset:
     post:
       tags:
-      - organization-policy
+      - Organization Policy
       responses:
         '200':
           description: '200'
@@ -85,6 +85,19 @@ paths:
       operationId: reset-iam-organization-policy
 components:
   schemas:
+    iam-service-policy:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - rules
+          - allow
+          - deny
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/iam-service-policy-rule'
     iam-service-policy-rule:
       type: object
       properties:
@@ -153,19 +166,6 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    iam-service-policy:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - rules
-          - allow
-          - deny
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/iam-service-policy-rule'
     iam-policy:
       type: object
       properties:

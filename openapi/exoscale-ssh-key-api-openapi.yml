@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key ssh-key API
+  title: Exoscale Ssh Key API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -28,7 +28,7 @@ tags:
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/documentation/compute/ssh-keypairs/
-  name: ssh-key
+  name: SSH Key
   x-display-name: SSH Key
   x-weight: 160
   x-icon: exo-cli
@@ -36,7 +36,7 @@ paths:
   /ssh-key/{name}:
     delete:
       tags:
-      - ssh-key
+      - SSH Key
       responses:
         '200':
           description: '200'
@@ -55,7 +55,7 @@ paths:
       operationId: delete-ssh-key
     get:
       tags:
-      - ssh-key
+      - SSH Key
       responses:
         '200':
           description: '200'
@@ -75,7 +75,7 @@ paths:
   /ssh-key:
     get:
       tags:
-      - ssh-key
+      - SSH Key
       responses:
         '200':
           description: '200'
@@ -94,7 +94,7 @@ paths:
       operationId: list-ssh-keys
     post:
       tags:
-      - ssh-key
+      - SSH Key
       responses:
         '200':
           description: '200'

@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key kms-key API
+  title: Exoscale Kms Key API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -382,70 +382,6 @@ paths:
       operationId: cancel-kms-key-deletion
 components:
   schemas:
-    key-rotation-config:
-      type: object
-      required:
-      - manual-count
-      - automatic
-      - rotation-period
-      - next-at
-      properties:
-        manual-count:
-          type: integer
-        automatic:
-          type: boolean
-        rotation-period:
-          type: integer
-        next-at:
-          type: string
-          format: date-time
-    enable-kms-key-rotation-request:
-      type: object
-      properties:
-        rotation-period:
-          type: integer
-          minimum: 90
-          maximum: 2560
-          default: 365
-    create-kms-key-request:
-      type: object
-      required:
-      - name
-      - description
-      - usage
-      - multi-zone
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        usage:
-          type: string
-          enum:
-          - encrypt-decrypt
-        multi-zone:
-          type: boolean
-    key-material:
-      type: object
-      required:
-      - version
-      - created-at
-      - automatic
-      properties:
-        version:
-          type: integer
-        created-at:
-          type: string
-          format: date-time
-        automatic:
-          type: boolean
-    rotate-kms-key-response:
-      type: object
-      required:
-      - rotation
-      properties:
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
     list-kms-keys-response:
       type: object
       required:
@@ -455,38 +391,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/list-kms-keys-response-entry'
-    disable-kms-key-rotation-response:
-      type: object
-      required:
-      - rotation
-      properties:
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
-    replica-failure:
-      type: object
-      required:
-      - attempted-watermark
-      - error
-      - failed-at
-      properties:
-        attempted-watermark:
-          type: integer
-        error:
-          type: string
-        failed-at:
-          type: string
-          format: date-time
-    success-response:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - target-registered
-          default: success
     get-kms-key-response:
       type: object
       required:
@@ -549,54 +453,52 @@ components:
         created-at:
           type: string
           format: date-time
-    error-response:
+    rotate-kms-key-response:
       type: object
-      description: RFC 9457 Problem Details error response
       required:
-      - type
-      - title
-      - status
-      - detail
+      - rotation
       properties:
-        type:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    create-kms-key-request:
+      type: object
+      required:
+      - name
+      - description
+      - usage
+      - multi-zone
+      properties:
+        name:
           type: string
-          format: uri-reference
-        title:
+        description:
           type: string
-        status:
-          type: integer
-          minimum: 100
-          maximum: 599
-        detail:
+        usage:
           type: string
-        instance:
-          type: string
-          format: uri-reference
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              path:
-                type: string
-              detail:
-                type: string
-              pointer:
-                type: string
-              location:
-                type: string
-    replica-state:
+          enum:
+          - encrypt-decrypt
+        multi-zone:
+          type: boolean
+    replicate-kms-key-request:
       type: object
       required:
       - zone
-      - last-applied-watermark
       properties:
         zone:
           type: string
-        last-applied-watermark:
+    key-material:
+      type: object
+      required:
+      - version
+      - created-at
+      - automatic
+      properties:
+        version:
           type: integer
-        last-failure:
-          $ref: '#/components/schemas/replica-failure'
+        created-at:
+          type: string
+          format: date-time
+        automatic:
+          type: boolean
     list-kms-keys-response-entry:
       type: object
       required:
@@ -654,34 +556,40 @@ components:
         created-at:
           type: string
           format: date-time
-    revision-stamp:
-      type: object
-      required:
-      - at
-      - seq
-      properties:
-        at:
-          type: string
-          format: date-time
-        seq:
-          type: integer
-          minimum: 0
-    replicate-kms-key-request:
+    replica-state:
       type: object
       required:
       - zone
+      - last-applied-watermark
       properties:
         zone:
           type: string
-    schedule-kms-key-deletion-request:
+        last-applied-watermark:
+          type: integer
+        last-failure:
+          $ref: '#/components/schemas/replica-failure'
+    disable-kms-key-rotation-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    enable-kms-key-rotation-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    enable-kms-key-rotation-request:
       type: object
       properties:
-        delay-days:
+        rotation-period:
           type: integer
-          description: Number of days to wait until deletion is final.
-          minimum: 7
-          maximum: 30
-          default: 30
+          minimum: 90
+          maximum: 2560
+          default: 365
     create-kms-key-response:
       type: object
       required:
@@ -725,15 +633,58 @@ components:
         created-at:
           type: string
           format: date-time
-    list-kms-key-rotations-response:
+    schedule-kms-key-deletion-request:
+      type: object
+      properties:
+        delay-days:
+          type: integer
+          description: Number of days to wait until deletion is final.
+          minimum: 7
+          maximum: 30
+          default: 30
+    revision-stamp:
       type: object
       required:
-      - rotations
+      - at
+      - seq
       properties:
-        rotations:
-          type: array
-          items:
-            $ref: '#/components/schemas/list-kms-key-rotations-response-entry'
+        at:
+          type: string
+          format: date-time
+        seq:
+          type: integer
+          minimum: 0
+    key-rotation-config:
+      type: object
+      required:
+      - manual-count
+      - automatic
+      - rotation-period
+      - next-at
+      properties:
+        manual-count:
+          type: integer
+        automatic:
+          type: boolean
+        rotation-period:
+          type: integer
+        next-at:
+          type: string
+          format: date-time
+    replica-failure:
+      type: object
+      required:
+      - attempted-watermark
+      - error
+      - failed-at
+      properties:
+        attempted-watermark:
+          type: integer
+        error:
+          type: string
+        failed-at:
+          type: string
+          format: date-time
     list-kms-key-rotations-response-entry:
       type: object
       required:
@@ -748,13 +699,62 @@ components:
           format: date-time
         automatic:
           type: boolean
-    enable-kms-key-rotation-response:
+    error-response:
+      type: object
+      description: RFC 9457 Problem Details error response
+      required:
+      - type
+      - title
+      - status
+      - detail
+      properties:
+        type:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        status:
+          type: integer
+          minimum: 100
+          maximum: 599
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri-reference
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              detail:
+                type: string
+              pointer:
+                type: string
+              location:
+                type: string
+    list-kms-key-rotations-response:
       type: object
       required:
-      - rotation
+      - rotations
       properties:
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
+        rotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/list-kms-key-rotations-response-entry'
+    success-response:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - target-registered
+          default: success
 x-topics:
 - title: API Request Signature
   content: '

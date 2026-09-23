@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key reverse-dns API
+  title: Exoscale Reverse Dns API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -28,7 +28,7 @@ tags:
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/product/compute/instances/
-  name: reverse-dns
+  name: Reverse DNS
   x-display-name: Reverse DNS
   x-weight: 210
   x-icon: exo-dns
@@ -36,7 +36,7 @@ paths:
   /reverse-dns/elastic-ip/{id}:
     get:
       tags:
-      - reverse-dns
+      - Reverse DNS
       responses:
         '200':
           description: '200'
@@ -56,7 +56,7 @@ paths:
       operationId: get-reverse-dns-elastic-ip
     post:
       tags:
-      - reverse-dns
+      - Reverse DNS
       responses:
         '200':
           description: '200'
@@ -87,7 +87,7 @@ paths:
       operationId: update-reverse-dns-elastic-ip
     delete:
       tags:
-      - reverse-dns
+      - Reverse DNS
       responses:
         '200':
           description: '200'
@@ -108,7 +108,7 @@ paths:
   /reverse-dns/instance/{id}:
     post:
       tags:
-      - reverse-dns
+      - Reverse DNS
       responses:
         '200':
           description: '200'
@@ -139,7 +139,7 @@ paths:
       operationId: update-reverse-dns-instance
     get:
       tags:
-      - reverse-dns
+      - Reverse DNS
       responses:
         '200':
           description: '200'
@@ -159,7 +159,7 @@ paths:
       operationId: get-reverse-dns-instance
     delete:
       tags:
-      - reverse-dns
+      - Reverse DNS
       responses:
         '200':
           description: '200'
@@ -179,11 +179,10 @@ paths:
       operationId: delete-reverse-dns-instance
 components:
   schemas:
-    reverse-dns-record:
-      type: object
-      properties:
-        domain-name:
-          $ref: '#/components/schemas/domain-name'
+    domain-name:
+      type: string
+      maxLength: 253
+      minLength: 1
     operation:
       type: object
       properties:
@@ -238,10 +237,11 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    domain-name:
-      type: string
-      maxLength: 253
-      minLength: 1
+    reverse-dns-record:
+      type: object
+      properties:
+        domain-name:
+          $ref: '#/components/schemas/domain-name'
 x-topics:
 - title: API Request Signature
   content: '

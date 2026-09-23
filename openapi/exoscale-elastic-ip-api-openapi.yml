@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key elastic-ip API
+  title: Exoscale Elastic Ip API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -264,10 +264,6 @@ paths:
       operationId: delete-elastic-ip
 components:
   schemas:
-    labels:
-      type: object
-      additionalProperties:
-        type: string
     operation:
       type: object
       properties:
@@ -322,73 +318,6 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    elastic-ip-healthcheck:
-      type: object
-      properties:
-        strikes-ok:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 20
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: 'Number of attempts before considering the target healthy (default: 2)'
-        tls-skip-verify:
-          type: boolean
-          description: Skip TLS verification
-        tls-sni:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: An optional domain or subdomain to check TLS against
-        strikes-fail:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 20
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: 'Number of attempts before considering the target unhealthy (default: 3)'
-        mode:
-          type: string
-          enum:
-          - tcp
-          - http
-          - https
-          description: Health check mode
-        port:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 65535
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: Health check port
-        uri:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: An endpoint to use for the health check, for example '/status'
-        interval:
-          type: integer
-          format: int64
-          minimum: 5
-          maximum: 300
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: 'Interval between the checks in seconds (default: 10)'
-        timeout:
-          type: integer
-          format: int64
-          minimum: 2
-          maximum: 60
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: 'Health check timeout value in seconds (default: 2)'
-      required:
-      - mode
-      - port
-      description: Elastic IP address healthcheck
     elastic-ip:
       type: object
       properties:
@@ -433,6 +362,67 @@ components:
           format: uuid
           description: Instance ID
       description: Target Instance
+    elastic-ip-healthcheck:
+      type: object
+      properties:
+        strikes-ok:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 20
+          description: 'Number of attempts before considering the target healthy (default: 2)'
+        tls-skip-verify:
+          type: boolean
+          description: Skip TLS verification
+        tls-sni:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: An optional domain or subdomain to check TLS against
+        strikes-fail:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 20
+          description: 'Number of attempts before considering the target unhealthy (default: 3)'
+        mode:
+          type: string
+          enum:
+          - tcp
+          - http
+          - https
+          description: Health check mode
+        port:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 65535
+          description: Health check port
+        uri:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: An endpoint to use for the health check, for example '/status'
+        interval:
+          type: integer
+          format: int64
+          minimum: 5
+          maximum: 300
+          description: 'Interval between the checks in seconds (default: 10)'
+        timeout:
+          type: integer
+          format: int64
+          minimum: 2
+          maximum: 60
+          description: 'Health check timeout value in seconds (default: 2)'
+      required:
+      - mode
+      - port
+      description: Elastic IP address healthcheck
+    labels:
+      type: object
+      additionalProperties:
+        type: string
 x-topics:
 - title: API Request Signature
   content: '

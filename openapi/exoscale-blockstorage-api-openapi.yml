@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key block-storage API
+  title: Exoscale Block Storage API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -23,11 +23,13 @@ servers:
       - bg-sof-1
       - hr-zag-1
 tags:
-- description: "Exoscale's Block Storage offers persistent externally\n                   attached volumes for your Compute instances."
+- description: 'Exoscale''s Block Storage offers persistent externally
+
+    attached volumes for your Compute instances.'
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/documentation/block-storage/
-  name: block-storage
+  name: blockstorage
   x-display-name: Block Storage
   x-weight: 600
   x-icon: exo-block-storage
@@ -35,7 +37,7 @@ paths:
   /block-storage/{id}:attach:
     put:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -68,7 +70,7 @@ paths:
   /block-storage-snapshot/{id}:
     delete:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -88,7 +90,7 @@ paths:
       operationId: delete-block-storage-snapshot
     put:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -113,18 +115,18 @@ paths:
               type: object
               properties:
                 name:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   maxLength: 255
-                  nullable: true
                   description: Snapshot name
                 labels:
                   $ref: '#/components/schemas/labels'
-                  nullable: true
                   description: Resource labels
       operationId: update-block-storage-snapshot
     get:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -145,7 +147,7 @@ paths:
   /block-storage/{id}:
     get:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -165,7 +167,7 @@ paths:
       operationId: get-block-storage-volume
     put:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -190,18 +192,18 @@ paths:
               type: object
               properties:
                 name:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   maxLength: 255
-                  nullable: true
                   description: Volume name
                 labels:
                   $ref: '#/components/schemas/labels'
-                  nullable: true
                   description: Resource labels
       operationId: update-block-storage-volume
     delete:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -222,7 +224,7 @@ paths:
   /block-storage/{id}:create-snapshot:
     post:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -258,7 +260,7 @@ paths:
   /block-storage-snapshot:
     get:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -278,7 +280,7 @@ paths:
   /block-storage/{id}:resize-volume:
     put:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -305,16 +307,15 @@ paths:
                 size:
                   type: integer
                   format: int64
-                  minimum: 0
-                  exclusiveMinimum: true
                   description: Volume size in GiB
+                  exclusiveMinimum: 0
               required:
               - size
       operationId: resize-block-storage-volume
   /block-storage/{id}:detach:
     put:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -335,7 +336,7 @@ paths:
   /block-storage:
     get:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -360,7 +361,7 @@ paths:
       operationId: list-block-storage-volumes
     post:
       tags:
-      - block-storage
+      - blockstorage
       responses:
         '200':
           description: '200'
@@ -386,7 +387,6 @@ paths:
                   type: integer
                   format: int64
                   minimum: 1
-                  exclusiveMinimum: false
                   description: "Volume size in GiB.\n                            When a snapshot ID is supplied, this defaults to the size of the source volume, but can be set to a larger value."
                 labels:
                   $ref: '#/components/schemas/labels'
@@ -397,18 +397,6 @@ paths:
       operationId: create-block-storage-volume
 components:
   schemas:
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    block-storage-snapshot-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Block storage snapshot ID
-      description: Target block storage snapshot
     block-storage-volume:
       type: object
       properties:
@@ -441,13 +429,11 @@ components:
           type: integer
           format: int64
           minimum: 1
-          exclusiveMinimum: false
           description: Volume size
         blocksize:
           type: integer
           format: int64
           minimum: 0
-          exclusiveMinimum: false
           readOnly: true
           description: Volume block size
         block-storage-snapshots:
@@ -466,64 +452,14 @@ components:
           readOnly: true
           description: Volume creation date
       description: Block storage volume
-    block-storage-snapshot:
+    block-storage-snapshot-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          readOnly: true
-          description: Snapshot ID
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Snapshot name
-        size:
-          type: integer
-          format: int64
-          minimum: 1
-          exclusiveMinimum: false
-          description: Snapshot size
-        volume-size:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: false
-          description: Original Volume size
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Snapshot creation date
-        state:
-          type: string
-          enum:
-          - partially-destroyed
-          - destroying
-          - creating
-          - created
-          - promoting
-          - error
-          - destroyed
-          - allocated
-          readOnly: true
-          description: Snapshot state
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Resource labels
-        block-storage-volume:
-          $ref: '#/components/schemas/block-storage-volume-ref'
-          description: Referenced volume
-      description: Block storage snapshot
-    block-storage-volume-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Block storage volume ID
-      description: Target block storage volume
+          description: Block storage snapshot ID
+      description: Target block storage snapshot
     operation:
       type: object
       properties:
@@ -586,6 +522,66 @@ components:
           format: uuid
           description: Instance ID
       description: Target Instance
+    block-storage-snapshot:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Snapshot ID
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Snapshot name
+        size:
+          type: integer
+          format: int64
+          minimum: 1
+          description: Snapshot size
+        volume-size:
+          type: integer
+          format: int64
+          minimum: 0
+          description: Original Volume size
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Snapshot creation date
+        state:
+          type: string
+          enum:
+          - partially-destroyed
+          - destroying
+          - creating
+          - created
+          - promoting
+          - error
+          - destroyed
+          - allocated
+          readOnly: true
+          description: Snapshot state
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Resource labels
+        block-storage-volume:
+          $ref: '#/components/schemas/block-storage-volume-ref'
+          description: Referenced volume
+      description: Block storage snapshot
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    block-storage-volume-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Block storage volume ID
+      description: Target block storage volume
 x-topics:
 - title: API Request Signature
   content: '

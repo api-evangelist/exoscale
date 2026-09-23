@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key anti-affinity-group API
+  title: Exoscale Anti Affinity Group API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -128,132 +128,6 @@ paths:
       operationId: delete-anti-affinity-group
 components:
   schemas:
-    instance-type:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Instance type ID
-        size:
-          type: string
-          enum:
-          - large
-          - huge
-          - jumbo
-          - medium
-          - mega
-          - small
-          - extra-large
-          - titan48c
-          - titan
-          - micro
-          - colossus
-          - tiny
-          readOnly: true
-          description: Instance type size
-        family:
-          type: string
-          enum:
-          - gpu3
-          - gpua30
-          - gpu3080ti
-          - gpu2
-          - gpu
-          - memory
-          - gpua5000
-          - gpurtx6000pro
-          - storage
-          - standard
-          - colossus
-          - cpu
-          readOnly: true
-          description: Instance type family
-        cpus:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: true
-          readOnly: true
-          description: CPU count
-        gpus:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: true
-          readOnly: true
-          description: GPU count
-        authorized:
-          type: boolean
-          readOnly: true
-          description: Requires authorization or publicly available
-        memory:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: true
-          readOnly: true
-          description: Available memory
-        zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/zone-name'
-          readOnly: true
-          description: Instance Type available zones
-      description: Compute instance type
-    ssh-key:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          x-go-findable: '1'
-          description: SSH key name
-        fingerprint:
-          type: string
-          readOnly: true
-          x-go-findable: '2'
-          description: SSH key fingerprint
-      description: SSH key
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    deploy-target-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    zone-name:
-      type: string
-      enum:
-      - ch-dk-2
-      - de-muc-1
-      - ch-gva-2
-      - at-vie-1
-      - de-fra-1
-      - bg-sof-1
-      - at-vie-2
-      - hr-zag-1
     snapshot-ref:
       type: object
       properties:
@@ -316,28 +190,239 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    manager:
+    security-group-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Manager ID
-        type:
+          description: Security group ID
+      description: Security group reference
+    anti-affinity-group:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Anti-affinity Group ID
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Anti-affinity Group name
+        description:
+          type: string
+          maxLength: 255
+          description: Anti-affinity Group description
+        instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/instance'
+          readOnly: true
+          description: Anti-affinity Group instances
+      description: Anti-affinity Group
+    ssh-key:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          x-go-findable: '1'
+          description: SSH key name
+        fingerprint:
+          type: string
+          readOnly: true
+          x-go-findable: '2'
+          description: SSH key fingerprint
+      description: SSH key
+    instance-type:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Instance type ID
+        size:
           type: string
           enum:
-          - sks-nodepool
-          - instance-pool
-          description: Manager type
-      description: Resource manager
-    elastic-ip-ref:
+          - large
+          - huge
+          - jumbo
+          - medium
+          - mega
+          - small
+          - extra-large
+          - titan48c
+          - titan
+          - micro
+          - colossus
+          - tiny
+          readOnly: true
+          description: Instance type size
+        family:
+          type: string
+          enum:
+          - gpu3
+          - gpua30
+          - gpu3080ti
+          - gpu2
+          - gpu
+          - memory
+          - gpua5000
+          - gpurtx6000pro
+          - storage
+          - standard
+          - colossus
+          - cpu
+          readOnly: true
+          description: Instance type family
+        cpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: CPU count
+          exclusiveMinimum: 0
+        gpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: GPU count
+          exclusiveMinimum: 0
+        authorized:
+          type: boolean
+          readOnly: true
+          description: Requires authorization or publicly available
+        memory:
+          type: integer
+          format: int64
+          readOnly: true
+          description: Available memory
+          exclusiveMinimum: 0
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/zone-name'
+          readOnly: true
+          description: Instance Type available zones
+      description: Compute instance type
+    template:
+      type: object
+      properties:
+        application-consistent-snapshot-enabled:
+          type: boolean
+          description: Template with Qemu Guest Agent installed for application consistent snapshot
+        maintainer:
+          type: string
+          readOnly: true
+          description: Template maintainer
+        description:
+          type: string
+          maxLength: 255
+          description: Template description
+        ssh-key-enabled:
+          type: boolean
+          description: Enable SSH key-based login
+        family:
+          type: string
+          readOnly: true
+          description: Template family
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Template name
+        default-user:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Template default user
+        size:
+          type: integer
+          format: int64
+          description: Template size
+          exclusiveMinimum: 0
+        password-enabled:
+          type: boolean
+          description: Enable password-based login
+        build:
+          type: string
+          readOnly: true
+          description: Template build
+        checksum:
+          type: string
+          description: Template MD5 checksum
+        boot-mode:
+          type: string
+          enum:
+          - legacy
+          - uefi
+          description: 'Boot mode (default: legacy)'
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Template ID
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/zone-name'
+          description: Zones availability
+        url:
+          type: string
+          description: Template source URL
+        version:
+          type: string
+          readOnly: true
+          description: Template version
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Template creation date
+        visibility:
+          type: string
+          enum:
+          - private
+          - public
+          readOnly: true
+          description: Template visibility
+      description: Instance template
+    deploy-target-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
+          description: Deploy target ID
+      description: Deploy target reference
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    zone-name:
+      type: string
+      enum:
+      - ch-dk-2
+      - de-muc-1
+      - ch-gva-2
+      - at-vie-1
+      - de-fra-1
+      - bg-sof-1
+      - at-vie-2
+      - hr-zag-1
+    anti-affinity-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
     instance-state:
       type: string
       enum:
@@ -449,8 +534,6 @@ components:
           format: int64
           minimum: 10
           maximum: 51200
-          exclusiveMinimum: false
-          exclusiveMaximum: false
           description: Instance disk size in GiB
         ssh-keys:
           type: array
@@ -468,121 +551,32 @@ components:
           readOnly: true
           description: Instance public IPv4 address
       description: Instance
-    template:
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    manager:
       type: object
       properties:
-        application-consistent-snapshot-enabled:
-          type: boolean
-          description: Template with Qemu Guest Agent installed for application consistent snapshot
-        maintainer:
+        id:
           type: string
-          readOnly: true
-          description: Template maintainer
-        description:
-          type: string
-          maxLength: 255
-          description: Template description
-        ssh-key-enabled:
-          type: boolean
-          description: Enable SSH key-based login
-        family:
-          type: string
-          readOnly: true
-          description: Template family
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Template name
-        default-user:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Template default user
-        size:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: true
-          description: Template size
-        password-enabled:
-          type: boolean
-          description: Enable password-based login
-        build:
-          type: string
-          readOnly: true
-          description: Template build
-        checksum:
-          type: string
-          description: Template MD5 checksum
-        boot-mode:
+          format: uuid
+          description: Manager ID
+        type:
           type: string
           enum:
-          - legacy
-          - uefi
-          description: 'Boot mode (default: legacy)'
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Template ID
-        zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/zone-name'
-          description: Zones availability
-        url:
-          type: string
-          description: Template source URL
-        version:
-          type: string
-          readOnly: true
-          description: Template version
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Template creation date
-        visibility:
-          type: string
-          enum:
-          - private
-          - public
-          readOnly: true
-          description: Template visibility
-      description: Instance template
-    anti-affinity-group-ref:
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
+    elastic-ip-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
-    anti-affinity-group:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Anti-affinity Group ID
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Anti-affinity Group name
-        description:
-          type: string
-          maxLength: 255
-          description: Anti-affinity Group description
-        instances:
-          type: array
-          items:
-            $ref: '#/components/schemas/instance'
-          readOnly: true
-          description: Anti-affinity Group instances
-      description: Anti-affinity Group
+          description: Elastic IP ID
+      description: Elastic IP reference
 x-topics:
 - title: API Request Signature
   content: '

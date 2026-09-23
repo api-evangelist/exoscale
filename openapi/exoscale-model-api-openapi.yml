@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key model API
+  title: Exoscale Model API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -28,7 +28,7 @@ tags:
   externalDocs:
     description: Read more
     url: https://www.exoscale.com/ai-cloud-infrastructure/dedicated-inference/
-  name: model
+  name: Model
   x-display-name: AI Model
   x-weight: 920
   x-icon: exo-ai-prod
@@ -36,7 +36,7 @@ paths:
   /ai/model:
     post:
       tags:
-      - model
+      - Model
       responses:
         '403':
           description: '403'
@@ -68,7 +68,7 @@ paths:
       operationId: create-model
     get:
       tags:
-      - model
+      - Model
       responses:
         '200':
           description: '200'
@@ -76,7 +76,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/list-models-response'
-      description: List Models
       parameters:
       - in: query
         required: false
@@ -88,7 +87,7 @@ paths:
   /ai/model/{id}:
     delete:
       tags:
-      - model
+      - Model
       responses:
         '412':
           description: '412'
@@ -114,7 +113,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/operation'
-      description: Delete Model
       parameters:
       - in: path
         required: true
@@ -126,7 +124,7 @@ paths:
       operationId: delete-model
     get:
       tags:
-      - model
+      - Model
       responses:
         '404':
           description: '404'
@@ -152,7 +150,132 @@ paths:
       operationId: get-model
 components:
   schemas:
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
     list-models-response-entry:
+      description: AI model
+      properties:
+        updated-at:
+          description: Update time
+          format: date-time
+          type: string
+          readOnly: true
+        name:
+          description: Model name
+          type: string
+          minLength: 1
+        state:
+          description: Model state
+          enum:
+          - ready
+          - creating
+          - downloading
+          - error
+          - created
+          type: string
+        id:
+          description: Model ID
+          format: uuid
+          type: string
+          readOnly: true
+        model-size:
+          description: Model size (nullable)
+          format: int64
+          type: integer
+          minimum: 0
+        created-at:
+          description: Creation time
+          format: date-time
+          type: string
+          readOnly: true
+      type: object
+    delete-model-conflict-response:
+      description: 'Model is in use: deletion forbidden'
+      properties:
+        deployments:
+          description: Deployments using models
+          type: array
+          items:
+            type: string
+      type: object
+    forbidden-operation-response:
+      description: Forbidden operation response
+      properties:
+        code:
+          description: Machine-readable forbidden error code
+          enum:
+          - forbidden_operation
+          type: string
+          readOnly: true
+        error:
+          description: Forbidden error message
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - error
+      - code
+    list-models-response:
+      description: AI model list
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/list-models-response-entry'
+      type: object
+    get-model-response:
       description: AI model
       properties:
         updated-at:
@@ -238,131 +361,6 @@ components:
       type: object
       required:
       - name
-    forbidden-operation-response:
-      description: Forbidden operation response
-      properties:
-        code:
-          description: Machine-readable forbidden error code
-          enum:
-          - forbidden_operation
-          type: string
-          readOnly: true
-        error:
-          description: Forbidden error message
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - error
-      - code
-    list-models-response:
-      description: AI model list
-      properties:
-        models:
-          type: array
-          items:
-            $ref: '#/components/schemas/list-models-response-entry'
-      type: object
-    get-model-response:
-      description: AI model
-      properties:
-        updated-at:
-          description: Update time
-          format: date-time
-          type: string
-          readOnly: true
-        name:
-          description: Model name
-          type: string
-          minLength: 1
-        state:
-          description: Model state
-          enum:
-          - ready
-          - creating
-          - downloading
-          - error
-          - created
-          type: string
-        id:
-          description: Model ID
-          format: uuid
-          type: string
-          readOnly: true
-        model-size:
-          description: Model size (nullable)
-          format: int64
-          type: integer
-          minimum: 0
-        created-at:
-          description: Creation time
-          format: date-time
-          type: string
-          readOnly: true
-      type: object
-    delete-model-conflict-response:
-      description: 'Model is in use: deletion forbidden'
-      properties:
-        deployments:
-          description: Deployments using models
-          type: array
-          items:
-            type: string
-      type: object
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
 x-topics:
 - title: API Request Signature
   content: '

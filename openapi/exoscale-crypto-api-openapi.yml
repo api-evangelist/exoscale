@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key crypto API
+  title: Exoscale Crypto API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -28,7 +28,7 @@ tags:
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/documentation/kms/crypto
-  name: crypto
+  name: Crypto
   x-display-name: Cryptographic Operations
   x-weight: 1140
   x-icon: exo-ipv6
@@ -36,7 +36,7 @@ paths:
   /kms-key/{id}/decrypt:
     post:
       tags:
-      - crypto
+      - Crypto
       responses:
         '200':
           description: '200'
@@ -69,7 +69,7 @@ paths:
   /kms-key/{id}/encrypt:
     post:
       tags:
-      - crypto
+      - Crypto
       responses:
         '200':
           description: '200'
@@ -102,7 +102,7 @@ paths:
   /kms-key/{id}/re-encrypt:
     post:
       tags:
-      - crypto
+      - Crypto
       responses:
         '200':
           description: '200'
@@ -135,7 +135,7 @@ paths:
   /kms-key/{id}/generate-data-key:
     post:
       tags:
-      - crypto
+      - Crypto
       responses:
         '200':
           description: '200'
@@ -167,6 +167,26 @@ paths:
       operationId: generate-data-key
 components:
   schemas:
+    generate-data-key-response:
+      type: object
+      required:
+      - plaintext
+      - ciphertext
+      properties:
+        plaintext:
+          type: string
+          format: byte
+        ciphertext:
+          type: string
+          format: byte
+    encrypt-response:
+      type: object
+      required:
+      - ciphertext
+      properties:
+        ciphertext:
+          type: string
+          format: byte
     decrypt-response:
       type: object
       required:
@@ -181,10 +201,59 @@ components:
       - plaintext
       properties:
         encryption-context:
+          type:
+          - string
+          - 'null'
+          format: byte
+        plaintext:
           type: string
           format: byte
-          nullable: true
-        plaintext:
+    re-encrypt-request:
+      type: object
+      required:
+      - source
+      - destination
+      properties:
+        source:
+          type: object
+          required:
+          - key
+          - ciphertext
+          properties:
+            key:
+              type: string
+              format: uuid
+              description: The ID of the source key.
+            encryption-context:
+              type:
+              - string
+              - 'null'
+              format: byte
+              description: Optional encryption context appended to the AAD.
+            ciphertext:
+              type: string
+              format: byte
+        destination:
+          type: object
+          required:
+          - key
+          properties:
+            key:
+              type: string
+              format: uuid
+              description: The ID of the target key.
+            encryption-context:
+              type:
+              - string
+              - 'null'
+              format: byte
+              description: Optional encryption context appended to the AAD.
+    re-encrypt-response:
+      type: object
+      required:
+      - ciphertext
+      properties:
+        ciphertext:
           type: string
           format: byte
     error-response:
@@ -223,22 +292,15 @@ components:
                 type: string
               location:
                 type: string
-    re-encrypt-response:
+    decrypt-request:
       type: object
       required:
       - ciphertext
       properties:
-        ciphertext:
-          type: string
-          format: byte
-    generate-data-key-response:
-      type: object
-      required:
-      - plaintext
-      - ciphertext
-      properties:
-        plaintext:
-          type: string
+        encryption-context:
+          type:
+          - string
+          - 'null'
           format: byte
         ciphertext:
           type: string
@@ -255,66 +317,9 @@ components:
           minimum: 1
           maximum: 1024
         encryption-context:
-          type: string
-          format: byte
-          nullable: true
-    re-encrypt-request:
-      type: object
-      required:
-      - source
-      - destination
-      properties:
-        source:
-          type: object
-          required:
-          - key
-          - ciphertext
-          properties:
-            key:
-              type: string
-              format: uuid
-              description: The ID of the source key.
-            encryption-context:
-              type: string
-              format: byte
-              description: Optional encryption context appended to the AAD.
-              nullable: true
-            ciphertext:
-              type: string
-              format: byte
-        destination:
-          type: object
-          required:
-          - key
-          properties:
-            key:
-              type: string
-              format: uuid
-              description: The ID of the target key.
-            encryption-context:
-              type: string
-              format: byte
-              description: Optional encryption context appended to the AAD.
-              nullable: true
-    encrypt-response:
-      type: object
-      required:
-      - ciphertext
-      properties:
-        ciphertext:
-          type: string
-          format: byte
-    decrypt-request:
-      type: object
-      required:
-      - ciphertext
-      properties:
-        encryption-context:
-          type: string
-          format: byte
-          nullable: true
-        ciphertext:
-          type: string
+          type:
+          - string
+          - 'null'
           format: byte
 x-topics:
 - title: API Request Signature

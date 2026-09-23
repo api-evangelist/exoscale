@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key event API
+  title: Exoscale Event API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -23,12 +23,16 @@ servers:
       - bg-sof-1
       - hr-zag-1
 tags:
-- description: "Events form the basis of the Exoscale audit-trail, a mechanism\n                   to query past events performing mutations on resources\n                   which happened on an organization."
+- description: 'Events form the basis of the Exoscale audit-trail, a mechanism
+
+    to query past events performing mutations on resources
+
+    which happened on an organization.'
   parent: audit-trail
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/platform/audit-trail/
-  name: event
+  name: Event
   x-display-name: Event
   x-weight: 1010
   x-icon: exo-license
@@ -36,7 +40,7 @@ paths:
   /event:
     get:
       tags:
-      - event
+      - Event
       responses:
         '200':
           description: '200'
@@ -46,7 +50,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/event'
-      description: "Retrieve Mutation Events for a given date range. Defaults to retrieving Events for the past 24 hours.\n         Both a `from` and `to` arguments can be specified to filter Events over a specific period.\n         Events will be the the most descriptive possible but not all fields are mandatory"
+      description: 'Retrieve Mutation Events for a given date range. Defaults to retrieving Events for the past 24 hours.
+
+        Both a `from` and `to` arguments can be specified to filter Events over a specific period.
+
+        Events will be the the most descriptive possible but not all fields are mandatory'
       parameters:
       - in: query
         required: false
@@ -64,69 +72,19 @@ paths:
       operationId: list-events
 components:
   schemas:
-    user:
+    iam-service-policy:
       type: object
       properties:
-        sso:
-          type: boolean
-          description: SSO enabled
-        two-factor-authentication:
-          type: boolean
-          description: Two Factor Authentication enabled
-        email:
-          type: string
-          readOnly: true
-          description: User Email
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: User ID
-        role:
-          $ref: '#/components/schemas/iam-role'
-          description: IAM Role
-        pending:
-          type: boolean
-          readOnly: true
-          description: True if the user has not yet created an Exoscale account
-      required:
-      - email
-      - role
-      description: User
-    iam-service-policy-rule:
-      type: object
-      properties:
-        action:
+        type:
           type: string
           enum:
+          - rules
           - allow
           - deny
-        expression:
-          type: string
-        resources:
+        rules:
           type: array
           items:
-            type: string
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    iam-api-key:
-      type: object
-      properties:
-        name:
-          type: string
-          x-go-findable: '1'
-          description: IAM API Key name
-        key:
-          type: string
-          x-go-findable: '2'
-          description: IAM API Key
-        role-id:
-          type: string
-          format: uuid
-          description: IAM API Key Role ID
-      description: IAM API Key
+            $ref: '#/components/schemas/iam-service-policy-rule'
     iam-role:
       type: object
       properties:
@@ -161,9 +119,8 @@ components:
         max-session-ttl:
           type: integer
           format: int64
-          minimum: 0
-          exclusiveMinimum: true
           description: Maximum TTL requester is allowed to ask for when assuming a role
+          exclusiveMinimum: 0
         policy:
           $ref: '#/components/schemas/iam-policy'
           description: IAM Role Policy
@@ -173,6 +130,65 @@ components:
           readOnly: true
           description: IAM Role ID
       description: IAM Role
+    iam-service-policy-rule:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - allow
+          - deny
+        expression:
+          type: string
+        resources:
+          type: array
+          items:
+            type: string
+    iam-api-key:
+      type: object
+      properties:
+        name:
+          type: string
+          x-go-findable: '1'
+          description: IAM API Key name
+        key:
+          type: string
+          x-go-findable: '2'
+          description: IAM API Key
+        role-id:
+          type: string
+          format: uuid
+          description: IAM API Key Role ID
+      description: IAM API Key
+    user:
+      type: object
+      properties:
+        sso:
+          type: boolean
+          description: SSO enabled
+        two-factor-authentication:
+          type: boolean
+          description: Two Factor Authentication enabled
+        email:
+          type: string
+          readOnly: true
+          description: User Email
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: User ID
+        role:
+          $ref: '#/components/schemas/iam-role'
+          description: IAM Role
+        pending:
+          type: boolean
+          readOnly: true
+          description: True if the user has not yet created an Exoscale account
+      required:
+      - email
+      - role
+      description: User
     event:
       type: object
       properties:
@@ -197,9 +213,8 @@ components:
         status:
           type: integer
           format: int64
-          minimum: 0
-          exclusiveMinimum: true
           description: Operation HTTP status
+          exclusiveMinimum: 0
         source-ip:
           type: string
           description: Client IP address
@@ -212,9 +227,8 @@ components:
         elapsed-ms:
           type: integer
           format: int64
-          minimum: 0
-          exclusiveMinimum: true
           description: Operation processing time
+          exclusiveMinimum: 0
         timestamp:
           type: string
           format: date-time
@@ -247,19 +261,10 @@ components:
       - default-service-strategy
       - services
       description: Policy
-    iam-service-policy:
+    labels:
       type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - rules
-          - allow
-          - deny
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/iam-service-policy-rule'
+      additionalProperties:
+        type: string
 x-topics:
 - title: API Request Signature
   content: '

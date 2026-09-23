@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key domain API
+  title: Exoscale Domain API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -28,7 +28,7 @@ tags:
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/product/networking/dns/quick-start/
-  name: domain
+  name: Domain
   x-display-name: Domain
   x-weight: 710
   x-icon: exo-dns
@@ -36,7 +36,7 @@ paths:
   /dns-domain:
     get:
       tags:
-      - domain
+      - Domain
       responses:
         '200':
           description: '200'
@@ -55,7 +55,7 @@ paths:
       operationId: list-dns-domains
     post:
       tags:
-      - domain
+      - Domain
       responses:
         '200':
           description: '200'
@@ -81,7 +81,7 @@ paths:
   /dns-domain/{id}/zone:
     get:
       tags:
-      - domain
+      - Domain
       responses:
         '200':
           description: '200'
@@ -105,7 +105,7 @@ paths:
   /dns-domain/{id}:
     delete:
       tags:
-      - domain
+      - Domain
       responses:
         '200':
           description: '200'
@@ -125,7 +125,7 @@ paths:
       operationId: delete-dns-domain
     get:
       tags:
-      - domain
+      - Domain
       responses:
         '200':
           description: '200'
@@ -145,27 +145,6 @@ paths:
       operationId: get-dns-domain
 components:
   schemas:
-    dns-domain:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          x-go-findable: '1'
-          description: DNS domain ID
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: DNS domain creation date
-        unicode-name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          x-go-findable: '2'
-          description: DNS domain unicode name
-      description: DNS domain
     operation:
       type: object
       properties:
@@ -220,6 +199,27 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    dns-domain:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          x-go-findable: '1'
+          description: DNS domain ID
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: DNS domain creation date
+        unicode-name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          x-go-findable: '2'
+          description: DNS domain unicode name
+      description: DNS domain
 x-topics:
 - title: API Request Signature
   content: '

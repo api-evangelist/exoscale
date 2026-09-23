@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key instance-pool API
+  title: Exoscale Instance Pool API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -23,7 +23,11 @@ servers:
       - bg-sof-1
       - hr-zag-1
 tags:
-- description: "Instance Pools is an Exoscale service allowing users\n                   to provision managed groups of identical Compute\n                   instances automatically."
+- description: 'Instance Pools is an Exoscale service allowing users
+
+    to provision managed groups of identical Compute
+
+    instances automatically.'
   parent: compute
   externalDocs:
     description: Read more
@@ -64,7 +68,6 @@ paths:
                   type: integer
                   format: int64
                   minimum: 0
-                  exclusiveMinimum: false
                   description: Number of managed Instances
               required:
               - size
@@ -156,7 +159,6 @@ paths:
                   type: integer
                   format: int64
                   minimum: 0
-                  exclusiveMinimum: false
                   description: Minimum number of running Instances
                 private-networks:
                   type: array
@@ -170,9 +172,8 @@ paths:
                 size:
                   type: integer
                   format: int64
-                  minimum: 0
-                  exclusiveMinimum: true
                   description: Number of Instances
+                  exclusiveMinimum: 0
                 ssh-key:
                   $ref: '#/components/schemas/ssh-key-ref'
                   description: Instances SSH key
@@ -197,8 +198,6 @@ paths:
                   format: int64
                   minimum: 10
                   maximum: 51200
-                  exclusiveMinimum: false
-                  exclusiveMaximum: false
                   description: Instances disk size in GiB
                 ssh-keys:
                   type: array
@@ -284,11 +283,12 @@ paths:
                   type: boolean
                   description: Enable application consistent snapshots
                 anti-affinity-groups:
-                  type: array
+                  type:
+                  - array
+                  - 'null'
                   items:
                     $ref: '#/components/schemas/anti-affinity-group-ref'
                   uniqueItems: true
-                  nullable: true
                   description: Instance Pool Anti-affinity Groups
                 description:
                   type: string
@@ -304,17 +304,19 @@ paths:
                   $ref: '#/components/schemas/labels'
                   description: Instance Pool Labels
                 security-groups:
-                  type: array
+                  type:
+                  - array
+                  - 'null'
                   items:
                     $ref: '#/components/schemas/security-group-ref'
                   uniqueItems: true
-                  nullable: true
                   description: Instance Pool Security Groups
                 elastic-ips:
-                  type: array
+                  type:
+                  - array
+                  - 'null'
                   items:
                     $ref: '#/components/schemas/elastic-ip-ref'
-                  nullable: true
                   description: Instances Elastic IPs
                 name:
                   type: string
@@ -325,38 +327,39 @@ paths:
                   $ref: '#/components/schemas/instance-type-ref'
                   description: Instances type
                 min-available:
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   format: int64
                   minimum: 0
-                  exclusiveMinimum: false
-                  nullable: true
                   description: Minimum number of running Instances
                 private-networks:
-                  type: array
+                  type:
+                  - array
+                  - 'null'
                   items:
                     $ref: '#/components/schemas/private-network-ref'
                   uniqueItems: true
-                  nullable: true
                   description: Instance Pool Private Networks
                 template:
                   $ref: '#/components/schemas/template-ref'
                   description: Instances template
                 ssh-key:
                   $ref: '#/components/schemas/ssh-key-ref'
-                  nullable: true
                   description: Instances SSH key
                 instance-prefix:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: 'Prefix to apply to Instances names (default: pool)'
                 user-data:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   minLength: 1
-                  nullable: true
                   description: Instances Cloud-init user-data
                 deploy-target:
                   $ref: '#/components/schemas/deploy-target-ref'
-                  nullable: true
                   description: Instance Pool Deploy Target
                 ipv6-enabled:
                   type: boolean
@@ -366,15 +369,14 @@ paths:
                   format: int64
                   minimum: 10
                   maximum: 51200
-                  exclusiveMinimum: false
-                  exclusiveMaximum: false
                   description: Instances disk size in GiB
                 ssh-keys:
-                  type: array
+                  type:
+                  - array
+                  - 'null'
                   items:
                     $ref: '#/components/schemas/ssh-key-ref'
                   uniqueItems: true
-                  nullable: true
                   description: Instances SSH keys
       operationId: update-instance-pool
   /instance-pool/{id}/{field}:
@@ -425,7 +427,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/operation'
-      description: This operation evicts the specified Compute instances member from the Instance Pool, shrinking it to `&lt;current pool size&gt; - &lt;# evicted members&gt;`.
+      description: This operation evicts the specified Compute instances member from the Instance Pool, shrinking it to `<current pool size> - <# evicted members>`.
       parameters:
       - in: path
         required: true
@@ -449,59 +451,6 @@ paths:
       operationId: evict-instance-pool-members
 components:
   schemas:
-    instance-type-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance type ID
-      description: Instance type reference
-    private-network-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Private network ID
-      description: Private network reference
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    deploy-target-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
-    ssh-key-ref:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: SSH key name
-      description: SSH key reference
-    template-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Template ID
-      description: Template reference
     operation:
       type: object
       properties:
@@ -556,14 +505,31 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    elastic-ip-ref:
+    security-group-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
+          description: Security group ID
+      description: Security group reference
+    ssh-key-ref:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: SSH key name
+      description: SSH key reference
+    instance-type-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance type ID
+      description: Instance type reference
     instance-pool:
       type: object
       properties:
@@ -608,7 +574,6 @@ components:
           type: integer
           format: int64
           minimum: 0
-          exclusiveMinimum: false
           description: Minimum number of running instances
         private-networks:
           type: array
@@ -633,9 +598,8 @@ components:
         size:
           type: integer
           format: int64
-          minimum: 0
-          exclusiveMinimum: true
           description: Number of instances
+          exclusiveMinimum: 0
         ssh-key:
           $ref: '#/components/schemas/ssh-key-ref'
           description: Instances SSH key
@@ -674,8 +638,6 @@ components:
           format: int64
           minimum: 10
           maximum: 51200
-          exclusiveMinimum: false
-          exclusiveMaximum: false
           description: Instances disk size in GiB
         ssh-keys:
           type: array
@@ -683,6 +645,56 @@ components:
             $ref: '#/components/schemas/ssh-key-ref'
           description: Instances SSH keys
       description: Instance Pool
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    instance-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance ID
+      description: Target Instance
+    anti-affinity-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
+    template-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Template ID
+      description: Template reference
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    private-network-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Private network ID
+      description: Private network reference
     manager:
       type: object
       properties:
@@ -697,28 +709,14 @@ components:
           - instance-pool
           description: Manager type
       description: Resource manager
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    anti-affinity-group-ref:
+    elastic-ip-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
-    instance-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance ID
-      description: Target Instance
+          description: Elastic IP ID
+      description: Elastic IP reference
 x-topics:
 - title: API Request Signature
   content: '

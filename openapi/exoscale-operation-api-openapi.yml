@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key operation API
+  title: Exoscale Operation API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -23,12 +23,14 @@ servers:
       - bg-sof-1
       - hr-zag-1
 tags:
-- description: "Operations describe the current state of an asynchronous\n                   operation."
+- description: 'Operations describe the current state of an asynchronous
+
+    operation.'
   parent: general
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/
-  name: operation
+  name: Operation
   x-display-name: Operation
   x-weight: 1100
   x-icon: exo-logo
@@ -36,7 +38,7 @@ paths:
   /operation/{id}:
     get:
       tags:
-      - operation
+      - Operation
       responses:
         '200':
           description: '200'

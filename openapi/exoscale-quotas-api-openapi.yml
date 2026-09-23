@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key quotas API
+  title: Exoscale Quotas API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -23,12 +23,12 @@ servers:
       - bg-sof-1
       - hr-zag-1
 tags:
-- name: quotas
+- name: Quotas
 paths:
   /quota/{entity}:
     get:
       tags:
-      - quotas
+      - Quotas
       responses:
         '200':
           description: '200'
@@ -48,7 +48,7 @@ paths:
   /quota:
     get:
       tags:
-      - quotas
+      - Quotas
       responses:
         '200':
           description: '200'

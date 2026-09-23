@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key record API
+  title: Exoscale Record API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -28,7 +28,7 @@ tags:
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/product/networking/dns/overview/
-  name: record
+  name: Record
   x-display-name: Record
   x-weight: 720
   x-icon: exo-dns
@@ -36,7 +36,7 @@ paths:
   /dns-domain/{domain-id}/record:
     get:
       tags:
-      - record
+      - Record
       responses:
         '200':
           description: '200'
@@ -61,7 +61,7 @@ paths:
       operationId: list-dns-domain-records
     post:
       tags:
-      - record
+      - Record
       responses:
         '200':
           description: '200'
@@ -113,13 +113,11 @@ paths:
                   type: integer
                   format: int64
                   minimum: 0
-                  exclusiveMinimum: false
                   description: DNS domain record TTL
                 priority:
                   type: integer
                   format: int64
                   minimum: 0
-                  exclusiveMinimum: false
                   description: DNS domain record priority
               required:
               - name
@@ -129,7 +127,7 @@ paths:
   /dns-domain/{domain-id}/record/{record-id}:
     get:
       tags:
-      - record
+      - Record
       responses:
         '200':
           description: '200'
@@ -155,7 +153,7 @@ paths:
       operationId: get-dns-domain-record
     put:
       tags:
-      - record
+      - Record
       responses:
         '200':
           description: '200'
@@ -194,19 +192,17 @@ paths:
                 ttl:
                   type: integer
                   format: int64
-                  minimum: 0
-                  exclusiveMinimum: true
                   description: DNS domain record TTL
+                  exclusiveMinimum: 0
                 priority:
                   type: integer
                   format: int64
-                  minimum: 0
-                  exclusiveMinimum: true
                   description: DNS domain record priority
+                  exclusiveMinimum: 0
       operationId: update-dns-domain-record
     delete:
       tags:
-      - record
+      - Record
       responses:
         '200':
           description: '200'
@@ -324,13 +320,11 @@ components:
           type: integer
           format: int64
           minimum: 0
-          exclusiveMinimum: false
           description: DNS domain record TTL
         priority:
           type: integer
           format: int64
           minimum: 0
-          exclusiveMinimum: false
           description: DNS domain record priority
         id:
           type: string

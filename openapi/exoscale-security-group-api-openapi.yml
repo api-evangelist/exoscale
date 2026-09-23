@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key security-group API
+  title: Exoscale Security Group API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -23,12 +23,14 @@ servers:
       - bg-sof-1
       - hr-zag-1
 tags:
-- description: "Security Groups are groups of firewall rules that regulate\n                   network traffic to and from your Compute instances."
+- description: 'Security Groups are groups of firewall rules that regulate
+
+    network traffic to and from your Compute instances.'
   parent: compute
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/documentation/compute/security-groups/
-  name: security-group
+  name: Security Group
   x-display-name: Security Group
   x-weight: 150
   x-icon: exo-vpc
@@ -36,7 +38,7 @@ paths:
   /security-group/{id}/rules/{rule-id}:
     delete:
       tags:
-      - security-group
+      - Security Group
       responses:
         '200':
           description: '200'
@@ -63,7 +65,7 @@ paths:
   /security-group:
     post:
       tags:
-      - security-group
+      - Security Group
       responses:
         '200':
           description: '200'
@@ -95,7 +97,7 @@ paths:
       operationId: create-security-group
     get:
       tags:
-      - security-group
+      - Security Group
       responses:
         '200':
           description: '200'
@@ -124,12 +126,12 @@ paths:
           enum:
           - private
           - public
-      summary: List Security Groups.
+      summary: List Security Groups
       operationId: list-security-groups
   /security-group/{id}:
     get:
       tags:
-      - security-group
+      - Security Group
       responses:
         '200':
           description: '200'
@@ -149,7 +151,7 @@ paths:
       operationId: get-security-group
     delete:
       tags:
-      - security-group
+      - Security Group
       responses:
         '200':
           description: '200'
@@ -170,7 +172,7 @@ paths:
   /security-group/{id}:attach:
     put:
       tags:
-      - security-group
+      - Security Group
       responses:
         '200':
           description: '200'
@@ -203,7 +205,7 @@ paths:
   /security-group/{id}/rules:
     post:
       tags:
-      - security-group
+      - Security Group
       responses:
         '200':
           description: '200'
@@ -259,37 +261,31 @@ paths:
                   type: object
                   properties:
                     code:
-                      type: integer
+                      type:
+                      - integer
+                      - 'null'
                       format: int64
                       minimum: -1
                       maximum: 254
-                      exclusiveMinimum: false
-                      exclusiveMaximum: false
-                      nullable: true
                     type:
-                      type: integer
+                      type:
+                      - integer
+                      - 'null'
                       format: int64
                       minimum: -1
                       maximum: 254
-                      exclusiveMinimum: false
-                      exclusiveMaximum: false
-                      nullable: true
                   description: 'ICMP details (default: -1 (ANY))'
                 start-port:
                   type: integer
                   format: int64
                   minimum: 1
                   maximum: 65535
-                  exclusiveMinimum: false
-                  exclusiveMaximum: false
                   description: Start port of the range
                 end-port:
                   type: integer
                   format: int64
                   minimum: 1
                   maximum: 65535
-                  exclusiveMinimum: false
-                  exclusiveMaximum: false
                   description: End port of the range
               required:
               - flow-direction
@@ -298,7 +294,7 @@ paths:
   /security-group/{id}:remove-source:
     put:
       tags:
-      - security-group
+      - Security Group
       responses:
         '200':
           description: '200'
@@ -331,7 +327,7 @@ paths:
   /security-group/{id}:detach:
     put:
       tags:
-      - security-group
+      - Security Group
       responses:
         '200':
           description: '200'
@@ -364,7 +360,7 @@ paths:
   /security-group/{id}:add-source:
     put:
       tags:
-      - security-group
+      - Security Group
       responses:
         '200':
           description: '200'
@@ -396,107 +392,88 @@ paths:
       operationId: add-external-source-to-security-group
 components:
   schemas:
-    instance-type:
+    snapshot-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Snapshot ID
+      description: Snapshot reference
+    operation:
       type: object
       properties:
         id:
           type: string
           format: uuid
           readOnly: true
-          description: Instance type ID
-        size:
+          description: Operation ID
+        reason:
           type: string
           enum:
-          - large
-          - huge
-          - jumbo
-          - medium
-          - mega
-          - small
-          - extra-large
-          - titan48c
-          - titan
-          - micro
-          - colossus
-          - tiny
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
           readOnly: true
-          description: Instance type size
-        family:
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
           type: string
           enum:
-          - gpu3
-          - gpua30
-          - gpu3080ti
-          - gpu2
-          - gpu
-          - memory
-          - gpua5000
-          - gpurtx6000pro
-          - storage
-          - standard
-          - colossus
-          - cpu
+          - failure
+          - pending
+          - success
+          - timeout
           readOnly: true
-          description: Instance type family
-        cpus:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: true
-          readOnly: true
-          description: CPU count
-        gpus:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: true
-          readOnly: true
-          description: GPU count
-        authorized:
-          type: boolean
-          readOnly: true
-          description: Requires authorization or publicly available
-        memory:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMinimum: true
-          readOnly: true
-          description: Available memory
-        zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/zone-name'
-          readOnly: true
-          description: Instance Type available zones
-      description: Compute instance type
-    ssh-key:
+          description: Operation status
+      description: Operation
+    security-group-resource:
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Security Group ID
         name:
           type: string
           maxLength: 255
           minLength: 1
-          x-go-findable: '1'
-          description: SSH key name
-        fingerprint:
+          description: Security Group name
+        visibility:
           type: string
-          readOnly: true
-          x-go-findable: '2'
-          description: SSH key fingerprint
-      description: SSH key
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    deploy-target-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
+          enum:
+          - private
+          - public
+          description: "Whether this points to a public security group. This is only valid when in the context of\n                   a rule addition which uses a public security group as a source or destination."
+      description: Security Group
     security-group-ref:
       type: object
       properties:
@@ -505,85 +482,6 @@ components:
           format: uuid
           description: Security group ID
       description: Security group reference
-    anti-affinity-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
-    security-group-rule:
-      type: object
-      properties:
-        description:
-          type: string
-          maxLength: 255
-          description: Security Group rule description
-        start-port:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 65535
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: Start port of the range
-        protocol:
-          type: string
-          enum:
-          - tcp
-          - esp
-          - icmp
-          - udp
-          - gre
-          - ah
-          - ipip
-          - icmpv6
-          description: Network protocol
-        icmp:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int64
-              minimum: -1
-              maximum: 254
-              exclusiveMinimum: false
-              exclusiveMaximum: false
-            type:
-              type: integer
-              format: int64
-              minimum: -1
-              maximum: 254
-              exclusiveMinimum: false
-              exclusiveMaximum: false
-          description: ICMP details
-        end-port:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 65535
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: End port of the range
-        security-group:
-          $ref: '#/components/schemas/security-group-resource'
-          description: Security Group allowed
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Security Group rule ID
-        network:
-          type: string
-          description: CIDR-formatted network allowed
-        flow-direction:
-          type: string
-          enum:
-          - ingress
-          - egress
-          description: Network flow direction to match
-      description: Security Group rule
     template:
       type: object
       properties:
@@ -618,9 +516,8 @@ components:
         size:
           type: integer
           format: int64
-          minimum: 0
-          exclusiveMinimum: true
           description: Template size
+          exclusiveMinimum: 0
         password-enabled:
           type: boolean
           description: Enable password-based login
@@ -667,6 +564,106 @@ components:
           readOnly: true
           description: Template visibility
       description: Instance template
+    ssh-key:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          x-go-findable: '1'
+          description: SSH key name
+        fingerprint:
+          type: string
+          readOnly: true
+          x-go-findable: '2'
+          description: SSH key fingerprint
+      description: SSH key
+    instance-type:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Instance type ID
+        size:
+          type: string
+          enum:
+          - large
+          - huge
+          - jumbo
+          - medium
+          - mega
+          - small
+          - extra-large
+          - titan48c
+          - titan
+          - micro
+          - colossus
+          - tiny
+          readOnly: true
+          description: Instance type size
+        family:
+          type: string
+          enum:
+          - gpu3
+          - gpua30
+          - gpu3080ti
+          - gpu2
+          - gpu
+          - memory
+          - gpua5000
+          - gpurtx6000pro
+          - storage
+          - standard
+          - colossus
+          - cpu
+          readOnly: true
+          description: Instance type family
+        cpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: CPU count
+          exclusiveMinimum: 0
+        gpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: GPU count
+          exclusiveMinimum: 0
+        authorized:
+          type: boolean
+          readOnly: true
+          description: Requires authorization or publicly available
+        memory:
+          type: integer
+          format: int64
+          readOnly: true
+          description: Available memory
+          exclusiveMinimum: 0
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/zone-name'
+          readOnly: true
+          description: Instance Type available zones
+      description: Compute instance type
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
     zone-name:
       type: string
       enum:
@@ -678,28 +675,6 @@ components:
       - bg-sof-1
       - at-vie-2
       - hr-zag-1
-    elastic-ip-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
-    manager:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Manager ID
-        type:
-          type: string
-          enum:
-          - sks-nodepool
-          - instance-pool
-          description: Manager type
-      description: Resource manager
     security-group:
       type: object
       properties:
@@ -731,12 +706,14 @@ components:
           writeOnly: true
           description: Security Group rules
       description: Security Group
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
+    anti-affinity-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
     instance-state:
       type: string
       enum:
@@ -749,6 +726,69 @@ components:
       - migrating
       - error
       - destroyed
+    security-group-rule:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 255
+          description: Security Group rule description
+        start-port:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 65535
+          description: Start port of the range
+        protocol:
+          type: string
+          enum:
+          - tcp
+          - esp
+          - icmp
+          - udp
+          - gre
+          - ah
+          - ipip
+          - icmpv6
+          description: Network protocol
+        icmp:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int64
+              minimum: -1
+              maximum: 254
+            type:
+              type: integer
+              format: int64
+              minimum: -1
+              maximum: 254
+          description: ICMP details
+        end-port:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 65535
+          description: End port of the range
+        security-group:
+          $ref: '#/components/schemas/security-group-resource'
+          description: Security Group allowed
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Security Group rule ID
+        network:
+          type: string
+          description: CIDR-formatted network allowed
+        flow-direction:
+          type: string
+          enum:
+          - ingress
+          - egress
+          description: Network flow direction to match
+      description: Security Group rule
     instance:
       type: object
       properties:
@@ -848,8 +888,6 @@ components:
           format: int64
           minimum: 10
           maximum: 51200
-          exclusiveMinimum: false
-          exclusiveMaximum: false
           description: Instance disk size in GiB
         ssh-keys:
           type: array
@@ -867,88 +905,32 @@ components:
           readOnly: true
           description: Instance public IPv4 address
       description: Instance
-    snapshot-ref:
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    manager:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Snapshot ID
-      description: Snapshot reference
-    operation:
+          description: Manager ID
+        type:
+          type: string
+          enum:
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
+    elastic-ip-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
-    security-group-resource:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Security Group ID
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Security Group name
-        visibility:
-          type: string
-          enum:
-          - private
-          - public
-          description: "Whether this points to a public security group. This is only valid when in the context of\n                   a rule addition which uses a public security group as a source or destination."
-      description: Security Group
+          description: Elastic IP ID
+      description: Elastic IP reference
 x-topics:
 - title: API Request Signature
   content: '

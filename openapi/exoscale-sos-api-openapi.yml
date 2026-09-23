@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key sos API
+  title: Exoscale Sos API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -82,17 +82,6 @@ paths:
       operationId: get-sos-presigned-url
 components:
   schemas:
-    zone-name:
-      type: string
-      enum:
-      - ch-dk-2
-      - de-muc-1
-      - ch-gva-2
-      - at-vie-1
-      - de-fra-1
-      - bg-sof-1
-      - at-vie-2
-      - hr-zag-1
     sos-bucket-usage:
       type: object
       properties:
@@ -112,10 +101,20 @@ components:
           type: integer
           format: int64
           minimum: 0
-          exclusiveMinimum: false
           readOnly: true
           description: SOS Bucket size in B
       description: SOS Bucket usage
+    zone-name:
+      type: string
+      enum:
+      - ch-dk-2
+      - de-muc-1
+      - ch-gva-2
+      - at-vie-1
+      - de-fra-1
+      - bg-sof-1
+      - at-vie-2
+      - hr-zag-1
 x-topics:
 - title: API Request Signature
   content: '

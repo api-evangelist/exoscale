@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key compute API
+  title: Exoscale Compute API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -27,7 +27,7 @@ tags:
   externalDocs:
     description: Read more
     url: https://community.exoscale.com/documentation/compute/
-  name: compute
+  name: Compute
   x-display-name: Compute
   x-weight: 100
   x-icon: exo-vm
@@ -35,7 +35,7 @@ paths:
   /load-balancer/{id}/service/{service-id}/{field}:
     delete:
       tags:
-      - compute
+      - Compute
       responses:
         '200':
           description: '200'

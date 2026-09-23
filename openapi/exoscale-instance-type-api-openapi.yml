@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key instance-type API
+  title: Exoscale Instance Type API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -23,12 +23,14 @@ servers:
       - bg-sof-1
       - hr-zag-1
 tags:
-- description: "An Instance Type is a resource describing the amount of\n                   CPU, RAM and GPUs allocated to a Compute instance."
+- description: 'An Instance Type is a resource describing the amount of
+
+    CPU, RAM and GPUs allocated to a Compute instance.'
   parent: compute
   externalDocs:
     description: Read more
     url: https://www.exoscale.com/pricing/
-  name: instance-type
+  name: Instance Type
   x-display-name: Instance Type
   x-weight: 200
   x-icon: exo-gpu
@@ -36,7 +38,7 @@ paths:
   /instance-type/{id}:
     get:
       tags:
-      - instance-type
+      - Instance Type
       responses:
         '200':
           description: '200'
@@ -57,7 +59,7 @@ paths:
   /instance-type:
     get:
       tags:
-      - instance-type
+      - Instance Type
       responses:
         '200':
           description: '200'
@@ -76,6 +78,17 @@ paths:
       operationId: list-instance-types
 components:
   schemas:
+    zone-name:
+      type: string
+      enum:
+      - ch-dk-2
+      - de-muc-1
+      - ch-gva-2
+      - at-vie-1
+      - de-fra-1
+      - bg-sof-1
+      - at-vie-2
+      - hr-zag-1
     instance-type:
       type: object
       properties:
@@ -121,17 +134,15 @@ components:
         cpus:
           type: integer
           format: int64
-          minimum: 0
-          exclusiveMinimum: true
           readOnly: true
           description: CPU count
+          exclusiveMinimum: 0
         gpus:
           type: integer
           format: int64
-          minimum: 0
-          exclusiveMinimum: true
           readOnly: true
           description: GPU count
+          exclusiveMinimum: 0
         authorized:
           type: boolean
           readOnly: true
@@ -139,10 +150,9 @@ components:
         memory:
           type: integer
           format: int64
-          minimum: 0
-          exclusiveMinimum: true
           readOnly: true
           description: Available memory
+          exclusiveMinimum: 0
         zones:
           type: array
           items:
@@ -150,17 +160,6 @@ components:
           readOnly: true
           description: Instance Type available zones
       description: Compute instance type
-    zone-name:
-      type: string
-      enum:
-      - ch-dk-2
-      - de-muc-1
-      - ch-gva-2
-      - at-vie-1
-      - de-fra-1
-      - bg-sof-1
-      - at-vie-2
-      - hr-zag-1
 x-topics:
 - title: API Request Signature
   content: '

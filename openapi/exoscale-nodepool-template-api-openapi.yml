@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 2.0.0
   termsOfService: https://exoscale.com/terms
@@ -6,7 +6,7 @@ info:
     email: support@exoscale.com
     name: Exoscale Support
     url: https://portal.exoscale.com/tickets
-  title: Exoscale ai-api-key nodepool-template API
+  title: Exoscale Nodepool Template API
   description: Infrastructure automation API, allowing programmatic access to all Exoscale products and services.
 servers:
 - url: https://api-{zone}.exoscale.com/v2
@@ -63,8 +63,9 @@ paths:
           enum:
           - standard
           - nvidia
-      summary: ''
+      summary: Get active nodepool template
       operationId: get-active-nodepool-template
+      x-summary-source: derived
 x-topics:
 - title: API Request Signature
   content: '
