@@ -314,60 +314,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/iam-service-policy-rule'
-    operation:
+    iam-policy:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
+        default-service-strategy:
           type: string
           enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
+          - allow
+          - deny
+          description: IAM default service strategy
+        services:
           type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
+          additionalProperties:
+            $ref: '#/components/schemas/iam-service-policy'
+          description: IAM services
+      required:
+      - default-service-strategy
+      - services
+      description: Policy
+    labels:
+      type: object
+      additionalProperties:
+        type: string
     iam-role:
       type: object
       properties:
@@ -427,28 +395,60 @@ components:
           type: array
           items:
             type: string
-    iam-policy:
+    operation:
       type: object
       properties:
-        default-service-strategy:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
           type: string
           enum:
-          - allow
-          - deny
-          description: IAM default service strategy
-        services:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
           type: object
-          additionalProperties:
-            $ref: '#/components/schemas/iam-service-policy'
-          description: IAM services
-      required:
-      - default-service-strategy
-      - services
-      description: Policy
-    labels:
-      type: object
-      additionalProperties:
-        type: string
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
 x-topics:
 - title: API Request Signature
   content: '

@@ -264,60 +264,6 @@ paths:
       operationId: delete-elastic-ip
 components:
   schemas:
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
     elastic-ip:
       type: object
       properties:
@@ -354,14 +300,10 @@ components:
           $ref: '#/components/schemas/labels'
           description: Resource labels
       description: Elastic IP
-    instance-ref:
+    labels:
       type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance ID
-      description: Target Instance
+      additionalProperties:
+        type: string
     elastic-ip-healthcheck:
       type: object
       properties:
@@ -419,10 +361,68 @@ components:
       - mode
       - port
       description: Elastic IP address healthcheck
-    labels:
+    instance-ref:
       type: object
-      additionalProperties:
-        type: string
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance ID
+      description: Target Instance
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
 x-topics:
 - title: API Request Signature
   content: '

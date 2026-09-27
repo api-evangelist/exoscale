@@ -397,6 +397,128 @@ paths:
       operationId: create-block-storage-volume
 components:
   schemas:
+    block-storage-snapshot:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Snapshot ID
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Snapshot name
+        size:
+          type: integer
+          format: int64
+          minimum: 1
+          description: Snapshot size
+        volume-size:
+          type: integer
+          format: int64
+          minimum: 0
+          description: Original Volume size
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Snapshot creation date
+        state:
+          type: string
+          enum:
+          - partially-destroyed
+          - destroying
+          - creating
+          - created
+          - promoting
+          - error
+          - destroyed
+          - allocated
+          readOnly: true
+          description: Snapshot state
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Resource labels
+        block-storage-volume:
+          $ref: '#/components/schemas/block-storage-volume-ref'
+          description: Referenced volume
+      description: Block storage snapshot
+    block-storage-volume-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Block storage volume ID
+      description: Target block storage volume
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    instance-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance ID
+      description: Target Instance
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
     block-storage-volume:
       type: object
       properties:
@@ -460,128 +582,6 @@ components:
           format: uuid
           description: Block storage snapshot ID
       description: Target block storage snapshot
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
-    instance-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance ID
-      description: Target Instance
-    block-storage-snapshot:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Snapshot ID
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Snapshot name
-        size:
-          type: integer
-          format: int64
-          minimum: 1
-          description: Snapshot size
-        volume-size:
-          type: integer
-          format: int64
-          minimum: 0
-          description: Original Volume size
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Snapshot creation date
-        state:
-          type: string
-          enum:
-          - partially-destroyed
-          - destroying
-          - creating
-          - created
-          - promoting
-          - error
-          - destroyed
-          - allocated
-          readOnly: true
-          description: Snapshot state
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Resource labels
-        block-storage-volume:
-          $ref: '#/components/schemas/block-storage-volume-ref'
-          description: Referenced volume
-      description: Block storage snapshot
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    block-storage-volume-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Block storage volume ID
-      description: Target block storage volume
 x-topics:
 - title: API Request Signature
   content: '

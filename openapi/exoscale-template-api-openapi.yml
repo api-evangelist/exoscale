@@ -324,80 +324,6 @@ components:
       - bg-sof-1
       - at-vie-2
       - hr-zag-1
-    zone:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/zone-name'
-          readOnly: true
-          x-go-findable: '1'
-          description: Zone short name
-        api-endpoint:
-          type: string
-          readOnly: true
-          x-go-type: Endpoint
-          x-go-findable: '2'
-          description: Zone API endpoint
-        sos-endpoint:
-          type: string
-          readOnly: true
-          x-go-type: Endpoint
-          description: Zone SOS endpoint
-      description: Zone
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
     template:
       type: object
       properties:
@@ -480,6 +406,80 @@ components:
           readOnly: true
           description: Template visibility
       description: Instance template
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
+    zone:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/zone-name'
+          readOnly: true
+          x-go-findable: '1'
+          description: Zone short name
+        api-endpoint:
+          type: string
+          readOnly: true
+          x-go-type: Endpoint
+          x-go-findable: '2'
+          description: Zone API endpoint
+        sos-endpoint:
+          type: string
+          readOnly: true
+          x-go-type: Endpoint
+          description: Zone SOS endpoint
+      description: Zone
 x-topics:
 - title: API Request Signature
   content: '

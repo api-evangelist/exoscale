@@ -434,60 +434,95 @@ paths:
       operationId: get-load-balancer
 components:
   schemas:
-    operation:
+    instance-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance ID
+      description: Target Instance
+    instance-type-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance type ID
+      description: Instance type reference
+    manager:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Manager ID
+        type:
+          type: string
+          enum:
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
+    elastic-ip-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Elastic IP ID
+      description: Elastic IP reference
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    load-balancer:
       type: object
       properties:
         id:
           type: string
           format: uuid
           readOnly: true
-          description: Operation ID
-        reason:
+          description: Load Balancer ID
+        description:
           type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
+          maxLength: 255
+          description: Load Balancer description
+        name:
           type: string
-          readOnly: true
-          description: Operation message
+          maxLength: 255
+          minLength: 1
+          description: Load Balancer name
         state:
           type: string
           enum:
-          - failure
-          - pending
-          - success
-          - timeout
+          - creating
+          - migrated
+          - deleting
+          - running
+          - migrating
+          - error
           readOnly: true
-          description: Operation status
-      description: Operation
+          description: Load Balancer state
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Load Balancer creation date
+        ip:
+          type: string
+          format: ipv4
+          readOnly: true
+          description: Load Balancer public IP
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/load-balancer-service'
+          description: Load Balancer Services
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Load Balancer Labels
+      description: Load Balancer
     security-group-ref:
       type: object
       properties:
@@ -496,60 +531,6 @@ components:
           format: uuid
           description: Security group ID
       description: Security group reference
-    load-balancer-service-healthcheck:
-      type: object
-      properties:
-        mode:
-          type: string
-          enum:
-          - tcp
-          - http
-          - https
-          description: Healthcheck mode
-        interval:
-          type: integer
-          format: int64
-          minimum: 5
-          maximum: 300
-          description: 'Healthcheck interval (default: 10). Must be greater than or equal to Timeout'
-        uri:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: An endpoint to use for the HTTP healthcheck, e.g. '/status'
-        port:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 65535
-          description: Healthcheck port
-        timeout:
-          type: integer
-          format: int64
-          minimum: 2
-          maximum: 60
-          description: 'Healthcheck timeout value (default: 2). Must be lower than or equal to Interval'
-        retries:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 20
-          description: Number of retries before considering a Service failed
-        tls-sni:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: SNI domain for HTTPS healthchecks
-      description: Load Balancer Service healthcheck
-    ssh-key-ref:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: SSH key name
-      description: SSH key reference
     instance-pool:
       type: object
       properties:
@@ -665,14 +646,76 @@ components:
             $ref: '#/components/schemas/ssh-key-ref'
           description: Instances SSH keys
       description: Instance Pool
-    instance-ref:
+    ssh-key-ref:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: SSH key name
+      description: SSH key reference
+    anti-affinity-group-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Instance ID
-      description: Target Instance
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
+    load-balancer-service-healthcheck:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum:
+          - tcp
+          - http
+          - https
+          description: Healthcheck mode
+        interval:
+          type: integer
+          format: int64
+          minimum: 5
+          maximum: 300
+          description: 'Healthcheck interval (default: 10). Must be greater than or equal to Timeout'
+        uri:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: An endpoint to use for the HTTP healthcheck, e.g. '/status'
+        port:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 65535
+          description: Healthcheck port
+        timeout:
+          type: integer
+          format: int64
+          minimum: 2
+          maximum: 60
+          description: 'Healthcheck timeout value (default: 2). Must be lower than or equal to Interval'
+        retries:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 20
+          description: Number of retries before considering a Service failed
+        tls-sni:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: SNI domain for HTTPS healthchecks
+      description: Load Balancer Service healthcheck
+    private-network-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Private network ID
+      description: Private network reference
     load-balancer-server-status:
       type: object
       properties:
@@ -687,36 +730,6 @@ components:
           - success
           description: Status of the instance's healthcheck
       description: Load Balancer Service status
-    elastic-ip-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    deploy-target-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
-    anti-affinity-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
     template-ref:
       type: object
       properties:
@@ -725,87 +738,14 @@ components:
           format: uuid
           description: Template ID
       description: Template reference
-    load-balancer:
+    deploy-target-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          readOnly: true
-          description: Load Balancer ID
-        description:
-          type: string
-          maxLength: 255
-          description: Load Balancer description
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Load Balancer name
-        state:
-          type: string
-          enum:
-          - creating
-          - migrated
-          - deleting
-          - running
-          - migrating
-          - error
-          readOnly: true
-          description: Load Balancer state
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Load Balancer creation date
-        ip:
-          type: string
-          format: ipv4
-          readOnly: true
-          description: Load Balancer public IP
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/load-balancer-service'
-          description: Load Balancer Services
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Load Balancer Labels
-      description: Load Balancer
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    private-network-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Private network ID
-      description: Private network reference
-    manager:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Manager ID
-        type:
-          type: string
-          enum:
-          - sks-nodepool
-          - instance-pool
-          description: Manager type
-      description: Resource manager
-    instance-type-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance type ID
-      description: Instance type reference
+          description: Deploy target ID
+      description: Deploy target reference
     load-balancer-service:
       type: object
       properties:
@@ -869,6 +809,66 @@ components:
           readOnly: true
           description: Healthcheck status per backend server
       description: Load Balancer Service
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
 x-topics:
 - title: API Request Signature
   content: '

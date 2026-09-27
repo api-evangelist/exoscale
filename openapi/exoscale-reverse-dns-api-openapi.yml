@@ -179,10 +179,11 @@ paths:
       operationId: delete-reverse-dns-instance
 components:
   schemas:
-    domain-name:
-      type: string
-      maxLength: 253
-      minLength: 1
+    reverse-dns-record:
+      type: object
+      properties:
+        domain-name:
+          $ref: '#/components/schemas/domain-name'
     operation:
       type: object
       properties:
@@ -237,11 +238,10 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    reverse-dns-record:
-      type: object
-      properties:
-        domain-name:
-          $ref: '#/components/schemas/domain-name'
+    domain-name:
+      type: string
+      maxLength: 253
+      minLength: 1
 x-topics:
 - title: API Request Signature
   content: '

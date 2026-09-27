@@ -530,6 +530,31 @@ paths:
       operationId: upgrade-sks-cluster
 components:
   schemas:
+    sks-cluster-deprecated-resource:
+      type: object
+      properties:
+        group:
+          type: string
+        version:
+          type: string
+        resource:
+          type: string
+        subresource:
+          type: string
+        removed-release:
+          type: string
+    sks-audit-initial-backoff:
+      type: string
+      maxLength: 10
+      minLength: 1
+    private-network-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Private network ID
+      description: Private network reference
     sks-audit-update:
       type: object
       properties:
@@ -546,22 +571,6 @@ components:
           type: boolean
           description: Enable or Disable Kubernetes Audit
       description: Kubernetes Audit parameters
-    sks-audit-initial-backoff:
-      type: string
-      maxLength: 10
-      minLength: 1
-    deploy-target-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
-    sks-audit-endpoint:
-      type: string
-      maxLength: 2000
-      minLength: 1
     template-ref:
       type: object
       properties:
@@ -570,28 +579,42 @@ components:
           format: uuid
           description: Template ID
       description: Template reference
-    sks-nodepool-taints:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/sks-nodepool-taint'
-    sks-nodepool-labels:
+    sks-cluster-labels:
       type: object
       additionalProperties:
         type: string
-    kubelet-image-gc:
+    sks-audit:
       type: object
       properties:
-        high-threshold:
-          type: integer
-          format: int64
-          minimum: 0
-        low-threshold:
-          type: integer
-          format: int64
-          minimum: 0
-        min-age:
+        endpoint:
+          $ref: '#/components/schemas/sks-audit-endpoint'
+          description: Target Webserver URL
+        enabled:
+          type: boolean
+          description: Enabled
+        initial-backoff:
+          $ref: '#/components/schemas/sks-audit-initial-backoff'
+          description: Initial Backoff (default '10s')
+      description: Kubernetes Audit parameters
+    sks-nodepool-taint:
+      type: object
+      properties:
+        value:
           type: string
-      description: Kubelet image GC options
+          maxLength: 255
+          minLength: 1
+          description: Nodepool taint value
+        effect:
+          type: string
+          enum:
+          - NoExecute
+          - NoSchedule
+          - PreferNoSchedule
+          description: Nodepool taint effect
+      required:
+      - value
+      - effect
+      description: Nodepool taint
     sks-kubeconfig-request:
       type: object
       properties:
@@ -612,26 +635,30 @@ components:
       - user
       - groups
       description: Kubeconfig request for a SKS cluster
-    networking:
+    security-group-ref:
       type: object
       properties:
-        cluster-cidr:
+        id:
           type: string
-          description: "CIDR Range for Pods in cluster. This must not overlap with any IP ranges assigned to pods. Max of two, comma-separated, dual-stack CIDRs is allowed.\n              If not specified, defaults to 192.168.0.0/16."
-        service-cluster-ip-range:
-          type: string
-          description: "CIDR range for service cluster IPs. This must not overlap with any IP ranges assigned to nodes or pods. Max of two, comma-separated, dual-stack CIDRs is allowed.\n              If not specified, defaults to 10.96.0.0/12."
-        node-cidr-mask-size-ipv4:
-          type: integer
-          format: int64
-          description: Mask size for node cidr in cluster. It must be larger than the Pod CIDR subnet mask. Defaults to 24
-          exclusiveMinimum: 0
-        node-cidr-mask-size-ipv6:
-          type: integer
-          format: int64
-          description: Mask size for node cidr in cluster. It must be larger than the Pod CIDR subnet mask. Defaults to 64
-          exclusiveMinimum: 0
-      description: Cluster networking configuration.
+          format: uuid
+          description: Security group ID
+      description: Security group reference
+    sks-audit-create:
+      type: object
+      properties:
+        endpoint:
+          $ref: '#/components/schemas/sks-audit-endpoint'
+          description: Target Webserver URL
+        bearer-token:
+          $ref: '#/components/schemas/sks-audit-bearer-token'
+          description: Bearer token
+        initial-backoff:
+          $ref: '#/components/schemas/sks-audit-initial-backoff'
+          description: Initial backoff (default '10s')
+      required:
+      - endpoint
+      - bearer-token
+      description: Kubernetes Audit parameters
     sks-nodepool:
       type: object
       properties:
@@ -750,26 +777,32 @@ components:
           readOnly: true
           description: Nodepool creation date
       description: SKS Nodepool
-    sks-cluster-labels:
-      type: object
-      additionalProperties:
-        type: string
-    sks-audit-create:
+    deploy-target-ref:
       type: object
       properties:
-        endpoint:
-          $ref: '#/components/schemas/sks-audit-endpoint'
-          description: Target Webserver URL
-        bearer-token:
-          $ref: '#/components/schemas/sks-audit-bearer-token'
-          description: Bearer token
-        initial-backoff:
-          $ref: '#/components/schemas/sks-audit-initial-backoff'
-          description: Initial backoff (default '10s')
-      required:
-      - endpoint
-      - bearer-token
-      description: Kubernetes Audit parameters
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
+    sks-nodepool-taints:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/sks-nodepool-taint'
+    kubelet-image-gc:
+      type: object
+      properties:
+        high-threshold:
+          type: integer
+          format: int64
+          minimum: 0
+        low-threshold:
+          type: integer
+          format: int64
+          minimum: 0
+        min-age:
+          type: string
+      description: Kubelet image GC options
     sks-oidc:
       type: object
       properties:
@@ -812,71 +845,14 @@ components:
       - client-id
       - issuer-url
       description: SKS Cluster OpenID config map
-    sks-audit-bearer-token:
-      type: string
-      maxLength: 2000
-      minLength: 1
-    sks-nodepool-taint:
-      type: object
-      properties:
-        value:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Nodepool taint value
-        effect:
-          type: string
-          enum:
-          - NoExecute
-          - NoSchedule
-          - PreferNoSchedule
-          description: Nodepool taint effect
-      required:
-      - value
-      - effect
-      description: Nodepool taint
-    sks-cluster-deprecated-resource:
-      type: object
-      properties:
-        group:
-          type: string
-        version:
-          type: string
-        resource:
-          type: string
-        subresource:
-          type: string
-        removed-release:
-          type: string
-    private-network-ref:
+    instance-pool-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Private network ID
-      description: Private network reference
-    instance-type-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance type ID
-      description: Instance type reference
-    sks-audit:
-      type: object
-      properties:
-        endpoint:
-          $ref: '#/components/schemas/sks-audit-endpoint'
-          description: Target Webserver URL
-        enabled:
-          type: boolean
-          description: Enabled
-        initial-backoff:
-          $ref: '#/components/schemas/sks-audit-initial-backoff'
-          description: Initial Backoff (default '10s')
-      description: Kubernetes Audit parameters
+          description: Instance Pool ID
+      description: Target Instance Pool
     operation:
       type: object
       properties:
@@ -931,14 +907,34 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    security-group-ref:
+    sks-nodepool-labels:
+      type: object
+      additionalProperties:
+        type: string
+    sks-audit-bearer-token:
+      type: string
+      maxLength: 2000
+      minLength: 1
+    networking:
       type: object
       properties:
-        id:
+        cluster-cidr:
           type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
+          description: "CIDR Range for Pods in cluster. This must not overlap with any IP ranges assigned to pods. Max of two, comma-separated, dual-stack CIDRs is allowed.\n              If not specified, defaults to 192.168.0.0/16."
+        service-cluster-ip-range:
+          type: string
+          description: "CIDR range for service cluster IPs. This must not overlap with any IP ranges assigned to nodes or pods. Max of two, comma-separated, dual-stack CIDRs is allowed.\n              If not specified, defaults to 10.96.0.0/12."
+        node-cidr-mask-size-ipv4:
+          type: integer
+          format: int64
+          description: Mask size for node cidr in cluster. It must be larger than the Pod CIDR subnet mask. Defaults to 24
+          exclusiveMinimum: 0
+        node-cidr-mask-size-ipv6:
+          type: integer
+          format: int64
+          description: Mask size for node cidr in cluster. It must be larger than the Pod CIDR subnet mask. Defaults to 64
+          exclusiveMinimum: 0
+      description: Cluster networking configuration.
     sks-cluster:
       type: object
       properties:
@@ -1043,14 +1039,10 @@ components:
           readOnly: true
           description: Cluster endpoint
       description: SKS Cluster
-    instance-pool-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance Pool ID
-      description: Target Instance Pool
+    sks-audit-endpoint:
+      type: string
+      maxLength: 2000
+      minLength: 1
     anti-affinity-group-ref:
       type: object
       properties:
@@ -1059,6 +1051,14 @@ components:
           format: uuid
           description: Anti-affinity group ID
       description: Anti-affinity group reference
+    instance-type-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance type ID
+      description: Instance type reference
 x-topics:
 - title: API Request Signature
   content: '

@@ -167,17 +167,29 @@ paths:
       operationId: generate-data-key
 components:
   schemas:
-    generate-data-key-response:
+    re-encrypt-response:
       type: object
       required:
-      - plaintext
       - ciphertext
       properties:
-        plaintext:
-          type: string
-          format: byte
         ciphertext:
           type: string
+          format: byte
+    generate-data-key-request:
+      type: object
+      properties:
+        key-spec:
+          type: string
+          enum:
+          - AES-256
+        bytes-count:
+          type: integer
+          minimum: 1
+          maximum: 1024
+        encryption-context:
+          type:
+          - string
+          - 'null'
           format: byte
     encrypt-response:
       type: object
@@ -192,19 +204,6 @@ components:
       required:
       - plaintext
       properties:
-        plaintext:
-          type: string
-          format: byte
-    encrypt-request:
-      type: object
-      required:
-      - plaintext
-      properties:
-        encryption-context:
-          type:
-          - string
-          - 'null'
-          format: byte
         plaintext:
           type: string
           format: byte
@@ -248,12 +247,42 @@ components:
               - 'null'
               format: byte
               description: Optional encryption context appended to the AAD.
-    re-encrypt-response:
+    generate-data-key-response:
+      type: object
+      required:
+      - plaintext
+      - ciphertext
+      properties:
+        plaintext:
+          type: string
+          format: byte
+        ciphertext:
+          type: string
+          format: byte
+    decrypt-request:
       type: object
       required:
       - ciphertext
       properties:
+        encryption-context:
+          type:
+          - string
+          - 'null'
+          format: byte
         ciphertext:
+          type: string
+          format: byte
+    encrypt-request:
+      type: object
+      required:
+      - plaintext
+      properties:
+        encryption-context:
+          type:
+          - string
+          - 'null'
+          format: byte
+        plaintext:
           type: string
           format: byte
     error-response:
@@ -292,35 +321,6 @@ components:
                 type: string
               location:
                 type: string
-    decrypt-request:
-      type: object
-      required:
-      - ciphertext
-      properties:
-        encryption-context:
-          type:
-          - string
-          - 'null'
-          format: byte
-        ciphertext:
-          type: string
-          format: byte
-    generate-data-key-request:
-      type: object
-      properties:
-        key-spec:
-          type: string
-          enum:
-          - AES-256
-        bytes-count:
-          type: integer
-          minimum: 1
-          maximum: 1024
-        encryption-context:
-          type:
-          - string
-          - 'null'
-          format: byte
 x-topics:
 - title: API Request Signature
   content: '

@@ -127,6 +127,22 @@ paths:
       operationId: get-api-key
 components:
   schemas:
+    iam-api-key:
+      type: object
+      properties:
+        name:
+          type: string
+          x-go-findable: '1'
+          description: IAM API Key name
+        key:
+          type: string
+          x-go-findable: '2'
+          description: IAM API Key
+        role-id:
+          type: string
+          format: uuid
+          description: IAM API Key Role ID
+      description: IAM API Key
     iam-api-key-created:
       type: object
       properties:
@@ -140,22 +156,6 @@ components:
           type: string
           readOnly: true
           description: IAM API Key Secret
-        role-id:
-          type: string
-          format: uuid
-          description: IAM API Key Role ID
-      description: IAM API Key
-    iam-api-key:
-      type: object
-      properties:
-        name:
-          type: string
-          x-go-findable: '1'
-          description: IAM API Key name
-        key:
-          type: string
-          x-go-findable: '2'
-          description: IAM API Key
         role-id:
           type: string
           format: uuid

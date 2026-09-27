@@ -55,7 +55,7 @@ access: 3rd-Party
 specificationVersion: '0.23'
 apis:
 - aid: exoscale:exoscale-ai-api-key-api
-  name: Exoscale ai-api-key API
+  name: Exoscale AI API Key API
   description: The ai-api-key API from Exoscale — 3 operation(s) for ai-api-key.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -71,7 +71,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-anti-affinity-group-api
-  name: Exoscale anti-affinity-group API
+  name: Exoscale Anti Affinity Group API
   description: Anti-affinity groups let you define placement constraints for your Compute instances.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -87,7 +87,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-api-key-api
-  name: Exoscale api-key API
+  name: Exoscale API Key API
   description: API keys are credentials for programmatic access to Exoscale APIs and services.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -105,7 +105,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-ccm-api
-  name: Exoscale ccm API
+  name: Exoscale Ccm API
   description: The ccm API from Exoscale — 1 operation(s) for ccm.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -123,7 +123,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-cluster-api
-  name: Exoscale cluster API
+  name: Exoscale Cluster API
   description: Clusters are managed Kubernetes control planes.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -141,7 +141,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-compute-api
-  name: Exoscale compute API
+  name: Exoscale Compute API
   description: >-
     Host anything from simple applications to complex architectures. Start a compute instance in seconds
     and scale as your infrastructure grows.
@@ -161,7 +161,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-crypto-api
-  name: Exoscale crypto API
+  name: Exoscale Crypto API
   description: A suite of cryptographic primitives offered by the Exoscale KMS.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -179,7 +179,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-dbaas-api
-  name: Exoscale dbaas API
+  name: Exoscale Dbaas API
   description: >-
     Databases as a Service (DBaaS) provides scalable and fully-managed database solutions with high availability
     and performance backed by Exoscale's Compute and Storage services.
@@ -199,7 +199,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-deploy-target-api
-  name: Exoscale deploy-target API
+  name: Exoscale Deploy Target API
   description: Deploy Target lets you spin up Compute instances on dedicated hypervisors.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -215,7 +215,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-deployment-api
-  name: Exoscale deployment API
+  name: Exoscale Deployment API
   description: Deployments are loaded model instances ready for inference.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -233,7 +233,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-domain-api
-  name: Exoscale domain API
+  name: Exoscale Domain API
   description: DNS zone management.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -251,7 +251,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-elastic-ip-api
-  name: Exoscale elastic-ip API
+  name: Exoscale Elastic Ip API
   description: >-
     Elastic IPs are additional public IPv4/6 addresses that can be attached to Compute instances, with
     optional healthcheck support.
@@ -269,7 +269,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-event-api
-  name: Exoscale event API
+  name: Exoscale Event API
   description: >-
     Events form the basis of the Exoscale audit-trail, a mechanism
                        to query past events performing mutations on resources
@@ -290,7 +290,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-instance-api
-  name: Exoscale instance API
+  name: Exoscale Instance API
   description: >-
     Instances are the virtual machines at the core of the Exoscale
                        Compute service.
@@ -310,7 +310,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-instance-pool-api
-  name: Exoscale instance-pool API
+  name: Exoscale Instance Pool API
   description: >-
     Instance Pools is an Exoscale service allowing users
                        to provision managed groups of identical Compute
@@ -329,7 +329,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-instance-type-api
-  name: Exoscale instance-type API
+  name: Exoscale Instance Type API
   description: >-
     An Instance Type is a resource describing the amount of
                        CPU, RAM and GPUs allocated to a Compute instance.
@@ -349,7 +349,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-kms-key-api
-  name: Exoscale kms-key API
+  name: Exoscale Kms Key API
   description: Operations for KMS Key lifecycle management.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -365,7 +365,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-model-api
-  name: Exoscale model API
+  name: Exoscale Model API
   description: Lifecycle of AI Models.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -383,7 +383,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-network-load-balancer-api
-  name: Exoscale network-load-balancer API
+  name: Exoscale Network Load Balancer API
   description: >-
     A Network Load Balancer (NLB) is a Layer 4 (TCP/UDP)
                        load balancer that distributes incoming traffic to Compute
@@ -403,7 +403,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-nodepool-api
-  name: Exoscale nodepool API
+  name: Exoscale Nodepool API
   description: >-
     Nodepools are groups of compute instances managed by SKS, serving as worker nodes in your Kubernetes
     cluster.
@@ -421,7 +421,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-nodepool-template-api
-  name: Exoscale nodepool-template API
+  name: Exoscale Nodepool Template API
   description: Nodepool templates are Exoscale-managed instance templates for SKS worker nodes.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -437,7 +437,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-operation-api
-  name: Exoscale operation API
+  name: Exoscale Operation API
   description: >-
     Operations describe the current state of an asynchronous
                        operation.
@@ -457,7 +457,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-organization-api
-  name: Exoscale organization API
+  name: Exoscale Organization API
   description: The organization API from Exoscale — 3 operation(s) for organization.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -475,7 +475,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-organization-policy-api
-  name: Exoscale organization-policy API
+  name: Exoscale Organization Policy API
   description: >-
     The Organization Policy is an IAM policy that applies as a first layer across your entire Exoscale
     organization.
@@ -495,7 +495,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-private-network-api
-  name: Exoscale private-network API
+  name: Exoscale Private Network API
   description: Private Network provides private L2 networking functionality between Compute instances.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -513,7 +513,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-quotas-api
-  name: Exoscale quotas API
+  name: Exoscale Quotas API
   description: The quotas API from Exoscale — 2 operation(s) for quotas.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -531,7 +531,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-record-api
-  name: Exoscale record API
+  name: Exoscale Record API
   description: DNS zone records management.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -549,7 +549,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-reverse-dns-api
-  name: Exoscale reverse-dns API
+  name: Exoscale Reverse Dns API
   description: >-
     Reverse DNS lets you record PTR records for Compute instance public IP addresses or Elastic IPs.
   humanURL: https://openapi-v2.exoscale.com/
@@ -568,7 +568,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-role-api
-  name: Exoscale role API
+  name: Exoscale Role API
   description: IAM roles lets you define logical sets of policies to grant to users and API keys.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -586,7 +586,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-security-group-api
-  name: Exoscale security-group API
+  name: Exoscale Security Group API
   description: >-
     Security Groups are groups of firewall rules that regulate
                        network traffic to and from your Compute instances.
@@ -606,7 +606,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-snapshot-api
-  name: Exoscale snapshot API
+  name: Exoscale Snapshot API
   description: >-
     Snapshots provide a way to get point-in-time recovery
                        for your Compute instance.
@@ -626,7 +626,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-sos-api
-  name: Exoscale sos API
+  name: Exoscale Sos API
   description: Exoscale Simple Object Storage (SOS) is an S3-compatible object storage service.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -644,7 +644,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-ssh-key-api
-  name: Exoscale ssh-key API
+  name: Exoscale Ssh Key API
   description: SSH Keypairs
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -662,7 +662,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-template-api
-  name: Exoscale template API
+  name: Exoscale Template API
   description: >-
     Templates contain the OS and the initial setup of a
                        Compute instance.
@@ -682,7 +682,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-user-api
-  name: Exoscale user API
+  name: Exoscale User API
   description: IAM users map to humans empowered with access to Exoscale resources.
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
@@ -700,7 +700,7 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-zone-api
-  name: Exoscale zone API
+  name: Exoscale Zone API
   description: >-
     A Zone represents an independent datacenter in which Exoscale
                        infrastructure is deployed into.
@@ -728,8 +728,6 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Block Storage
-  tags_raw:
   - blockstorage
   properties:
   - type: OpenAPI

@@ -451,60 +451,40 @@ paths:
       operationId: evict-instance-pool-members
 components:
   schemas:
-    operation:
+    instance-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
+          description: Instance ID
+      description: Target Instance
+    manager:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Manager ID
+        type:
           type: string
           enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
+    elastic-ip-ref:
+      type: object
+      properties:
+        id:
           type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
+          format: uuid
+          description: Elastic IP ID
+      description: Elastic IP reference
+    labels:
+      type: object
+      additionalProperties:
+        type: string
     security-group-ref:
       type: object
       properties:
@@ -513,23 +493,6 @@ components:
           format: uuid
           description: Security group ID
       description: Security group reference
-    ssh-key-ref:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: SSH key name
-      description: SSH key reference
-    instance-type-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance type ID
-      description: Instance type reference
     instance-pool:
       type: object
       properties:
@@ -645,28 +608,15 @@ components:
             $ref: '#/components/schemas/ssh-key-ref'
           description: Instances SSH keys
       description: Instance Pool
-    deploy-target-ref:
+    ssh-key-ref:
       type: object
       properties:
-        id:
+        name:
           type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    instance-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance ID
-      description: Target Instance
+          maxLength: 255
+          minLength: 1
+          description: SSH key name
+      description: SSH key reference
     anti-affinity-group-ref:
       type: object
       properties:
@@ -675,18 +625,6 @@ components:
           format: uuid
           description: Anti-affinity group ID
       description: Anti-affinity group reference
-    template-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Template ID
-      description: Template reference
-    labels:
-      type: object
-      additionalProperties:
-        type: string
     private-network-ref:
       type: object
       properties:
@@ -695,28 +633,90 @@ components:
           format: uuid
           description: Private network ID
       description: Private network reference
-    manager:
+    template-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Manager ID
-        type:
+          description: Template ID
+      description: Template reference
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
+    instance-type-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance type ID
+      description: Instance type reference
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
           type: string
           enum:
-          - sks-nodepool
-          - instance-pool
-          description: Manager type
-      description: Resource manager
-    elastic-ip-ref:
-      type: object
-      properties:
-        id:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
           type: string
-          format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
 x-topics:
 - title: API Request Signature
   content: '

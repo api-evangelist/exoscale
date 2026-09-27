@@ -357,6 +357,34 @@ paths:
       operationId: get-deployment-logs
 components:
   schemas:
+    scale-deployment-request:
+      description: Scale AI deployment
+      properties:
+        replicas:
+          description: Number of replicas (>=0)
+          format: int64
+          type: integer
+          minimum: 0
+      type: object
+      required:
+      - replicas
+    forbidden-operation-response:
+      description: Forbidden operation response
+      properties:
+        code:
+          description: Machine-readable forbidden error code
+          enum:
+          - forbidden_operation
+          type: string
+          readOnly: true
+        error:
+          description: Forbidden error message
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - error
+      - code
     get-deployment-response:
       description: AI deployment
       properties:
@@ -421,27 +449,53 @@ components:
         model:
           $ref: '#/components/schemas/model-ref'
       type: object
-    reveal-deployment-api-key-response:
-      description: AI deployment inference endpoint authentication key
+    model-ref:
       properties:
-        api-key:
+        name:
+          description: Associated model name
+          type: string
+          minLength: 1
+        id:
+          description: Associated model ID
+          format: uuid
           type: string
       type: object
-    update-deployment-request:
-      description: Update AI deployment
+    create-deployment-request:
+      description: Deployment an AI model onto a set of GPUs
       properties:
+        gpu-count:
+          description: Number of GPUs (1-8)
+          format: int64
+          type: integer
+          minimum: 1
         inference-engine-version:
           $ref: '#/components/schemas/inference-engine-version'
         name:
           description: Deployment name
           type: string
           minLength: 1
+        gpu-type:
+          description: GPU type family (e.g., gpua5000, gpu3080ti)
+          type: string
+        replicas:
+          description: Number of replicas (>=1)
+          format: int64
+          type: integer
+          minimum: 1
         inference-engine-parameters:
           description: Optional extra inference engine server CLI args
           type: array
           items:
             type: string
+        model:
+          $ref: '#/components/schemas/model-ref'
       type: object
+      required:
+      - model
+      - name
+      - gpu-type
+      - gpu-count
+      - replicas
     inference-engine-version:
       description: Inference engine version
       enum:
@@ -462,36 +516,121 @@ components:
           items:
             $ref: '#/components/schemas/list-deployments-response-entry'
       type: object
-    model-ref:
+    reveal-deployment-api-key-response:
+      description: AI deployment inference endpoint authentication key
       properties:
-        name:
-          description: Associated model name
-          type: string
-          minLength: 1
-        id:
-          description: Associated model ID
-          format: uuid
+        api-key:
           type: string
       type: object
-    instance-type-entry:
-      description: Instance type with authorization status
+    inference-engine-parameter-entry:
+      description: inference-engine parameter definition
       properties:
-        family:
-          description: GPU family name
+        description:
+          description: Parameter description
           type: string
-        authorized:
-          description: Whether this instance type is authorized based on server availability
-          type: boolean
-      type: object
-    get-deployment-logs-response:
-      description: Deployment logs
-      properties:
-        logs:
-          description: List of log entries
+        allowed-values:
+          description: Allowed values
           type: array
           items:
-            $ref: '#/components/schemas/get-deployment-logs-entry'
+            type: string
+        default:
+          description: Default value if nothing is specified
+          type: string
+        name:
+          description: Parameter name
+          type: string
+        section:
+          description: Section
+          type: string
+        type:
+          description: Parameter type
+          type: string
+        flags:
+          description: Flag name
+          type: array
+          items:
+            type: string
       type: object
+    list-ai-instance-types-response:
+      description: List of available instance types with authorization status
+      properties:
+        instance-types:
+          type: array
+          items:
+            $ref: '#/components/schemas/instance-type-entry'
+      type: object
+    get-deployment-logs-entry:
+      description: A single log entry
+      properties:
+        time:
+          description: Timestamp of the log entry
+          type: string
+        node:
+          description: Node identifier
+          type: string
+        message:
+          description: Log message content
+          type: string
+      type: object
+    update-deployment-request:
+      description: Update AI deployment
+      properties:
+        inference-engine-version:
+          $ref: '#/components/schemas/inference-engine-version'
+        name:
+          description: Deployment name
+          type: string
+          minLength: 1
+        inference-engine-parameters:
+          description: Optional extra inference engine server CLI args
+          type: array
+          items:
+            type: string
+      type: object
+    get-inference-engine-help-response:
+      description: List of allowed inference-engine parameters
+      properties:
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/inference-engine-parameter-entry'
+      type: object
+    error-response:
+      type: object
+      description: RFC 9457 Problem Details error response
+      required:
+      - type
+      - title
+      - status
+      - detail
+      properties:
+        type:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        status:
+          type: integer
+          minimum: 100
+          maximum: 599
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri-reference
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              detail:
+                type: string
+              pointer:
+                type: string
+              location:
+                type: string
     list-deployments-response-entry:
       description: AI deployment
       properties:
@@ -546,50 +685,6 @@ components:
         model:
           $ref: '#/components/schemas/model-ref'
       type: object
-    list-ai-instance-types-response:
-      description: List of available instance types with authorization status
-      properties:
-        instance-types:
-          type: array
-          items:
-            $ref: '#/components/schemas/instance-type-entry'
-      type: object
-    create-deployment-request:
-      description: Deployment an AI model onto a set of GPUs
-      properties:
-        gpu-count:
-          description: Number of GPUs (1-8)
-          format: int64
-          type: integer
-          minimum: 1
-        inference-engine-version:
-          $ref: '#/components/schemas/inference-engine-version'
-        name:
-          description: Deployment name
-          type: string
-          minLength: 1
-        gpu-type:
-          description: GPU type family (e.g., gpua5000, gpu3080ti)
-          type: string
-        replicas:
-          description: Number of replicas (>=1)
-          format: int64
-          type: integer
-          minimum: 1
-        inference-engine-parameters:
-          description: Optional extra inference engine server CLI args
-          type: array
-          items:
-            type: string
-        model:
-          $ref: '#/components/schemas/model-ref'
-      type: object
-      required:
-      - model
-      - name
-      - gpu-type
-      - gpu-count
-      - replicas
     operation:
       type: object
       properties:
@@ -644,119 +739,24 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    forbidden-operation-response:
-      description: Forbidden operation response
+    instance-type-entry:
+      description: Instance type with authorization status
       properties:
-        code:
-          description: Machine-readable forbidden error code
-          enum:
-          - forbidden_operation
+        family:
+          description: GPU family name
           type: string
-          readOnly: true
-        error:
-          description: Forbidden error message
-          type: string
-          readOnly: true
+        authorized:
+          description: Whether this instance type is authorized based on server availability
+          type: boolean
       type: object
-      required:
-      - error
-      - code
-    get-inference-engine-help-response:
-      description: List of allowed inference-engine parameters
+    get-deployment-logs-response:
+      description: Deployment logs
       properties:
-        parameters:
+        logs:
+          description: List of log entries
           type: array
           items:
-            $ref: '#/components/schemas/inference-engine-parameter-entry'
-      type: object
-    scale-deployment-request:
-      description: Scale AI deployment
-      properties:
-        replicas:
-          description: Number of replicas (>=0)
-          format: int64
-          type: integer
-          minimum: 0
-      type: object
-      required:
-      - replicas
-    error-response:
-      type: object
-      description: RFC 9457 Problem Details error response
-      required:
-      - type
-      - title
-      - status
-      - detail
-      properties:
-        type:
-          type: string
-          format: uri-reference
-        title:
-          type: string
-        status:
-          type: integer
-          minimum: 100
-          maximum: 599
-        detail:
-          type: string
-        instance:
-          type: string
-          format: uri-reference
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              path:
-                type: string
-              detail:
-                type: string
-              pointer:
-                type: string
-              location:
-                type: string
-    get-deployment-logs-entry:
-      description: A single log entry
-      properties:
-        time:
-          description: Timestamp of the log entry
-          type: string
-        node:
-          description: Node identifier
-          type: string
-        message:
-          description: Log message content
-          type: string
-      type: object
-    inference-engine-parameter-entry:
-      description: inference-engine parameter definition
-      properties:
-        description:
-          description: Parameter description
-          type: string
-        allowed-values:
-          description: Allowed values
-          type: array
-          items:
-            type: string
-        default:
-          description: Default value if nothing is specified
-          type: string
-        name:
-          description: Parameter name
-          type: string
-        section:
-          description: Section
-          type: string
-        type:
-          description: Parameter type
-          type: string
-        flags:
-          description: Flag name
-          type: array
-          items:
-            type: string
+            $ref: '#/components/schemas/get-deployment-logs-entry'
       type: object
 x-topics:
 - title: API Request Signature

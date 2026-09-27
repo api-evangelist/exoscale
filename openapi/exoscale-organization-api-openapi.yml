@@ -117,47 +117,6 @@ paths:
       operationId: get-env-impact
 components:
   schemas:
-    env-product:
-      type: object
-      properties:
-        value:
-          type: string
-          description: Value
-        metadata:
-          type: array
-          items:
-            $ref: '#/components/schemas/env-metadata-entry'
-          description: Metadata
-        impacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/env-impact-indicator'
-          description: Impacts
-    env-metadata-entry:
-      type: object
-      properties:
-        value:
-          type: string
-          description: Value
-        amount:
-          type: number
-          description: Amount
-        unit:
-          type: string
-          description: Unit
-    env-impact-report:
-      type: object
-      properties:
-        metadata:
-          type: array
-          items:
-            $ref: '#/components/schemas/env-metadata-entry'
-          description: Metadata
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/env-product'
-          description: Products
     organization:
       type: object
       properties:
@@ -195,18 +154,22 @@ components:
           readOnly: true
           description: Organization currency
       description: Organization
-    env-impact-detail:
+    env-product:
       type: object
       properties:
         value:
           type: string
           description: Value
-        amount:
-          type: number
-          description: Amount
-        unit:
-          type: string
-          description: Unit
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/env-metadata-entry'
+          description: Metadata
+        impacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/env-impact-indicator'
+          description: Impacts
     env-impact-indicator:
       type: object
       properties:
@@ -224,6 +187,43 @@ components:
           items:
             $ref: '#/components/schemas/env-impact-detail'
           description: Details
+    env-metadata-entry:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Value
+        amount:
+          type: number
+          description: Amount
+        unit:
+          type: string
+          description: Unit
+    env-impact-detail:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Value
+        amount:
+          type: number
+          description: Amount
+        unit:
+          type: string
+          description: Unit
+    env-impact-report:
+      type: object
+      properties:
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/env-metadata-entry'
+          description: Metadata
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/env-product'
+          description: Products
 x-topics:
 - title: API Request Signature
   content: '

@@ -382,6 +382,167 @@ paths:
       operationId: cancel-kms-key-deletion
 components:
   schemas:
+    disable-kms-key-rotation-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    create-kms-key-response:
+      type: object
+      required:
+      - id
+      - name
+      - description
+      - usage
+      - source
+      - status
+      - status-since
+      - multi-zone
+      - origin-zone
+      - created-at
+      - revision
+      properties:
+        description:
+          type: string
+        revision:
+          $ref: '#/components/schemas/revision-stamp'
+        name:
+          type: string
+        multi-zone:
+          type: boolean
+        source:
+          type: string
+          enum:
+          - exoscale-kms
+        usage:
+          type: string
+        status:
+          type: string
+          enum:
+          - enabled
+          - disabled
+          - pending-deletion
+        id:
+          type: string
+          format: uuid
+        origin-zone:
+          type: string
+        created-at:
+          type: string
+          format: date-time
+    replicate-kms-key-request:
+      type: object
+      required:
+      - zone
+      properties:
+        zone:
+          type: string
+    enable-kms-key-rotation-request:
+      type: object
+      properties:
+        rotation-period:
+          type: integer
+          minimum: 90
+          maximum: 2560
+          default: 365
+    replica-failure:
+      type: object
+      required:
+      - attempted-watermark
+      - error
+      - failed-at
+      properties:
+        attempted-watermark:
+          type: integer
+        error:
+          type: string
+        failed-at:
+          type: string
+          format: date-time
+    list-kms-keys-response-entry:
+      type: object
+      required:
+      - id
+      - name
+      - description
+      - usage
+      - source
+      - status
+      - status-since
+      - material
+      - rotation
+      - multi-zone
+      - origin-zone
+      - replicas
+      - created-at
+      - revision
+      properties:
+        description:
+          type: string
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+        revision:
+          $ref: '#/components/schemas/revision-stamp'
+        name:
+          type: string
+        multi-zone:
+          type: boolean
+        source:
+          type: string
+          enum:
+          - exoscale-kms
+        usage:
+          type: string
+        status:
+          type: string
+          enum:
+          - enabled
+          - disabled
+          - pending-deletion
+        status-since:
+          type: string
+          format: date-time
+        id:
+          type: string
+          format: uuid
+        replicas:
+          type: array
+          items:
+            type: string
+        material:
+          $ref: '#/components/schemas/key-material'
+        origin-zone:
+          type: string
+        created-at:
+          type: string
+          format: date-time
+    list-kms-key-rotations-response-entry:
+      type: object
+      required:
+      - version
+      - rotated-at
+      - automatic
+      properties:
+        version:
+          type: integer
+        rotated-at:
+          type: string
+          format: date-time
+        automatic:
+          type: boolean
+    success-response:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - target-registered
+          default: success
     list-kms-keys-response:
       type: object
       required:
@@ -391,6 +552,147 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/list-kms-keys-response-entry'
+    replica-state:
+      type: object
+      required:
+      - zone
+      - last-applied-watermark
+      properties:
+        zone:
+          type: string
+        last-applied-watermark:
+          type: integer
+        last-failure:
+          $ref: '#/components/schemas/replica-failure'
+    create-kms-key-request:
+      type: object
+      required:
+      - name
+      - description
+      - usage
+      - multi-zone
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        usage:
+          type: string
+          enum:
+          - encrypt-decrypt
+        multi-zone:
+          type: boolean
+    error-response:
+      type: object
+      description: RFC 9457 Problem Details error response
+      required:
+      - type
+      - title
+      - status
+      - detail
+      properties:
+        type:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        status:
+          type: integer
+          minimum: 100
+          maximum: 599
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri-reference
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              detail:
+                type: string
+              pointer:
+                type: string
+              location:
+                type: string
+    revision-stamp:
+      type: object
+      required:
+      - at
+      - seq
+      properties:
+        at:
+          type: string
+          format: date-time
+        seq:
+          type: integer
+          minimum: 0
+    schedule-kms-key-deletion-request:
+      type: object
+      properties:
+        delay-days:
+          type: integer
+          description: Number of days to wait until deletion is final.
+          minimum: 7
+          maximum: 30
+          default: 30
+    enable-kms-key-rotation-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    key-material:
+      type: object
+      required:
+      - version
+      - created-at
+      - automatic
+      properties:
+        version:
+          type: integer
+        created-at:
+          type: string
+          format: date-time
+        automatic:
+          type: boolean
+    key-rotation-config:
+      type: object
+      required:
+      - manual-count
+      - automatic
+      - rotation-period
+      - next-at
+      properties:
+        manual-count:
+          type: integer
+        automatic:
+          type: boolean
+        rotation-period:
+          type: integer
+        next-at:
+          type: string
+          format: date-time
+    list-kms-key-rotations-response:
+      type: object
+      required:
+      - rotations
+      properties:
+        rotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/list-kms-key-rotations-response-entry'
+    rotate-kms-key-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
     get-kms-key-response:
       type: object
       required:
@@ -453,308 +755,6 @@ components:
         created-at:
           type: string
           format: date-time
-    rotate-kms-key-response:
-      type: object
-      required:
-      - rotation
-      properties:
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
-    create-kms-key-request:
-      type: object
-      required:
-      - name
-      - description
-      - usage
-      - multi-zone
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        usage:
-          type: string
-          enum:
-          - encrypt-decrypt
-        multi-zone:
-          type: boolean
-    replicate-kms-key-request:
-      type: object
-      required:
-      - zone
-      properties:
-        zone:
-          type: string
-    key-material:
-      type: object
-      required:
-      - version
-      - created-at
-      - automatic
-      properties:
-        version:
-          type: integer
-        created-at:
-          type: string
-          format: date-time
-        automatic:
-          type: boolean
-    list-kms-keys-response-entry:
-      type: object
-      required:
-      - id
-      - name
-      - description
-      - usage
-      - source
-      - status
-      - status-since
-      - material
-      - rotation
-      - multi-zone
-      - origin-zone
-      - replicas
-      - created-at
-      - revision
-      properties:
-        description:
-          type: string
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
-        revision:
-          $ref: '#/components/schemas/revision-stamp'
-        name:
-          type: string
-        multi-zone:
-          type: boolean
-        source:
-          type: string
-          enum:
-          - exoscale-kms
-        usage:
-          type: string
-        status:
-          type: string
-          enum:
-          - enabled
-          - disabled
-          - pending-deletion
-        status-since:
-          type: string
-          format: date-time
-        id:
-          type: string
-          format: uuid
-        replicas:
-          type: array
-          items:
-            type: string
-        material:
-          $ref: '#/components/schemas/key-material'
-        origin-zone:
-          type: string
-        created-at:
-          type: string
-          format: date-time
-    replica-state:
-      type: object
-      required:
-      - zone
-      - last-applied-watermark
-      properties:
-        zone:
-          type: string
-        last-applied-watermark:
-          type: integer
-        last-failure:
-          $ref: '#/components/schemas/replica-failure'
-    disable-kms-key-rotation-response:
-      type: object
-      required:
-      - rotation
-      properties:
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
-    enable-kms-key-rotation-response:
-      type: object
-      required:
-      - rotation
-      properties:
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
-    enable-kms-key-rotation-request:
-      type: object
-      properties:
-        rotation-period:
-          type: integer
-          minimum: 90
-          maximum: 2560
-          default: 365
-    create-kms-key-response:
-      type: object
-      required:
-      - id
-      - name
-      - description
-      - usage
-      - source
-      - status
-      - status-since
-      - multi-zone
-      - origin-zone
-      - created-at
-      - revision
-      properties:
-        description:
-          type: string
-        revision:
-          $ref: '#/components/schemas/revision-stamp'
-        name:
-          type: string
-        multi-zone:
-          type: boolean
-        source:
-          type: string
-          enum:
-          - exoscale-kms
-        usage:
-          type: string
-        status:
-          type: string
-          enum:
-          - enabled
-          - disabled
-          - pending-deletion
-        id:
-          type: string
-          format: uuid
-        origin-zone:
-          type: string
-        created-at:
-          type: string
-          format: date-time
-    schedule-kms-key-deletion-request:
-      type: object
-      properties:
-        delay-days:
-          type: integer
-          description: Number of days to wait until deletion is final.
-          minimum: 7
-          maximum: 30
-          default: 30
-    revision-stamp:
-      type: object
-      required:
-      - at
-      - seq
-      properties:
-        at:
-          type: string
-          format: date-time
-        seq:
-          type: integer
-          minimum: 0
-    key-rotation-config:
-      type: object
-      required:
-      - manual-count
-      - automatic
-      - rotation-period
-      - next-at
-      properties:
-        manual-count:
-          type: integer
-        automatic:
-          type: boolean
-        rotation-period:
-          type: integer
-        next-at:
-          type: string
-          format: date-time
-    replica-failure:
-      type: object
-      required:
-      - attempted-watermark
-      - error
-      - failed-at
-      properties:
-        attempted-watermark:
-          type: integer
-        error:
-          type: string
-        failed-at:
-          type: string
-          format: date-time
-    list-kms-key-rotations-response-entry:
-      type: object
-      required:
-      - version
-      - rotated-at
-      - automatic
-      properties:
-        version:
-          type: integer
-        rotated-at:
-          type: string
-          format: date-time
-        automatic:
-          type: boolean
-    error-response:
-      type: object
-      description: RFC 9457 Problem Details error response
-      required:
-      - type
-      - title
-      - status
-      - detail
-      properties:
-        type:
-          type: string
-          format: uri-reference
-        title:
-          type: string
-        status:
-          type: integer
-          minimum: 100
-          maximum: 599
-        detail:
-          type: string
-        instance:
-          type: string
-          format: uri-reference
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              path:
-                type: string
-              detail:
-                type: string
-              pointer:
-                type: string
-              location:
-                type: string
-    list-kms-key-rotations-response:
-      type: object
-      required:
-      - rotations
-      properties:
-        rotations:
-          type: array
-          items:
-            $ref: '#/components/schemas/list-kms-key-rotations-response-entry'
-    success-response:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - target-registered
-          default: success
 x-topics:
 - title: API Request Signature
   content: '

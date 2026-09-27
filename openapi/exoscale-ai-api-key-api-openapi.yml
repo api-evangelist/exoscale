@@ -233,30 +233,6 @@ paths:
       operationId: rotate-ai-api-key
 components:
   schemas:
-    update-ai-api-key-request:
-      description: Request to update an AI API key (at least one property required)
-      properties:
-        name:
-          description: Human-readable name for the AI API key
-          type: string
-        scope:
-          description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
-          type: string
-      type: object
-      minProperties: 1
-    create-ai-api-key-request:
-      description: Request to create a new AI API key
-      properties:
-        name:
-          description: Human-readable name for the AI API key
-          type: string
-        scope:
-          description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
-          type: string
-      type: object
-      required:
-      - name
-      - scope
     forbidden-operation-response:
       description: Forbidden operation response
       properties:
@@ -292,6 +268,36 @@ components:
           created-at: '2026-03-25T10:00:00Z'
       required:
       - ai-api-keys
+    ai-api-key:
+      description: AI API key metadata (without value)
+      properties:
+        updated-at:
+          description: Last update timestamp
+          format: date-time
+          type: string
+          readOnly: true
+        name:
+          description: Human-readable name for the AI API key
+          type: string
+        scope:
+          description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
+          type: string
+        id:
+          description: AI API key ID
+          format: uuid
+          type: string
+          readOnly: true
+        org-uuid:
+          description: Organization UUID that owns this key
+          format: uuid
+          type: string
+          readOnly: true
+        created-at:
+          description: Creation timestamp
+          format: date-time
+          type: string
+          readOnly: true
+      type: object
     error-response:
       type: object
       description: RFC 9457 Problem Details error response
@@ -328,36 +334,30 @@ components:
                 type: string
               location:
                 type: string
-    ai-api-key:
-      description: AI API key metadata (without value)
+    update-ai-api-key-request:
+      description: Request to update an AI API key (at least one property required)
       properties:
-        updated-at:
-          description: Last update timestamp
-          format: date-time
-          type: string
-          readOnly: true
         name:
           description: Human-readable name for the AI API key
           type: string
         scope:
           description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
           type: string
-        id:
-          description: AI API key ID
-          format: uuid
-          type: string
-          readOnly: true
-        org-uuid:
-          description: Organization UUID that owns this key
-          format: uuid
-          type: string
-          readOnly: true
-        created-at:
-          description: Creation timestamp
-          format: date-time
-          type: string
-          readOnly: true
       type: object
+      minProperties: 1
+    create-ai-api-key-request:
+      description: Request to create a new AI API key
+      properties:
+        name:
+          description: Human-readable name for the AI API key
+          type: string
+        scope:
+          description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
+          type: string
+      type: object
+      required:
+      - name
+      - scope
     ai-api-key-with-value:
       description: AI API key with plaintext value
       allOf:
