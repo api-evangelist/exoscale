@@ -72,116 +72,6 @@ paths:
       operationId: list-events
 components:
   schemas:
-    iam-service-policy:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - rules
-          - allow
-          - deny
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/iam-service-policy-rule'
-    iam-service-policy-rule:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - allow
-          - deny
-        expression:
-          type: string
-        resources:
-          type: array
-          items:
-            type: string
-    iam-api-key:
-      type: object
-      properties:
-        name:
-          type: string
-          x-go-findable: '1'
-          description: IAM API Key name
-        key:
-          type: string
-          x-go-findable: '2'
-          description: IAM API Key
-        role-id:
-          type: string
-          format: uuid
-          description: IAM API Key Role ID
-      description: IAM API Key
-    iam-policy:
-      type: object
-      properties:
-        default-service-strategy:
-          type: string
-          enum:
-          - allow
-          - deny
-          description: IAM default service strategy
-        services:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/iam-service-policy'
-          description: IAM services
-      required:
-      - default-service-strategy
-      - services
-      description: Policy
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    iam-role:
-      type: object
-      properties:
-        description:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: IAM Role description
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: IAM Role Labels
-        permissions:
-          type: array
-          items:
-            type: string
-            enum:
-            - bypass-governance-retention
-            - reset-iam-organization-policy
-          uniqueItems: true
-          description: IAM Role permissions
-        assume-role-policy:
-          $ref: '#/components/schemas/iam-policy'
-          description: IAM Assume Role Policy
-        editable:
-          type: boolean
-          description: IAM Role mutability
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: IAM Role name
-        max-session-ttl:
-          type: integer
-          format: int64
-          description: Maximum TTL requester is allowed to ask for when assuming a role
-          exclusiveMinimum: 0
-        policy:
-          $ref: '#/components/schemas/iam-policy'
-          description: IAM Role Policy
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: IAM Role ID
-      description: IAM Role
     event:
       type: object
       properties:
@@ -236,6 +126,103 @@ components:
           type: string
           description: Operation message
       description: A notable Mutation Event which happened on the infrastructure
+    iam-policy:
+      type: object
+      properties:
+        default-service-strategy:
+          type: string
+          enum:
+          - allow
+          - deny
+          description: IAM default service strategy
+        services:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/iam-service-policy'
+          description: IAM services
+      required:
+      - default-service-strategy
+      - services
+      description: Policy
+    iam-role:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: IAM Role description
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: IAM Role Labels
+        permissions:
+          type: array
+          items:
+            type: string
+            enum:
+            - bypass-governance-retention
+            - reset-iam-organization-policy
+          uniqueItems: true
+          description: IAM Role permissions
+        assume-role-policy:
+          $ref: '#/components/schemas/iam-policy'
+          description: IAM Assume Role Policy
+        editable:
+          type: boolean
+          description: IAM Role mutability
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: IAM Role name
+        max-session-ttl:
+          type: integer
+          format: int64
+          description: Maximum TTL requester is allowed to ask for when assuming a role
+          exclusiveMinimum: 0
+        policy:
+          $ref: '#/components/schemas/iam-policy'
+          description: IAM Role Policy
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: IAM Role ID
+      description: IAM Role
+    iam-api-key:
+      type: object
+      properties:
+        name:
+          type: string
+          x-go-findable: '1'
+          description: IAM API Key name
+        key:
+          type: string
+          x-go-findable: '2'
+          description: IAM API Key
+        role-id:
+          type: string
+          format: uuid
+          description: IAM API Key Role ID
+      description: IAM API Key
+    iam-service-policy-rule:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - allow
+          - deny
+        expression:
+          type: string
+        resources:
+          type: array
+          items:
+            type: string
+    labels:
+      type: object
+      additionalProperties:
+        type: string
     user:
       type: object
       properties:
@@ -265,6 +252,19 @@ components:
       - email
       - role
       description: User
+    iam-service-policy:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - rules
+          - allow
+          - deny
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/iam-service-policy-rule'
 x-topics:
 - title: API Request Signature
   content: '

@@ -392,14 +392,45 @@ paths:
       operationId: add-external-source-to-security-group
 components:
   schemas:
-    snapshot-ref:
+    anti-affinity-group-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Snapshot ID
-      description: Snapshot reference
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
+    security-group:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Security Group ID
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Security Group name
+        description:
+          type: string
+          maxLength: 255
+          description: Security Group description
+        external-sources:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+          description: Security Group external sources
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/security-group-rule'
+          uniqueItems: true
+          writeOnly: true
+          description: Security Group rules
+      description: Security Group
     manager:
       type: object
       properties:
@@ -414,6 +445,327 @@ components:
           - instance-pool
           description: Manager type
       description: Resource manager
+    instance-type:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Instance type ID
+        size:
+          type: string
+          enum:
+          - large
+          - huge
+          - jumbo
+          - medium
+          - mega
+          - small
+          - extra-large
+          - titan48c
+          - titan
+          - micro
+          - colossus
+          - tiny
+          readOnly: true
+          description: Instance type size
+        family:
+          type: string
+          enum:
+          - gpu3
+          - gpua30
+          - gpu3080ti
+          - gpu2
+          - gpu
+          - memory
+          - gpua5000
+          - gpurtx6000pro
+          - storage
+          - standard
+          - colossus
+          - cpu
+          readOnly: true
+          description: Instance type family
+        cpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: CPU count
+          exclusiveMinimum: 0
+        gpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: GPU count
+          exclusiveMinimum: 0
+        authorized:
+          type: boolean
+          readOnly: true
+          description: Requires authorization or publicly available
+        memory:
+          type: integer
+          format: int64
+          readOnly: true
+          description: Available memory
+          exclusiveMinimum: 0
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/zone-name'
+          readOnly: true
+          description: Instance Type available zones
+      description: Compute instance type
+    snapshot-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Snapshot ID
+      description: Snapshot reference
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
+    template:
+      type: object
+      properties:
+        application-consistent-snapshot-enabled:
+          type: boolean
+          description: Template with Qemu Guest Agent installed for application consistent snapshot
+        maintainer:
+          type: string
+          readOnly: true
+          description: Template maintainer
+        description:
+          type: string
+          maxLength: 255
+          description: Template description
+        ssh-key-enabled:
+          type: boolean
+          description: Enable SSH key-based login
+        family:
+          type: string
+          readOnly: true
+          description: Template family
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Template name
+        default-user:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Template default user
+        size:
+          type: integer
+          format: int64
+          description: Template size
+          exclusiveMinimum: 0
+        password-enabled:
+          type: boolean
+          description: Enable password-based login
+        build:
+          type: string
+          readOnly: true
+          description: Template build
+        checksum:
+          type: string
+          description: Template MD5 checksum
+        boot-mode:
+          type: string
+          enum:
+          - legacy
+          - uefi
+          description: 'Boot mode (default: legacy)'
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Template ID
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/zone-name'
+          description: Zones availability
+        url:
+          type: string
+          description: Template source URL
+        version:
+          type: string
+          readOnly: true
+          description: Template version
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Template creation date
+        visibility:
+          type: string
+          enum:
+          - private
+          - public
+          readOnly: true
+          description: Template visibility
+      description: Instance template
+    zone-name:
+      type: string
+      enum:
+      - ch-dk-2
+      - de-muc-1
+      - ch-gva-2
+      - at-vie-1
+      - de-fra-1
+      - bg-sof-1
+      - at-vie-2
+      - hr-zag-1
+    security-group-resource:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Security Group ID
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Security Group name
+        visibility:
+          type: string
+          enum:
+          - private
+          - public
+          description: "Whether this points to a public security group. This is only valid when in the context of\n                   a rule addition which uses a public security group as a source or destination."
+      description: Security Group
+    security-group-rule:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 255
+          description: Security Group rule description
+        start-port:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 65535
+          description: Start port of the range
+        protocol:
+          type: string
+          enum:
+          - tcp
+          - esp
+          - icmp
+          - udp
+          - gre
+          - ah
+          - ipip
+          - icmpv6
+          description: Network protocol
+        icmp:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int64
+              minimum: -1
+              maximum: 254
+            type:
+              type: integer
+              format: int64
+              minimum: -1
+              maximum: 254
+          description: ICMP details
+        end-port:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 65535
+          description: End port of the range
+        security-group:
+          $ref: '#/components/schemas/security-group-resource'
+          description: Security Group allowed
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Security Group rule ID
+        network:
+          type: string
+          description: CIDR-formatted network allowed
+        flow-direction:
+          type: string
+          enum:
+          - ingress
+          - egress
+          description: Network flow direction to match
+      description: Security Group rule
+    instance-state:
+      type: string
+      enum:
+      - expunging
+      - starting
+      - destroying
+      - running
+      - stopping
+      - stopped
+      - migrating
+      - error
+      - destroyed
     instance:
       type: object
       properties:
@@ -530,29 +882,16 @@ components:
           readOnly: true
           description: Instance public IPv4 address
       description: Instance
-    zone-name:
-      type: string
-      enum:
-      - ch-dk-2
-      - de-muc-1
-      - ch-gva-2
-      - at-vie-1
-      - de-fra-1
-      - bg-sof-1
-      - at-vie-2
-      - hr-zag-1
-    elastic-ip-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
     labels:
       type: object
       additionalProperties:
         type: string
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
     ssh-key:
       type: object
       properties:
@@ -568,323 +907,14 @@ components:
           x-go-findable: '2'
           description: SSH key fingerprint
       description: SSH key
-    instance-type:
+    elastic-ip-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          readOnly: true
-          description: Instance type ID
-        size:
-          type: string
-          enum:
-          - large
-          - huge
-          - jumbo
-          - medium
-          - mega
-          - small
-          - extra-large
-          - titan48c
-          - titan
-          - micro
-          - colossus
-          - tiny
-          readOnly: true
-          description: Instance type size
-        family:
-          type: string
-          enum:
-          - gpu3
-          - gpua30
-          - gpu3080ti
-          - gpu2
-          - gpu
-          - memory
-          - gpua5000
-          - gpurtx6000pro
-          - storage
-          - standard
-          - colossus
-          - cpu
-          readOnly: true
-          description: Instance type family
-        cpus:
-          type: integer
-          format: int64
-          readOnly: true
-          description: CPU count
-          exclusiveMinimum: 0
-        gpus:
-          type: integer
-          format: int64
-          readOnly: true
-          description: GPU count
-          exclusiveMinimum: 0
-        authorized:
-          type: boolean
-          readOnly: true
-          description: Requires authorization or publicly available
-        memory:
-          type: integer
-          format: int64
-          readOnly: true
-          description: Available memory
-          exclusiveMinimum: 0
-        zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/zone-name'
-          readOnly: true
-          description: Instance Type available zones
-      description: Compute instance type
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
-    template:
-      type: object
-      properties:
-        application-consistent-snapshot-enabled:
-          type: boolean
-          description: Template with Qemu Guest Agent installed for application consistent snapshot
-        maintainer:
-          type: string
-          readOnly: true
-          description: Template maintainer
-        description:
-          type: string
-          maxLength: 255
-          description: Template description
-        ssh-key-enabled:
-          type: boolean
-          description: Enable SSH key-based login
-        family:
-          type: string
-          readOnly: true
-          description: Template family
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Template name
-        default-user:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Template default user
-        size:
-          type: integer
-          format: int64
-          description: Template size
-          exclusiveMinimum: 0
-        password-enabled:
-          type: boolean
-          description: Enable password-based login
-        build:
-          type: string
-          readOnly: true
-          description: Template build
-        checksum:
-          type: string
-          description: Template MD5 checksum
-        boot-mode:
-          type: string
-          enum:
-          - legacy
-          - uefi
-          description: 'Boot mode (default: legacy)'
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Template ID
-        zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/zone-name'
-          description: Zones availability
-        url:
-          type: string
-          description: Template source URL
-        version:
-          type: string
-          readOnly: true
-          description: Template version
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Template creation date
-        visibility:
-          type: string
-          enum:
-          - private
-          - public
-          readOnly: true
-          description: Template visibility
-      description: Instance template
-    anti-affinity-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
-    security-group-rule:
-      type: object
-      properties:
-        description:
-          type: string
-          maxLength: 255
-          description: Security Group rule description
-        start-port:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 65535
-          description: Start port of the range
-        protocol:
-          type: string
-          enum:
-          - tcp
-          - esp
-          - icmp
-          - udp
-          - gre
-          - ah
-          - ipip
-          - icmpv6
-          description: Network protocol
-        icmp:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int64
-              minimum: -1
-              maximum: 254
-            type:
-              type: integer
-              format: int64
-              minimum: -1
-              maximum: 254
-          description: ICMP details
-        end-port:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 65535
-          description: End port of the range
-        security-group:
-          $ref: '#/components/schemas/security-group-resource'
-          description: Security Group allowed
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Security Group rule ID
-        network:
-          type: string
-          description: CIDR-formatted network allowed
-        flow-direction:
-          type: string
-          enum:
-          - ingress
-          - egress
-          description: Network flow direction to match
-      description: Security Group rule
-    security-group:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Security Group ID
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Security Group name
-        description:
-          type: string
-          maxLength: 255
-          description: Security Group description
-        external-sources:
-          type: array
-          items:
-            type: string
-          uniqueItems: true
-          description: Security Group external sources
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/security-group-rule'
-          uniqueItems: true
-          writeOnly: true
-          description: Security Group rules
-      description: Security Group
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
+          description: Elastic IP ID
+      description: Elastic IP reference
     deploy-target-ref:
       type: object
       properties:
@@ -893,44 +923,14 @@ components:
           format: uuid
           description: Deploy target ID
       description: Deploy target reference
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    instance-state:
-      type: string
-      enum:
-      - expunging
-      - starting
-      - destroying
-      - running
-      - stopping
-      - stopped
-      - migrating
-      - error
-      - destroyed
-    security-group-resource:
+    security-group-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          readOnly: true
-          description: Security Group ID
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Security Group name
-        visibility:
-          type: string
-          enum:
-          - private
-          - public
-          description: "Whether this points to a public security group. This is only valid when in the context of\n                   a rule addition which uses a public security group as a source or destination."
-      description: Security Group
+          description: Security group ID
+      description: Security group reference
 x-topics:
 - title: API Request Signature
   content: '

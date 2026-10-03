@@ -301,19 +301,6 @@ paths:
       operationId: create-iam-role
 components:
   schemas:
-    iam-service-policy:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - rules
-          - allow
-          - deny
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/iam-service-policy-rule'
     iam-policy:
       type: object
       properties:
@@ -332,10 +319,6 @@ components:
       - default-service-strategy
       - services
       description: Policy
-    labels:
-      type: object
-      additionalProperties:
-        type: string
     iam-role:
       type: object
       properties:
@@ -381,20 +364,6 @@ components:
           readOnly: true
           description: IAM Role ID
       description: IAM Role
-    iam-service-policy-rule:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - allow
-          - deny
-        expression:
-          type: string
-        resources:
-          type: array
-          items:
-            type: string
     operation:
       type: object
       properties:
@@ -449,6 +418,37 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    iam-service-policy-rule:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - allow
+          - deny
+        expression:
+          type: string
+        resources:
+          type: array
+          items:
+            type: string
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    iam-service-policy:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - rules
+          - allow
+          - deny
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/iam-service-policy-rule'
 x-topics:
 - title: API Request Signature
   content: '

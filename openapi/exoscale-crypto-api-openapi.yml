@@ -167,14 +167,6 @@ paths:
       operationId: generate-data-key
 components:
   schemas:
-    re-encrypt-response:
-      type: object
-      required:
-      - ciphertext
-      properties:
-        ciphertext:
-          type: string
-          format: byte
     generate-data-key-request:
       type: object
       properties:
@@ -191,11 +183,16 @@ components:
           - string
           - 'null'
           format: byte
-    encrypt-response:
+    decrypt-request:
       type: object
       required:
       - ciphertext
       properties:
+        encryption-context:
+          type:
+          - string
+          - 'null'
+          format: byte
         ciphertext:
           type: string
           format: byte
@@ -207,68 +204,19 @@ components:
         plaintext:
           type: string
           format: byte
-    re-encrypt-request:
+    re-encrypt-response:
       type: object
       required:
-      - source
-      - destination
-      properties:
-        source:
-          type: object
-          required:
-          - key
-          - ciphertext
-          properties:
-            key:
-              type: string
-              format: uuid
-              description: The ID of the source key.
-            encryption-context:
-              type:
-              - string
-              - 'null'
-              format: byte
-              description: Optional encryption context appended to the AAD.
-            ciphertext:
-              type: string
-              format: byte
-        destination:
-          type: object
-          required:
-          - key
-          properties:
-            key:
-              type: string
-              format: uuid
-              description: The ID of the target key.
-            encryption-context:
-              type:
-              - string
-              - 'null'
-              format: byte
-              description: Optional encryption context appended to the AAD.
-    generate-data-key-response:
-      type: object
-      required:
-      - plaintext
       - ciphertext
       properties:
-        plaintext:
-          type: string
-          format: byte
         ciphertext:
           type: string
           format: byte
-    decrypt-request:
+    encrypt-response:
       type: object
       required:
       - ciphertext
       properties:
-        encryption-context:
-          type:
-          - string
-          - 'null'
-          format: byte
         ciphertext:
           type: string
           format: byte
@@ -321,6 +269,58 @@ components:
                 type: string
               location:
                 type: string
+    generate-data-key-response:
+      type: object
+      required:
+      - plaintext
+      - ciphertext
+      properties:
+        plaintext:
+          type: string
+          format: byte
+        ciphertext:
+          type: string
+          format: byte
+    re-encrypt-request:
+      type: object
+      required:
+      - source
+      - destination
+      properties:
+        source:
+          type: object
+          required:
+          - key
+          - ciphertext
+          properties:
+            key:
+              type: string
+              format: uuid
+              description: The ID of the source key.
+            encryption-context:
+              type:
+              - string
+              - 'null'
+              format: byte
+              description: Optional encryption context appended to the AAD.
+            ciphertext:
+              type: string
+              format: byte
+        destination:
+          type: object
+          required:
+          - key
+          properties:
+            key:
+              type: string
+              format: uuid
+              description: The ID of the target key.
+            encryption-context:
+              type:
+              - string
+              - 'null'
+              format: byte
+              description: Optional encryption context appended to the AAD.
 x-topics:
 - title: API Request Signature
   content: '

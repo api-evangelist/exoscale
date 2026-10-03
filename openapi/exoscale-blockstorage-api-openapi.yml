@@ -397,6 +397,123 @@ paths:
       operationId: create-block-storage-volume
 components:
   schemas:
+    instance-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance ID
+      description: Target Instance
+    block-storage-volume:
+      type: object
+      properties:
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Resource labels
+        instance:
+          $ref: '#/components/schemas/instance-ref'
+          description: Volume attached instance, if any
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Volume name
+        state:
+          type: string
+          enum:
+          - snapshotting
+          - deleted
+          - creating
+          - detached
+          - deleting
+          - attaching
+          - error
+          - attached
+          - detaching
+          readOnly: true
+          description: Volume state
+        size:
+          type: integer
+          format: int64
+          minimum: 1
+          description: Volume size
+        blocksize:
+          type: integer
+          format: int64
+          minimum: 0
+          readOnly: true
+          description: Volume block size
+        block-storage-snapshots:
+          type: array
+          items:
+            $ref: '#/components/schemas/block-storage-snapshot-ref'
+          description: Volume snapshots, if any
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Volume ID
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Volume creation date
+      description: Block storage volume
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
     block-storage-snapshot:
       type: object
       properties:
@@ -457,123 +574,6 @@ components:
       type: object
       additionalProperties:
         type: string
-    instance-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance ID
-      description: Target Instance
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
-    block-storage-volume:
-      type: object
-      properties:
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Resource labels
-        instance:
-          $ref: '#/components/schemas/instance-ref'
-          description: Volume attached instance, if any
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Volume name
-        state:
-          type: string
-          enum:
-          - snapshotting
-          - deleted
-          - creating
-          - detached
-          - deleting
-          - attaching
-          - error
-          - attached
-          - detaching
-          readOnly: true
-          description: Volume state
-        size:
-          type: integer
-          format: int64
-          minimum: 1
-          description: Volume size
-        blocksize:
-          type: integer
-          format: int64
-          minimum: 0
-          readOnly: true
-          description: Volume block size
-        block-storage-snapshots:
-          type: array
-          items:
-            $ref: '#/components/schemas/block-storage-snapshot-ref'
-          description: Volume snapshots, if any
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Volume ID
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Volume creation date
-      description: Block storage volume
     block-storage-snapshot-ref:
       type: object
       properties:

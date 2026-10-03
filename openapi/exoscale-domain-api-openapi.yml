@@ -145,27 +145,6 @@ paths:
       operationId: get-dns-domain
 components:
   schemas:
-    dns-domain:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          x-go-findable: '1'
-          description: DNS domain ID
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: DNS domain creation date
-        unicode-name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          x-go-findable: '2'
-          description: DNS domain unicode name
-      description: DNS domain
     operation:
       type: object
       properties:
@@ -220,6 +199,27 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    dns-domain:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          x-go-findable: '1'
+          description: DNS domain ID
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: DNS domain creation date
+        unicode-name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          x-go-findable: '2'
+          description: DNS domain unicode name
+      description: DNS domain
 x-topics:
 - title: API Request Signature
   content: '

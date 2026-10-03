@@ -167,146 +167,6 @@ components:
       required:
       - error
       - code
-    get-model-response:
-      description: AI model
-      properties:
-        updated-at:
-          description: Update time
-          format: date-time
-          type: string
-          readOnly: true
-        name:
-          description: Model name
-          type: string
-          minLength: 1
-        state:
-          description: Model state
-          enum:
-          - ready
-          - creating
-          - downloading
-          - error
-          - created
-          type: string
-        id:
-          description: Model ID
-          format: uuid
-          type: string
-          readOnly: true
-        model-size:
-          description: Model size (nullable)
-          format: int64
-          type: integer
-          minimum: 0
-        created-at:
-          description: Creation time
-          format: date-time
-          type: string
-          readOnly: true
-      type: object
-    list-models-response-entry:
-      description: AI model
-      properties:
-        updated-at:
-          description: Update time
-          format: date-time
-          type: string
-          readOnly: true
-        name:
-          description: Model name
-          type: string
-          minLength: 1
-        state:
-          description: Model state
-          enum:
-          - ready
-          - creating
-          - downloading
-          - error
-          - created
-          type: string
-        id:
-          description: Model ID
-          format: uuid
-          type: string
-          readOnly: true
-        model-size:
-          description: Model size (nullable)
-          format: int64
-          type: integer
-          minimum: 0
-        created-at:
-          description: Creation time
-          format: date-time
-          type: string
-          readOnly: true
-      type: object
-    list-models-response:
-      description: AI model list
-      properties:
-        models:
-          type: array
-          items:
-            $ref: '#/components/schemas/list-models-response-entry'
-      type: object
-    create-model-request:
-      description: AI model
-      properties:
-        name:
-          description: Model name
-          type: string
-          minLength: 1
-        huggingface-token:
-          description: Huggingface Token
-          type: string
-      type: object
-      required:
-      - name
-    delete-model-conflict-response:
-      description: 'Model is in use: deletion forbidden'
-      properties:
-        deployments:
-          description: Deployments using models
-          type: array
-          items:
-            type: string
-      type: object
-    error-response:
-      type: object
-      description: RFC 9457 Problem Details error response
-      required:
-      - type
-      - title
-      - status
-      - detail
-      properties:
-        type:
-          type: string
-          format: uri-reference
-        title:
-          type: string
-        status:
-          type: integer
-          minimum: 100
-          maximum: 599
-        detail:
-          type: string
-        instance:
-          type: string
-          format: uri-reference
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              path:
-                type: string
-              detail:
-                type: string
-              pointer:
-                type: string
-              location:
-                type: string
     operation:
       type: object
       properties:
@@ -361,6 +221,146 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    delete-model-conflict-response:
+      description: 'Model is in use: deletion forbidden'
+      properties:
+        deployments:
+          description: Deployments using models
+          type: array
+          items:
+            type: string
+      type: object
+    create-model-request:
+      description: AI model
+      properties:
+        name:
+          description: Model name
+          type: string
+          minLength: 1
+        huggingface-token:
+          description: Huggingface Token
+          type: string
+      type: object
+      required:
+      - name
+    list-models-response-entry:
+      description: AI model
+      properties:
+        updated-at:
+          description: Update time
+          format: date-time
+          type: string
+          readOnly: true
+        name:
+          description: Model name
+          type: string
+          minLength: 1
+        state:
+          description: Model state
+          enum:
+          - ready
+          - creating
+          - downloading
+          - error
+          - created
+          type: string
+        id:
+          description: Model ID
+          format: uuid
+          type: string
+          readOnly: true
+        model-size:
+          description: Model size (nullable)
+          format: int64
+          type: integer
+          minimum: 0
+        created-at:
+          description: Creation time
+          format: date-time
+          type: string
+          readOnly: true
+      type: object
+    error-response:
+      type: object
+      description: RFC 9457 Problem Details error response
+      required:
+      - type
+      - title
+      - status
+      - detail
+      properties:
+        type:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        status:
+          type: integer
+          minimum: 100
+          maximum: 599
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri-reference
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              detail:
+                type: string
+              pointer:
+                type: string
+              location:
+                type: string
+    get-model-response:
+      description: AI model
+      properties:
+        updated-at:
+          description: Update time
+          format: date-time
+          type: string
+          readOnly: true
+        name:
+          description: Model name
+          type: string
+          minLength: 1
+        state:
+          description: Model state
+          enum:
+          - ready
+          - creating
+          - downloading
+          - error
+          - created
+          type: string
+        id:
+          description: Model ID
+          format: uuid
+          type: string
+          readOnly: true
+        model-size:
+          description: Model size (nullable)
+          format: int64
+          type: integer
+          minimum: 0
+        created-at:
+          description: Creation time
+          format: date-time
+          type: string
+          readOnly: true
+      type: object
+    list-models-response:
+      description: AI model list
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/list-models-response-entry'
+      type: object
 x-topics:
 - title: API Request Signature
   content: '

@@ -78,17 +78,6 @@ paths:
       operationId: list-instance-types
 components:
   schemas:
-    zone-name:
-      type: string
-      enum:
-      - ch-dk-2
-      - de-muc-1
-      - ch-gva-2
-      - at-vie-1
-      - de-fra-1
-      - bg-sof-1
-      - at-vie-2
-      - hr-zag-1
     instance-type:
       type: object
       properties:
@@ -160,6 +149,17 @@ components:
           readOnly: true
           description: Instance Type available zones
       description: Compute instance type
+    zone-name:
+      type: string
+      enum:
+      - ch-dk-2
+      - de-muc-1
+      - ch-gva-2
+      - at-vie-1
+      - de-fra-1
+      - bg-sof-1
+      - at-vie-2
+      - hr-zag-1
 x-topics:
 - title: API Request Signature
   content: '

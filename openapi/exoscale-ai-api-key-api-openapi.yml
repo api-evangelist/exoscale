@@ -250,24 +250,6 @@ components:
       required:
       - error
       - code
-    list-ai-api-keys-response:
-      description: List of AI API keys
-      properties:
-        ai-api-keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/ai-api-key'
-      type: object
-      example:
-        ai-api-keys:
-        - updated-at: '2026-03-25T10:00:00Z'
-          name: default-public-key
-          scope: public
-          id: 11111111-1111-1111-1111-111111111111
-          org-uuid: 22222222-2222-2222-2222-222222222222
-          created-at: '2026-03-25T10:00:00Z'
-      required:
-      - ai-api-keys
     ai-api-key:
       description: AI API key metadata (without value)
       properties:
@@ -297,6 +279,49 @@ components:
           format: date-time
           type: string
           readOnly: true
+      type: object
+    list-ai-api-keys-response:
+      description: List of AI API keys
+      properties:
+        ai-api-keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/ai-api-key'
+      type: object
+      example:
+        ai-api-keys:
+        - updated-at: '2026-03-25T10:00:00Z'
+          name: default-public-key
+          scope: public
+          id: 11111111-1111-1111-1111-111111111111
+          org-uuid: 22222222-2222-2222-2222-222222222222
+          created-at: '2026-03-25T10:00:00Z'
+      required:
+      - ai-api-keys
+    create-ai-api-key-request:
+      description: Request to create a new AI API key
+      properties:
+        name:
+          description: Human-readable name for the AI API key
+          type: string
+        scope:
+          description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
+          type: string
+      type: object
+      required:
+      - name
+      - scope
+    ai-api-key-with-value:
+      description: AI API key with plaintext value
+      allOf:
+      - $ref: '#/components/schemas/ai-api-key'
+      - properties:
+          value:
+            description: Plaintext AI API key value (returned only on create/rotate)
+            type: string
+        type: object
+        required:
+        - value
       type: object
     error-response:
       type: object
@@ -345,31 +370,6 @@ components:
           type: string
       type: object
       minProperties: 1
-    create-ai-api-key-request:
-      description: Request to create a new AI API key
-      properties:
-        name:
-          description: Human-readable name for the AI API key
-          type: string
-        scope:
-          description: 'Key scope: ''public'' for all deployments, or a specific deployment UUID'
-          type: string
-      type: object
-      required:
-      - name
-      - scope
-    ai-api-key-with-value:
-      description: AI API key with plaintext value
-      allOf:
-      - $ref: '#/components/schemas/ai-api-key'
-      - properties:
-          value:
-            description: Plaintext AI API key value (returned only on create/rotate)
-            type: string
-        type: object
-        required:
-        - value
-      type: object
 x-topics:
 - title: API Request Signature
   content: '

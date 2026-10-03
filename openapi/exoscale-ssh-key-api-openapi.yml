@@ -125,21 +125,6 @@ paths:
       operationId: register-ssh-key
 components:
   schemas:
-    ssh-key:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          x-go-findable: '1'
-          description: SSH key name
-        fingerprint:
-          type: string
-          readOnly: true
-          x-go-findable: '2'
-          description: SSH key fingerprint
-      description: SSH key
     operation:
       type: object
       properties:
@@ -194,6 +179,21 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    ssh-key:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          x-go-findable: '1'
+          description: SSH key name
+        fingerprint:
+          type: string
+          readOnly: true
+          x-go-findable: '2'
+          description: SSH key fingerprint
+      description: SSH key
 x-topics:
 - title: API Request Signature
   content: '

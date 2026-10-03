@@ -264,103 +264,6 @@ paths:
       operationId: delete-elastic-ip
 components:
   schemas:
-    elastic-ip:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          x-go-findable: '1'
-          description: Elastic IP ID
-        ip:
-          type: string
-          readOnly: true
-          x-go-findable: '2'
-          description: Elastic IP address
-        addressfamily:
-          type: string
-          enum:
-          - inet4
-          - inet6
-          readOnly: true
-          description: Elastic IP address family
-        cidr:
-          type: string
-          readOnly: true
-          description: Elastic IP cidr
-        description:
-          type: string
-          maxLength: 255
-          description: Elastic IP description
-        healthcheck:
-          $ref: '#/components/schemas/elastic-ip-healthcheck'
-          description: Elastic IP healthcheck
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Resource labels
-      description: Elastic IP
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    elastic-ip-healthcheck:
-      type: object
-      properties:
-        strikes-ok:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 20
-          description: 'Number of attempts before considering the target healthy (default: 2)'
-        tls-skip-verify:
-          type: boolean
-          description: Skip TLS verification
-        tls-sni:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: An optional domain or subdomain to check TLS against
-        strikes-fail:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 20
-          description: 'Number of attempts before considering the target unhealthy (default: 3)'
-        mode:
-          type: string
-          enum:
-          - tcp
-          - http
-          - https
-          description: Health check mode
-        port:
-          type: integer
-          format: int64
-          minimum: 1
-          maximum: 65535
-          description: Health check port
-        uri:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: An endpoint to use for the health check, for example '/status'
-        interval:
-          type: integer
-          format: int64
-          minimum: 5
-          maximum: 300
-          description: 'Interval between the checks in seconds (default: 10)'
-        timeout:
-          type: integer
-          format: int64
-          minimum: 2
-          maximum: 60
-          description: 'Health check timeout value in seconds (default: 2)'
-      required:
-      - mode
-      - port
-      description: Elastic IP address healthcheck
     instance-ref:
       type: object
       properties:
@@ -423,6 +326,103 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    elastic-ip-healthcheck:
+      type: object
+      properties:
+        strikes-ok:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 20
+          description: 'Number of attempts before considering the target healthy (default: 2)'
+        tls-skip-verify:
+          type: boolean
+          description: Skip TLS verification
+        tls-sni:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: An optional domain or subdomain to check TLS against
+        strikes-fail:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 20
+          description: 'Number of attempts before considering the target unhealthy (default: 3)'
+        mode:
+          type: string
+          enum:
+          - tcp
+          - http
+          - https
+          description: Health check mode
+        port:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 65535
+          description: Health check port
+        uri:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: An endpoint to use for the health check, for example '/status'
+        interval:
+          type: integer
+          format: int64
+          minimum: 5
+          maximum: 300
+          description: 'Interval between the checks in seconds (default: 10)'
+        timeout:
+          type: integer
+          format: int64
+          minimum: 2
+          maximum: 60
+          description: 'Health check timeout value in seconds (default: 2)'
+      required:
+      - mode
+      - port
+      description: Elastic IP address healthcheck
+    elastic-ip:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          x-go-findable: '1'
+          description: Elastic IP ID
+        ip:
+          type: string
+          readOnly: true
+          x-go-findable: '2'
+          description: Elastic IP address
+        addressfamily:
+          type: string
+          enum:
+          - inet4
+          - inet6
+          readOnly: true
+          description: Elastic IP address family
+        cidr:
+          type: string
+          readOnly: true
+          description: Elastic IP cidr
+        description:
+          type: string
+          maxLength: 255
+          description: Elastic IP description
+        healthcheck:
+          $ref: '#/components/schemas/elastic-ip-healthcheck'
+          description: Elastic IP healthcheck
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Resource labels
+      description: Elastic IP
 x-topics:
 - title: API Request Signature
   content: '
