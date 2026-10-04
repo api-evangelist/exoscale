@@ -233,23 +233,42 @@ paths:
       operationId: rotate-ai-api-key
 components:
   schemas:
-    forbidden-operation-response:
-      description: Forbidden operation response
-      properties:
-        code:
-          description: Machine-readable forbidden error code
-          enum:
-          - forbidden_operation
-          type: string
-          readOnly: true
-        error:
-          description: Forbidden error message
-          type: string
-          readOnly: true
+    error-response:
       type: object
+      description: RFC 9457 Problem Details error response
       required:
-      - error
-      - code
+      - type
+      - title
+      - status
+      - detail
+      properties:
+        type:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        status:
+          type: integer
+          minimum: 100
+          maximum: 599
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri-reference
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              detail:
+                type: string
+              pointer:
+                type: string
+              location:
+                type: string
     ai-api-key:
       description: AI API key metadata (without value)
       properties:
@@ -298,6 +317,35 @@ components:
           created-at: '2026-03-25T10:00:00Z'
       required:
       - ai-api-keys
+    ai-api-key-with-value:
+      description: AI API key with plaintext value
+      allOf:
+      - $ref: '#/components/schemas/ai-api-key'
+      - properties:
+          value:
+            description: Plaintext AI API key value (returned only on create/rotate)
+            type: string
+        type: object
+        required:
+        - value
+      type: object
+    forbidden-operation-response:
+      description: Forbidden operation response
+      properties:
+        code:
+          description: Machine-readable forbidden error code
+          enum:
+          - forbidden_operation
+          type: string
+          readOnly: true
+        error:
+          description: Forbidden error message
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - error
+      - code
     create-ai-api-key-request:
       description: Request to create a new AI API key
       properties:
@@ -311,54 +359,6 @@ components:
       required:
       - name
       - scope
-    ai-api-key-with-value:
-      description: AI API key with plaintext value
-      allOf:
-      - $ref: '#/components/schemas/ai-api-key'
-      - properties:
-          value:
-            description: Plaintext AI API key value (returned only on create/rotate)
-            type: string
-        type: object
-        required:
-        - value
-      type: object
-    error-response:
-      type: object
-      description: RFC 9457 Problem Details error response
-      required:
-      - type
-      - title
-      - status
-      - detail
-      properties:
-        type:
-          type: string
-          format: uri-reference
-        title:
-          type: string
-        status:
-          type: integer
-          minimum: 100
-          maximum: 599
-        detail:
-          type: string
-        instance:
-          type: string
-          format: uri-reference
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              path:
-                type: string
-              detail:
-                type: string
-              pointer:
-                type: string
-              location:
-                type: string
     update-ai-api-key-request:
       description: Request to update an AI API key (at least one property required)
       properties:

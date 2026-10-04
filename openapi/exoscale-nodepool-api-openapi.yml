@@ -382,94 +382,6 @@ paths:
       operationId: create-sks-nodepool
 components:
   schemas:
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
-    template-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Template ID
-      description: Template reference
-    sks-nodepool-labels:
-      type: object
-      additionalProperties:
-        type: string
-    kubelet-image-gc:
-      type: object
-      properties:
-        high-threshold:
-          type: integer
-          format: int64
-          minimum: 0
-        low-threshold:
-          type: integer
-          format: int64
-          minimum: 0
-        min-age:
-          type: string
-      description: Kubelet image GC options
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
     sks-nodepool-taint:
       type: object
       properties:
@@ -489,26 +401,14 @@ components:
       - value
       - effect
       description: Nodepool taint
-    instance-type-ref:
+    security-group-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Instance type ID
-      description: Instance type reference
-    private-network-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Private network ID
-      description: Private network reference
-    sks-nodepool-taints:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/sks-nodepool-taint'
+          description: Security group ID
+      description: Security group reference
     sks-nodepool:
       type: object
       properties:
@@ -635,6 +535,38 @@ components:
           format: uuid
           description: Instance Pool ID
       description: Target Instance Pool
+    sks-nodepool-taints:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/sks-nodepool-taint'
+    template-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Template ID
+      description: Template reference
+    private-network-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Private network ID
+      description: Private network reference
+    sks-nodepool-labels:
+      type: object
+      additionalProperties:
+        type: string
+    instance-type-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance type ID
+      description: Instance type reference
     deploy-target-ref:
       type: object
       properties:
@@ -643,6 +575,74 @@ components:
           format: uuid
           description: Deploy target ID
       description: Deploy target reference
+    kubelet-image-gc:
+      type: object
+      properties:
+        high-threshold:
+          type: integer
+          format: int64
+          minimum: 0
+        low-threshold:
+          type: integer
+          format: int64
+          minimum: 0
+        min-age:
+          type: string
+      description: Kubelet image GC options
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
     anti-affinity-group-ref:
       type: object
       properties:

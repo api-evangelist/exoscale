@@ -344,41 +344,14 @@ paths:
       operationId: reset-private-network-field
 components:
   schemas:
-    anti-affinity-group-ref:
+    security-group-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
-    private-network-options:
-      type: object
-      properties:
-        routers:
-          type: array
-          items:
-            type: string
-            format: ipv4
-          description: Routers
-        dns-servers:
-          type: array
-          items:
-            type: string
-            format: ipv4
-          description: DNS Servers
-        ntp-servers:
-          type: array
-          items:
-            type: string
-            format: ipv4
-          description: NTP Servers
-        domain-search:
-          type: array
-          items:
-            type: string
-          description: Domain search list, limited to 255 octets
-      description: Private Network DHCP Options
+          description: Security group ID
+      description: Security group reference
     ssh-key:
       type: object
       properties:
@@ -394,260 +367,6 @@ components:
           x-go-findable: '2'
           description: SSH key fingerprint
       description: SSH key
-    manager:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Manager ID
-        type:
-          type: string
-          enum:
-          - sks-nodepool
-          - instance-pool
-          description: Manager type
-      description: Resource manager
-    snapshot-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Snapshot ID
-      description: Snapshot reference
-    instance-type:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Instance type ID
-        size:
-          type: string
-          enum:
-          - large
-          - huge
-          - jumbo
-          - medium
-          - mega
-          - small
-          - extra-large
-          - titan48c
-          - titan
-          - micro
-          - colossus
-          - tiny
-          readOnly: true
-          description: Instance type size
-        family:
-          type: string
-          enum:
-          - gpu3
-          - gpua30
-          - gpu3080ti
-          - gpu2
-          - gpu
-          - memory
-          - gpua5000
-          - gpurtx6000pro
-          - storage
-          - standard
-          - colossus
-          - cpu
-          readOnly: true
-          description: Instance type family
-        cpus:
-          type: integer
-          format: int64
-          readOnly: true
-          description: CPU count
-          exclusiveMinimum: 0
-        gpus:
-          type: integer
-          format: int64
-          readOnly: true
-          description: GPU count
-          exclusiveMinimum: 0
-        authorized:
-          type: boolean
-          readOnly: true
-          description: Requires authorization or publicly available
-        memory:
-          type: integer
-          format: int64
-          readOnly: true
-          description: Available memory
-          exclusiveMinimum: 0
-        zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/zone-name'
-          readOnly: true
-          description: Instance Type available zones
-      description: Compute instance type
-    private-network-lease:
-      type: object
-      properties:
-        ip:
-          type: string
-          format: ipv4
-          readOnly: true
-          description: Private Network IP address
-        instance-id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Attached instance ID
-      description: Private Network leased IP address
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
-    template:
-      type: object
-      properties:
-        application-consistent-snapshot-enabled:
-          type: boolean
-          description: Template with Qemu Guest Agent installed for application consistent snapshot
-        maintainer:
-          type: string
-          readOnly: true
-          description: Template maintainer
-        description:
-          type: string
-          maxLength: 255
-          description: Template description
-        ssh-key-enabled:
-          type: boolean
-          description: Enable SSH key-based login
-        family:
-          type: string
-          readOnly: true
-          description: Template family
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Template name
-        default-user:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Template default user
-        size:
-          type: integer
-          format: int64
-          description: Template size
-          exclusiveMinimum: 0
-        password-enabled:
-          type: boolean
-          description: Enable password-based login
-        build:
-          type: string
-          readOnly: true
-          description: Template build
-        checksum:
-          type: string
-          description: Template MD5 checksum
-        boot-mode:
-          type: string
-          enum:
-          - legacy
-          - uefi
-          description: 'Boot mode (default: legacy)'
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Template ID
-        zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/zone-name'
-          description: Zones availability
-        url:
-          type: string
-          description: Template source URL
-        version:
-          type: string
-          readOnly: true
-          description: Template version
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Template creation date
-        visibility:
-          type: string
-          enum:
-          - private
-          - public
-          readOnly: true
-          description: Template visibility
-      description: Instance template
-    zone-name:
-      type: string
-      enum:
-      - ch-dk-2
-      - de-muc-1
-      - ch-gva-2
-      - at-vie-1
-      - de-fra-1
-      - bg-sof-1
-      - at-vie-2
-      - hr-zag-1
     private-network:
       type: object
       properties:
@@ -695,6 +414,20 @@ components:
           format: ipv4
           description: Private Network end IP address
       description: Private Network
+    manager:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Manager ID
+        type:
+          type: string
+          enum:
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
     instance-state:
       type: string
       enum:
@@ -707,6 +440,76 @@ components:
       - migrating
       - error
       - destroyed
+    zone-name:
+      type: string
+      enum:
+      - ch-dk-2
+      - de-muc-1
+      - ch-gva-2
+      - at-vie-1
+      - de-fra-1
+      - bg-sof-1
+      - at-vie-2
+      - hr-zag-1
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    snapshot-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Snapshot ID
+      description: Snapshot reference
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    private-network-options:
+      type: object
+      properties:
+        routers:
+          type: array
+          items:
+            type: string
+            format: ipv4
+          description: Routers
+        dns-servers:
+          type: array
+          items:
+            type: string
+            format: ipv4
+          description: DNS Servers
+        ntp-servers:
+          type: array
+          items:
+            type: string
+            format: ipv4
+          description: NTP Servers
+        domain-search:
+          type: array
+          items:
+            type: string
+          description: Domain search list, limited to 255 octets
+      description: Private Network DHCP Options
+    private-network-lease:
+      type: object
+      properties:
+        ip:
+          type: string
+          format: ipv4
+          readOnly: true
+          description: Private Network IP address
+        instance-id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Attached instance ID
+      description: Private Network leased IP address
     instance:
       type: object
       properties:
@@ -823,24 +626,6 @@ components:
           readOnly: true
           description: Instance public IPv4 address
       description: Instance
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    deploy-target-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
     elastic-ip-ref:
       type: object
       properties:
@@ -849,14 +634,229 @@ components:
           format: uuid
           description: Elastic IP ID
       description: Elastic IP reference
-    security-group-ref:
+    deploy-target-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Security group ID
-      description: Security group reference
+          description: Deploy target ID
+      description: Deploy target reference
+    instance-type:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Instance type ID
+        size:
+          type: string
+          enum:
+          - large
+          - huge
+          - jumbo
+          - medium
+          - mega
+          - small
+          - extra-large
+          - titan48c
+          - titan
+          - micro
+          - colossus
+          - tiny
+          readOnly: true
+          description: Instance type size
+        family:
+          type: string
+          enum:
+          - gpu3
+          - gpua30
+          - gpu3080ti
+          - gpu2
+          - gpu
+          - memory
+          - gpua5000
+          - gpurtx6000pro
+          - storage
+          - standard
+          - colossus
+          - cpu
+          readOnly: true
+          description: Instance type family
+        cpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: CPU count
+          exclusiveMinimum: 0
+        gpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: GPU count
+          exclusiveMinimum: 0
+        authorized:
+          type: boolean
+          readOnly: true
+          description: Requires authorization or publicly available
+        memory:
+          type: integer
+          format: int64
+          readOnly: true
+          description: Available memory
+          exclusiveMinimum: 0
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/zone-name'
+          readOnly: true
+          description: Instance Type available zones
+      description: Compute instance type
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
+    anti-affinity-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
+    template:
+      type: object
+      properties:
+        application-consistent-snapshot-enabled:
+          type: boolean
+          description: Template with Qemu Guest Agent installed for application consistent snapshot
+        maintainer:
+          type: string
+          readOnly: true
+          description: Template maintainer
+        description:
+          type: string
+          maxLength: 255
+          description: Template description
+        ssh-key-enabled:
+          type: boolean
+          description: Enable SSH key-based login
+        family:
+          type: string
+          readOnly: true
+          description: Template family
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Template name
+        default-user:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Template default user
+        size:
+          type: integer
+          format: int64
+          description: Template size
+          exclusiveMinimum: 0
+        password-enabled:
+          type: boolean
+          description: Enable password-based login
+        build:
+          type: string
+          readOnly: true
+          description: Template build
+        checksum:
+          type: string
+          description: Template MD5 checksum
+        boot-mode:
+          type: string
+          enum:
+          - legacy
+          - uefi
+          description: 'Boot mode (default: legacy)'
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Template ID
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/zone-name'
+          description: Zones availability
+        url:
+          type: string
+          description: Template source URL
+        version:
+          type: string
+          readOnly: true
+          description: Template version
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Template creation date
+        visibility:
+          type: string
+          enum:
+          - private
+          - public
+          readOnly: true
+          description: Template visibility
+      description: Instance template
 x-topics:
 - title: API Request Signature
   content: '

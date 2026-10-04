@@ -190,6 +190,14 @@ paths:
       operationId: promote-snapshot-to-template
 components:
   schemas:
+    security-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Security group ID
+      description: Security group reference
     ssh-key:
       type: object
       properties:
@@ -205,107 +213,6 @@ components:
           x-go-findable: '2'
           description: SSH key fingerprint
       description: SSH key
-    instance-type:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Instance type ID
-        size:
-          type: string
-          enum:
-          - large
-          - huge
-          - jumbo
-          - medium
-          - mega
-          - small
-          - extra-large
-          - titan48c
-          - titan
-          - micro
-          - colossus
-          - tiny
-          readOnly: true
-          description: Instance type size
-        family:
-          type: string
-          enum:
-          - gpu3
-          - gpua30
-          - gpu3080ti
-          - gpu2
-          - gpu
-          - memory
-          - gpua5000
-          - gpurtx6000pro
-          - storage
-          - standard
-          - colossus
-          - cpu
-          readOnly: true
-          description: Instance type family
-        cpus:
-          type: integer
-          format: int64
-          readOnly: true
-          description: CPU count
-          exclusiveMinimum: 0
-        gpus:
-          type: integer
-          format: int64
-          readOnly: true
-          description: GPU count
-          exclusiveMinimum: 0
-        authorized:
-          type: boolean
-          readOnly: true
-          description: Requires authorization or publicly available
-        memory:
-          type: integer
-          format: int64
-          readOnly: true
-          description: Available memory
-          exclusiveMinimum: 0
-        zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/zone-name'
-          readOnly: true
-          description: Instance Type available zones
-      description: Compute instance type
-    snapshot-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Snapshot ID
-      description: Snapshot reference
-    manager:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Manager ID
-        type:
-          type: string
-          enum:
-          - sks-nodepool
-          - instance-pool
-          description: Manager type
-      description: Resource manager
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
     operation:
       type: object
       properties:
@@ -360,88 +267,32 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    template:
+    manager:
       type: object
       properties:
-        application-consistent-snapshot-enabled:
-          type: boolean
-          description: Template with Qemu Guest Agent installed for application consistent snapshot
-        maintainer:
-          type: string
-          readOnly: true
-          description: Template maintainer
-        description:
-          type: string
-          maxLength: 255
-          description: Template description
-        ssh-key-enabled:
-          type: boolean
-          description: Enable SSH key-based login
-        family:
-          type: string
-          readOnly: true
-          description: Template family
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Template name
-        default-user:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Template default user
-        size:
-          type: integer
-          format: int64
-          description: Template size
-          exclusiveMinimum: 0
-        password-enabled:
-          type: boolean
-          description: Enable password-based login
-        build:
-          type: string
-          readOnly: true
-          description: Template build
-        checksum:
-          type: string
-          description: Template MD5 checksum
-        boot-mode:
-          type: string
-          enum:
-          - legacy
-          - uefi
-          description: 'Boot mode (default: legacy)'
         id:
           type: string
           format: uuid
-          readOnly: true
-          description: Template ID
-        zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/zone-name'
-          description: Zones availability
-        url:
-          type: string
-          description: Template source URL
-        version:
-          type: string
-          readOnly: true
-          description: Template version
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Template creation date
-        visibility:
+          description: Manager ID
+        type:
           type: string
           enum:
-          - private
-          - public
-          readOnly: true
-          description: Template visibility
-      description: Instance template
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
+    instance-state:
+      type: string
+      enum:
+      - expunging
+      - starting
+      - destroying
+      - running
+      - stopping
+      - stopped
+      - migrating
+      - error
+      - destroyed
     zone-name:
       type: string
       enum:
@@ -453,60 +304,18 @@ components:
       - bg-sof-1
       - at-vie-2
       - hr-zag-1
-    snapshot:
+    snapshot-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          readOnly: true
           description: Snapshot ID
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Snapshot name
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Snapshot creation date
-        state:
-          type: string
-          enum:
-          - snapshotting
-          - deleted
-          - exporting
-          - ready
-          - deleting
-          - error
-          - exported
-          description: Snapshot state
-        size:
-          type: integer
-          format: int64
-          minimum: 10
-          maximum: 51200
-          readOnly: true
-          description: Snapshot size in GiB
-        export:
-          type: object
-          properties:
-            presigned-url:
-              type: string
-              description: Exported snapshot disk file pre-signed URL
-            md5sum:
-              type: string
-              description: Exported snapshot disk file MD5 checksum
-          description: Exported snapshot information
-        instance:
-          $ref: '#/components/schemas/instance'
-          description: Compute Instance snapshotted
-        application-consistent:
-          type: boolean
-          readOnly: true
-          description: Indicates whether the snapshot was taken using an application-consistent method
-      description: Snapshot
+      description: Snapshot reference
+    labels:
+      type: object
+      additionalProperties:
+        type: string
     instance:
       type: object
       properties:
@@ -623,28 +432,60 @@ components:
           readOnly: true
           description: Instance public IPv4 address
       description: Instance
-    labels:
+    snapshot:
       type: object
-      additionalProperties:
-        type: string
-    instance-state:
-      type: string
-      enum:
-      - expunging
-      - starting
-      - destroying
-      - running
-      - stopping
-      - stopped
-      - migrating
-      - error
-      - destroyed
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Snapshot ID
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Snapshot name
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Snapshot creation date
+        state:
+          type: string
+          enum:
+          - snapshotting
+          - deleted
+          - exporting
+          - ready
+          - deleting
+          - error
+          - exported
+          description: Snapshot state
+        size:
+          type: integer
+          format: int64
+          minimum: 10
+          maximum: 51200
+          readOnly: true
+          description: Snapshot size in GiB
+        export:
+          type: object
+          properties:
+            presigned-url:
+              type: string
+              description: Exported snapshot disk file pre-signed URL
+            md5sum:
+              type: string
+              description: Exported snapshot disk file MD5 checksum
+          description: Exported snapshot information
+        instance:
+          $ref: '#/components/schemas/instance'
+          description: Compute Instance snapshotted
+        application-consistent:
+          type: boolean
+          readOnly: true
+          description: Indicates whether the snapshot was taken using an application-consistent method
+      description: Snapshot
     deploy-target-ref:
       type: object
       properties:
@@ -661,6 +502,83 @@ components:
           format: uuid
           description: Elastic IP ID
       description: Elastic IP reference
+    instance-type:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Instance type ID
+        size:
+          type: string
+          enum:
+          - large
+          - huge
+          - jumbo
+          - medium
+          - mega
+          - small
+          - extra-large
+          - titan48c
+          - titan
+          - micro
+          - colossus
+          - tiny
+          readOnly: true
+          description: Instance type size
+        family:
+          type: string
+          enum:
+          - gpu3
+          - gpua30
+          - gpu3080ti
+          - gpu2
+          - gpu
+          - memory
+          - gpua5000
+          - gpurtx6000pro
+          - storage
+          - standard
+          - colossus
+          - cpu
+          readOnly: true
+          description: Instance type family
+        cpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: CPU count
+          exclusiveMinimum: 0
+        gpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: GPU count
+          exclusiveMinimum: 0
+        authorized:
+          type: boolean
+          readOnly: true
+          description: Requires authorization or publicly available
+        memory:
+          type: integer
+          format: int64
+          readOnly: true
+          description: Available memory
+          exclusiveMinimum: 0
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/zone-name'
+          readOnly: true
+          description: Instance Type available zones
+      description: Compute instance type
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
     anti-affinity-group-ref:
       type: object
       properties:
@@ -669,6 +587,88 @@ components:
           format: uuid
           description: Anti-affinity group ID
       description: Anti-affinity group reference
+    template:
+      type: object
+      properties:
+        application-consistent-snapshot-enabled:
+          type: boolean
+          description: Template with Qemu Guest Agent installed for application consistent snapshot
+        maintainer:
+          type: string
+          readOnly: true
+          description: Template maintainer
+        description:
+          type: string
+          maxLength: 255
+          description: Template description
+        ssh-key-enabled:
+          type: boolean
+          description: Enable SSH key-based login
+        family:
+          type: string
+          readOnly: true
+          description: Template family
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Template name
+        default-user:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Template default user
+        size:
+          type: integer
+          format: int64
+          description: Template size
+          exclusiveMinimum: 0
+        password-enabled:
+          type: boolean
+          description: Enable password-based login
+        build:
+          type: string
+          readOnly: true
+          description: Template build
+        checksum:
+          type: string
+          description: Template MD5 checksum
+        boot-mode:
+          type: string
+          enum:
+          - legacy
+          - uefi
+          description: 'Boot mode (default: legacy)'
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Template ID
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/zone-name'
+          description: Zones availability
+        url:
+          type: string
+          description: Template source URL
+        version:
+          type: string
+          readOnly: true
+          description: Template version
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Template creation date
+        visibility:
+          type: string
+          enum:
+          - private
+          - public
+          readOnly: true
+          description: Template visibility
+      description: Instance template
 x-topics:
 - title: API Request Signature
   content: '

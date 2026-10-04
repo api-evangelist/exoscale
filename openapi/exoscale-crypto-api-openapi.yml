@@ -167,72 +167,6 @@ paths:
       operationId: generate-data-key
 components:
   schemas:
-    generate-data-key-request:
-      type: object
-      properties:
-        key-spec:
-          type: string
-          enum:
-          - AES-256
-        bytes-count:
-          type: integer
-          minimum: 1
-          maximum: 1024
-        encryption-context:
-          type:
-          - string
-          - 'null'
-          format: byte
-    decrypt-request:
-      type: object
-      required:
-      - ciphertext
-      properties:
-        encryption-context:
-          type:
-          - string
-          - 'null'
-          format: byte
-        ciphertext:
-          type: string
-          format: byte
-    decrypt-response:
-      type: object
-      required:
-      - plaintext
-      properties:
-        plaintext:
-          type: string
-          format: byte
-    re-encrypt-response:
-      type: object
-      required:
-      - ciphertext
-      properties:
-        ciphertext:
-          type: string
-          format: byte
-    encrypt-response:
-      type: object
-      required:
-      - ciphertext
-      properties:
-        ciphertext:
-          type: string
-          format: byte
-    encrypt-request:
-      type: object
-      required:
-      - plaintext
-      properties:
-        encryption-context:
-          type:
-          - string
-          - 'null'
-          format: byte
-        plaintext:
-          type: string
-          format: byte
     error-response:
       type: object
       description: RFC 9457 Problem Details error response
@@ -269,18 +203,6 @@ components:
                 type: string
               location:
                 type: string
-    generate-data-key-response:
-      type: object
-      required:
-      - plaintext
-      - ciphertext
-      properties:
-        plaintext:
-          type: string
-          format: byte
-        ciphertext:
-          type: string
-          format: byte
     re-encrypt-request:
       type: object
       required:
@@ -321,6 +243,84 @@ components:
               - 'null'
               format: byte
               description: Optional encryption context appended to the AAD.
+    decrypt-response:
+      type: object
+      required:
+      - plaintext
+      properties:
+        plaintext:
+          type: string
+          format: byte
+    decrypt-request:
+      type: object
+      required:
+      - ciphertext
+      properties:
+        encryption-context:
+          type:
+          - string
+          - 'null'
+          format: byte
+        ciphertext:
+          type: string
+          format: byte
+    encrypt-response:
+      type: object
+      required:
+      - ciphertext
+      properties:
+        ciphertext:
+          type: string
+          format: byte
+    generate-data-key-response:
+      type: object
+      required:
+      - plaintext
+      - ciphertext
+      properties:
+        plaintext:
+          type: string
+          format: byte
+        ciphertext:
+          type: string
+          format: byte
+    encrypt-request:
+      type: object
+      required:
+      - plaintext
+      properties:
+        encryption-context:
+          type:
+          - string
+          - 'null'
+          format: byte
+        plaintext:
+          type: string
+          format: byte
+    re-encrypt-response:
+      type: object
+      required:
+      - ciphertext
+      properties:
+        ciphertext:
+          type: string
+          format: byte
+    generate-data-key-request:
+      type: object
+      properties:
+        key-spec:
+          type: string
+          enum:
+          - AES-256
+        bytes-count:
+          type: integer
+          minimum: 1
+          maximum: 1024
+        encryption-context:
+          type:
+          - string
+          - 'null'
+          format: byte
 x-topics:
 - title: API Request Signature
   content: '

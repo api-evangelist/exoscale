@@ -135,6 +135,49 @@ paths:
       operationId: list-users
 components:
   schemas:
+    user:
+      type: object
+      properties:
+        sso:
+          type: boolean
+          description: SSO enabled
+        two-factor-authentication:
+          type: boolean
+          description: Two Factor Authentication enabled
+        email:
+          type: string
+          readOnly: true
+          description: User Email
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: User ID
+        role:
+          $ref: '#/components/schemas/iam-role'
+          description: IAM Role
+        pending:
+          type: boolean
+          readOnly: true
+          description: True if the user has not yet created an Exoscale account
+      required:
+      - email
+      - role
+      description: User
+    iam-service-policy-rule:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - allow
+          - deny
+        expression:
+          type: string
+        resources:
+          type: array
+          items:
+            type: string
     iam-policy:
       type: object
       properties:
@@ -153,6 +196,19 @@ components:
       - default-service-strategy
       - services
       description: Policy
+    iam-service-policy:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - rules
+          - allow
+          - deny
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/iam-service-policy-rule'
     iam-role:
       type: object
       properties:
@@ -198,6 +254,10 @@ components:
           readOnly: true
           description: IAM Role ID
       description: IAM Role
+    labels:
+      type: object
+      additionalProperties:
+        type: string
     operation:
       type: object
       properties:
@@ -252,66 +312,6 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    iam-service-policy-rule:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - allow
-          - deny
-        expression:
-          type: string
-        resources:
-          type: array
-          items:
-            type: string
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    user:
-      type: object
-      properties:
-        sso:
-          type: boolean
-          description: SSO enabled
-        two-factor-authentication:
-          type: boolean
-          description: Two Factor Authentication enabled
-        email:
-          type: string
-          readOnly: true
-          description: User Email
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: User ID
-        role:
-          $ref: '#/components/schemas/iam-role'
-          description: IAM Role
-        pending:
-          type: boolean
-          readOnly: true
-          description: True if the user has not yet created an Exoscale account
-      required:
-      - email
-      - role
-      description: User
-    iam-service-policy:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - rules
-          - allow
-          - deny
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/iam-service-policy-rule'
 x-topics:
 - title: API Request Signature
   content: '

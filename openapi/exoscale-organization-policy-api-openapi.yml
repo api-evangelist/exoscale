@@ -85,6 +85,51 @@ paths:
       operationId: reset-iam-organization-policy
 components:
   schemas:
+    iam-service-policy:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - rules
+          - allow
+          - deny
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/iam-service-policy-rule'
+    iam-service-policy-rule:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - allow
+          - deny
+        expression:
+          type: string
+        resources:
+          type: array
+          items:
+            type: string
+    iam-policy:
+      type: object
+      properties:
+        default-service-strategy:
+          type: string
+          enum:
+          - allow
+          - deny
+          description: IAM default service strategy
+        services:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/iam-service-policy'
+          description: IAM services
+      required:
+      - default-service-strategy
+      - services
+      description: Policy
     operation:
       type: object
       properties:
@@ -139,51 +184,6 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    iam-service-policy-rule:
-      type: object
-      properties:
-        action:
-          type: string
-          enum:
-          - allow
-          - deny
-        expression:
-          type: string
-        resources:
-          type: array
-          items:
-            type: string
-    iam-policy:
-      type: object
-      properties:
-        default-service-strategy:
-          type: string
-          enum:
-          - allow
-          - deny
-          description: IAM default service strategy
-        services:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/iam-service-policy'
-          description: IAM services
-      required:
-      - default-service-strategy
-      - services
-      description: Policy
-    iam-service-policy:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - rules
-          - allow
-          - deny
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/iam-service-policy-rule'
 x-topics:
 - title: API Request Signature
   content: '

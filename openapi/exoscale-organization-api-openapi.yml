@@ -117,48 +117,6 @@ paths:
       operationId: get-env-impact
 components:
   schemas:
-    env-impact-indicator:
-      type: object
-      properties:
-        value:
-          type: string
-          description: Value
-        amount:
-          type: number
-          description: Amount
-        unit:
-          type: string
-          description: Unit
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/env-impact-detail'
-          description: Details
-    env-metadata-entry:
-      type: object
-      properties:
-        value:
-          type: string
-          description: Value
-        amount:
-          type: number
-          description: Amount
-        unit:
-          type: string
-          description: Unit
-    env-impact-report:
-      type: object
-      properties:
-        metadata:
-          type: array
-          items:
-            $ref: '#/components/schemas/env-metadata-entry'
-          description: Metadata
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/env-product'
-          description: Products
     env-product:
       type: object
       properties:
@@ -212,7 +170,49 @@ components:
           readOnly: true
           description: Organization currency
       description: Organization
+    env-impact-indicator:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Value
+        amount:
+          type: number
+          description: Amount
+        unit:
+          type: string
+          description: Unit
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/env-impact-detail'
+          description: Details
+    env-impact-report:
+      type: object
+      properties:
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/env-metadata-entry'
+          description: Metadata
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/env-product'
+          description: Products
     env-impact-detail:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Value
+        amount:
+          type: number
+          description: Amount
+        unit:
+          type: string
+          description: Unit
+    env-metadata-entry:
       type: object
       properties:
         value:
