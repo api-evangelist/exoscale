@@ -739,6 +739,10 @@ apis:
   - type: Pricing
     url: https://www.exoscale.com/pricing/
 common:
+  - type: RateLimits
+    url: rate-limits/exoscale-rate-limits.yml
+  - type: FinOps
+    url: finops/exoscale-finops.yml
   - type: Plans
     url: plans/exoscale-plans-pricing.yml
   - type: CapabilityMap
