@@ -75,3 +75,90 @@ rate_limit_statements:
 - Each NLB includes up to 10 Services
 - Block Storage volumes require a minimum size of 1 GiB and have a maximum size of 10 TiB per volume.
 - A minimum billable size of 128 KiB per object applies.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - subscription
+  units:
+  - data
+  plans:
+  - name: Recovery Service
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: Private Connect Direct Port per month
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Private Connect One-Off Setup Cost
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: Private Connect Equinix Direct Port per month
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Private Connect Equinix One-Off Setup Cost
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: Archival Storage
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Warm Storage (planned early 2027)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Cold Storage (planned early 2027)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Traffic INBOUND
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: GPU B300 Instances
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
