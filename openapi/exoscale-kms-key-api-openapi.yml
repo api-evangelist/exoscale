@@ -382,24 +382,35 @@ paths:
       operationId: cancel-kms-key-deletion
 components:
   schemas:
-    key-rotation-config:
+    revision-stamp:
       type: object
       required:
-      - manual-count
-      - automatic
-      - rotation-period
-      - next-at
+      - at
+      - seq
       properties:
-        manual-count:
-          type: integer
-        automatic:
-          type: boolean
-        rotation-period:
-          type: integer
-        next-at:
+        at:
           type: string
           format: date-time
+        seq:
+          type: integer
+          minimum: 0
     enable-kms-key-rotation-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    list-kms-key-rotations-response:
+      type: object
+      required:
+      - rotations
+      properties:
+        rotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/list-kms-key-rotations-response-entry'
+    disable-kms-key-rotation-response:
       type: object
       required:
       - rotation
@@ -424,55 +435,6 @@ components:
           - encrypt-decrypt
         multi-zone:
           type: boolean
-    list-kms-key-rotations-response-entry:
-      type: object
-      required:
-      - version
-      - rotated-at
-      - automatic
-      properties:
-        version:
-          type: integer
-        rotated-at:
-          type: string
-          format: date-time
-        automatic:
-          type: boolean
-    revision-stamp:
-      type: object
-      required:
-      - at
-      - seq
-      properties:
-        at:
-          type: string
-          format: date-time
-        seq:
-          type: integer
-          minimum: 0
-    list-kms-keys-response:
-      type: object
-      required:
-      - kms-keys
-      properties:
-        kms-keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/list-kms-keys-response-entry'
-    replica-failure:
-      type: object
-      required:
-      - attempted-watermark
-      - error
-      - failed-at
-      properties:
-        attempted-watermark:
-          type: integer
-        error:
-          type: string
-        failed-at:
-          type: string
-          format: date-time
     create-kms-key-response:
       type: object
       required:
@@ -516,15 +478,20 @@ components:
         created-at:
           type: string
           format: date-time
-    schedule-kms-key-deletion-request:
+    list-kms-key-rotations-response-entry:
       type: object
+      required:
+      - version
+      - rotated-at
+      - automatic
       properties:
-        delay-days:
+        version:
           type: integer
-          description: Number of days to wait until deletion is final.
-          minimum: 7
-          maximum: 30
-          default: 30
+        rotated-at:
+          type: string
+          format: date-time
+        automatic:
+          type: boolean
     list-kms-keys-response-entry:
       type: object
       required:
@@ -582,15 +549,98 @@ components:
         created-at:
           type: string
           format: date-time
-    list-kms-key-rotations-response:
+    replica-failure:
       type: object
       required:
-      - rotations
+      - attempted-watermark
+      - error
+      - failed-at
       properties:
-        rotations:
+        attempted-watermark:
+          type: integer
+        error:
+          type: string
+        failed-at:
+          type: string
+          format: date-time
+    list-kms-keys-response:
+      type: object
+      required:
+      - kms-keys
+      properties:
+        kms-keys:
           type: array
           items:
-            $ref: '#/components/schemas/list-kms-key-rotations-response-entry'
+            $ref: '#/components/schemas/list-kms-keys-response-entry'
+    key-rotation-config:
+      type: object
+      required:
+      - manual-count
+      - automatic
+      - rotation-period
+      - next-at
+      properties:
+        manual-count:
+          type: integer
+        automatic:
+          type: boolean
+        rotation-period:
+          type: integer
+        next-at:
+          type: string
+          format: date-time
+    replica-state:
+      type: object
+      required:
+      - zone
+      - last-applied-watermark
+      properties:
+        zone:
+          type: string
+        last-applied-watermark:
+          type: integer
+        last-failure:
+          $ref: '#/components/schemas/replica-failure'
+    success-response:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - target-registered
+          default: success
+    enable-kms-key-rotation-request:
+      type: object
+      properties:
+        rotation-period:
+          type: integer
+          minimum: 90
+          maximum: 2560
+          default: 365
+    replicate-kms-key-request:
+      type: object
+      required:
+      - zone
+      properties:
+        zone:
+          type: string
+    key-material:
+      type: object
+      required:
+      - version
+      - created-at
+      - automatic
+      properties:
+        version:
+          type: integer
+        created-at:
+          type: string
+          format: date-time
+        automatic:
+          type: boolean
     error-response:
       type: object
       description: RFC 9457 Problem Details error response
@@ -627,58 +677,6 @@ components:
                 type: string
               location:
                 type: string
-    replica-state:
-      type: object
-      required:
-      - zone
-      - last-applied-watermark
-      properties:
-        zone:
-          type: string
-        last-applied-watermark:
-          type: integer
-        last-failure:
-          $ref: '#/components/schemas/replica-failure'
-    replicate-kms-key-request:
-      type: object
-      required:
-      - zone
-      properties:
-        zone:
-          type: string
-    enable-kms-key-rotation-request:
-      type: object
-      properties:
-        rotation-period:
-          type: integer
-          minimum: 90
-          maximum: 2560
-          default: 365
-    disable-kms-key-rotation-response:
-      type: object
-      required:
-      - rotation
-      properties:
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
-    success-response:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - target-registered
-          default: success
-    rotate-kms-key-response:
-      type: object
-      required:
-      - rotation
-      properties:
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
     get-kms-key-response:
       type: object
       required:
@@ -741,20 +739,22 @@ components:
         created-at:
           type: string
           format: date-time
-    key-material:
+    rotate-kms-key-response:
       type: object
       required:
-      - version
-      - created-at
-      - automatic
+      - rotation
       properties:
-        version:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    schedule-kms-key-deletion-request:
+      type: object
+      properties:
+        delay-days:
           type: integer
-        created-at:
-          type: string
-          format: date-time
-        automatic:
-          type: boolean
+          description: Number of days to wait until deletion is final.
+          minimum: 7
+          maximum: 30
+          default: 30
 x-topics:
 - title: API Request Signature
   content: '

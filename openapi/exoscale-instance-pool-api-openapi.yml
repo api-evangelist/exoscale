@@ -451,28 +451,14 @@ paths:
       operationId: evict-instance-pool-members
 components:
   schemas:
-    security-group-ref:
+    private-network-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Security group ID
-      description: Security group reference
-    manager:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Manager ID
-        type:
-          type: string
-          enum:
-          - sks-nodepool
-          - instance-pool
-          description: Manager type
-      description: Resource manager
+          description: Private network ID
+      description: Private network reference
     instance-pool:
       type: object
       properties:
@@ -588,31 +574,30 @@ components:
             $ref: '#/components/schemas/ssh-key-ref'
           description: Instances SSH keys
       description: Instance Pool
-    template-ref:
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    manager:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Template ID
-      description: Template reference
-    private-network-ref:
-      type: object
-      properties:
-        id:
+          description: Manager ID
+        type:
           type: string
-          format: uuid
-          description: Private network ID
-      description: Private network reference
-    ssh-key-ref:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: SSH key name
-      description: SSH key reference
+          enum:
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
     instance-type-ref:
       type: object
       properties:
@@ -621,32 +606,6 @@ components:
           format: uuid
           description: Instance type ID
       description: Instance type reference
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    instance-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance ID
-      description: Target Instance
-    elastic-ip-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
     deploy-target-ref:
       type: object
       properties:
@@ -709,6 +668,31 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    ssh-key-ref:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: SSH key name
+      description: SSH key reference
+    elastic-ip-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Elastic IP ID
+      description: Elastic IP reference
+    template-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Template ID
+      description: Template reference
     anti-affinity-group-ref:
       type: object
       properties:
@@ -717,6 +701,22 @@ components:
           format: uuid
           description: Anti-affinity group ID
       description: Anti-affinity group reference
+    instance-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance ID
+      description: Target Instance
+    security-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Security group ID
+      description: Security group reference
 x-topics:
 - title: API Request Signature
   content: '

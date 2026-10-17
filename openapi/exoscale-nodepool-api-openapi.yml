@@ -382,33 +382,6 @@ paths:
       operationId: create-sks-nodepool
 components:
   schemas:
-    sks-nodepool-taint:
-      type: object
-      properties:
-        value:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Nodepool taint value
-        effect:
-          type: string
-          enum:
-          - NoExecute
-          - NoSchedule
-          - PreferNoSchedule
-          description: Nodepool taint effect
-      required:
-      - value
-      - effect
-      description: Nodepool taint
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
     sks-nodepool:
       type: object
       properties:
@@ -527,26 +500,14 @@ components:
           readOnly: true
           description: Nodepool creation date
       description: SKS Nodepool
-    instance-pool-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance Pool ID
-      description: Target Instance Pool
     sks-nodepool-taints:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/sks-nodepool-taint'
-    template-ref:
+    sks-nodepool-labels:
       type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Template ID
-      description: Template reference
+      additionalProperties:
+        type: string
     private-network-ref:
       type: object
       properties:
@@ -555,10 +516,6 @@ components:
           format: uuid
           description: Private network ID
       description: Private network reference
-    sks-nodepool-labels:
-      type: object
-      additionalProperties:
-        type: string
     instance-type-ref:
       type: object
       properties:
@@ -575,20 +532,6 @@ components:
           format: uuid
           description: Deploy target ID
       description: Deploy target reference
-    kubelet-image-gc:
-      type: object
-      properties:
-        high-threshold:
-          type: integer
-          format: int64
-          minimum: 0
-        low-threshold:
-          type: integer
-          format: int64
-          minimum: 0
-        min-age:
-          type: string
-      description: Kubelet image GC options
     operation:
       type: object
       properties:
@@ -643,6 +586,25 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    sks-nodepool-taint:
+      type: object
+      properties:
+        value:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Nodepool taint value
+        effect:
+          type: string
+          enum:
+          - NoExecute
+          - NoSchedule
+          - PreferNoSchedule
+          description: Nodepool taint effect
+      required:
+      - value
+      - effect
+      description: Nodepool taint
     anti-affinity-group-ref:
       type: object
       properties:
@@ -651,6 +613,44 @@ components:
           format: uuid
           description: Anti-affinity group ID
       description: Anti-affinity group reference
+    template-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Template ID
+      description: Template reference
+    security-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Security group ID
+      description: Security group reference
+    instance-pool-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance Pool ID
+      description: Target Instance Pool
+    kubelet-image-gc:
+      type: object
+      properties:
+        high-threshold:
+          type: integer
+          format: int64
+          minimum: 0
+        low-threshold:
+          type: integer
+          format: int64
+          minimum: 0
+        min-age:
+          type: string
+      description: Kubelet image GC options
 x-topics:
 - title: API Request Signature
   content: '

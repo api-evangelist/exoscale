@@ -150,64 +150,6 @@ paths:
       operationId: get-model
 components:
   schemas:
-    error-response:
-      type: object
-      description: RFC 9457 Problem Details error response
-      required:
-      - type
-      - title
-      - status
-      - detail
-      properties:
-        type:
-          type: string
-          format: uri-reference
-        title:
-          type: string
-        status:
-          type: integer
-          minimum: 100
-          maximum: 599
-        detail:
-          type: string
-        instance:
-          type: string
-          format: uri-reference
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              path:
-                type: string
-              detail:
-                type: string
-              pointer:
-                type: string
-              location:
-                type: string
-    delete-model-conflict-response:
-      description: 'Model is in use: deletion forbidden'
-      properties:
-        deployments:
-          description: Deployments using models
-          type: array
-          items:
-            type: string
-      type: object
-    create-model-request:
-      description: AI model
-      properties:
-        name:
-          description: Model name
-          type: string
-          minLength: 1
-        huggingface-token:
-          description: Huggingface Token
-          type: string
-      type: object
-      required:
-      - name
     get-model-response:
       description: AI model
       properties:
@@ -245,23 +187,6 @@ components:
           type: string
           readOnly: true
       type: object
-    forbidden-operation-response:
-      description: Forbidden operation response
-      properties:
-        code:
-          description: Machine-readable forbidden error code
-          enum:
-          - forbidden_operation
-          type: string
-          readOnly: true
-        error:
-          description: Forbidden error message
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - error
-      - code
     list-models-response:
       description: AI model list
       properties:
@@ -270,6 +195,64 @@ components:
           items:
             $ref: '#/components/schemas/list-models-response-entry'
       type: object
+    delete-model-conflict-response:
+      description: 'Model is in use: deletion forbidden'
+      properties:
+        deployments:
+          description: Deployments using models
+          type: array
+          items:
+            type: string
+      type: object
+    create-model-request:
+      description: AI model
+      properties:
+        name:
+          description: Model name
+          type: string
+          minLength: 1
+        huggingface-token:
+          description: Huggingface Token
+          type: string
+      type: object
+      required:
+      - name
+    error-response:
+      type: object
+      description: RFC 9457 Problem Details error response
+      required:
+      - type
+      - title
+      - status
+      - detail
+      properties:
+        type:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        status:
+          type: integer
+          minimum: 100
+          maximum: 599
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri-reference
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              detail:
+                type: string
+              pointer:
+                type: string
+              location:
+                type: string
     operation:
       type: object
       properties:
@@ -324,6 +307,23 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    forbidden-operation-response:
+      description: Forbidden operation response
+      properties:
+        code:
+          description: Machine-readable forbidden error code
+          enum:
+          - forbidden_operation
+          type: string
+          readOnly: true
+        error:
+          description: Forbidden error message
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - error
+      - code
     list-models-response-entry:
       description: AI model
       properties:

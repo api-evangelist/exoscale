@@ -313,6 +313,26 @@ paths:
       operationId: register-template
 components:
   schemas:
+    zone:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/zone-name'
+          readOnly: true
+          x-go-findable: '1'
+          description: Zone short name
+        api-endpoint:
+          type: string
+          readOnly: true
+          x-go-type: Endpoint
+          x-go-findable: '2'
+          description: Zone API endpoint
+        sos-endpoint:
+          type: string
+          readOnly: true
+          x-go-type: Endpoint
+          description: Zone SOS endpoint
+      description: Zone
     zone-name:
       type: string
       enum:
@@ -406,26 +426,6 @@ components:
           readOnly: true
           description: Template visibility
       description: Instance template
-    zone:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/zone-name'
-          readOnly: true
-          x-go-findable: '1'
-          description: Zone short name
-        api-endpoint:
-          type: string
-          readOnly: true
-          x-go-type: Endpoint
-          x-go-findable: '2'
-          description: Zone API endpoint
-        sos-endpoint:
-          type: string
-          readOnly: true
-          x-go-type: Endpoint
-          description: Zone SOS endpoint
-      description: Zone
     operation:
       type: object
       properties:

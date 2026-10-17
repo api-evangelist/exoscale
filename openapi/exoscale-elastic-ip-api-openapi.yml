@@ -321,54 +321,10 @@ components:
       - mode
       - port
       description: Elastic IP address healthcheck
-    elastic-ip:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          x-go-findable: '1'
-          description: Elastic IP ID
-        ip:
-          type: string
-          readOnly: true
-          x-go-findable: '2'
-          description: Elastic IP address
-        addressfamily:
-          type: string
-          enum:
-          - inet4
-          - inet6
-          readOnly: true
-          description: Elastic IP address family
-        cidr:
-          type: string
-          readOnly: true
-          description: Elastic IP cidr
-        description:
-          type: string
-          maxLength: 255
-          description: Elastic IP description
-        healthcheck:
-          $ref: '#/components/schemas/elastic-ip-healthcheck'
-          description: Elastic IP healthcheck
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Resource labels
-      description: Elastic IP
     labels:
       type: object
       additionalProperties:
         type: string
-    instance-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance ID
-      description: Target Instance
     operation:
       type: object
       properties:
@@ -423,6 +379,50 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    instance-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance ID
+      description: Target Instance
+    elastic-ip:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          x-go-findable: '1'
+          description: Elastic IP ID
+        ip:
+          type: string
+          readOnly: true
+          x-go-findable: '2'
+          description: Elastic IP address
+        addressfamily:
+          type: string
+          enum:
+          - inet4
+          - inet6
+          readOnly: true
+          description: Elastic IP address family
+        cidr:
+          type: string
+          readOnly: true
+          description: Elastic IP cidr
+        description:
+          type: string
+          maxLength: 255
+          description: Elastic IP description
+        healthcheck:
+          $ref: '#/components/schemas/elastic-ip-healthcheck'
+          description: Elastic IP healthcheck
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Resource labels
+      description: Elastic IP
 x-topics:
 - title: API Request Signature
   content: '
