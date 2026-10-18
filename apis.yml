@@ -166,7 +166,7 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Crypto
+  - Cryptocurrency
   tags_raw:
   - crypto
   properties:
@@ -410,6 +410,8 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
+  - Node-Pool
+  tags_raw:
   - nodepool
   properties:
   - type: OpenAPI
@@ -728,6 +730,8 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
+  - Block Storage
+  tags_raw:
   - blockstorage
   properties:
   - type: OpenAPI
