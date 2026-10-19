@@ -24,7 +24,7 @@ servers:
       - hr-zag-1
 tags:
 - description: Lifecycle of AI Models.
-  parent: ai
+  parent: dedicated-inference
   externalDocs:
     description: Read more
     url: https://www.exoscale.com/ai-cloud-infrastructure/dedicated-inference/
@@ -39,13 +39,13 @@ paths:
       - Model
       responses:
         '403':
-          description: '403'
+          description: Forbidden
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/forbidden-operation-response'
+                $ref: '#/components/schemas/error-response'
         '200':
-          description: '200'
+          description: OK
           content:
             application/json:
               schema:
@@ -71,17 +71,12 @@ paths:
       - Model
       responses:
         '200':
-          description: '200'
+          description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/list-models-response'
-      parameters:
-      - in: query
-        required: false
-        name: visibility
-        schema:
-          type: string
+      parameters: []
       summary: List Models
       operationId: list-models
   /ai/model/{id}:
@@ -90,25 +85,25 @@ paths:
       - Model
       responses:
         '412':
-          description: '412'
+          description: Precondition Failed
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/delete-model-conflict-response'
         '403':
-          description: '403'
+          description: Forbidden
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/forbidden-operation-response'
+                $ref: '#/components/schemas/error-response'
         '404':
-          description: '404'
+          description: Not Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
         '200':
-          description: '200'
+          description: OK
           content:
             application/json:
               schema:
@@ -127,13 +122,13 @@ paths:
       - Model
       responses:
         '404':
-          description: '404'
+          description: Not Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
         '200':
-          description: '200'
+          description: OK
           content:
             application/json:
               schema:
@@ -150,109 +145,6 @@ paths:
       operationId: get-model
 components:
   schemas:
-    get-model-response:
-      description: AI model
-      properties:
-        updated-at:
-          description: Update time
-          format: date-time
-          type: string
-          readOnly: true
-        name:
-          description: Model name
-          type: string
-          minLength: 1
-        state:
-          description: Model state
-          enum:
-          - ready
-          - creating
-          - downloading
-          - error
-          - created
-          type: string
-        id:
-          description: Model ID
-          format: uuid
-          type: string
-          readOnly: true
-        model-size:
-          description: Model size (nullable)
-          format: int64
-          type: integer
-          minimum: 0
-        created-at:
-          description: Creation time
-          format: date-time
-          type: string
-          readOnly: true
-      type: object
-    list-models-response:
-      description: AI model list
-      properties:
-        models:
-          type: array
-          items:
-            $ref: '#/components/schemas/list-models-response-entry'
-      type: object
-    delete-model-conflict-response:
-      description: 'Model is in use: deletion forbidden'
-      properties:
-        deployments:
-          description: Deployments using models
-          type: array
-          items:
-            type: string
-      type: object
-    create-model-request:
-      description: AI model
-      properties:
-        name:
-          description: Model name
-          type: string
-          minLength: 1
-        huggingface-token:
-          description: Huggingface Token
-          type: string
-      type: object
-      required:
-      - name
-    error-response:
-      type: object
-      description: RFC 9457 Problem Details error response
-      required:
-      - type
-      - title
-      - status
-      - detail
-      properties:
-        type:
-          type: string
-          format: uri-reference
-        title:
-          type: string
-        status:
-          type: integer
-          minimum: 100
-          maximum: 599
-        detail:
-          type: string
-        instance:
-          type: string
-          format: uri-reference
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              path:
-                type: string
-              detail:
-                type: string
-              pointer:
-                type: string
-              location:
-                type: string
     operation:
       type: object
       properties:
@@ -307,23 +199,6 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    forbidden-operation-response:
-      description: Forbidden operation response
-      properties:
-        code:
-          description: Machine-readable forbidden error code
-          enum:
-          - forbidden_operation
-          type: string
-          readOnly: true
-        error:
-          description: Forbidden error message
-          type: string
-          readOnly: true
-      type: object
-      required:
-      - error
-      - code
     list-models-response-entry:
       description: AI model
       properties:
@@ -351,7 +226,7 @@ components:
           type: string
           readOnly: true
         model-size:
-          description: Model size (nullable)
+          description: Model size in bytes
           format: int64
           type: integer
           minimum: 0
@@ -361,6 +236,112 @@ components:
           type: string
           readOnly: true
       type: object
+      required:
+      - id
+      - name
+      - state
+      - model-size
+      - created-at
+      - updated-at
+    delete-model-conflict-response:
+      description: 'Model is in use: deletion forbidden'
+      properties:
+        deployments:
+          description: Deployments using models
+          type: array
+          items:
+            type: string
+      type: object
+    get-model-response:
+      description: AI model
+      properties:
+        updated-at:
+          description: Update time
+          format: date-time
+          type: string
+          readOnly: true
+        name:
+          description: Model name
+          type: string
+          minLength: 1
+        state:
+          description: Model state
+          enum:
+          - ready
+          - creating
+          - downloading
+          - error
+          - created
+          type: string
+        id:
+          description: Model ID
+          format: uuid
+          type: string
+          readOnly: true
+        model-size:
+          description: Model size in bytes
+          format: int64
+          type: integer
+          minimum: 0
+        created-at:
+          description: Creation time
+          format: date-time
+          type: string
+          readOnly: true
+      type: object
+      required:
+      - id
+      - name
+      - state
+      - model-size
+      - created-at
+      - updated-at
+    list-models-response:
+      description: AI model list
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/list-models-response-entry'
+      type: object
+      required:
+      - models
+    create-model-request:
+      description: AI model
+      properties:
+        name:
+          description: Model name
+          type: string
+          minLength: 1
+        huggingface-token:
+          description: Huggingface Token
+          type: string
+      type: object
+      required:
+      - name
+    error-response:
+      type: object
+      description: RFC 9457 Problem Details error response
+      required:
+      - type
+      - title
+      - status
+      - detail
+      properties:
+        type:
+          type: string
+          format: uri-reference
+          description: An absolute or relative URI reference pointing to human-readable documentation concerning the specific problem type encountered.
+        title:
+          type: string
+          description: A brief summary defining the class of failure, optimal for quick user interface groupings.
+        status:
+          type: integer
+          minimum: 100
+          maximum: 599
+        detail:
+          type: string
+          description: A highly contextual, readable explanation breaking down explicitly what triggered this error scenario.
 x-topics:
 - title: API Request Signature
   content: '

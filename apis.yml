@@ -721,6 +721,70 @@ apis:
     url: https://portal.exoscale.com/register
   - type: Pricing
     url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-environmental-impact-api
+  name: Exoscale Environmental Impact API
+  description: The Environmental Impact API from Exoscale — 2 operation(s) for environmental impact.
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - Environmental Impact
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-environmental-impact-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-vpc-management-api
+  name: Exoscale Vpc Management API
+  description: '[BETA] Create and manipulate VPCs'
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - vpc-management
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-vpc-management-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-vpc-route-api
+  name: Exoscale Vpc Route API
+  description: '[BETA] Create and manipulate routing rules'
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - vpc-route
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-vpc-route-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
+- aid: exoscale:exoscale-vpc-subnet-api
+  name: Exoscale Vpc Subnet API
+  description: '[BETA] Configure VPC subnets and attach instances to them'
+  humanURL: https://openapi-v2.exoscale.com/
+  baseURL: https://api-ch-gva-2.exoscale.com/v2
+  tags:
+  - vpc-subnet
+  properties:
+  - type: OpenAPI
+    url: openapi/exoscale-vpc-subnet-api-openapi.yml
+  - type: Documentation
+    url: https://openapi-v2.exoscale.com/
+  - type: Signup
+    url: https://portal.exoscale.com/register
+  - type: Pricing
+    url: https://www.exoscale.com/pricing/
 - aid: exoscale:exoscale-blockstorage-api
   name: Exoscale Blockstorage API
   description: >-
@@ -730,8 +794,6 @@ apis:
   humanURL: https://openapi-v2.exoscale.com/
   baseURL: https://api-ch-gva-2.exoscale.com/v2
   tags:
-  - Block Storage
-  tags_raw:
   - blockstorage
   properties:
   - type: OpenAPI

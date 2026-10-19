@@ -80,6 +80,27 @@ paths:
           type: string
       summary: Retrieve organization usage reports
       operationId: get-usage-report
+  /live-balance:
+    get:
+      tags:
+      - Organization
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/live-balance'
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rate-limited'
+      description: '[BETA] Returns the live-balance of the current organization.'
+      parameters: []
+      summary: '[BETA] Retrieve the live-balance'
+      operationId: get-live-balance
   /organization:
     get:
       tags:
@@ -117,22 +138,69 @@ paths:
       operationId: get-env-impact
 components:
   schemas:
-    env-product:
+    live-balance:
+      type: object
+      properties:
+        balance:
+          type: number
+          readOnly: true
+          description: Organization live balance
+        currency:
+          type: string
+          readOnly: true
+          description: Organization currency
+      description: Live balance
+    env-impact-indicator:
       type: object
       properties:
         value:
           type: string
           description: Value
-        metadata:
+        amount:
+          type: number
+          description: Amount
+        unit:
+          type: string
+          description: Unit
+        details:
           type: array
           items:
-            $ref: '#/components/schemas/env-metadata-entry'
-          description: Metadata
-        impacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/env-impact-indicator'
-          description: Impacts
+            $ref: '#/components/schemas/env-impact-detail'
+          description: Details
+    rate-limited:
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error message
+        retry_after:
+          type: number
+          description: The time in seconds to wait before the next request
+      description: Rate Limit
+    env-impact-detail:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Value
+        amount:
+          type: number
+          description: Amount
+        unit:
+          type: string
+          description: Unit
+    env-metadata-entry:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Value
+        amount:
+          type: number
+          description: Amount
+        unit:
+          type: string
+          description: Unit
     organization:
       type: object
       properties:
@@ -164,36 +232,13 @@ components:
         balance:
           type: number
           readOnly: true
-          description: Organization balance
+          deprecated: true
+          description: 'Organization balance. DEPRECATED: use the dedicated `live-balance` endpoint'
         currency:
           type: string
           readOnly: true
           description: Organization currency
       description: Organization
-    env-impact-detail:
-      type: object
-      properties:
-        value:
-          type: string
-          description: Value
-        amount:
-          type: number
-          description: Amount
-        unit:
-          type: string
-          description: Unit
-    env-metadata-entry:
-      type: object
-      properties:
-        value:
-          type: string
-          description: Value
-        amount:
-          type: number
-          description: Amount
-        unit:
-          type: string
-          description: Unit
     env-impact-report:
       type: object
       properties:
@@ -207,23 +252,22 @@ components:
           items:
             $ref: '#/components/schemas/env-product'
           description: Products
-    env-impact-indicator:
+    env-product:
       type: object
       properties:
         value:
           type: string
           description: Value
-        amount:
-          type: number
-          description: Amount
-        unit:
-          type: string
-          description: Unit
-        details:
+        metadata:
           type: array
           items:
-            $ref: '#/components/schemas/env-impact-detail'
-          description: Details
+            $ref: '#/components/schemas/env-metadata-entry'
+          description: Metadata
+        impacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/env-impact-indicator'
+          description: Impacts
 x-topics:
 - title: API Request Signature
   content: '

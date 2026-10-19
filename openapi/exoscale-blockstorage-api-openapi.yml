@@ -397,109 +397,6 @@ paths:
       operationId: create-block-storage-volume
 components:
   schemas:
-    block-storage-volume:
-      type: object
-      properties:
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Resource labels
-        instance:
-          $ref: '#/components/schemas/instance-ref'
-          description: Volume attached instance, if any
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Volume name
-        state:
-          type: string
-          enum:
-          - snapshotting
-          - deleted
-          - creating
-          - detached
-          - deleting
-          - attaching
-          - error
-          - attached
-          - detaching
-          readOnly: true
-          description: Volume state
-        size:
-          type: integer
-          format: int64
-          minimum: 1
-          description: Volume size
-        blocksize:
-          type: integer
-          format: int64
-          minimum: 0
-          readOnly: true
-          description: Volume block size
-        block-storage-snapshots:
-          type: array
-          items:
-            $ref: '#/components/schemas/block-storage-snapshot-ref'
-          description: Volume snapshots, if any
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Volume ID
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Volume creation date
-      description: Block storage volume
-    block-storage-snapshot:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Snapshot ID
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Snapshot name
-        size:
-          type: integer
-          format: int64
-          minimum: 1
-          description: Snapshot size
-        volume-size:
-          type: integer
-          format: int64
-          minimum: 0
-          description: Original Volume size
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Snapshot creation date
-        state:
-          type: string
-          enum:
-          - partially-destroyed
-          - destroying
-          - creating
-          - created
-          - promoting
-          - error
-          - destroyed
-          - allocated
-          readOnly: true
-          description: Snapshot state
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Resource labels
-        block-storage-volume:
-          $ref: '#/components/schemas/block-storage-volume-ref'
-          description: Referenced volume
-      description: Block storage snapshot
     block-storage-volume-ref:
       type: object
       properties:
@@ -508,10 +405,14 @@ components:
           format: uuid
           description: Block storage volume ID
       description: Target block storage volume
-    labels:
+    block-storage-snapshot-ref:
       type: object
-      additionalProperties:
-        type: string
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Block storage snapshot ID
+      description: Target block storage snapshot
     operation:
       type: object
       properties:
@@ -566,6 +467,117 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    block-storage-snapshot:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Snapshot ID
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Snapshot name
+        size:
+          type: integer
+          format: int64
+          minimum: 1
+          description: Snapshot size
+        volume-size:
+          type: integer
+          format: int64
+          minimum: 0
+          description: Original Volume size
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Snapshot creation date
+        state:
+          type: string
+          enum:
+          - partially-destroyed
+          - destroying
+          - creating
+          - created
+          - promoting
+          - error
+          - destroyed
+          - allocated
+          readOnly: true
+          description: Snapshot state
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Resource labels
+        block-storage-volume:
+          $ref: '#/components/schemas/block-storage-volume-ref'
+          description: Referenced volume
+      description: Block storage snapshot
+    block-storage-volume:
+      type: object
+      properties:
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Resource labels
+        instance:
+          $ref: '#/components/schemas/instance-ref'
+          description: Volume attached instance, if any
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Volume name
+        state:
+          type: string
+          enum:
+          - snapshotting
+          - deleted
+          - creating
+          - detached
+          - deleting
+          - attaching
+          - error
+          - attached
+          - detaching
+          readOnly: true
+          description: Volume state
+        size:
+          type: integer
+          format: int64
+          minimum: 1
+          description: Volume size
+        blocksize:
+          type: integer
+          format: int64
+          minimum: 0
+          readOnly: true
+          description: Volume block size
+        block-storage-snapshots:
+          type: array
+          items:
+            $ref: '#/components/schemas/block-storage-snapshot-ref'
+          description: Volume snapshots, if any
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Volume ID
+        encrypted:
+          type: boolean
+          readOnly: true
+          description: Indicates if the block-storage volume is encrypted
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Volume creation date
+      description: Block storage volume
     instance-ref:
       type: object
       properties:
@@ -574,14 +586,6 @@ components:
           format: uuid
           description: Instance ID
       description: Target Instance
-    block-storage-snapshot-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Block storage snapshot ID
-      description: Target block storage snapshot
 x-topics:
 - title: API Request Signature
   content: '

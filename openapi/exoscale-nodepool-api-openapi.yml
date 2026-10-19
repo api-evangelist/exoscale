@@ -133,6 +133,9 @@ paths:
                   minimum: 20
                   maximum: 51200
                   description: Nodepool instances disk size in GiB
+                nvidia-mig-profiles:
+                  $ref: '#/components/schemas/nvidia-mig-profiles'
+                  description: Nvidia MIG Profiles
       operationId: update-sks-nodepool
     get:
       tags:
@@ -374,6 +377,9 @@ paths:
                   minimum: 20
                   maximum: 51200
                   description: Nodepool instances disk size in GiB
+                nvidia-mig-profiles:
+                  $ref: '#/components/schemas/nvidia-mig-profiles'
+                  description: Nvidia MIG Profiles
               required:
               - name
               - size
@@ -382,6 +388,158 @@ paths:
       operationId: create-sks-nodepool
 components:
   schemas:
+    anti-affinity-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
+    nvidia-mig-profile-b300.269gb:
+      type: string
+      enum:
+      - 1g.34gb
+      - 1g.34gb+me
+      - 1g.67gb
+      - 2g.67gb
+      - 3g.135gb
+      - 4g.135gb
+      - 7g.269gb
+      x-go-enum-varnames:
+      - 1G34Gb
+      - 1G34GbMe
+      - 1G67Gb
+      - 2G67Gb
+      - 3G135Gb
+      - 4G135Gb
+      - 7G269Gb
+    instance-type-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance type ID
+      description: Instance type reference
+    nvidia-mig-profile-rtxpro6000.96gb:
+      type: string
+      enum:
+      - 1g.24gb
+      - 1g.24gb+me
+      - 1g.24gb+gfx
+      - 1g.24gb+me.all
+      - 1g.24gb-me
+      - 2g.48gb
+      - 2g.48gb+gfx
+      - 2g.48gb+me.all
+      - 2g.48gb-me
+      - 4g.96gb
+      - 4g.96gb+gfx
+      x-go-enum-varnames:
+      - 1G24Gb
+      - 1G24GbMe
+      - 1G24GbGfx
+      - 1G24GbMeAll
+      - 1G24GbNoMe
+      - 2G48Gb
+      - 2G48GbGfx
+      - 2G48GbMeAll
+      - 2G48GbNoMe
+      - 4G96Gb
+      - 4G96GbGfx
+    sks-nodepool-labels:
+      type: object
+      additionalProperties:
+        type: string
+    sks-nodepool-taints:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/sks-nodepool-taint'
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
+    template-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Template ID
+      description: Template reference
+    private-network-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Private network ID
+      description: Private network reference
+    nvidia-mig-profile-a30.24gb:
+      type: string
+      enum:
+      - 1g.6gb
+      - 1g.6gb+me
+      - 2g.12gb
+      - 2g.12gb+me
+      - 4g.24gb
+      x-go-enum-varnames:
+      - 1G6Gb
+      - 1G6GbMe
+      - 2G12Gb
+      - 2G12GbMe
+      - 4G24Gb
     sks-nodepool:
       type: object
       properties:
@@ -446,6 +604,7 @@ components:
           - creating
           - deleting
           - running
+          - degraded
           - scaling
           - updating
           - error
@@ -494,98 +653,15 @@ components:
           type: string
           readOnly: true
           description: Nodepool version
+        nvidia-mig-profiles:
+          $ref: '#/components/schemas/nvidia-mig-profiles'
+          description: Nvidia MIG Profiles
         created-at:
           type: string
           format: date-time
           readOnly: true
           description: Nodepool creation date
       description: SKS Nodepool
-    sks-nodepool-taints:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/sks-nodepool-taint'
-    sks-nodepool-labels:
-      type: object
-      additionalProperties:
-        type: string
-    private-network-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Private network ID
-      description: Private network reference
-    instance-type-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance type ID
-      description: Instance type reference
-    deploy-target-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
     sks-nodepool-taint:
       type: object
       properties:
@@ -605,22 +681,19 @@ components:
       - value
       - effect
       description: Nodepool taint
-    anti-affinity-group-ref:
+    nvidia-mig-profiles:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
-    template-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Template ID
-      description: Template reference
+        a30.24gb:
+          $ref: '#/components/schemas/nvidia-mig-profile-a30.24gb'
+          description: Nvidia A30 MIG Profile
+        rtxpro6000.96gb:
+          $ref: '#/components/schemas/nvidia-mig-profile-rtxpro6000.96gb'
+          description: Nvidia RTXPRO6000 MIG Profile
+        b300.269gb:
+          $ref: '#/components/schemas/nvidia-mig-profile-b300.269gb'
+          description: Nvidia B300 MIG Profile
+      description: Nvidia MIG Profiles enabled
     security-group-ref:
       type: object
       properties:
@@ -651,6 +724,14 @@ components:
         min-age:
           type: string
       description: Kubelet image GC options
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
 x-topics:
 - title: API Request Signature
   content: '

@@ -145,22 +145,6 @@ components:
           format: uuid
           description: IAM API Key Role ID
       description: IAM API Key
-    iam-api-key:
-      type: object
-      properties:
-        name:
-          type: string
-          x-go-findable: '1'
-          description: IAM API Key name
-        key:
-          type: string
-          x-go-findable: '2'
-          description: IAM API Key
-        role-id:
-          type: string
-          format: uuid
-          description: IAM API Key Role ID
-      description: IAM API Key
     operation:
       type: object
       properties:
@@ -215,6 +199,22 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    iam-api-key:
+      type: object
+      properties:
+        name:
+          type: string
+          x-go-findable: '1'
+          description: IAM API Key name
+        key:
+          type: string
+          x-go-findable: '2'
+          description: IAM API Key
+        role-id:
+          type: string
+          format: uuid
+          description: IAM API Key Role ID
+      description: IAM API Key
 x-topics:
 - title: API Request Signature
   content: '

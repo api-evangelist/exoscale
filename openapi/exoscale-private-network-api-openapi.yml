@@ -344,6 +344,68 @@ paths:
       operationId: reset-private-network-field
 components:
   schemas:
+    anti-affinity-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
     instance:
       type: object
       properties:
@@ -444,6 +506,10 @@ components:
           minimum: 10
           maximum: 51200
           description: Instance disk size in GiB
+        disk-encrypted:
+          type: boolean
+          readOnly: true
+          description: Indicates if the root volume of the instance is encrypted
         ssh-keys:
           type: array
           items:
@@ -460,71 +526,10 @@ components:
           readOnly: true
           description: Instance public IPv4 address
       description: Instance
-    private-network:
-      type: object
-      properties:
-        description:
-          type: string
-          maxLength: 255
-          description: Private Network description
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Resource labels
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Private Network name
-        start-ip:
-          type: string
-          format: ipv4
-          description: Private Network start IP address
-        leases:
-          type: array
-          items:
-            $ref: '#/components/schemas/private-network-lease'
-          readOnly: true
-          description: Private Network leased IP addresses
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Private Network ID
-        vni:
-          type: integer
-          format: int64
-          description: Private Network VXLAN ID
-          exclusiveMinimum: 0
-        netmask:
-          type: string
-          format: ipv4
-          description: Private Network netmask
-        options:
-          $ref: '#/components/schemas/private-network-options'
-          description: DHCP options
-        end-ip:
-          type: string
-          format: ipv4
-          description: Private Network end IP address
-      description: Private Network
     labels:
       type: object
       additionalProperties:
         type: string
-    private-network-lease:
-      type: object
-      properties:
-        ip:
-          type: string
-          format: ipv4
-          readOnly: true
-          description: Private Network IP address
-        instance-id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Attached instance ID
-      description: Private Network leased IP address
     instance-type:
       type: object
       properties:
@@ -560,6 +565,7 @@ components:
           - gpu
           - memory
           - gpua5000
+          - gpub300
           - gpurtx6000pro
           - storage
           - standard
@@ -596,6 +602,18 @@ components:
           readOnly: true
           description: Instance Type available zones
       description: Compute instance type
+    instance-state:
+      type: string
+      enum:
+      - expunging
+      - starting
+      - destroying
+      - running
+      - stopping
+      - stopped
+      - migrating
+      - error
+      - destroyed
     template:
       type: object
       properties:
@@ -678,68 +696,6 @@ components:
           readOnly: true
           description: Template visibility
       description: Instance template
-    deploy-target-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
-          type: string
-          enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
     manager:
       type: object
       properties:
@@ -754,82 +710,53 @@ components:
           - instance-pool
           description: Manager type
       description: Resource manager
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    elastic-ip-ref:
+    private-network:
       type: object
       properties:
-        id:
+        description:
           type: string
-          format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
-    zone-name:
-      type: string
-      enum:
-      - ch-dk-2
-      - de-muc-1
-      - ch-gva-2
-      - at-vie-1
-      - de-fra-1
-      - bg-sof-1
-      - at-vie-2
-      - hr-zag-1
-    anti-affinity-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
-    snapshot-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Snapshot ID
-      description: Snapshot reference
-    instance-state:
-      type: string
-      enum:
-      - expunging
-      - starting
-      - destroying
-      - running
-      - stopping
-      - stopped
-      - migrating
-      - error
-      - destroyed
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
-    ssh-key:
-      type: object
-      properties:
+          maxLength: 255
+          description: Private Network description
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Resource labels
         name:
           type: string
           maxLength: 255
           minLength: 1
-          x-go-findable: '1'
-          description: SSH key name
-        fingerprint:
+          description: Private Network name
+        start-ip:
           type: string
+          format: ipv4
+          description: Private Network start IP address
+        leases:
+          type: array
+          items:
+            $ref: '#/components/schemas/private-network-lease'
           readOnly: true
-          x-go-findable: '2'
-          description: SSH key fingerprint
-      description: SSH key
+          description: Private Network leased IP addresses
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Private Network ID
+        vni:
+          type: integer
+          format: int64
+          description: Private Network VXLAN ID
+          exclusiveMinimum: 0
+        netmask:
+          type: string
+          format: ipv4
+          description: Private Network netmask
+        options:
+          $ref: '#/components/schemas/private-network-options'
+          description: DHCP options
+        end-ip:
+          type: string
+          format: ipv4
+          description: Private Network end IP address
+      description: Private Network
     private-network-options:
       type: object
       properties:
@@ -857,6 +784,84 @@ components:
             type: string
           description: Domain search list, limited to 255 octets
       description: Private Network DHCP Options
+    security-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Security group ID
+      description: Security group reference
+    ssh-key:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          x-go-findable: '1'
+          description: SSH key name
+        fingerprint:
+          type: string
+          readOnly: true
+          x-go-findable: '2'
+          description: SSH key fingerprint
+      description: SSH key
+    snapshot-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Snapshot ID
+      description: Snapshot reference
+    elastic-ip-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Elastic IP ID
+      description: Elastic IP reference
+    zone-name:
+      type: string
+      enum:
+      - ch-dk-2
+      - de-muc-1
+      - ch-gva-2
+      - at-vie-1
+      - de-fra-1
+      - bg-sof-1
+      - at-vie-2
+      - hr-zag-1
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    private-network-lease:
+      type: object
+      properties:
+        ip:
+          type: string
+          format: ipv4
+          readOnly: true
+          description: Private Network IP address
+        instance-id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Attached instance ID
+      description: Private Network leased IP address
 x-topics:
 - title: API Request Signature
   content: '

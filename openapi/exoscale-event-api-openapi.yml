@@ -72,35 +72,19 @@ paths:
       operationId: list-events
 components:
   schemas:
-    user:
+    iam-service-policy:
       type: object
       properties:
-        sso:
-          type: boolean
-          description: SSO enabled
-        two-factor-authentication:
-          type: boolean
-          description: Two Factor Authentication enabled
-        email:
+        type:
           type: string
-          readOnly: true
-          description: User Email
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: User ID
-        role:
-          $ref: '#/components/schemas/iam-role'
-          description: IAM Role
-        pending:
-          type: boolean
-          readOnly: true
-          description: True if the user has not yet created an Exoscale account
-      required:
-      - email
-      - role
-      description: User
+          enum:
+          - rules
+          - allow
+          - deny
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/iam-service-policy-rule'
     event:
       type: object
       properties:
@@ -155,6 +139,35 @@ components:
           type: string
           description: Operation message
       description: A notable Mutation Event which happened on the infrastructure
+    user:
+      type: object
+      properties:
+        sso:
+          type: boolean
+          description: SSO enabled
+        two-factor-authentication:
+          type: boolean
+          description: Two Factor Authentication enabled
+        email:
+          type: string
+          readOnly: true
+          description: User Email
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: User ID
+        role:
+          $ref: '#/components/schemas/iam-role'
+          description: IAM Role
+        pending:
+          type: boolean
+          readOnly: true
+          description: True if the user has not yet created an Exoscale account
+      required:
+      - email
+      - role
+      description: User
     iam-service-policy-rule:
       type: object
       properties:
@@ -169,6 +182,33 @@ components:
           type: array
           items:
             type: string
+    iam-policy:
+      type: object
+      properties:
+        default-service-strategy:
+          type: string
+          enum:
+          - allow
+          - deny
+          description: IAM default service strategy
+        services:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/iam-service-policy'
+          description: IAM services
+      required:
+      - default-service-strategy
+      - services
+      description: Policy
+    iam-assume-role-policy:
+      type: object
+      properties:
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/iam-service-policy-rule'
+          description: IAM Assume Role Policy rules
+      description: Assume Role Policy
     labels:
       type: object
       additionalProperties:
@@ -189,24 +229,6 @@ components:
           format: uuid
           description: IAM API Key Role ID
       description: IAM API Key
-    iam-policy:
-      type: object
-      properties:
-        default-service-strategy:
-          type: string
-          enum:
-          - allow
-          - deny
-          description: IAM default service strategy
-        services:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/iam-service-policy'
-          description: IAM services
-      required:
-      - default-service-strategy
-      - services
-      description: Policy
     iam-role:
       type: object
       properties:
@@ -228,7 +250,7 @@ components:
           uniqueItems: true
           description: IAM Role permissions
         assume-role-policy:
-          $ref: '#/components/schemas/iam-policy'
+          $ref: '#/components/schemas/iam-assume-role-policy'
           description: IAM Assume Role Policy
         editable:
           type: boolean
@@ -252,19 +274,6 @@ components:
           readOnly: true
           description: IAM Role ID
       description: IAM Role
-    iam-service-policy:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - rules
-          - allow
-          - deny
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/iam-service-policy-rule'
 x-topics:
 - title: API Request Signature
   content: '

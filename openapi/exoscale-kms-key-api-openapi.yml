@@ -27,7 +27,7 @@ tags:
   parent: kms
   externalDocs:
     description: Read more
-    url: https://community.exoscale.com/documentation/kms/kms-key
+    url: https://community.exoscale.com/documentation/security/kms/overview
   name: kms-key
   x-display-name: KMS Key
   x-weight: 1130
@@ -39,13 +39,39 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: Key rotation disabled
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/disable-kms-key-rotation-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Invalid Origin: The request was rejected because automatic key rotation can only be enabled on a KMS key with origin "exoscale-kms".
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Not on Default: The request was rejected because the operation is not allowed on the default key.
+
+
+            Not on Replica: The request was rejectde because the operation is not allowed on a replica.
+
+
+            Key is Pending Deletion: The request was rejected because it was performed on a key that is pending deletion.
+
+
+            Key is Disabled: The request was rejected because the specified KMS key is disabled.
+
+
+            Invalid Usage: The request was rejected because the operation is only allowed on symmetric keys with usage "encrypt-decrypt".
+
+
+            Conflict: The request was rejected because the automatic rotation is already enabled for this KMS Key.
+
+            '
           content:
             application/json:
               schema:
@@ -58,7 +84,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Disable Key Rotation'
+      summary: Disable Key Rotation
       operationId: disable-kms-key-rotation
   /kms-key/{id}:
     get:
@@ -66,19 +92,18 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: KMS Key Details
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/get-kms-key-response'
         '400':
-          description: '400'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error-response'
-        '404':
-          description: '404'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+            '
           content:
             application/json:
               schema:
@@ -91,7 +116,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Get KMS Key'
+      summary: Get KMS Key
       operationId: get-kms-key
   /kms-key/{id}/enable:
     post:
@@ -99,18 +124,26 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: Key enabled
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/success-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Key is Pending Deletion: The request was rejected because it was performed on a key that is pending deletion.
+
+            '
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-      description: Enable a KMS Key"
+      description: Enables a KMS Key by setting its state to "enabled". It restores the ability to fully use the KMS key for cryptographic operations and key lifecycle operations.
       parameters:
       - in: path
         required: true
@@ -118,7 +151,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Enable KMS Key'
+      summary: Enable KMS Key
       operationId: enable-kms-key
   /kms-key/{id}/list-key-rotations:
     get:
@@ -126,13 +159,18 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: The list of all historical rotations for the requested KMS key.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/list-kms-key-rotations-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+            '
           content:
             application/json:
               schema:
@@ -145,7 +183,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] List KMS Key Rotations'
+      summary: List KMS Key Rotations
       operationId: list-kms-key-rotations
   /kms-key/{id}/enable-key-rotation:
     post:
@@ -153,13 +191,42 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: Periodic key rotation enabled
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/enable-kms-key-rotation-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Invalid Origin: The request was rejected because automatic key rotation can only be enabled on a KMS key with origin "exoscale-kms".
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Not on Default: The request was rejected because the operation is not allowed on the default key.
+
+
+            Not on Replica: The request was rejectde because the operation is not allowed on a replica.
+
+
+            Key is Pending Deletion: The request was rejected because it was performed on a key that is pending deletion.
+
+
+            Key is Disabled: The request was rejected because the specified KMS key is disabled.
+
+
+            Invalid Usage: The request was rejected because the operation is only allowed on symmetric keys with usage "encrypt-decrypt".
+
+
+            Conflict: The request was rejected because the automatic rotation is already enabled for this KMS Key.
+
+
+            Bad Request: The request was rejected because of an invalid request body or path parameter.
+
+            '
           content:
             application/json:
               schema:
@@ -172,7 +239,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Enable Key Rotation'
+      summary: Enable Key Rotation
       requestBody:
         required: true
         content:
@@ -186,18 +253,38 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: Key rotated
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rotate-kms-key-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Key is Pending Deletion: The request was rejected because it was performed on a key that is pending deletion.
+
+
+            Not on a Replica: The request was rejected because the operation is not allowed on a replica.
+
+
+            Invalid Usage: The request was rejected because the operation is only allowed on symmetric keys with usage "encrypt-decrypt".
+
+
+            Key is Disabled: The request was rejected because the specified KMS key is disabled.
+
+
+            Manual Rotation Limit: The request was rejected because you reached your limit of 10 manual rotations per key for this KMS key.
+
+            '
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-      description: Perform a manual rotation of the key material for a symmetric key.
+      description: Performs an immediate rotation of the key material for a symmetric key.
       parameters:
       - in: path
         required: true
@@ -205,7 +292,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Rotate Key'
+      summary: Rotate Key
       operationId: rotate-kms-key
   /kms-key/{id}/disable:
     post:
@@ -213,18 +300,29 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: Key disabled
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/success-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Key is Pending Deletion: The request was rejected because it was performed on a key that is pending deletion.
+
+
+            Not on Default: The request was rejected because the operation is not allowed on the default key.
+
+            '
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-      description: Disable a KMS Key
+      description: Disables a KMS Key by setting its state to "disabled". This prevents the use of the KMS key for cryptographic and key lifecycle operations.
       parameters:
       - in: path
         required: true
@@ -232,7 +330,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Disable KMS Key'
+      summary: Disable KMS Key
       operationId: disable-kms-key
   /kms-key:
     post:
@@ -240,26 +338,28 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: Created new KMS key
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/create-kms-key-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Name Conflict: The request was rejected because a key with the same name already exists in the target zone.
+
+
+            Bad Request: The request was rejected because of an invalid request body or path parameter.
+
+            '
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-        '409':
-          description: '409'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error-response'
-      description: Create a KMS Key in a given zone with a given name.
+      description: Create a customer-managed unique KMS Key in your organization. A KMS Key is a logical representation of a cryptographic key material. It also includes metadata such as a UUID, a name and its state.
       parameters: []
-      summary: '[BETA] Create KMS Key'
+      summary: Create KMS Key
       requestBody:
         required: true
         content:
@@ -272,20 +372,25 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: A list of all KMS keys in the target zone
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/list-kms-keys-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Bad Request: The request was rejected because of an invalid request body or path parameter.
+
+            '
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-      description: List KMS Keys details for an organization in a given zone.
+      description: Lists all KMS Keys in your organization in a given zone.
       parameters: []
-      summary: '[BETA] List KMS Keys'
+      summary: List KMS Keys
       operationId: list-kms-keys
   /kms-key/{id}/schedule-deletion:
     post:
@@ -293,18 +398,32 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: Key deletion scheduled
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/success-response'
+                $ref: '#/components/schemas/schedule-kms-key-deletion-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Not on Default: The request was rejected because the operation is not allowed on the default key.
+
+
+            Not on Replica: The request was rejectde because the operation is not allowed on a replica.
+
+
+            Bad Request: The request was rejected because of an invalid request body or path parameter.
+
+            '
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-      description: Schedule a KMS key for deletion after a delay.
+      description: Schedules a KMS key for deletion after a delay. You can specify a delay of 7-30 days.
       parameters:
       - in: path
         required: true
@@ -312,7 +431,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Schedule KMS Key Deletion'
+      summary: Schedule KMS Key Deletion
       requestBody:
         required: true
         content:
@@ -326,13 +445,33 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: Key replication target registered
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/success-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Key is Pending Deletion: The request was rejected because it was performed on a key that is pending deletion.
+
+
+            Not on Default: The request was rejected because the operation is not allowed on the default key.
+
+
+            Not Multizone: The request was rejected because the KMS key is not a multi-zone key.
+
+
+            Conflict: The request was rejected because the key is already replicated in the target zone.
+
+
+            Invalid Argument: The request was rejected because the target zone is invalid.
+
+            '
           content:
             application/json:
               schema:
@@ -345,7 +484,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Replicate KMS Key'
+      summary: Replicate KMS Key
       requestBody:
         required: true
         content:
@@ -359,18 +498,29 @@ paths:
       - kms-key
       responses:
         '200':
-          description: '200'
+          description: Key deletion cancelled
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/success-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Not on Replica: The request was rejectde because the operation is not allowed on a replica.
+
+
+            Not Pending Deletion: The request was rejected because the key is not pending deletion.
+
+            '
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-      description: Cancel the scheduled deletion of a KMS Key.
+      description: Cancels the scheduled deletion of a KMS Key.
       parameters:
       - in: path
         required: true
@@ -378,23 +528,31 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Cancel KMS Key Deletion'
+      summary: Cancel KMS Key Deletion
       operationId: cancel-kms-key-deletion
 components:
   schemas:
-    revision-stamp:
+    create-kms-key-request:
       type: object
       required:
-      - at
-      - seq
+      - name
       properties:
-        at:
+        name:
           type: string
-          format: date-time
-        seq:
-          type: integer
-          minimum: 0
-    enable-kms-key-rotation-response:
+          description: A human-readable display name uniquely identifying the KMS key within the tenant space.
+        description:
+          type: string
+          description: An optional detailed description providing additional context about the key's intended use case.
+        usage:
+          type: string
+          enum:
+          - encrypt-decrypt
+          default: encrypt-decrypt
+        multi-zone:
+          type: boolean
+          default: false
+          description: True if this is a multi-zone key.
+    rotate-kms-key-response:
       type: object
       required:
       - rotation
@@ -410,197 +568,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/list-kms-key-rotations-response-entry'
-    disable-kms-key-rotation-response:
-      type: object
-      required:
-      - rotation
-      properties:
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
-    create-kms-key-request:
-      type: object
-      required:
-      - name
-      - description
-      - usage
-      - multi-zone
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        usage:
-          type: string
-          enum:
-          - encrypt-decrypt
-        multi-zone:
-          type: boolean
-    create-kms-key-response:
-      type: object
-      required:
-      - id
-      - name
-      - description
-      - usage
-      - source
-      - status
-      - status-since
-      - multi-zone
-      - origin-zone
-      - created-at
-      - revision
-      properties:
-        description:
-          type: string
-        revision:
-          $ref: '#/components/schemas/revision-stamp'
-        name:
-          type: string
-        multi-zone:
-          type: boolean
-        source:
-          type: string
-          enum:
-          - exoscale-kms
-        usage:
-          type: string
-        status:
-          type: string
-          enum:
-          - enabled
-          - disabled
-          - pending-deletion
-        id:
-          type: string
-          format: uuid
-        origin-zone:
-          type: string
-        created-at:
-          type: string
-          format: date-time
-    list-kms-key-rotations-response-entry:
-      type: object
-      required:
-      - version
-      - rotated-at
-      - automatic
-      properties:
-        version:
-          type: integer
-        rotated-at:
-          type: string
-          format: date-time
-        automatic:
-          type: boolean
-    list-kms-keys-response-entry:
-      type: object
-      required:
-      - id
-      - name
-      - description
-      - usage
-      - source
-      - status
-      - status-since
-      - material
-      - rotation
-      - multi-zone
-      - origin-zone
-      - replicas
-      - created-at
-      - revision
-      properties:
-        description:
-          type: string
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
-        revision:
-          $ref: '#/components/schemas/revision-stamp'
-        name:
-          type: string
-        multi-zone:
-          type: boolean
-        source:
-          type: string
-          enum:
-          - exoscale-kms
-        usage:
-          type: string
-        status:
-          type: string
-          enum:
-          - enabled
-          - disabled
-          - pending-deletion
-        status-since:
-          type: string
-          format: date-time
-        id:
-          type: string
-          format: uuid
-        replicas:
-          type: array
-          items:
-            type: string
-        material:
-          $ref: '#/components/schemas/key-material'
-        origin-zone:
-          type: string
-        created-at:
-          type: string
-          format: date-time
-    replica-failure:
-      type: object
-      required:
-      - attempted-watermark
-      - error
-      - failed-at
-      properties:
-        attempted-watermark:
-          type: integer
-        error:
-          type: string
-        failed-at:
-          type: string
-          format: date-time
-    list-kms-keys-response:
-      type: object
-      required:
-      - kms-keys
-      properties:
-        kms-keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/list-kms-keys-response-entry'
-    key-rotation-config:
-      type: object
-      required:
-      - manual-count
-      - automatic
-      - rotation-period
-      - next-at
-      properties:
-        manual-count:
-          type: integer
-        automatic:
-          type: boolean
-        rotation-period:
-          type: integer
-        next-at:
-          type: string
-          format: date-time
-    replica-state:
-      type: object
-      required:
-      - zone
-      - last-applied-watermark
-      properties:
-        zone:
-          type: string
-        last-applied-watermark:
-          type: integer
-        last-failure:
-          $ref: '#/components/schemas/replica-failure'
+          description: A chronologically ordered collection tracking historical rotation lifecycle occurrences for this resource.
     success-response:
       type: object
       required:
@@ -611,22 +579,133 @@ components:
           enum:
           - success
           - target-registered
+          - already-applied
           default: success
-    enable-kms-key-rotation-request:
-      type: object
-      properties:
-        rotation-period:
-          type: integer
-          minimum: 90
-          maximum: 2560
-          default: 365
     replicate-kms-key-request:
       type: object
       required:
       - zone
       properties:
         zone:
+          description: The targeted cloud zone where the KMS key should be replicated.
           type: string
+    get-kms-key-response:
+      type: object
+      required:
+      - id
+      - name
+      - usage
+      - source
+      - status
+      - status-since
+      - material
+      - rotation
+      - multi-zone
+      - origin-zone
+      - created-at
+      - revision
+      properties:
+        description:
+          type: string
+          description: An optional detailed description providing additional context about the key's intended use case.
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+        revision:
+          $ref: '#/components/schemas/revision-stamp'
+        delete-at:
+          type: string
+          format: date-time
+        name:
+          type: string
+          description: The display name of the KMS key.
+        multi-zone:
+          type: boolean
+          description: True if this is a multi-zone key.
+        source:
+          type: string
+          enum:
+          - exoscale-kms
+        usage:
+          type: string
+          description: The cryptographic operation constraints allowed on this key.
+        replicas-status:
+          type: array
+          items:
+            $ref: '#/components/schemas/replica-state'
+          description: Detailed synchronization metrics for each regional replica mirror.
+        status:
+          type: string
+          enum:
+          - enabled
+          - disabled
+          - pending-deletion
+        status-since:
+          type: string
+          format: date-time
+          description: The timestamp indicating exactly when the current key status was last transitioned.
+        id:
+          type: string
+          format: uuid
+          description: The globally unique identifier (UUID) of the retrieved KMS key.
+        replicas:
+          type: array
+          items:
+            type: string
+          description: A list of availability zones where this specific key has active replica mirrors.
+        material:
+          $ref: '#/components/schemas/key-material'
+        origin-zone:
+          type: string
+          description: The creation zone of the KMS key.
+        created-at:
+          type: string
+          format: date-time
+          description: The UTC timestamp showing when the KMS key was originally provisioned.
+    disable-kms-key-rotation-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    enable-kms-key-rotation-response:
+      type: object
+      required:
+      - rotation
+      properties:
+        rotation:
+          $ref: '#/components/schemas/key-rotation-config'
+    list-kms-keys-response:
+      type: object
+      required:
+      - kms-keys
+      properties:
+        kms-keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/list-kms-keys-response-entry'
+          description: An array containing metadata entries for all available keys for your organization in the requested zone.
+    key-rotation-config:
+      type: object
+      required:
+      - manual-count
+      - automatic
+      - rotation-period
+      - next-at
+      properties:
+        manual-count:
+          type: integer
+          description: Total running tally of manual key rotation tasks executed by users over this key resource's lifecycle.
+        automatic:
+          type: boolean
+          description: When set to true, dictates that the system automatically rotates material periodically.
+        rotation-period:
+          type: integer
+          description: The set frequency period (measured in days) for triggers monitoring auto-rotation loops.
+        next-at:
+          type: string
+          format: date-time
+          description: Scheduled deadline calculation pinpointing the next automated rotational iteration target date.
     key-material:
       type: object
       required:
@@ -636,11 +715,31 @@ components:
       properties:
         version:
           type: integer
+          description: The incremental index tracing internal key rotation cycles for the key material.
         created-at:
           type: string
           format: date-time
+          description: The UTC date-time indicating when this particular generation of physical cryptographic material was seeded.
         automatic:
           type: boolean
+          description: A boolean flag indicating whether this specific material version was created during an automated system rotation window.
+    list-kms-key-rotations-response-entry:
+      type: object
+      required:
+      - version
+      - rotated-at
+      - automatic
+      properties:
+        version:
+          type: integer
+          description: The absolute increment index referencing this specific historical structural material setup.
+        rotated-at:
+          type: string
+          format: date-time
+          description: The UTC timestamp tracking precisely when this historical adjustment pass finished processing.
+        automatic:
+          type: boolean
+          description: Flag stating whether an automation run handled this historic mutation or if manual actor keys initiated it.
     error-response:
       type: object
       description: RFC 9457 Problem Details error response
@@ -653,37 +752,22 @@ components:
         type:
           type: string
           format: uri-reference
+          description: An absolute or relative URI reference pointing to human-readable documentation concerning the specific problem type encountered.
         title:
           type: string
+          description: A brief summary defining the class of failure, optimal for quick user interface groupings.
         status:
           type: integer
           minimum: 100
           maximum: 599
         detail:
           type: string
-        instance:
-          type: string
-          format: uri-reference
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              path:
-                type: string
-              detail:
-                type: string
-              pointer:
-                type: string
-              location:
-                type: string
-    get-kms-key-response:
+          description: A highly contextual, readable explanation breaking down explicitly what triggered this error scenario.
+    list-kms-keys-response-entry:
       type: object
       required:
-      - zone
       - id
       - name
-      - description
       - usage
       - source
       - status
@@ -692,30 +776,32 @@ components:
       - rotation
       - multi-zone
       - origin-zone
-      - replicas
       - created-at
       - revision
       properties:
         description:
           type: string
+          description: An optional detailed description providing additional context about the key's intended use case.
         rotation:
           $ref: '#/components/schemas/key-rotation-config'
         revision:
           $ref: '#/components/schemas/revision-stamp'
+        delete-at:
+          type: string
+          format: date-time
         name:
           type: string
+          description: The display name of the KMS key.
         multi-zone:
           type: boolean
+          description: True if this is a multi-zone key.
         source:
           type: string
           enum:
           - exoscale-kms
         usage:
           type: string
-        replicas-status:
-          type: array
-          items:
-            $ref: '#/components/schemas/replica-state'
+          description: The cryptographic operation constraints allowed on this key.
         status:
           type: string
           enum:
@@ -725,27 +811,39 @@ components:
         status-since:
           type: string
           format: date-time
+          description: The precise time when the key entered its current configuration phase.
         id:
           type: string
           format: uuid
+          description: The globally unique identifier (UUID) tracking this key entity.
         replicas:
           type: array
           items:
             type: string
+          description: Array tracking target zones currently maintaining copies of this item.
         material:
           $ref: '#/components/schemas/key-material'
         origin-zone:
           type: string
+          description: The creation zone of the KMS key.
         created-at:
           type: string
           format: date-time
-    rotate-kms-key-response:
+          description: The UTC timestamp showing when the KMS key was originally provisioned.
+    revision-stamp:
       type: object
       required:
-      - rotation
+      - at
+      - seq
       properties:
-        rotation:
-          $ref: '#/components/schemas/key-rotation-config'
+        at:
+          type: string
+          format: date-time
+          description: The timestamp recording exactly when this specific revision iteration occurred.
+        seq:
+          type: integer
+          minimum: 0
+          description: Monotonically increasing sequencing value utilized for optimistic concurrency control locks.
     schedule-kms-key-deletion-request:
       type: object
       properties:
@@ -755,6 +853,106 @@ components:
           minimum: 7
           maximum: 30
           default: 30
+    enable-kms-key-rotation-request:
+      type: object
+      properties:
+        rotation-period:
+          type: integer
+          minimum: 90
+          maximum: 2560
+          default: 365
+          description: The number of days between each automatic key rotation.
+    schedule-kms-key-deletion-response:
+      type: object
+      properties:
+        delete-at:
+          type: string
+          description: Timestamp of the key deletion
+          format: date-time
+    create-kms-key-response:
+      type: object
+      required:
+      - id
+      - name
+      - usage
+      - source
+      - status
+      - status-since
+      - multi-zone
+      - origin-zone
+      - created-at
+      - revision
+      properties:
+        description:
+          type: string
+          description: An optional detailed description providing additional context about the key's intended use case.
+        revision:
+          $ref: '#/components/schemas/revision-stamp'
+        name:
+          type: string
+          description: The display name assigned to the KMS key.
+        multi-zone:
+          type: boolean
+          description: True if this is a multi-zone key.
+        source:
+          type: string
+          enum:
+          - exoscale-kms
+        usage:
+          type: string
+          description: The cryptographic operation constraints allowed on this key.
+        status:
+          type: string
+          enum:
+          - enabled
+          - disabled
+          - pending-deletion
+        status-since:
+          type: string
+          format: date-time
+          description: The timestamp indicating exactly when the current key status was last transitioned.
+        id:
+          type: string
+          format: uuid
+          description: The globally unique identifier (UUID) assigned to the newly created KMS key.
+        origin-zone:
+          type: string
+          description: The creation zone of the KMS key.
+        created-at:
+          type: string
+          format: date-time
+          description: The UTC timestamp showing when the KMS key was originally provisioned.
+    replica-failure:
+      type: object
+      required:
+      - attempted-watermark
+      - error
+      - failed-at
+      properties:
+        attempted-watermark:
+          type: integer
+          description: The target sync sequence watermark that triggered the replication failure.
+        error:
+          type: string
+          description: A descriptive message containing error logs or system details regarding the sync failure.
+        failed-at:
+          type: string
+          format: date-time
+          description: The UTC timestamp showing exactly when the replication sync window failed.
+    replica-state:
+      type: object
+      required:
+      - zone
+      - last-applied-watermark
+      properties:
+        zone:
+          type: string
+          description: The destination target zone tracking this specific replica instance.
+        last-applied-watermark:
+          type: integer
+          description: The latest logical sequence number or state watermark successfully synced to this regional replica.
+        last-failure:
+          $ref: '#/components/schemas/replica-failure'
 x-topics:
 - title: API Request Signature
   content: '

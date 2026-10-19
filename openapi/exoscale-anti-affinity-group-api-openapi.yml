@@ -128,6 +128,68 @@ paths:
       operationId: delete-anti-affinity-group
 components:
   schemas:
+    anti-affinity-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
+    operation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Operation ID
+        reason:
+          type: string
+          enum:
+          - incorrect
+          - unknown
+          - unavailable
+          - forbidden
+          - busy
+          - fault
+          - partial
+          - not-found
+          - interrupted
+          - unsupported
+          - conflict
+          readOnly: true
+          description: Operation failure reason
+        reference:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Reference ID
+            link:
+              type: string
+              readOnly: true
+              description: Link to the referenced resource
+            command:
+              type: string
+              description: Command name
+          description: Related resource reference
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+          description: Operation message
+        state:
+          type: string
+          enum:
+          - failure
+          - pending
+          - success
+          - timeout
+          readOnly: true
+          description: Operation status
+      description: Operation
     instance:
       type: object
       properties:
@@ -228,6 +290,10 @@ components:
           minimum: 10
           maximum: 51200
           description: Instance disk size in GiB
+        disk-encrypted:
+          type: boolean
+          readOnly: true
+          description: Indicates if the root volume of the instance is encrypted
         ssh-keys:
           type: array
           items:
@@ -268,26 +334,94 @@ components:
           readOnly: true
           description: Anti-affinity Group instances
       description: Anti-affinity Group
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    manager:
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    instance-type:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Manager ID
-        type:
+          readOnly: true
+          description: Instance type ID
+        size:
           type: string
           enum:
-          - sks-nodepool
-          - instance-pool
-          description: Manager type
-      description: Resource manager
+          - large
+          - huge
+          - jumbo
+          - medium
+          - mega
+          - small
+          - extra-large
+          - titan48c
+          - titan
+          - micro
+          - colossus
+          - tiny
+          readOnly: true
+          description: Instance type size
+        family:
+          type: string
+          enum:
+          - gpu3
+          - gpua30
+          - gpu3080ti
+          - gpu2
+          - gpu
+          - memory
+          - gpua5000
+          - gpub300
+          - gpurtx6000pro
+          - storage
+          - standard
+          - colossus
+          - cpu
+          readOnly: true
+          description: Instance type family
+        cpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: CPU count
+          exclusiveMinimum: 0
+        gpus:
+          type: integer
+          format: int64
+          readOnly: true
+          description: GPU count
+          exclusiveMinimum: 0
+        authorized:
+          type: boolean
+          readOnly: true
+          description: Requires authorization or publicly available
+        memory:
+          type: integer
+          format: int64
+          readOnly: true
+          description: Available memory
+          exclusiveMinimum: 0
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/zone-name'
+          readOnly: true
+          description: Instance Type available zones
+      description: Compute instance type
+    instance-state:
+      type: string
+      enum:
+      - expunging
+      - starting
+      - destroying
+      - running
+      - stopping
+      - stopped
+      - migrating
+      - error
+      - destroyed
     template:
       type: object
       properties:
@@ -370,198 +504,20 @@ components:
           readOnly: true
           description: Template visibility
       description: Instance template
-    deploy-target-ref:
+    manager:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
-    operation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Operation ID
-        reason:
+          description: Manager ID
+        type:
           type: string
           enum:
-          - incorrect
-          - unknown
-          - unavailable
-          - forbidden
-          - busy
-          - fault
-          - partial
-          - not-found
-          - interrupted
-          - unsupported
-          - conflict
-          readOnly: true
-          description: Operation failure reason
-        reference:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: Reference ID
-            link:
-              type: string
-              readOnly: true
-              description: Link to the referenced resource
-            command:
-              type: string
-              description: Command name
-          description: Related resource reference
-          readOnly: true
-        message:
-          type: string
-          readOnly: true
-          description: Operation message
-        state:
-          type: string
-          enum:
-          - failure
-          - pending
-          - success
-          - timeout
-          readOnly: true
-          description: Operation status
-      description: Operation
-    instance-type:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Instance type ID
-        size:
-          type: string
-          enum:
-          - large
-          - huge
-          - jumbo
-          - medium
-          - mega
-          - small
-          - extra-large
-          - titan48c
-          - titan
-          - micro
-          - colossus
-          - tiny
-          readOnly: true
-          description: Instance type size
-        family:
-          type: string
-          enum:
-          - gpu3
-          - gpua30
-          - gpu3080ti
-          - gpu2
-          - gpu
-          - memory
-          - gpua5000
-          - gpurtx6000pro
-          - storage
-          - standard
-          - colossus
-          - cpu
-          readOnly: true
-          description: Instance type family
-        cpus:
-          type: integer
-          format: int64
-          readOnly: true
-          description: CPU count
-          exclusiveMinimum: 0
-        gpus:
-          type: integer
-          format: int64
-          readOnly: true
-          description: GPU count
-          exclusiveMinimum: 0
-        authorized:
-          type: boolean
-          readOnly: true
-          description: Requires authorization or publicly available
-        memory:
-          type: integer
-          format: int64
-          readOnly: true
-          description: Available memory
-          exclusiveMinimum: 0
-        zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/zone-name'
-          readOnly: true
-          description: Instance Type available zones
-      description: Compute instance type
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    elastic-ip-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
-    zone-name:
-      type: string
-      enum:
-      - ch-dk-2
-      - de-muc-1
-      - ch-gva-2
-      - at-vie-1
-      - de-fra-1
-      - bg-sof-1
-      - at-vie-2
-      - hr-zag-1
-    anti-affinity-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
-    snapshot-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Snapshot ID
-      description: Snapshot reference
-    instance-state:
-      type: string
-      enum:
-      - expunging
-      - starting
-      - destroying
-      - running
-      - stopping
-      - stopped
-      - migrating
-      - error
-      - destroyed
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
     ssh-key:
       type: object
       properties:
@@ -577,6 +533,55 @@ components:
           x-go-findable: '2'
           description: SSH key fingerprint
       description: SSH key
+    security-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Security group ID
+      description: Security group reference
+    zone-name:
+      type: string
+      enum:
+      - ch-dk-2
+      - de-muc-1
+      - ch-gva-2
+      - at-vie-1
+      - de-fra-1
+      - bg-sof-1
+      - at-vie-2
+      - hr-zag-1
+    snapshot-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Snapshot ID
+      description: Snapshot reference
+    elastic-ip-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Elastic IP ID
+      description: Elastic IP reference
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
 x-topics:
 - title: API Request Signature
   content: '

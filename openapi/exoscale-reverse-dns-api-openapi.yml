@@ -184,10 +184,6 @@ components:
       properties:
         domain-name:
           $ref: '#/components/schemas/domain-name'
-    domain-name:
-      type: string
-      maxLength: 253
-      minLength: 1
     operation:
       type: object
       properties:
@@ -242,6 +238,10 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    domain-name:
+      type: string
+      maxLength: 253
+      minLength: 1
 x-topics:
 - title: API Request Signature
   content: '

@@ -33,7 +33,7 @@ tags:
   x-weight: 820
   x-icon: exo-iam
 paths:
-  /iam-role/{target-role-id}/assume:
+  /iam-role/{id}/assume:
     post:
       tags:
       - Role
@@ -55,10 +55,12 @@ paths:
                     type: string
                   secret:
                     type: string
+                  expires-at:
+                    type: string
       parameters:
       - in: path
         required: true
-        name: target-role-id
+        name: id
         schema:
           type: string
           format: uuid
@@ -75,6 +77,8 @@ paths:
                   format: int64
                   description: TTL in seconds for the generated access key (cannot exceed the max TTL defined in the targeted assume role)
                   exclusiveMinimum: 0
+              required:
+              - ttl
       operationId: assume-iam-role
   /iam-role/{id}:
     put:
@@ -125,6 +129,9 @@ paths:
                   format: int64
                   description: Maximum TTL requester is allowed to ask for when assuming a role
                   exclusiveMinimum: 0
+                assume-role-policy:
+                  $ref: '#/components/schemas/iam-assume-role-policy'
+                  description: IAM Assume role policy
       operationId: update-iam-role
     get:
       tags:
@@ -166,33 +173,6 @@ paths:
           format: uuid
       summary: Delete IAM Role
       operationId: delete-iam-role
-  /iam-role/{id}:assume-role-policy:
-    put:
-      tags:
-      - Role
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/operation'
-      description: ''
-      parameters:
-      - in: path
-        required: true
-        name: id
-        schema:
-          type: string
-          format: uuid
-      summary: Update IAM Assume role Policy
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/iam-policy'
-      operationId: update-iam-role-assume-policy
   /iam-role/{id}:policy:
     put:
       tags:
@@ -289,7 +269,7 @@ paths:
                   $ref: '#/components/schemas/iam-policy'
                   description: IAM Role policy
                 assume-role-policy:
-                  $ref: '#/components/schemas/iam-policy'
+                  $ref: '#/components/schemas/iam-assume-role-policy'
                   description: IAM Assume role policy
                 max-session-ttl:
                   type: integer
@@ -301,51 +281,19 @@ paths:
       operationId: create-iam-role
 components:
   schemas:
-    iam-role:
+    iam-service-policy:
       type: object
       properties:
-        description:
+        type:
           type: string
-          maxLength: 255
-          minLength: 1
-          description: IAM Role description
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: IAM Role Labels
-        permissions:
+          enum:
+          - rules
+          - allow
+          - deny
+        rules:
           type: array
           items:
-            type: string
-            enum:
-            - bypass-governance-retention
-            - reset-iam-organization-policy
-          uniqueItems: true
-          description: IAM Role permissions
-        assume-role-policy:
-          $ref: '#/components/schemas/iam-policy'
-          description: IAM Assume Role Policy
-        editable:
-          type: boolean
-          description: IAM Role mutability
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: IAM Role name
-        max-session-ttl:
-          type: integer
-          format: int64
-          description: Maximum TTL requester is allowed to ask for when assuming a role
-          exclusiveMinimum: 0
-        policy:
-          $ref: '#/components/schemas/iam-policy'
-          description: IAM Role Policy
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: IAM Role ID
-      description: IAM Role
+            $ref: '#/components/schemas/iam-service-policy-rule'
     iam-service-policy-rule:
       type: object
       properties:
@@ -360,28 +308,6 @@ components:
           type: array
           items:
             type: string
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    iam-policy:
-      type: object
-      properties:
-        default-service-strategy:
-          type: string
-          enum:
-          - allow
-          - deny
-          description: IAM default service strategy
-        services:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/iam-service-policy'
-          description: IAM services
-      required:
-      - default-service-strategy
-      - services
-      description: Policy
     operation:
       type: object
       properties:
@@ -436,19 +362,82 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
-    iam-service-policy:
+    iam-policy:
       type: object
       properties:
-        type:
+        default-service-strategy:
           type: string
           enum:
-          - rules
           - allow
           - deny
+          description: IAM default service strategy
+        services:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/iam-service-policy'
+          description: IAM services
+      required:
+      - default-service-strategy
+      - services
+      description: Policy
+    iam-assume-role-policy:
+      type: object
+      properties:
         rules:
           type: array
           items:
             $ref: '#/components/schemas/iam-service-policy-rule'
+          description: IAM Assume Role Policy rules
+      description: Assume Role Policy
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    iam-role:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: IAM Role description
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: IAM Role Labels
+        permissions:
+          type: array
+          items:
+            type: string
+            enum:
+            - bypass-governance-retention
+            - reset-iam-organization-policy
+          uniqueItems: true
+          description: IAM Role permissions
+        assume-role-policy:
+          $ref: '#/components/schemas/iam-assume-role-policy'
+          description: IAM Assume Role Policy
+        editable:
+          type: boolean
+          description: IAM Role mutability
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: IAM Role name
+        max-session-ttl:
+          type: integer
+          format: int64
+          description: Maximum TTL requester is allowed to ask for when assuming a role
+          exclusiveMinimum: 0
+        policy:
+          $ref: '#/components/schemas/iam-policy'
+          description: IAM Role Policy
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: IAM Role ID
+      description: IAM Role
 x-topics:
 - title: API Request Signature
   content: '

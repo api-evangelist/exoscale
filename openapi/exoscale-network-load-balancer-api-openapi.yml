@@ -434,138 +434,23 @@ paths:
       operationId: get-load-balancer
 components:
   schemas:
-    load-balancer:
+    ssh-key-ref:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Load Balancer ID
-        description:
-          type: string
-          maxLength: 255
-          description: Load Balancer description
         name:
           type: string
           maxLength: 255
           minLength: 1
-          description: Load Balancer name
-        state:
-          type: string
-          enum:
-          - creating
-          - migrated
-          - deleting
-          - running
-          - migrating
-          - error
-          readOnly: true
-          description: Load Balancer state
-        created-at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Load Balancer creation date
-        ip:
-          type: string
-          format: ipv4
-          readOnly: true
-          description: Load Balancer public IP
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/load-balancer-service'
-          description: Load Balancer Services
-        labels:
-          $ref: '#/components/schemas/labels'
-          description: Load Balancer Labels
-      description: Load Balancer
-    private-network-ref:
+          description: SSH key name
+      description: SSH key reference
+    anti-affinity-group-ref:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Private network ID
-      description: Private network reference
-    load-balancer-server-status:
-      type: object
-      properties:
-        public-ip:
-          type: string
-          format: ipv4
-          description: Backend server public IP
-        status:
-          type: string
-          enum:
-          - failure
-          - success
-          description: Status of the instance's healthcheck
-      description: Load Balancer Service status
-    load-balancer-service:
-      type: object
-      properties:
-        description:
-          type: string
-          maxLength: 255
-          description: Load Balancer Service description
-        protocol:
-          type: string
-          enum:
-          - tcp
-          - udp
-          description: Network traffic protocol
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: Load Balancer Service name
-        state:
-          type: string
-          enum:
-          - creating
-          - deleting
-          - running
-          - updating
-          - error
-          readOnly: true
-          description: Load Balancer Service state
-        target-port:
-          type: integer
-          format: int64
-          description: Port on which the network traffic will be forwarded to on the receiving instance
-          exclusiveMinimum: 0
-        port:
-          type: integer
-          format: int64
-          description: Port exposed on the Load Balancer's public IP
-          exclusiveMinimum: 0
-        instance-pool:
-          $ref: '#/components/schemas/instance-pool'
-          description: Instance Pool to forward network traffic to
-        strategy:
-          type: string
-          enum:
-          - round-robin
-          - maglev-hash
-          - source-hash
-          description: Load balancing strategy
-        healthcheck:
-          $ref: '#/components/schemas/load-balancer-service-healthcheck'
-          description: Healthcheck configuration
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Load Balancer Service ID
-        healthcheck-status:
-          type: array
-          items:
-            $ref: '#/components/schemas/load-balancer-server-status'
-          readOnly: true
-          description: Healthcheck status per backend server
-      description: Load Balancer Service
+          description: Anti-affinity group ID
+      description: Anti-affinity group reference
     instance-pool:
       type: object
       properties:
@@ -681,30 +566,6 @@ components:
             $ref: '#/components/schemas/ssh-key-ref'
           description: Instances SSH keys
       description: Instance Pool
-    labels:
-      type: object
-      additionalProperties:
-        type: string
-    public-ip-assignment:
-      type: string
-      enum:
-      - inet4
-      - dual
-      - none
-    manager:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Manager ID
-        type:
-          type: string
-          enum:
-          - sks-nodepool
-          - instance-pool
-          description: Manager type
-      description: Resource manager
     instance-type-ref:
       type: object
       properties:
@@ -713,14 +574,53 @@ components:
           format: uuid
           description: Instance type ID
       description: Instance type reference
-    deploy-target-ref:
+    load-balancer:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Deploy target ID
-      description: Deploy target reference
+          readOnly: true
+          description: Load Balancer ID
+        description:
+          type: string
+          maxLength: 255
+          description: Load Balancer description
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Load Balancer name
+        state:
+          type: string
+          enum:
+          - creating
+          - migrated
+          - deleting
+          - running
+          - migrating
+          - error
+          readOnly: true
+          description: Load Balancer state
+        created-at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Load Balancer creation date
+        ip:
+          type: string
+          format: ipv4
+          readOnly: true
+          description: Load Balancer public IP
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/load-balancer-service'
+          description: Load Balancer Services
+        labels:
+          $ref: '#/components/schemas/labels'
+          description: Load Balancer Labels
+      description: Load Balancer
     operation:
       type: object
       properties:
@@ -775,6 +675,155 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    template-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Template ID
+      description: Template reference
+    private-network-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Private network ID
+      description: Private network reference
+    labels:
+      type: object
+      additionalProperties:
+        type: string
+    load-balancer-server-status:
+      type: object
+      properties:
+        public-ip:
+          type: string
+          format: ipv4
+          description: Backend server public IP
+        status:
+          type: string
+          enum:
+          - failure
+          - success
+          description: Status of the instance's healthcheck
+      description: Load Balancer Service status
+    manager:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Manager ID
+        type:
+          type: string
+          enum:
+          - sks-nodepool
+          - instance-pool
+          description: Manager type
+      description: Resource manager
+    security-group-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Security group ID
+      description: Security group reference
+    instance-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Instance ID
+      description: Target Instance
+    load-balancer-service:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 255
+          description: Load Balancer Service description
+        protocol:
+          type: string
+          enum:
+          - tcp
+          - udp
+          description: Network traffic protocol
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: Load Balancer Service name
+        state:
+          type: string
+          enum:
+          - creating
+          - deleting
+          - running
+          - updating
+          - error
+          readOnly: true
+          description: Load Balancer Service state
+        target-port:
+          type: integer
+          format: int64
+          description: Port on which the network traffic will be forwarded to on the receiving instance
+          exclusiveMinimum: 0
+        port:
+          type: integer
+          format: int64
+          description: Port exposed on the Load Balancer's public IP
+          exclusiveMinimum: 0
+        instance-pool:
+          $ref: '#/components/schemas/instance-pool'
+          description: Instance Pool to forward network traffic to
+        strategy:
+          type: string
+          enum:
+          - round-robin
+          - maglev-hash
+          - source-hash
+          description: Load balancing strategy
+        healthcheck:
+          $ref: '#/components/schemas/load-balancer-service-healthcheck'
+          description: Healthcheck configuration
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Load Balancer Service ID
+        healthcheck-status:
+          type: array
+          items:
+            $ref: '#/components/schemas/load-balancer-server-status'
+          readOnly: true
+          description: Healthcheck status per backend server
+      description: Load Balancer Service
+    elastic-ip-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Elastic IP ID
+      description: Elastic IP reference
+    public-ip-assignment:
+      type: string
+      enum:
+      - inet4
+      - dual
+      - none
+    deploy-target-ref:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Deploy target ID
+      description: Deploy target reference
     load-balancer-service-healthcheck:
       type: object
       properties:
@@ -820,55 +869,6 @@ components:
           minLength: 1
           description: SNI domain for HTTPS healthchecks
       description: Load Balancer Service healthcheck
-    ssh-key-ref:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          description: SSH key name
-      description: SSH key reference
-    instance-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Instance ID
-      description: Target Instance
-    template-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Template ID
-      description: Template reference
-    anti-affinity-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Anti-affinity group ID
-      description: Anti-affinity group reference
-    elastic-ip-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Elastic IP ID
-      description: Elastic IP reference
-    security-group-ref:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Security group ID
-      description: Security group reference
 x-topics:
 - title: API Request Signature
   content: '

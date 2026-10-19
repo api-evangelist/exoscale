@@ -313,37 +313,6 @@ paths:
       operationId: register-template
 components:
   schemas:
-    zone:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/zone-name'
-          readOnly: true
-          x-go-findable: '1'
-          description: Zone short name
-        api-endpoint:
-          type: string
-          readOnly: true
-          x-go-type: Endpoint
-          x-go-findable: '2'
-          description: Zone API endpoint
-        sos-endpoint:
-          type: string
-          readOnly: true
-          x-go-type: Endpoint
-          description: Zone SOS endpoint
-      description: Zone
-    zone-name:
-      type: string
-      enum:
-      - ch-dk-2
-      - de-muc-1
-      - ch-gva-2
-      - at-vie-1
-      - de-fra-1
-      - bg-sof-1
-      - at-vie-2
-      - hr-zag-1
     template:
       type: object
       properties:
@@ -426,6 +395,26 @@ components:
           readOnly: true
           description: Template visibility
       description: Instance template
+    zone:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/zone-name'
+          readOnly: true
+          x-go-findable: '1'
+          description: Zone short name
+        api-endpoint:
+          type: string
+          readOnly: true
+          x-go-type: Endpoint
+          x-go-findable: '2'
+          description: Zone API endpoint
+        sos-endpoint:
+          type: string
+          readOnly: true
+          x-go-type: Endpoint
+          description: Zone SOS endpoint
+      description: Zone
     operation:
       type: object
       properties:
@@ -480,6 +469,17 @@ components:
           readOnly: true
           description: Operation status
       description: Operation
+    zone-name:
+      type: string
+      enum:
+      - ch-dk-2
+      - de-muc-1
+      - ch-gva-2
+      - at-vie-1
+      - de-fra-1
+      - bg-sof-1
+      - at-vie-2
+      - hr-zag-1
 x-topics:
 - title: API Request Signature
   content: '

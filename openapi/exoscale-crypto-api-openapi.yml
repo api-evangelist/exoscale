@@ -27,7 +27,7 @@ tags:
   parent: kms
   externalDocs:
     description: Read more
-    url: https://community.exoscale.com/documentation/kms/crypto
+    url: https://community.exoscale.com/documentation/security/kms/overview
   name: Crypto
   x-display-name: Cryptographic Operations
   x-weight: 1140
@@ -39,18 +39,29 @@ paths:
       - Crypto
       responses:
         '200':
-          description: '200'
+          description: Base64 encoded plaintext.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/decrypt-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Key is Disabled: The request was rejected because the specified KMS key is disabled.
+
+
+            Invalid Usage: The request was rejected because the operation is only allowed on symmetric keys with usage "encrypt-decrypt".
+
+            '
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-      description: Decrypt a ciphertext.
+      description: Decrypts a ciphertext.
       parameters:
       - in: path
         required: true
@@ -58,7 +69,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Decrypt'
+      summary: Decrypt
       requestBody:
         required: true
         content:
@@ -72,18 +83,29 @@ paths:
       - Crypto
       responses:
         '200':
-          description: '200'
+          description: Base64 encoded ciphertext
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/encrypt-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Key is Disabled: The request was rejected because the specified KMS key is disabled.
+
+
+            Invalid Usage: The request was rejected because the operation is only allowed on symmetric keys with usage "encrypt-decrypt".
+
+            '
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-      description: Encrypt a plaintext.
+      description: Encrypts a plaintext.
       parameters:
       - in: path
         required: true
@@ -91,7 +113,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Encrypt'
+      summary: Encrypt
       requestBody:
         required: true
         content:
@@ -105,13 +127,27 @@ paths:
       - Crypto
       responses:
         '200':
-          description: '200'
+          description: Base64 encoded ciphertext
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/re-encrypt-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Key is Disabled: The request was rejected because the specified KMS key is disabled.
+
+
+            Not on Default: The request was rejected because the operation is not allowed on the default key.
+
+
+            Bad Request: The request was rejected because of an invalid request body or path parameter.
+
+            '
           content:
             application/json:
               schema:
@@ -124,7 +160,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Re-encrypt'
+      summary: Re-encrypt
       requestBody:
         required: true
         content:
@@ -138,13 +174,24 @@ paths:
       - Crypto
       responses:
         '200':
-          description: '200'
+          description: Data Encryption Key in the clear and in its base64 encoded encrypted format.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/generate-data-key-response'
         '400':
-          description: '400'
+          description: '### Errors
+
+
+            Key Not Found: The request was rejected because the specified KMS Key could not be found.
+
+
+            Key is Disabled: The request was rejected because the specified KMS key is disabled.
+
+
+            Invalid Usage: The request was rejected because the operation is only allowed on symmetric keys with usage "encrypt-decrypt".
+
+            '
           content:
             application/json:
               schema:
@@ -157,7 +204,7 @@ paths:
         schema:
           type: string
           format: uuid
-      summary: '[BETA] Generate Data Key'
+      summary: Generate Data Encryption Key
       requestBody:
         required: true
         content:
@@ -167,6 +214,53 @@ paths:
       operationId: generate-data-key
 components:
   schemas:
+    re-encrypt-response:
+      type: object
+      required:
+      - ciphertext
+      properties:
+        ciphertext:
+          type: string
+          format: byte
+          description: The new Base64-encoded ciphertext block safely wrapped by the chosen destination key parameters.
+    encrypt-response:
+      type: object
+      required:
+      - ciphertext
+      properties:
+        ciphertext:
+          type: string
+          format: byte
+          description: The resulting Base64-encoded ciphertext after encryption.
+    decrypt-request:
+      type: object
+      required:
+      - ciphertext
+      properties:
+        encryption-context:
+          type:
+          - string
+          - 'null'
+          format: byte
+          description: The exact Base64-encoded Additional Authenticated Data (AAD) used during encryption to verify data integrity.
+        ciphertext:
+          type: string
+          format: byte
+          description: The Base64-encoded ciphertext payload to be decrypted.
+    generate-data-key-response:
+      type: object
+      required:
+      - plaintext
+      - ciphertext
+      properties:
+        plaintext:
+          type: string
+          format: byte
+          description: The Base64-encoded raw symmetric data key payload. Expose only securely during active application setups.
+        ciphertext:
+          type: string
+          format: byte
+          description: The identical symmetric data key, returned safely wrapped/encrypted using the designated root parent KMS key.
     re-encrypt-request:
       type: object
       required:
@@ -182,16 +276,17 @@ components:
             key:
               type: string
               format: uuid
-              description: The ID of the source key.
+              description: The ID of the source key currently protecting the data payload.
             encryption-context:
               type:
               - string
               - 'null'
               format: byte
-              description: Optional encryption context appended to the AAD.
+              description: Optional Base64-encoded encryption context originally appended to the AAD to confirm package validation rules.
             ciphertext:
               type: string
               format: byte
+              description: The Base64-encoded encrypted payload package ready to undergo source-side key decryption.
         destination:
           type: object
           required:
@@ -200,29 +295,22 @@ components:
             key:
               type: string
               format: uuid
-              description: The ID of the target key.
+              description: The ID of the target key chosen to encapsulate the newly shifted data translation.
             encryption-context:
               type:
               - string
               - 'null'
               format: byte
-              description: Optional encryption context appended to the AAD.
-    encrypt-response:
+              description: Optional new Base64-encoded encryption context to apply under the target destination envelope.
+    decrypt-response:
       type: object
       required:
-      - ciphertext
+      - plaintext
       properties:
-        ciphertext:
+        plaintext:
           type: string
           format: byte
-    re-encrypt-response:
-      type: object
-      required:
-      - ciphertext
-      properties:
-        ciphertext:
-          type: string
-          format: byte
+          description: The recovered Base64-encoded original plaintext payload.
     generate-data-key-request:
       type: object
       properties:
@@ -239,6 +327,22 @@ components:
           - string
           - 'null'
           format: byte
+          description: Base64-encoded Additional Authenticated Data binding key generation parameters securely to operational scope.
+    encrypt-request:
+      type: object
+      required:
+      - plaintext
+      properties:
+        encryption-context:
+          type:
+          - string
+          - 'null'
+          format: byte
+          description: Base64-encoded bytes to be used as the Additional Authenticated Data (AAD) for encryption integrity.
+        plaintext:
+          type: string
+          format: byte
+          description: The Base64-encoded plaintext data you wish to encrypt.
     error-response:
       type: object
       description: RFC 9457 Problem Details error response
@@ -251,76 +355,17 @@ components:
         type:
           type: string
           format: uri-reference
+          description: An absolute or relative URI reference pointing to human-readable documentation concerning the specific problem type encountered.
         title:
           type: string
+          description: A brief summary defining the class of failure, optimal for quick user interface groupings.
         status:
           type: integer
           minimum: 100
           maximum: 599
         detail:
           type: string
-        instance:
-          type: string
-          format: uri-reference
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              path:
-                type: string
-              detail:
-                type: string
-              pointer:
-                type: string
-              location:
-                type: string
-    decrypt-request:
-      type: object
-      required:
-      - ciphertext
-      properties:
-        encryption-context:
-          type:
-          - string
-          - 'null'
-          format: byte
-        ciphertext:
-          type: string
-          format: byte
-    decrypt-response:
-      type: object
-      required:
-      - plaintext
-      properties:
-        plaintext:
-          type: string
-          format: byte
-    generate-data-key-response:
-      type: object
-      required:
-      - plaintext
-      - ciphertext
-      properties:
-        plaintext:
-          type: string
-          format: byte
-        ciphertext:
-          type: string
-          format: byte
-    encrypt-request:
-      type: object
-      required:
-      - plaintext
-      properties:
-        encryption-context:
-          type:
-          - string
-          - 'null'
-          format: byte
-        plaintext:
-          type: string
-          format: byte
+          description: A highly contextual, readable explanation breaking down explicitly what triggered this error scenario.
 x-topics:
 - title: API Request Signature
   content: '
