@@ -707,3 +707,9 @@ x-topics:
     To obtain a list of all instances across all zones, you would need to do the corresponding request for each zone.
 
     '
+x-provenance:
+  method: harvested
+  publisher: Exoscale
+  source: https://openapi-v2.exoscale.com/source.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
